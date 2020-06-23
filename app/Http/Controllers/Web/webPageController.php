@@ -31,8 +31,8 @@ class webPageController extends Controller
         // dd($CategoryBlog);
         view()->share('CategoryBlog',$CategoryBlog);
 
-        $rooms = Room::all();
-        view()->share('rooms',$rooms);
+        // $rooms = Room::all();
+        // view()->share('rooms',$rooms);
 
         $roomImages = RoomImage::all();
         view()->share('roomImages',$roomImages);
@@ -46,8 +46,10 @@ class webPageController extends Controller
     }
 
     public function indexWeb(){
+        $Services = CategoryService::paginate(3);
+        $rooms = Room::paginate(6);
         
-        return view('page.home');    
+        return view('page.home',['Services'=>$Services,'rooms'=>$rooms]);    
     }
 
     public function getAbout(){
@@ -79,9 +81,15 @@ class webPageController extends Controller
     }
 
 
+    // public function getRoomList(){
+    //     $rooms = Room::all();
+    //     return view('page.room_list',['rooms'=>$rooms]);
+    // }
     public function getRoomList(){
-        return view('page.room_list');
-    }
+        $rooms = Room::orderByParam()->paginate(15);
+        return view('page.room_list',['rooms'=>$rooms]);
+    } 
+
 
     public function getServiceMaster($id){
         $cateService = CategoryService::where('id',$id)->get();
@@ -102,6 +110,7 @@ class webPageController extends Controller
 
     public function getRoomGrid(){
         return view('page.room_grid');
+
     }
 
     public function getReservation(){
@@ -185,5 +194,12 @@ class webPageController extends Controller
     {
         Auth::logout();
         return redirect()->route('indexWeb');
+    }
+
+    public function getRoomListMaster($id){
+
+        $rooms = Room::where('category_room_id',$id)->get();
+        // dd($rooms);
+        return view('page.room_list_master',['rooms'=>$rooms]);
     }
 }

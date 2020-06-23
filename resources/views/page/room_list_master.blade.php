@@ -23,10 +23,10 @@
                 <div class="filter-view">
                     <ul>
                         <li class="active-f-view">Default Sorting</li>
-                        <li> <a href="{{route('roomList',['orderby'=>'priceNight','ord'=>'ASC'])}}">Low To High</a></li>
-                        <li> <a href="{{route('roomList',['orderby'=>'priceNight','ord'=>'DESC'])}}">High To Low</a></li>
-                        <li> <a href="{{route('roomList',['orderby'=>'name','ord'=>'ASC'])}}">View A to Z</a> </li>
-                        <li> <a href="{{route('roomList',['orderby'=>'name','ord'=>'DESC'])}}">View Z to A</a> </li>
+                        <li>Low To High</li>
+                        <li>High To Low</li>
+                        <li>View A to Z</li>
+                        <li>View Z to A</li>
                         <li>Popular</li>
                     </ul>
                 </div>

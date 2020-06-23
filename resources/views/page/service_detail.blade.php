@@ -11,9 +11,11 @@
             <h1>{{$cS->name}}</h1>
             @endforeach
             <ul>
-                <li><a href="">Home</a></li>
+                <li><a href="{{route('indexWeb')}}">Home</a></li>
                 <li><i class="fas fa-angle-double-right"></i></li>
-                <li>Our Restaurant</li>
+                @foreach($cateService as $cS)
+                    <li>{{$cS->name}}</li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -62,7 +64,9 @@
     <div class="container">
         <div class="section-title text-center">
             <span class="title-top">Regular Food</span>
-            <h1>Main Menu / Food List</h1>
+            @foreach($cateService as $cS)
+            <h1>Main Menu / {{$cS->name}} list</h1>
+            @endforeach
         </div>
         <div class="regular-food-wrap">
             <div class="row">

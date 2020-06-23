@@ -223,56 +223,7 @@
           </h1>
         </div>
         <div class="row">
-          <div class="col-lg-4 col-md-6">
-            <div
-              class="single-feature-box text-center wow fadeIn animated"
-              data-wow-duration="1500ms"
-              data-wow-delay="400ms"
-              style="
-                visibility: visible;
-                animation-duration: 1500ms;
-                animation-delay: 400ms;
-                animation-name: fadeIn;
-              "
-            >
-              <div class="feature-icon">
-                <img src="public/web/images/img/icons/icon.png" alt="Icon" />
-              </div>
-              <h4>Free Transportation</h4>
-              <p>
-                Has any right to find fault with man who chooses to enjoy a
-                pleasure that has no annoying conseque
-              </p>
-              <a href="" class="read-more"
-                >raed more <i class="fas fa-long-arrow-alt-right"></i></i
-              ></a>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div
-              class="single-feature-box text-center wow fadeIn animated"
-              data-wow-duration="1500ms"
-              data-wow-delay="600ms"
-              style="
-                visibility: visible;
-                animation-duration: 1500ms;
-                animation-delay: 600ms;
-                animation-name: fadeIn;
-              "
-            >
-              <div class="feature-icon">
-                <img src="public/web/images/img/icons/icon-2.png" alt="Icon" />
-              </div>
-              <h4>Food &amp; Drinks</h4>
-              <p>
-                Has any right to find fault with man who chooses to enjoy a
-                pleasure that has no annoying conseque
-              </p>
-              <a href="" class="read-more"
-                >raed more <i class="fas fa-long-arrow-alt-right"></i></i
-              ></a>
-            </div>
-          </div>
+          @foreach($Services as $Service)
           <div class="col-lg-4 col-md-6 mx-auto">
             <div
               class="single-feature-box text-center wow fadeIn animated"
@@ -285,19 +236,19 @@
                 animation-name: fadeIn;
               "
             >
-              <div class="feature-icon">
-                <img src="public/web/images/img/icons/icon-3.png" alt="Icon" />
+              <div class="feature-icon" style="width:64px;height:70px;overflow:hidden;margin:0 auto;margin-bottom:20px">
+                <img src="public/uploads/images/CategoryService/{{$Service->image}}" alt="Icon" />
               </div>
-              <h4>Free Wi-fi Network</h4>
+              <h4>{{$Service->name}}</h4>
               <p>
-                Has any right to find fault with man who chooses to enjoy a
-                pleasure that has no annoying conseque
+                {!!$Service->description!!}
               </p>
-              <a href="" class="read-more"
+              <a href="{{route('serviceMaster',['id'=>$Service->id])}}" class="read-more"
                 >raed more <i class="fas fa-long-arrow-alt-right"></i></i
               ></a>
             </div>
           </div>
+          @endforeach
         </div>
       </div>
     </section>
@@ -312,80 +263,26 @@
           </h1>
         </div>
         <div class="row">
+          @foreach($rooms as $room)
           <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
             <div class="product-box text-center">
               <div class="product-img">
-                <img src="public/web/images/img/product/product-1.jpg" alt="Product" />
+                @foreach($roomImages as $rI)
+                <?php $check = ($rI->room_id == $room->id)?"$rI->image":""?>
+                @if(!$check=="")
+                <img src="public/uploads/images/rooms/{{$check}}" alt="Product" />
+                @break
+                @endif
+                @endforeach
               </div>
               <div class="product-content">
                 <i class="fas fa-bahai"></i>
-                <h5><a href="room-details.html">Modern Guest Rooms</a></h5>
-                <p class="price">$180.00</p>
+                <h5><a href="{{route('roomDetail',['id'=>$room->id])}}">{{$room->name}}</a></h5>
+                <p class="price">${{$room->priceNight}}</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-            <div class="product-box text-center">
-              <div class="product-img">
-                <img src="public/web/images/img/product/product-2.jpg" alt="Product" />
-              </div>
-              <div class="product-content">
-                <i class="fas fa-bahai"></i>
-                <h5><a href="room-details.html">Luxury Couple Rooms</a></h5>
-                <p class="price">$230.00</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-            <div class="product-box text-center">
-              <div class="product-img">
-                <img src="public/web/images/img/product/product-3.jpg" alt="Product" />
-              </div>
-              <div class="product-content">
-                <i class="fas fa-bahai"></i>
-                <h5>
-                  <a href="room-details.html">Swimming Pool &amp; Hotel</a>
-                </h5>
-                <p class="price">$360.00</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-            <div class="product-box text-center">
-              <div class="product-img">
-                <img src="public/web/images/img/product/product-4.jpg" alt="Product" />
-              </div>
-              <div class="product-content">
-                <i class="fas fa-bahai"></i>
-                <h5><a href="room-details.html">Family Luxury Ronoms</a></h5>
-                <p class="price">$180.00</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-            <div class="product-box text-center">
-              <div class="product-img">
-                <img src="public/web/images/img/product/product-5.jpg" alt="Product" />
-              </div>
-              <div class="product-content">
-                <i class="fas fa-bahai"></i>
-                <h5><a href="room-details.html">Luxury Single Rooms</a></h5>
-                <p class="price">$230.00</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-            <div class="product-box text-center">
-              <div class="product-img">
-                <img src="public/web/images/img/product/product-6.jpg" alt="Product" />
-              </div>
-              <div class="product-content">
-                <i class="fas fa-bahai"></i>
-                <h5><a href="room-details.html">Twieen Couple Rooms</a></h5>
-                <p class="price">$360.00</p>
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
       <div class="shape-one">
@@ -451,7 +348,7 @@
               Booking now
             </div>
             <div class="text3">
-              <a href="">Booking now <i class="fas fa-arrow-right"></i></a>
+              <a href="{{route('roomList')}}">Booking now <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
           <div class="col-md-2">

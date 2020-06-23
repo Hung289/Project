@@ -30,7 +30,7 @@
 
                 <ul class="menunho">
                   @foreach($CategoryRoom as $CateRoom)
-                  <li><a href="">{{$CateRoom->name}}</a></li>
+                  <li><a href="{{route('RoomListMaster',['id'=>$CateRoom->id])}}">{{$CateRoom->name}}</a></li>
                   @endforeach
                 </ul>
 

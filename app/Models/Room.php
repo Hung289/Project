@@ -117,4 +117,15 @@ class Room extends Model
             return $model;
         }
     }
+
+
+    public function scopeOrderByParam($query){
+        if(request()->orderby && request()->ord){
+            $orderby = request()->orderby;
+            $ord= request()->ord;
+            $query = $query->orderBy($orderby,$ord);
+        }
+        
+        return $query;
+    }
 }

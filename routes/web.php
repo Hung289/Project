@@ -51,8 +51,7 @@ Route::get('checkout','Web\webPageController@getCheckout')->name('checkout');
 Route::get('contact','Web\webPageController@getContact')->name('contact');
 //Trang gallery
 Route::get('gallery','Web\webPageController@getGallery')->name('gallery');
-//trang RoomList
-Route::get('room-list','Web\webPageController@getRoomList')->name('roomList');
+
 //Trang RoomGrid
 Route::get('room-grid','Web\webPageController@getRoomGrid')->name('roomGrid');
 // Trang Restaurant
@@ -61,6 +60,21 @@ Route::get('restaurant','Web\webPageController@getRestaurant')->name('restaurant
 Route::get('reservation','Web\webPageController@getReservation')->name('reservation');
 //Trang service
 Route::get('service','Web\webPageController@getService')->name('service');
+
+
+
+
+
+//Nhóm route liên quan đến danh sách phòng
+//Trang danh sách phòng chung nhau
+Route::get('room-list/{id}','Web\webPageController@getRoomListMaster')->name('RoomListMaster');
+//trang RoomList
+Route::get('room-list/{orderby?}/{ord?}','Web\webPageController@getRoomList')->name('roomList');
+
+
+
+
+
 
 
 //trang list service chung
