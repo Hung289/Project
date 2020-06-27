@@ -25,11 +25,11 @@
         @endforeach
     </div>
     @endif -->
-    @if(Session::has('errors'))
+    <!-- @if(Session::has('errors'))
         <div class="alert alert-danger">
             {{Session::get('errors')}}
         </div>
-    @endif
+    @endif -->
     @if(Session::has('success'))
     <div class="alert alert-success">
         {{Session::get('success')}}
@@ -62,7 +62,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputFile">Hình Ảnh</label>
                                     <div class="input-group">
-                                            <input type="file" class="custom-file-input" name="image" placeholder="Chọn ảnh" required multiple/>
+                                            <input type="file" class="custom-file-input" name="image" placeholder="Chọn ảnh"  multiple/>
                                             <label class="custom-file-label" for="exampleInputFile">Chọn Ảnh</label>        
                                     </div>
                                     @error('image')
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Description</label>
-                                    <textarea name="description" id="" cols="30" rows="10"></textarea>
+                                    <textarea name="description" id="content" cols="30" rows="10"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Trạng Thái</label>

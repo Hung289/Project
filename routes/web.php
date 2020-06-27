@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 
 /*
-    Route cho trang người dùng
+    Route cho trang admin
 */
 //Trang home trang web
 Route::get('/Webindex','Web\webPageController@indexWeb')->name('indexWeb');
@@ -39,14 +39,17 @@ Route::get('home-logout','Web\webPageController@WebLogout')->name('getLogoutWeb'
 // Trang about
 Route::get('about','Web\webPageController@getAbout')->name('about');
 //Trang Bill
-Route::get('bill','Web\webPageController@getBill')->name('bill');
+Route::get('cart-room','Web\webPageController@getCartRoom')->name('CartRoom');
 
 //Trang blog-grid
 Route::get('blog-grid','Web\webPageController@getBlogGrid')->name('blogGrid');
 //Trang blof-stand
 Route::get('blog-stand','Web\webPageController@getBlogStand')->name('blogStand');
 //Trang checkout
-Route::get('checkout','Web\webPageController@getCheckout')->name('checkout');
+Route::group(['prefix'=>'cartRoom','namespace'=>'Web','middleware'=>'auth'],function(){
+    Route::get('checkout','CheckOutController@getCheckOut')->name('checkout');
+    Route::post('checkout','CheckOutController@postCheckOut')->name('post.checkout');
+});
 //Trang contact
 Route::get('contact','Web\webPageController@getContact')->name('contact');
 //Trang gallery
@@ -60,6 +63,8 @@ Route::get('restaurant','Web\webPageController@getRestaurant')->name('restaurant
 Route::get('reservation','Web\webPageController@getReservation')->name('reservation');
 //Trang service
 Route::get('service','Web\webPageController@getService')->name('service');
+
+//
 
 
 
@@ -90,10 +95,32 @@ Route::get('blog-detail/{id}','Web\webPageController@getBlogDetail')->name('blog
 // Trang RoomDetail
 Route::get('room-detail/{id}','Web\webPageController@getRoomDetail')->name('roomDetail');
 
+Route::group(['prefix' => 'web-page','namespace' => 'Web'],function(){
+    Route::get('view','CartRoomController@view')->name('cart.view');
+
+    Route::get('add/{id}','CartRoomController@add')->name('cart.add');
+    Route::get('remove/{id}','CartRoomController@remove')->name('cart.remove');
+    Route::get('update/{id}','CartRoomController@update')->name('cart.update');
+    Route::get('clear','CartRoomController@clear')->name('cart.clear');
+    Route::get('addService/{id}','CartRoomController@addService')->name('addService');
+    Route::get('removeService/{id}','CartRoomController@removeService')->name('cart.removeService');
+    Route::get('updateService/{id}','CartRoomController@update')->name('cart.updateService');
+});
+
+Route::get('getDate','Web\webPageController@get_total_price')->name('getDate');
 
 
+//Route search room
+Route::get('search','Web\webPageController@getFilterRoom')->name('getFilterRoom');
+
+/**
+ * 
+ * Route trang admin
+ * 
+ */
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin' ,'middleware' => 'adminLogin'],function(){
     Route::get('/','AdminController@index')->name('admin.index');
+    Route::get('/file','AdminController@file')->name('admin.file');
 
     Route::resources([
         'user' => 'UserController',

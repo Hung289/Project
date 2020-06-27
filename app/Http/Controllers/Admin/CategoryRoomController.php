@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CategoryRoom;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRoom\CategoryRoomAddRequest;
+use App\Http\Requests\CategoryRoom\CategoryRoomEditRequest;
 
 class CategoryRoomController extends Controller
 {
@@ -35,7 +37,7 @@ class CategoryRoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRoom $CategoryRoom)
+    public function store(CategoryRoomAddRequest $request,CategoryRoom $CategoryRoom)
     {
         // dd(request()->all());
         $model = $CategoryRoom->add();
@@ -76,7 +78,7 @@ class CategoryRoomController extends Controller
      * @param  \App\Models\CategoryRoom  $categoryRoom
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CategoryRoom $categoryRoom)
+    public function update(CategoryRoomEditRequest $request, CategoryRoom $categoryRoom)
     {
         $model = $categoryRoom->updateEdit();
         return redirect()->route('categoryRoom.index')->with('success','Cập nhật thành công danh mục');

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CategoryService;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryService\CategoryServiceAddRequest;
+use App\Http\Requests\CategoryService\CategoryServiceEditRequest;
+
 
 class CategoryServiceController extends Controller
 {
@@ -35,7 +38,7 @@ class CategoryServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryService $CategoryService)
+    public function store(CategoryServiceAddRequest $request,CategoryService $CategoryService)
     {
         $model = $CategoryService->add();
         if($model){
@@ -75,7 +78,7 @@ class CategoryServiceController extends Controller
      * @param  \App\Models\CategoryService  $categoryService
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CategoryService $categoryService)
+    public function update(CategoryServiceEditRequest $request, CategoryService $categoryService)
     {
         $model = $categoryService->updateEdit();
         return redirect()->route('categoryService.index')->with('success','Cập nhật thành công danh mục');

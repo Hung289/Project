@@ -67,13 +67,15 @@
   <script>
     $.widget.bridge('uibutton', $.ui.button)
   </script>
-  <script src="public/ckeditor/ckeditor.js"></script>
+  <script src="public/tinymce/tinymce/tinymce.min.js"></script>
+  <script src="public/tinymce/tinymce/config.js"></script>
+  <!-- <script src="public/ckeditor/ckeditor.js"></script>
   <script>
     CKEDITOR.replace('description');
     CKEDITOR.replace('description2');
     
 
-  </script>
+  </script> -->
   <!-- Bootstrap 4 -->
   <script src="public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- ChartJS -->
@@ -100,6 +102,7 @@
   <script src="public/dist/js/pages/dashboard.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="public/dist/js/demo.js"></script>
+  
   <script>
     $(function() {
       //     $('.content .custom-file-input').change(function (e) { 

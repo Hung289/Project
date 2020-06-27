@@ -18,13 +18,13 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
-  @if(count($errors) > 0)
+  <!-- @if(count($errors) > 0)
   <div class="alert alert-danger">
     @foreach($errors->all() as $err)
     {{$err}}<br>
     @endforeach
   </div>
-  @endif
+  @endif -->
   @if(session('success'))
   <div class="alert alert-success">
     {{session('success')}}
@@ -43,17 +43,20 @@
             <!-- /.card-header -->
             <!-- form start -->
             <form action="{{route('user.update',$user->id)}}" method="POST" name="pForm" role="form" enctype="multipart/form-data">
-               @csrf @method('PUT')   
-            <div class="card-body">
+              @csrf @method('PUT')
+              <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Tên Người Dùng</label>
-                  <input name="name" type="text" class="form-control" value="{{$user->name}}" >
+                  <input name="name" type="text" class="form-control" value="{{$user->name}}">
+                  @error('name')
+                  <small class="error help-block" style="color:red">{{$message}}</small>
+                  @enderror
                 </div>
                 <div class="form-group">
                   <label for="exampleInputFile">Chọn Ảnh Đại Diện</label>
                   <div class="input-group">
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" name="avatar" id="file-input">
+                      <input type="file" class="custom-file-input" name="avatar" id="file-input" onchange="previewImage(event)">
                       <label class="custom-file-label" for="exampleInputFile">Chọn Ảnh</label>
                     </div>
                   </div>
@@ -65,38 +68,72 @@
                 <div class="form-group">
                   <label for="exampleInputPassword1">email</label>
                   <input type="email" name="email" class="form-control" value="{{$user->email}}">
+                  @error('email')
+                  <small class="error help-block" style="color:red">{{$message}}</small>
+                  @enderror
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Mật Khẩu</label>
                   <input type="password" name="password" class="form-control" value="{{$user->password}}">
+                  @error('password')
+                  <small class="error help-block" style="color:red">{{$message}}</small>
+                  @enderror
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">Chức Vụ</label>
                   <select name="level" class="form-control" id="">
-                   <option value="0" @if($user->level == 0) selected @endif>Super Admin</option>
-                   <option value="1" @if($user->level == 1) selected @endif>Admin</option>
-                   <option value="2" @if($user->level == 2) selected @endif>Dân thường</option>
-                 </select>
-               </div>
-             </div>
-             <!-- /.card-body -->
+                    <option value="0" @if($user->level == 0) selected @endif>Super Admin</option>
+                    <option value="1" @if($user->level == 1) selected @endif>Admin</option>
+                    <option value="2" @if($user->level == 2) selected @endif>Dân thường</option>
+                  </select>
+                </div>
+              </div>
+              <!-- /.card-body -->
 
-             <div class="card-footer">
-              <button type="submit" class="btn btn-primary" id="nuttao">Cập nhật</button>
-            </div>
-            <input type="hidden" name="_token" value="{{csrf_token()}}">
-          </form>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary" id="nuttao">Cập nhật</button>
+              </div>
+              <input type="hidden" name="_token" value="{{csrf_token()}}">
+            </form>
+          </div>
+          <!-- /.card -->
+
         </div>
-        <!-- /.card -->
+        <div class="col-md-4">
+          <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+              <div class="text-center">
+                <img style="width:200px;height:200px" class="profile-user-img img-fluid img-circle" 
+                src="public/uploads/images/user/{{$user->avatar}}" id="image-field">
+              </div>
 
-      </div>
-      <div class="col-md-4">
+              <h3 class="profile-username text-center">{{$user->name}}</h3>
+              @if($user->level == 0)
+              <p class="text-muted text-center">Super Amin</p>
+              @elseif($user->level == 1)
+              <p class="text-muted text-center">Amin</p>
+              @elseif($user->level == 2)
+              <p class="text-muted text-center">Thường dân</p>
+              @endif
 
-        <!-- /.card -->
-        <!-- Profile Image -->
+              <ul class="list-group list-group-unbordered mb-3">
+                <li class="list-group-item">
+                  <b>Số điện thoại</b> <a class="float-right">{{$user->phone}}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>email</b> <a class="float-right">{{$user->email}}</a>
+                </li>
+              </ul>
 
-        <div class="card card-primary card-outline">
+              <p>Demo Thông Tin Người Dùng Sẽ Được Tạo</p>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+          <!-- Profile Image -->
+
+          <!-- <div class="card card-primary card-outline">
           <div class="card-body box-profile">
             <div class="text-center"  >
               <div id="preview">
@@ -122,16 +159,28 @@
 
             <p>Demo Thông Tin Người Dùng Sẽ Được Tạo</p>
           </div>
-          <!-- /.card-body -->
+          /.card-body
+        </div> -->
+          <!-- /.card -->
+
+          <!-- /.card -->
         </div>
-        <!-- /.card -->
-
-        <!-- /.card -->
+        <!--/.col (right) -->
       </div>
-      <!--/.col (right) -->
-    </div>
-    <!-- /.row -->
-  </div><!-- /.container-fluid -->
-</section>  
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <script>
+    function previewImage(event) {
+      var reader = new FileReader();
+      var imageField = document.getElementById("image-field");
 
-@stop
+      reader.onload = function() {
+        if (reader.readyState == 2) {
+          imageField.src = reader.result;
+        }
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  </script>
+  @stop

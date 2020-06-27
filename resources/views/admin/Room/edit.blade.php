@@ -53,34 +53,58 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Số giường</label>
                                     <input type="number" name="bed" min="1" max="3" class="form-control" value="{{$room->bed}}">
+                                    @error('bed')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Số bồn tắm</label>
                                     <input type="number" name="bath" min="1" max="3" class="form-control" value="{{$room->bath}}">
+                                    @error('bath')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Diện tích phòng</label>
                                     <input type="number" name="area" min="1" max="100" class="form-control" value="{{$room->area}}">
+                                    @error('area')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">Vị trí phòng</label>
                                     <input type="text" name="location" class="form-control" value="{{$room->location}}">
+                                    @error('location')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Giá phòng 1 đêm</label>
                                     <input type="text" name="priceNight" class="form-control" value="{{$room->priceNight}}">
+                                    @error('priceNight')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Giá phòng Cuối tuần(T6-T7)</label>
                                     <input type="text" name="priceWeekends" class="form-control" value="{{$room->priceWeekends}}">
+                                    @error('priceWeekends')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Giá phòng hàng tuần</label>
                                     <input type="text" name="priceWeekly" class="form-control" value="{{$room->priceWeekly}}">
+                                    @error('priceWeekly')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Phí dọn dẹp phòng</label>
                                     <input type="text" name="priceClearFee" class="form-control" value="{{$room->priceClearFee}}">
+                                    @error('priceClearFee')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">Hình Ảnh</label>
@@ -126,7 +150,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Miêu tả</label>
-                                    <textarea placeholder="Nhập miêu ta tại đây" name="description" id="description" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$room->description}}</textarea>
+                                    <textarea placeholder="Nhập miêu ta tại đây" name="description" id="content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$room->description}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Gym</label>

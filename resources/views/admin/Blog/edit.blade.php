@@ -18,13 +18,7 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-    @if(count($errors) > 0)
-    <div class="alert alert-danger">
-        @foreach($errors->all() as $err)
-        {{$err}}<br>
-        @endforeach
-    </div>
-    @endif
+    
     @if(session('success'))
     <div class="alert alert-success">
         {{session('success')}}
@@ -48,6 +42,9 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên blog</label>
                                     <input name="name" type="text" class="form-control" value="{{$blog->name}}">
+                                    @error('name')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">Chọn ảnh blog</label>
@@ -57,6 +54,9 @@
                                             <label class="custom-file-label" for="exampleInputFile">Chọn Ảnh</label>
                                         </div>
                                     </div>
+                                    @if($errors->has('files'))
+                                    <span class="help-block text-danger">{{ $errors->first('files') }}</span>
+                                    @endif
                                 </div>
 
                                 
@@ -71,14 +71,23 @@
                                             @endif
                                         @endforeach
                                     </select>
+                                    @error('category_blog_id')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">title</label>
-                                    <textarea name="title" id="description" cols="30" rows="10">{{$blog->title}}</textarea>
+                                    <textarea name="title" id="content" cols="30" rows="10">{{$blog->title}}</textarea>
+                                    @error('title')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">content</label>
-                                    <textarea name="content" id="description2" cols="30" rows="10">{{$blog->content}}</textarea>
+                                    <textarea name="content" id="content" cols="30" rows="10">{{$blog->content}}</textarea>
+                                    @error('content')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">Chọn admin đăng phòng</label>
@@ -94,7 +103,9 @@
                                         @endforeach
                                     </select>
                                     <!-- <input type="text" class="form-control" value="{{Auth::User()->id}}" name="user_room_id" placeholder="{{Auth::User()->name}}"> -->
-
+                                    @error('user_id')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">Trạng thái</label>

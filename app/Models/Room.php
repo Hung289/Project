@@ -120,12 +120,15 @@ class Room extends Model
 
 
     public function scopeOrderByParam($query){
+        // dd(request()->orderby);
+        
         if(request()->orderby && request()->ord){
             $orderby = request()->orderby;
             $ord= request()->ord;
             $query = $query->orderBy($orderby,$ord);
         }
-        
+        // dd($orderby);
+        // dd($query);
         return $query;
     }
 }

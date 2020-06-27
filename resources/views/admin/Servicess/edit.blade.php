@@ -18,13 +18,13 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-    @if(count($errors) > 0)
+    <!-- @if(count($errors) > 0)
     <div class="alert alert-danger">
         @foreach($errors->all() as $err)
         {{$err}}<br>
         @endforeach
     </div>
-    @endif
+    @endif -->
     @if(session('success'))
     <div class="alert alert-success">
         {{session('success')}}
@@ -48,6 +48,9 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên dịch vụ</label>
                                     <input name="name" type="text" class="form-control" value="{{$service->name}}">
+                                    @error('name')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">Chọn ảnh dịch vụ</label>
@@ -57,11 +60,17 @@
                                             <label class="custom-file-label" for="exampleInputFile">Chọn Ảnh</label>
                                         </div>
                                     </div>
+                                    @error('image')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">giá dịch vụ</label>
                                     <input type="text" name="price" class="form-control" value="{{$service->price}}">
+                                    @error('price')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Danh mục</label>
@@ -73,10 +82,16 @@
                                             @endif
                                         @endforeach
                                     </select>
+                                    @error('category_service_id')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">Description</label>
-                                    <textarea name="description" id="" cols="30" rows="10">{{$service->description}}</textarea>
+                                    <textarea name="description" id="content" cols="30" rows="10">{{$service->description}}</textarea>
+                                    @error('description')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">Trạng thái</label>

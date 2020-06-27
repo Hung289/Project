@@ -338,29 +338,16 @@
                 <div class="sidebar-wrap">
                     <div class="widget booking-widget">
                         <h4 class="widget-title">$160.00 <span>Night</span></h4>
-                        <form>
+                        <form action="{{route('cart.add',['id'=>$room->id])}}" method="GET">
                             <div class="input-wrap">
-                                <input type="text" placeholder="Location" id="f-location">
-                                <i class="fas fa-search"></i>
+                                <input type="date" placeholder="Arrive Date" name="ArriveDate">                    
                             </div>
                             <div class="input-wrap">
-                                <input type="text" placeholder="Arrive Date" id="arrive-date">
-                                <i class="fas fa-calendar-alt"></i>
+                                <input type="date" placeholder="Depart Date" name="DepartDate">
+                                <i class=""></i>          
                             </div>
                             <div class="input-wrap">
-                                <input type="text" placeholder="Depart Date" id="depart-date">
-                                <i class=""></i>
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <div class="input-wrap">
-                                <select name="guests" id="guests">
-                                    <option value="Guests">Guests</option>
-                                    <option value="Guests">Guests</option>
-                                    <option value="Guests">Guests</option>
-                                </select>
-                            </div>
-                            <div class="input-wrap">
-                                <button type="submit" class="btn filled-btn btn-block">
+                                <button  class="btn filled-btn btn-block">
                                     book now <i class="fas fa-long-arrow-right"></i>
                                 </button>
                             </div>

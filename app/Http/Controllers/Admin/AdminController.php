@@ -10,4 +10,8 @@ class AdminController extends Controller
     public function index(){
         return view('layoutadmin.home');
     }
+
+    public function file(){
+        return view('admin.file');
+    }
 }

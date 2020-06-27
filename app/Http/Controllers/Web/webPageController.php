@@ -13,6 +13,7 @@ use App\Models\CategoryBlog;
 use App\Models\RoomImage;
 use App\Models\BlogImage;
 use App\Models\Service;
+use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Auth;
 use Session;
 class webPageController extends Controller
@@ -56,8 +57,8 @@ class webPageController extends Controller
         return view('page.about');
     }
 
-    public function getBill(){
-        return view('page.bill');
+    public function getCartRoom(){
+        return view('page.cart_room');
     }
 
     public function getBlogGrid(){
@@ -85,9 +86,19 @@ class webPageController extends Controller
     //     $rooms = Room::all();
     //     return view('page.room_list',['rooms'=>$rooms]);
     // }
-    public function getRoomList(){
-        $rooms = Room::orderByParam()->paginate(15);
-        return view('page.room_list',['rooms'=>$rooms]);
+    public function getRoomList(Request $request){
+        $rooms = Room::orderByParam()->paginate(6);
+        // dd($rooms);
+        // $from = $request->searchFromDate;
+        // $to = $request->searchToDate;
+        // $cc  = OrderDetail::whereDate('from_date','>=', $from)->whereDate('to_date', '<=',$to)->get();
+
+        $roomSearchLocation = Room::where('location','like','%'.$request->boxSearchLocation.'%')
+                    ->paginate(6);
+        
+        return view('page.room_list',['rooms'=>$rooms,'roomSearchLocation'=>$roomSearchLocation]);
+        
+
     } 
 
 
@@ -98,7 +109,7 @@ class webPageController extends Controller
         // dd($Services);
         $new_service = Service::where('category_service_id',$id)->where('new',0)->paginate(4);
         return view('page.service_detail',['Services'=>$Services,'new_service'=>$new_service,'cateService'=>$cateService]);
-    }
+    } 
 
 
     public function getRestaurant(){
@@ -119,6 +130,11 @@ class webPageController extends Controller
 
     public function getRoomDetail(Request $request,$id){
 
+        $this->validate($request,[
+            
+        ],[
+
+        ]);
         $room = Room::where('id',$id)->first();
         $rImage = RoomImage::where('room_id',$id)->first();
         // dd($room);
@@ -201,5 +217,14 @@ class webPageController extends Controller
         $rooms = Room::where('category_room_id',$id)->get();
         // dd($rooms);
         return view('page.room_list_master',['rooms'=>$rooms]);
+    }
+
+    public function getFilterRoom(Request $request)
+    {
+        $from = $request->searchFromDate;
+        $to = $request->searchToDate;
+        $cc  = OrderDetail::whereDate('from_date','>=', $from)->whereDate('to_date', '<=',$to)->get();
+        dd($cc);
+
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\User\UserAddRequest;
+use App\Http\Requests\User\UserEditRequest;
 
 class UserController extends Controller
 {
@@ -35,7 +37,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(User $User)
+    public function store(UserAddRequest $request,User $User)
     {
         $model = $User->add();
         // dd($model);
@@ -76,7 +78,7 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserEditRequest $request, User $user)
     {
         $model = $user->updateEdit();
         return redirect()->route('user.index')->with('success','Cập nhật thành công tài khoản');

@@ -25,11 +25,11 @@
         @endforeach
     </div>
     @endif -->
-    @if(Session::has('errors'))
+    <!-- @if(Session::has('errors'))
         <div class="alert alert-danger">
             {{Session::get('errors')}}
         </div>
-    @endif
+    @endif -->
     @if(Session::has('success'))
     <div class="alert alert-success">
         {{Session::get('success')}}
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Description</label>
-                                    <textarea name="description" id="" cols="30" rows="10"></textarea>
+                                    <textarea name="description" id="content" cols="30" rows="10"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Trạng Thái</label>

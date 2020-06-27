@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Service;
 use App\Models\CategoryService;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\Service\ServiceAddRequest;
+use App\Http\Requests\Service\ServiceEditRequest;
 class ServiceController extends Controller
 {
     /**
@@ -37,7 +38,7 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Service $service)
+    public function store(ServiceAddRequest $request,Service $service)
     {
         $model = $service->add();
         if($model){
@@ -77,7 +78,7 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(ServiceEditRequest $request, Service $service)
     {
         $model = $service->updateEdit();
         return redirect()->route('service.index')->with('success','Cập nhật thành công');

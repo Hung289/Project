@@ -813,7 +813,7 @@ img {
     max-width: 20%;
     padding: 0 15px;
 }
-input, select, textarea, .nice-select {
+/* input, select, textarea, .nice-select {
     background-color: #fff;
     border: 2px solid #dfe9f4;
     height: 80px;
@@ -824,7 +824,7 @@ input, select, textarea, .nice-select {
     border-radius: 5px;
     width: 100%;
     line-height: 80px;
-}
+} */
 .nice-select {
     -webkit-tap-highlight-color: transparent;
     background-color: #fff;
@@ -1802,6 +1802,23 @@ a.read-more {
 }
 
 /* ===================================Trang RoomDetail ================================= */
+.chitietphong input,.chitietphong select,.chitietphong textarea,.chitietphong .nice-select {
+    background-color: #fff;
+    border: 2px solid #dfe9f4;
+    height: 80px;
+    font-weight: 600;
+    color: #0f172b;
+    font-size: 18px;
+    padding: 0 45px 0 30px;
+    border-radius: 5px;
+    width: 100%;
+    line-height: 80px;
+}
+.chitietphong textarea {
+    height: 140px;
+    line-height: 28px;
+    padding-top: 15px;
+}
 .chitietphong.room-details-wrapper .input-wrap i {
     position: absolute;
     color: #fea116;
@@ -2116,6 +2133,16 @@ p {
     color: #666565;
     font-weight: 600;
     font-size: 16px;
+    background-color: #fff;
+    border: 2px solid #dfe9f4;
+    height: 80px;
+    font-weight: 600;
+    color: #0f172b;
+    font-size: 18px;
+    padding: 0 45px 0 30px;
+    border-radius: 5px;
+    width: 100%;
+    line-height: 80px;
 }
 .sidebar-wrap .widget.booking-widget input, .sidebar-wrap .widget.booking-widget select, .sidebar-wrap .widget.booking-widget .nice-select, .sidebar-wrap .widget.booking-widget ::-webkit-input-placeholder {
     height: 60px;
@@ -2127,6 +2154,16 @@ p {
     height: 60px;
     line-height: 60px;
     margin-bottom: 15px;
+    background-color: #fff;
+    border: 2px solid #dfe9f4;
+    height: 80px;
+    font-weight: 600;
+    color: #0f172b;
+    font-size: 18px;
+    padding: 0 45px 0 30px;
+    border-radius: 5px;
+    width: 100%;
+    line-height: 80px;
 }
 .chitietphong.room-details-wrapper .sidebar-wrap .btn{
     background-color: #fea116;
@@ -3228,7 +3265,18 @@ label {
     transition: all 0.4s ease-out 0s;
 }
 /* =============================================Login============================================ */
-
+.limiter input,.limiter select,.limiter textarea,.limiter .nice-select {
+    background-color: #fff;
+    border: 2px solid #dfe9f4;
+    height: 80px;
+    font-weight: 600;
+    color: #0f172b;
+    font-size: 18px;
+    padding: 0 45px 0 30px;
+    border-radius: 5px;
+    width: 100%;
+    line-height: 80px;
+}
 .limiter {
     width: 100%;
     margin: 0 auto;
@@ -3539,6 +3587,9 @@ textarea:focus{
 }
 
 /* ===================================Trang Bill================================= */
+.Bill table .btn{
+    padding: 5px 10px !important;
+}
 .Bill{
     padding: 90px 0px;
     background-color: #f1f8ff;
@@ -3756,6 +3807,18 @@ textarea:focus{
     background-color: #333333;
 }
 /* ===============================Checkout====================================== */
+.checkout input,.checkout select,.checkout textarea,.checkout .nice-select {
+    background-color: #fff;
+    border: 2px solid #dfe9f4;
+    height: 80px;
+    font-weight: 600;
+    color: #0f172b;
+    font-size: 18px;
+    padding: 0 45px 0 30px;
+    border-radius: 5px;
+    width: 100%;
+    line-height: 80px;
+}
 .checkout {
     padding: 90px 0px;
 }

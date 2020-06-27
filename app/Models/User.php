@@ -62,17 +62,29 @@ class User extends Authenticatable
     }
 
     public function updateEdit(){
-        $img = request()->avatar;
-        $image_name = $img->getClientOriginalName();
-        $img->move(base_path('public/uploads/images/user'),$image_name);
-        $model = $this->update([
-            'name'=>request()->name,
-            'email'=>request()->email, 
-            'password'=>bcrypt(request()->password),
-            'phone'=>request()->phone,
-            'level'=>request()->level,
-            'avatar'=>$image_name
-        ]);
-        return $model;
+        if(request()->has('avatar')){
+            $img = request()->avatar;
+            $image_name = $img->getClientOriginalName();
+            $img->move(base_path('public/uploads/images/user'),$image_name);
+            $model = $this->update([
+                'name'=>request()->name,
+                'email'=>request()->email, 
+                'password'=>bcrypt(request()->password),
+                'phone'=>request()->phone,
+                'level'=>request()->level,
+                'avatar'=>$image_name
+            ]);
+            return $model;
+        }else{
+            $model = $this->update([
+                'name'=>request()->name,
+                'email'=>request()->email, 
+                'password'=>bcrypt(request()->password),
+                'phone'=>request()->phone,
+                'level'=>request()->level,
+            ]);
+            return $model;
+        }
+        
     }
 }

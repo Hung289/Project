@@ -18,13 +18,13 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-    @if(count($errors) > 0)
+    <!-- @if(count($errors) > 0)
     <div class="alert alert-danger">
         @foreach($errors->all() as $err)
         {{$err}}<br>
         @endforeach
     </div>
-    @endif
+    @endif -->
     @if(session('success'))
     <div class="alert alert-success">
         {{session('success')}}
@@ -46,7 +46,10 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên blog</label>
-                                    <input name="name" type="text" class="form-control" placeholder="Nhập tên blog">
+                                    <input name="name" type="text" class="form-control" placeholder="Nhập tên blog" value="{{old('name')}}">
+                                    @error('name')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">Chọn ảnh blog</label>
@@ -56,25 +59,37 @@
                                             <label class="custom-file-label" for="exampleInputFile">Chọn Ảnh</label>
                                         </div>
                                     </div>
+                                    @if($errors->has('files'))
+                                    <span class="help-block text-danger">{{ $errors->first('files') }}</span>
+                                    @endif
                                 </div>
 
-                                
+
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Danh mục</label>
                                     <select name="category_blog_id" class="form-control" id="">
                                         <option value="">--Chọn danh mục--</option>
                                         @foreach($CategoryBlog as $CB)
-                                            <option value="{{$CB->id}}">{{$CB->name}}</option>
+                                        <option value="{{$CB->id}}">{{$CB->name}}</option>
                                         @endforeach
                                     </select>
+                                    @error('category_blog_id')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">title</label>
-                                    <textarea name="title" id="description" cols="30" rows="10"></textarea>
+                                    <textarea name="title" id="content" cols="30" rows="10"></textarea>
+                                    @error('title')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">content</label>
-                                    <textarea name="content" id="description2" cols="30" rows="10"></textarea>
+                                    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                                    @error('content')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">Chọn admin đăng phòng</label>
@@ -82,13 +97,16 @@
                                         <option value="{{Auth::User()->id}}">{{Auth::User()->name}}</option>
                                         <option>--Chọn Admin khác--</option>
                                         @foreach($admins as $admin)
-                                            @if($admin->level==0 || $admin->level==1)
-                                                @if(Auth::User()->id != $admin->id)
-                                                    <option value="{{$admin->id}}">{{$admin->name}}</option>
-                                                @endif
-                                            @endif
+                                        @if($admin->level==0 || $admin->level==1)
+                                        @if(Auth::User()->id != $admin->id)
+                                        <option value="{{$admin->id}}">{{$admin->name}}</option>
+                                        @endif
+                                        @endif
                                         @endforeach
                                     </select>
+                                    @error('user_id')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
                                     <!-- <input type="text" class="form-control" value="{{Auth::User()->id}}" name="user_room_id" placeholder="{{Auth::User()->name}}"> -->
 
                                 </div>

@@ -7,7 +7,8 @@ use App\Models\Blog;
 use Illuminate\Http\Request;
 use App\Models\CategoryBlog;
 use App\Models\User;
-
+use App\Http\Requests\Blog\BlogAddRequest;
+use App\Http\Requests\Blog\BlogEditRequest;
 class BlogController extends Controller
 {
     /**
@@ -40,7 +41,7 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Blog $blog)
+    public function store(BlogAddRequest $request,Blog $blog)
     {
         $model = $blog->add();
         if($model){
@@ -81,7 +82,7 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(BlogEditRequest $request, Blog $blog)
     {
         $model = $blog->updateEdit();
         return redirect()->route('blog.index')->with('success','Cập nhật thành công blog');

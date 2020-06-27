@@ -27,7 +27,7 @@
                         <li> <a href="{{route('roomList',['orderby'=>'priceNight','ord'=>'DESC'])}}">High To Low</a></li>
                         <li> <a href="{{route('roomList',['orderby'=>'name','ord'=>'ASC'])}}">View A to Z</a> </li>
                         <li> <a href="{{route('roomList',['orderby'=>'name','ord'=>'DESC'])}}">View Z to A</a> </li>
-                        <li>Popular</li>
+                        <li> <a href="{{route('roomList')}}">All</a></li>
                     </ul>
                 </div>
             </div>
@@ -73,6 +73,7 @@
                                     <div class="room-price">
                                         <p>{{number_format($room->priceNight)}} $</p>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -102,7 +103,7 @@
                                 </div>
                                 <h4><a href="{{route('roomDetail',['id'=>$room->id])}}">{{$room->name}}</a></h4>
                                 <p>
-                                {!!$room->description!!}
+                                    {!!$room->description!!}
                                 </p>
                                 <ul class="room-info list-inline">
                                     <li><i class="fas fa-bed"></i>{{$room->bed}} Bed</li>
@@ -117,24 +118,25 @@
                     </div>
                     @endforeach
                 </div>
+
+                <div style="float:right">
+                    {!! $rooms->links() !!}
+                </div>
             </div>
             <div class="col-lg-4">
                 <div class="sidebar-wrap">
                     <div class="widget fillter-widget">
                         <h4 class="widget-title">Your Reservation</h4>
-                        <form>
+                        <form action="{{route('roomList')}}" method="GET">
                             <div class="input-wrap">
-                                <input type="text" placeholder="Location" id="location">
+                                <input type="text" placeholder="Location" id="location" name="boxSearchLocation">
                                 <i class="fas fa-search"></i>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" placeholder="Arrive Date" id="arrive-date">
-                                <i class="fas fa-calendar-alt"></i>
+                                <input type="date" placeholder="Arrive Date" name="searchFromDate">
                             </div>
                             <div class="input-wrap">
-                                <input type="text" placeholder="Depart Date" id="depart-date">
-                                <i class=""></i>
-                                <i class="fas fa-calendar-alt"></i>
+                                <input type="date" placeholder="Depart Date" name="searchToDate" >
                             </div>
                             <div class="input-wrap">
                                 <select name="rooms" id="rooms">
@@ -209,7 +211,7 @@
                                 </div>
                             </div>
                             <div class="input-wrap">
-                                <button type="submit" class="btn filled-btn btn-block">
+                                <button  class="btn filled-btn btn-block">
                                     Filter Results <i class="fas fa-long-arrow-right"></i>
                                 </button>
                             </div>
@@ -218,7 +220,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-12">
                 <div class="pagination-wrap">
                     <ul class="list-inline">
@@ -230,7 +232,8 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> -->
+
     </div>
 </section>
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CategoryBlog;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryBlog\CategoryBlogAddRequest;
+use App\Http\Requests\CategoryBlog\CategoryBlogEditRequest;
 
 class CategoryBlogController extends Controller
 {
@@ -35,7 +37,7 @@ class CategoryBlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryBlog $categoryBlog)
+    public function store(CategoryBlogAddRequest $request,CategoryBlog $categoryBlog)
     {
         // dd($categoryBlog);
         $model = $categoryBlog->add();
@@ -77,7 +79,7 @@ class CategoryBlogController extends Controller
      * @param  \App\Models\CategoryBlog  $categoryBlog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CategoryBlog $categoryBlog)
+    public function update(CategoryBlogEditRequest $request, CategoryBlog $categoryBlog)
     {
         $model = $categoryBlog->updateEdit();
         return redirect()->route('categoryBlog.index')->with('success','Cập nhật thành công');

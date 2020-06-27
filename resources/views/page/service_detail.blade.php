@@ -80,6 +80,7 @@
                             <h4>{{$service->name}}</h4>
                             <p>{!!$service->description!!}</p>
                             <p class="price">$ {{number_format($service->price)}}</p>
+                            <a href="{{route('addService',['id'=>$service->id])}}">Thêm vào giỏ</a>
                         </div>
                     </div>
                 </div>

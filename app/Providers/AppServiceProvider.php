@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\CartRoom\CartRoom;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('*',function($view){
+            $view->with([
+                'cart' => new CartRoom(),
+            ]);
+        });
     }
 }

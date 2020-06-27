@@ -61,12 +61,13 @@
                   <li><a href="">Contact</a></li>
                   <li><a href="">Our Staff</a></li>
                   <li><a href="{{route('restaurant')}}">Resturent</a></li>
-                  <li><a href="{{route('bill')}}">Bill</a></li>
+                  <li><a href="{{route('gallery')}}">Gallery</a></li>
                   <li><a href="{{route('checkout')}}">Checkout</a></li>
                   <li><a href="{{route('reservation')}}">Reservation</a></li>
                 </ul>
               </li>
-              <li><a href="{{route('gallery')}}">Gallery</a></li>
+              <li><a href="{{route('cart.view')}}">CartRoom</a></li>
+              
               <li><a href="{{route('contact')}}">contact</a></li>
             </ul>
           </nav>

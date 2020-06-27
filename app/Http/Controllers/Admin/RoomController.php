@@ -9,6 +9,8 @@ use App\Models\RoomImage;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Session;
+use App\Http\Requests\Room\RoomAddRequest;
+use App\Http\Requests\Room\RoomEditRequest;
 class RoomController extends Controller
 {
     /**
@@ -40,7 +42,7 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Room $Room)
+    public function store(RoomAddRequest $request,Room $Room)
     {
         
         $model = $Room->add();
@@ -48,7 +50,7 @@ class RoomController extends Controller
         if($model){
             return redirect()->route('room.create')->with('success','Thêm mới thành công');
         }else{
-            return redirect()->route('room.create')->with('loi','Thêm mới thất bại');
+            return redirect()->route('room.create')->with('success','Thêm mới thất bại');
         }
     }
 
@@ -84,7 +86,7 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room)
+    public function update(RoomEditRequest $request, Room $room)
     {
         // dd($room);
         $model = $room->updateEdit();
