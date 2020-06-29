@@ -37,12 +37,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function room(){
+    public function room()
+    {
         return $this->hasMany('App\Models\Room','user_room_id','id');
     }
 
-    public function blog(){
+    public function blog()
+    {
         return $this->hasMany('App\Models\Blog','blog_id','id');
+    }
+
+    public function order()
+    {
+        return $this->hasMany('App\Models\Order','user_id','id');
+    }
+
+    public function reviewRoom()
+    {
+        return $this->hasMany('App\Models\ReviewRoom','room_id','id');
     }
 
     public function add(){

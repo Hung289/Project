@@ -23,6 +23,11 @@ class Room extends Model
         return $this->hasMany('App\Models\RoomImage','room_id','id');
     }
 
+    public function reviewRoom()
+    {
+        return $this->hasMany('App\Models\ReviewRoom','room_id','id');
+    }
+
     public function add(){
         
         $model = $this->create([

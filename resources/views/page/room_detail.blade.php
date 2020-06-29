@@ -16,7 +16,17 @@
 
 
 
-
+@if(Session::has('error_login'))
+<div class="alert alert-danger ">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    {{Session::get('error_login')}}</small>
+</div>
+@endif
+@if(Session::has('success'))
+<div class="alert alert-success">
+    {{Session::get('success')}}
+</div>
+@endif
 <section class="chitietphong room-details-wrapper section-padding">
     <div class="container">
         <div class="row">
@@ -236,7 +246,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="comment-area">
+                                        <!-- <div class="comment-area">
                                             <h5 class="tab-title">All Reviews</h5>
                                             <ul class="comment-list">
                                                 <li>
@@ -261,6 +271,45 @@
                                                     </div>
                                                 </li>
                                             </ul>
+                                        </div> -->
+                                        <div class="comment-area">
+                                            <h2 class="comment-title">Client’s Comments</h2>
+                                            @foreach($reviewRoom as $rR)
+                                            <ul class="comment-list">
+                                                <li>
+                                                    <div class="comment-autor">
+                                                        <img src="public/uploads/images/user/{{$rR->user->avatar}}" alt="Chưa có avatar">
+                                                    </div>
+                                                    <div class="comment-desc">
+                                                        <h6>{{$rR->user->name}}<span class="comment-date"> {{$rR->created_at}}</span></h6>
+                                                        <p>{{$rR->content}}</p>
+                                                        <a href="#" class="reply-comment">Reply Commets <i class="fas fa-long-arrow-right"></i></a>
+                                                    </div>
+                                                    @foreach($reviewRoomChild->where('parent',$rR->id) as $cC)
+                                                    <ul class="children">
+                                                        <li>
+                                                            <div class="comment-autor">
+                                                                <img src="public/uploads/images/user/{{$cC->user->avatar}}" alt="Chưa có avatar">
+                                                            </div>
+                                                            <div class="comment-desc">
+                                                                <h6>{{$cC->user->name}} <span class="comment-date"> {{$cC->created_at->diffForHumans()}}</span></h6>
+                                                                <p>{{$cC->content}}</p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    @endforeach
+                                                    <form action="{{route('postReviewRoomChild',['id'=>$room->id,'parent'=>$rR->id])}}" method="POST" style="display:flex">
+                                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                        <div>
+                                                            <input type="text" class="formcmt" name="contentChild">
+                                                        </div>
+                                                        <div>
+                                                            <button type="submit" class="btn btn-primary nutche"><i class="fas fa-paper-plane"></i></button>
+                                                        </div>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                            @endforeach
                                         </div>
                                         <div class="review-form">
                                             <h5 class="tab-title">Write a Review</h5>
@@ -308,19 +357,20 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <form>
+                                            <form action="{{route('postReviewRoom',['id'=>$room->id])}}" method="POST">
+                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                 <div class="input-wrap text-area">
-                                                    <textarea placeholder="Write Review"></textarea>
+                                                    <textarea placeholder="Write Review" name="content"></textarea>
                                                     <i class="fas fa-pencil"></i>
                                                 </div>
-                                                <div class="input-wrap">
+                                                <!-- <div class="input-wrap">
                                                     <input type="text" placeholder="Name" id="name">
                                                     <i class="fas fa-user-alt"></i>
                                                 </div>
                                                 <div class="input-wrap">
                                                     <input type="text" placeholder="Your Email" id="email">
                                                     <i class="fas fa-envelope"></i>
-                                                </div>
+                                                </div> -->
                                                 <div class="input-wrap">
                                                     <button type="submit" class="btn btn-block">Submit</button>
                                                 </div>
@@ -340,14 +390,14 @@
                         <h4 class="widget-title">$160.00 <span>Night</span></h4>
                         <form action="{{route('cart.add',['id'=>$room->id])}}" method="GET">
                             <div class="input-wrap">
-                                <input type="date" placeholder="Arrive Date" name="ArriveDate">                    
+                                <input type="date" placeholder="Arrive Date" name="ArriveDate">
                             </div>
                             <div class="input-wrap">
                                 <input type="date" placeholder="Depart Date" name="DepartDate">
-                                <i class=""></i>          
+                                <i class=""></i>
                             </div>
                             <div class="input-wrap">
-                                <button  class="btn filled-btn btn-block">
+                                <button class="btn filled-btn btn-block">
                                     book now <i class="fas fa-long-arrow-right"></i>
                                 </button>
                             </div>

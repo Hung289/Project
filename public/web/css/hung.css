@@ -1802,6 +1802,32 @@ a.read-more {
 }
 
 /* ===================================Trang RoomDetail ================================= */
+.chitietphong .comment-area .formcmt{
+    height: 40px;
+}
+.chitietphong .comment-area .formcmt:focus {
+    outline: none;
+}
+.chitietphong .comment-area .nutche{
+    height: 40px;
+    padding: 0px 20px;
+}
+.chitietphong .comment-area .comment-list li {
+    padding-left: 130px;
+    position: relative;
+    min-height: 100px;
+    margin-bottom: 50px;
+}
+.chitietphong .comment-area .comment-list li ul.children li {
+    margin-bottom: 0;
+    margin-top: 50px;
+}
+.chitietphong .comment-area i{
+    margin: 0px;
+}
+.chitietphong .comment-area .comment-list  {
+    margin-bottom: 20px;
+}
 .chitietphong input,.chitietphong select,.chitietphong textarea,.chitietphong .nice-select {
     background-color: #fff;
     border: 2px solid #dfe9f4;
@@ -2065,6 +2091,10 @@ h5 {
     /* padding: 40px 10px; */
     font-family: Montserrat-Bold;
 }
+.chitietphong.room-details-wrapper .room-details-tab .review-form button:hover {
+    color: #fff;
+    background: #0f172b;
+}
 .single-room .room-desc .room-cat {
     font-size: 14px;
     margin-top: 0;
@@ -2268,6 +2298,55 @@ p {
 
 
 /* =========================================Trang blogs Details==================================== */
+.tinchitiet .comment-area .formcmt{
+    height: 40px;
+}
+.tinchitiet .comment-area .formcmt:focus {
+    outline: none;
+}
+.tinchitiet .comment-area .nutche{
+    height: 40px;
+    padding: 0px 20px;
+}
+.tinchitiet .comment-area .comment-list li {
+    padding-left: 130px;
+    position: relative;
+    min-height: 100px;
+    margin-bottom: 50px;
+}
+.tinchitiet .comment-area .comment-list li ul.children li {
+    margin-bottom: 0;
+    margin-top: 50px;
+}
+.tinchitiet .comment-area i{
+    margin: 0px;
+}
+.tinchitiet .comment-area .comment-list  {
+    margin-bottom: 20px;
+}
+.tinchitiet input,.tinchitiet select,.tinchitiet textarea,.tinchitiet .nice-select {
+    background-color: #fff;
+    border: 2px solid #dfe9f4;
+    height: 80px;
+    font-weight: 600;
+    color: #0f172b;
+    font-size: 18px;
+    padding: 0 45px 0 30px;
+    border-radius: 5px;
+    width: 100%;
+    line-height: 80px;
+}
+.tinchitiet textarea {
+    height: 140px;
+    line-height: 28px;
+    padding-top: 15px;
+}
+.tinchitiet .comment-form .input-wrap {
+    margin-bottom: 20px;
+}
+.tinchitiet .comment-form .input-wrap {
+    margin-bottom: 20px;
+}
 .tinchitiet .entry-meta li a {
     color: #666565;
 }
@@ -3116,6 +3195,23 @@ label {
     transform: translateY(-50%);
 }
 /* ========================================Trang Contact =================================== */
+.contact-form input,.contact-form select,.contact-form textarea,.contact-form .nice-select {
+    background-color: #fff;
+    border: 2px solid #dfe9f4;
+    height: 80px;
+    font-weight: 600;
+    color: #0f172b;
+    font-size: 18px;
+    padding: 0 45px 0 30px;
+    border-radius: 5px;
+    width: 100%;
+    line-height: 80px;
+}
+.contact-form textarea {
+    height: 140px;
+    line-height: 28px;
+    padding-top: 15px;
+}
 .contact-info-section {
     padding-top: 125px;
     padding-bottom: 45px;

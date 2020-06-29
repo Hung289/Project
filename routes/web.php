@@ -92,8 +92,8 @@ Route::get('blog-detail/{id}','Web\webPageController@getBlogDetail')->name('blog
 
 
 
-// Trang RoomDetail
-Route::get('room-detail/{id}','Web\webPageController@getRoomDetail')->name('roomDetail');
+
+
 
 Route::group(['prefix' => 'web-page','namespace' => 'Web'],function(){
     Route::get('view','CartRoomController@view')->name('cart.view');
@@ -106,6 +106,15 @@ Route::group(['prefix' => 'web-page','namespace' => 'Web'],function(){
     Route::get('removeService/{id}','CartRoomController@removeService')->name('cart.removeService');
     Route::get('updateService/{id}','CartRoomController@update')->name('cart.updateService');
 });
+
+
+// Trang RoomDetail những thứ liên quan đến room-detail
+Route::group(['prefix'=>'review-room','namespace'=>'Web'],function(){
+    Route::get('room-detail/{id}','webPageController@getRoomDetail')->name('roomDetail');
+    Route::post('room-detail/{id}','webPageController@postReviewRoom')->name('postReviewRoom');
+    Route::post('room-detil/{id}/{parent}','webPageController@postReviewRoomChild')->name('postReviewRoomChild');
+});
+
 
 Route::get('getDate','Web\webPageController@get_total_price')->name('getDate');
 

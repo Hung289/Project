@@ -14,7 +14,13 @@ class CreateReviewRoomsTable extends Migration
     public function up()
     {
         Schema::create('review_rooms', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('room_id')->unsigned();
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
+            $table->integer('parent')->default(0);
+            $table->string('content');
             $table->timestamps();
         });
     }
