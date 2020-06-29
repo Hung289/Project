@@ -17,7 +17,17 @@
 
 <!-- content blogstand -->
 
-
+@if(Session::has('error_login'))
+<div class="alert alert-danger ">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    {{Session::get('error_login')}}</small>
+</div>
+@endif
+@if(Session::has('success'))
+<div class="alert alert-success">
+    {{Session::get('success')}}
+</div>
+@endif
 <section class="tinchitiet blog-details-wrapper section-padding section-bg">
     <div class="container">
         <div class="row">
@@ -124,55 +134,56 @@
                     </div> -->
                 <div class="comment-area">
                     <h2 class="comment-title">Client’s Comments</h2>
-                    
+                    @foreach($commentBlog as $cB)
                     <ul class="comment-list">
                         <li>
                             <div class="comment-autor">
-                                <img src="public/uploads/images/user/" alt="Chưa có avatar">
+                                <img src="public/uploads/images/user/{{$cB->user->avatar}}" alt="Chưa có avatar">
                             </div>
                             <div class="comment-desc">
-                                <h6><span class="comment-date"> </span></h6>
-                                <p></p>
+                                <h6>{{$cB->user->name}} <span class="comment-date"> {{$cB->created_at}}</span></h6>
+                                <p>{{$cB->comment}}</p>
                                 <a href="#" class="reply-comment">Reply Commets <i class="fas fa-long-arrow-right"></i></a>
                             </div>
-                            
+                            @foreach($commentBlogChild->where('parent',$cB->id) as $cBC)
                             <ul class="children">
                                 <li>
                                     <div class="comment-autor">
-                                        <img src="public/uploads/images/user/" alt="Chưa có avatar">
+                                        <img src="public/uploads/images/user/{{$cBC->user->avatar}}" alt="Chưa có avatar">
                                     </div>
                                     <div class="comment-desc">
-                                        <h6> <span class="comment-date"> </span></h6>
-                                        <p></p>
+                                        <h6>{{$cBC->user->name}} <span class="comment-date"> {{$cBC->created_at->diffForHumans()}}</span></h6>
+                                        <p>{{$cBC->comment}}</p>
                                     </div>
                                 </li>
                             </ul>
-                            
-                            <form action="" method="POST" style="display:flex">
+                            @endforeach
+                            <form action="{{route('postCommentBlogChild',['id'=>$blog->id,'parent'=>$cB->id])}}" method="POST" style="display:flex">
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <div>
-                                    <input type="text" class="formcmt" name="contentChild">
+                                    <input type="text" class="formcmt" name="commentChild">
                                 </div>
                                 <div>
-                                    <button type="submit" class="btn btn-primary nutche"><i class="fas fa-paper-plane"></i></button>
+                                    <button class="btn btn-primary nutche"><i class="fas fa-paper-plane"></i></button>
                                 </div>
                             </form>
                         </li>
                     </ul>
-                    
+                    @endforeach
                 </div>
                 <div class="comment-form">
                     <h2 class="comment-form-title">Send A Message</h2>
-                    <form>
+                    <form action="{{route('postCommentBlog',['id'=>$blog->id])}}" method="POST">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="row">
                             <div class="col-12">
                                 <div class="input-wrap text-area">
-                                    <textarea placeholder="Write Message"></textarea>
+                                    <textarea placeholder="Write Message" name="comment"></textarea>
                                     <i class="fas fa-pencil"></i>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn filled-btn">Send Message <i class="fas fa-long-arrow-right"></i></button>
+                                <button class="btn filled-btn">Send Message <i class="fas fa-long-arrow-right"></i></button>
                             </div>
                         </div>
                     </form>

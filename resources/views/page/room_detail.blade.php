@@ -1,6 +1,6 @@
 @extends('layoutweb.index')
 @section('content')
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <section id="headernhochung" class="align-items-center">
     <div class="container">
         <div class="khoichu ">
@@ -58,6 +58,14 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
+                        <!-- lưu id phòng -->
+                        <input type="hidden" name="roomD" value="{{$room->id}}">
+                        <!--  -->
+                        <!-- Lưu id người đang đăng nhập -->
+                        @if(Auth::check())
+                        <input type="hidden" name="userId" value="{{Auth::User()->id}}">
+                        @endif
+                        <!--  -->
                         <div class="room-cat">
                             <a href="">{{$room->cateRoom->name}}</a>
                         </div>
@@ -317,13 +325,20 @@
                                                 <ul class="list-inline">
                                                     <li>
                                                         <p class="st-title">Acaommodation</p>
-                                                        <p class="rating-box">
+                                                        <!-- <p class="rating-box">
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
-                                                        </p>
+                                                        </p> -->
+                                                        <ul class="ratings">
+                                                            <li class="star" data-star="5"></li>
+                                                            <li class="star" data-star="4"></li>
+                                                            <li class="star" data-star="3"></li>
+                                                            <li class="star" data-star="2"></li>
+                                                            <li class="star" data-star="1"></li>
+                                                        </ul>
                                                     </li>
                                                     <li>
                                                         <p class="st-title">Destination</p>

@@ -16,6 +16,8 @@ use App\Models\Service;
 use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ReviewRoom;
+use App\Models\CommentBlog;
+use App\Models\RoomStar;
 use Session;
 
 class webPageController extends Controller
@@ -143,13 +145,14 @@ class webPageController extends Controller
     {
 
         $this->validate($request, [], []);
-        $reviewRoom = ReviewRoom::where('parent',0)->orderBy('id','DESC')->paginate(2);
+        $reviewRoom = ReviewRoom::where('parent', 0)->orderBy('id', 'DESC')->paginate(2);
         $reviewRoomChild = ReviewRoom::all();
         // dd($reviewRoom);
         $room = Room::where('id', $id)->first();
         $rImage = RoomImage::where('room_id', $id)->first();
+        
         // dd($room);
-        return view('page.room_detail', ['room' => $room, 'rImage' => $rImage,'reviewRoom'=>$reviewRoom,'reviewRoomChild'=>$reviewRoomChild]);
+        return view('page.room_detail', ['room' => $room, 'rImage' => $rImage, 'reviewRoom' => $reviewRoom, 'reviewRoomChild' => $reviewRoomChild]);
     }
 
     public function getBlogDetail(Request $request, $id)
@@ -160,9 +163,11 @@ class webPageController extends Controller
         $bImage = BlogImage::where('blog_id', $id)->first();
         $blog2 = BlogImage::where('blog_id', $id)->paginate(2);
         $cateBlog = CategoryBlog::all();
+        $commentBlog = CommentBlog::where('parent', 0)->orderBy('id', 'DESC')->paginate(2);
+        $commentBlogChild = CommentBlog::all();
         // dd($blog2);
         // dd($bImageAfter1);
-        return view('page.blog_detail', ['blog' => $blog, 'bImage' => $bImage,'blog2'=>$blog2,'cateBlog'=>$cateBlog]);
+        return view('page.blog_detail', ['blog' => $blog, 'bImage' => $bImage, 'blog2' => $blog2, 'cateBlog' => $cateBlog, 'commentBlog' => $commentBlog, 'commentBlogChild' => $commentBlogChild]);
     }
 
 
@@ -178,7 +183,7 @@ class webPageController extends Controller
         return view('register');
     }
 
-    public function postRegisterWeb(Request $request)
+    public function postRegisterWeb(Request $request, User $user)
     {
         $this->validate($request, [
             'email' => 'required',
@@ -189,13 +194,7 @@ class webPageController extends Controller
             'password.min' => 'Password không nhỏ hơn 3 kí tự',
             'password.max' => 'Password không lớn hơn 32 ký tự'
         ]);
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'level' => 2,
-
-        ]);
+        $users = $user->registerWeb();
         return redirect()->back()->with('success', 'Chúc mừng bạn đã đăng ký thành công');
     }
 
@@ -230,7 +229,6 @@ class webPageController extends Controller
 
     public function getRoomListMaster($id)
     {
-
         $rooms = Room::where('category_room_id', $id)->get();
         // dd($rooms);
         return view('page.room_list_master', ['rooms' => $rooms]);
@@ -261,13 +259,13 @@ class webPageController extends Controller
     //     return back();
     // }
 
-    public function postReviewRoom(ReviewRoom $reviewRoom,$id)
+    public function postReviewRoom(ReviewRoom $reviewRoom, $id)
     {
-        
-        if(Auth::check()){
+
+        if (Auth::check()) {
             $reviewRooomTo = $reviewRoom->postRR($id);
-            return redirect()->back()->with('success','Đăng thành công bình luận');
-        }else{
+            return redirect()->back()->with('success', 'Đăng thành công bình luận');
+        } else {
             session::flash('error_login', 'Bạn Cần Phải Đăng Nhập Để Thực Hiện Chức Năng Này');
             return back();
         }
@@ -275,11 +273,52 @@ class webPageController extends Controller
     }
 
 
-    public function postReviewRoomChild(ReviewRoom $reviewRoom,$id,$parent)
+    public function postReviewRoomChild(ReviewRoom $reviewRoom, $id, $parent)
     {
-        $reviewRoomChild = $reviewRoom->postRRChild($id,$parent);
-        if($reviewRoomChild){
-            return redirect()->back()->with('success','Đăng thành công bình luận');
+        if (Auth::check()) {
+            $reviewRoomChild = $reviewRoom->postRRChild($id, $parent);
+            if ($reviewRoomChild) {
+                return redirect()->back()->with('success', 'Đăng thành công bình luận');
+            }
+        }else{
+            session::flash('error_login', 'Bạn Cần Phải Đăng Nhập Để Thực Hiện Chức Năng Này');
+            return back();
+        }
+    }
+
+    public function postCommentBlog(CommentBlog $commentBlog, $id)
+    {
+        // dd($commentBlog);
+        if (Auth::check()) {
+            $commentBlogTo = $commentBlog->postCB($id);
+            return redirect()->back()->with('success', 'Đăng thành công bình luận');
+        } else {
+            session::flash('error_login', 'Bạn Cần Phải Đăng Nhập Để Thực Hiện Chức Năng Này');
+            return back();
+        }
+        return back();
+    }
+
+    public function postCommentBlogChild(CommentBlog $commentBlog, $id, $parent)
+    {
+        // dd($parent);
+        if (Auth::check()) {
+            $commentBlogChild = $commentBlog->postCBC($id, $parent);
+            if ($commentBlogChild) {
+                return redirect()->back()->with('success', 'Đăng thành công');
+            }
+        } else {
+            session::flash('error_login', 'Bạn Cần Phải Đăng Nhập Để Thực Hiện Chức Năng Này');
+            return back();
+        }
+    }
+    public function voteStar(Request $request,RoomStar $roomStar){
+        // dd($req);
+        // dd($request->idRoom);
+        $model = $roomStar->postStar();
+        dd($model);
+        if($model){
+            return redirect()->back()->with('success','Đăng thành công đánh giá');
         }
     }
 }

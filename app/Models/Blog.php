@@ -23,6 +23,11 @@ class Blog extends Model
         return $this->belongsTo('App\Models\CategoryBlog','category_blog_id','id');
     }
 
+    public function commentBlog()
+    {
+        return $this->hasMany('App\Models\CommentBlog','blog_id','id');
+    }
+
     public function add(){
         
 

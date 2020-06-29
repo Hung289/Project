@@ -88,7 +88,7 @@ Route::get('serviceMaster/{id}','Web\webPageController@getServiceMaster')->name(
 
 
 //Trang blogDetail
-Route::get('blog-detail/{id}','Web\webPageController@getBlogDetail')->name('blogDetail');
+
 
 
 
@@ -115,12 +115,38 @@ Route::group(['prefix'=>'review-room','namespace'=>'Web'],function(){
     Route::post('room-detil/{id}/{parent}','webPageController@postReviewRoomChild')->name('postReviewRoomChild');
 });
 
+//Trang BlogDetail những thứ liên quan đến blog_detail
+Route::group(['prefix'=>'Blog','namespace'=>'Web'],function(){
+    Route::get('blog-detail/{id}','webPageController@getBlogDetail')->name('blogDetail');
+    Route::post('blog-detai/{id}','webPageController@postCommentBlog')->name('postCommentBlog');
+    Route::post('blog-detai/{id}/{parent}','webPageController@postCommentBlogChild')->name('postCommentBlogChild');
+});
+
 
 Route::get('getDate','Web\webPageController@get_total_price')->name('getDate');
 
 
 //Route search room
 Route::get('search','Web\webPageController@getFilterRoom')->name('getFilterRoom');
+
+// Route rating star
+Route::post('postStar','Web\webPageController@voteStar')->name('postStar');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * 

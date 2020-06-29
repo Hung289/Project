@@ -30,6 +30,9 @@
     <link rel="stylesheet" href="public/web/css/animate.css" />
     <link rel="stylesheet" href="public/web/plugin/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="public/web/plugin/dist/assets/owl.theme.default.css">
+
+    <link rel="stylesheet" href="public/web/css/ratingStar.css">
+     
   </head>
   <body>
     <!-- Khối trên menu -->
@@ -67,6 +70,7 @@
     <script src="public/web/js/jquery-ui.min.js"></script>
     <script src="public/web/js/wow.min.js"></script>
     <script src="public/web/js/hung.js"></script>
+    <!-- <script src="public/web/js/ratingStar.js"></script> -->
     <script>
       new WOW().init();
     </script>
@@ -135,6 +139,37 @@
       $('.stop').on('click',function(){
           owl.trigger('stop.owl.autoplay')
       })
+    </script>
+    <script>
+       var star = '.star',
+        selected = '.selected';
+    
+    $(star).on('click', function(){
+      $(selected).each(function(){
+        $(this).removeClass('selected');
+      });
+      $(this).addClass('selected');
+      var star = $(this).data("star");
+      // alert(star);
+      var idRoom = $("[name='roomD']").val();
+      var idUser = $("[name='userId']").val();
+      // alert(idRoom);
+      // alert(idUser);
+      var _token = $('meta[name="csrf-token"]').attr('content');
+      $.ajax({
+        url: "{{ route('postStar') }}",
+        type:"POST",
+        data:{
+            '_token': _token,
+            'idRoom' : idRoom,
+            'idUser' :idUser,
+            'star': star,
+        },
+        success:function(response) {
+            console.log(response);
+         },
+      });
+    });
     </script>
   </body>
 </html>

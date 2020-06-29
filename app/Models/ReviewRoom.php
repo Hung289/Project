@@ -39,6 +39,7 @@ class ReviewRoom extends Model
     {
         // dd(Auth::user()->id);
         $room = Room::find($id);
+        // dd($room);
         $model = $this->create([
             'user_id' => Auth::user()->id,
             'room_id' => $room->id,

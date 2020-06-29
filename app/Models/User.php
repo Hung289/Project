@@ -57,6 +57,16 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\ReviewRoom','room_id','id');
     }
 
+    public function commentBlog()
+    {
+        return $this->hasMany('App\Models\CommentBlog','user_id','id');
+    }
+
+    public function roomStar()
+    {
+        return $this->hasMany('App\Models\RoomStar','user_id','id');
+    }
+
     public function add(){
         $img = request()->avatar;
         $image_name = $img->getClientOriginalName();
@@ -96,7 +106,17 @@ class User extends Authenticatable
                 'level'=>request()->level,
             ]);
             return $model;
-        }
-        
+        } 
+    }
+
+    public function registerWeb()
+    {
+        $model = $this->create([
+            'name' => request()->name,
+            'email' => request()->email,
+            'password' => bcrypt(request()->password),
+            'level' => 2,
+        ]);
+        return $model;
     }
 }
