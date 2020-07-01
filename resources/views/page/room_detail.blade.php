@@ -256,7 +256,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @endif
+                                        
 
                                         <!-- <div class="comment-area">
                                             <h5 class="tab-title">All Reviews</h5>
