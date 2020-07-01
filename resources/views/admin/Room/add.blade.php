@@ -146,6 +146,18 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleInputPassword1">Brand(Thương hiệu)</label>
+                                    <select name="brand_id" class="form-control" id="">
+                                        <option value="">---Chọn thương hiệu---</option>
+                                        @foreach($brands as $brand)
+                                        <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('brand_id')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputPassword1">Chọn Danh Mục phòng</label>
                                     <select name="category_room_id" class="form-control" id="">
                                         <option value="">--Chọn Danh Mục--</option>

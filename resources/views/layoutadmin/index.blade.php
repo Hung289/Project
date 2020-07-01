@@ -32,6 +32,8 @@
   
   <link rel="stylesheet" href="public/toastr/toastr.min.css">
   <link rel="stylesheet" href="public/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Css thêm vào -->
+  <link rel="stylesheet" href="public/dist/css/hungadmin.css">
 
   <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.css" id="theme-styles"> -->
@@ -102,6 +104,8 @@
   <script src="public/dist/js/pages/dashboard.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="public/dist/js/demo.js"></script>
+  
+
   
   <script>
     $(function() {

@@ -207,21 +207,23 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <div role="tabpanel" class="tab-pane fade" id="reviews">
-                                        <h5 class="tab-title">Reviews</h5>
-                                        <div class="reviews-count">
-                                            <div class="row">
+                                        <h5 class="tab-title">Reviews</h5>                                 
+                                        <div class="reviews-count" id="c1">
+                                            <div class="row" id="cc">
                                                 <div class="col-4">
                                                     <div class="count-num d-flex align-items-center justify-content-center">
-                                                        <p> <span>6.8</span>Suprrb</p>
+                                                        <p> <span>{{number_format($tb,2)}}</span>Star</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-8">
-                                                    <div class="reviews-bars">
+                                                    <div id="demo"></div>
+                                                    <div class="reviews-bars " id="loadvote">
                                                         <!-- Single bar -->
                                                         <div class="single-bar">
                                                             <p class="bar-title">Acaommodation
-                                                                <span>8.0</span></p>
+                                                                <span>{{number_format($avgStarAcao,2)}}</span></p>
                                                             <div class="bar" data-width="80%">
                                                                 <div class="bar-inner" style="width: 80%;"></div>
                                                             </div>
@@ -229,7 +231,7 @@
                                                         <!-- Single bar -->
                                                         <div class="single-bar">
                                                             <p class="bar-title">Destination
-                                                                <span>6.0</span></p>
+                                                                <span>{{number_format($avgStarDes,2)}}</span></p>
                                                             <div class="bar" data-width="60%">
                                                                 <div class="bar-inner" style="width: 60%;"></div>
                                                             </div>
@@ -237,7 +239,7 @@
                                                         <!-- Single bar -->
                                                         <div class="single-bar">
                                                             <p class="bar-title">Transport
-                                                                <span>7.0</span></p>
+                                                                <span>{{number_format($avgStarTran,2)}}</span></p>
                                                             <div class="bar" data-width="70%">
                                                                 <div class="bar-inner" style="width: 70%;"></div>
                                                             </div>
@@ -245,7 +247,7 @@
                                                         <!-- Single bar -->
                                                         <div class="single-bar">
                                                             <p class="bar-title">Overall
-                                                                <span>9.0</span></p>
+                                                                <span>{{number_format($avgStarOver,2)}}</span></p>
                                                             <div class="bar" data-width="90%">
                                                                 <div class="bar-inner" style="width: 90%;"></div>
                                                             </div>
@@ -254,6 +256,8 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
+
                                         <!-- <div class="comment-area">
                                             <h5 class="tab-title">All Reviews</h5>
                                             <ul class="comment-list">
@@ -282,7 +286,9 @@
                                         </div> -->
                                         <div class="comment-area">
                                             <h2 class="comment-title">Client’s Comments</h2>
+                                            <?php $i=0?>
                                             @foreach($reviewRoom as $rR)
+                                            @if($rR->room_id == $room->id)
                                             <ul class="comment-list">
                                                 <li>
                                                     <div class="comment-autor">
@@ -291,8 +297,9 @@
                                                     <div class="comment-desc">
                                                         <h6>{{$rR->user->name}}<span class="comment-date"> {{$rR->created_at}}</span></h6>
                                                         <p>{{$rR->content}}</p>
-                                                        <a href="#" class="reply-comment">Reply Commets <i class="fas fa-long-arrow-right"></i></a>
+                                                        <a href="#"  id="{{$i}}" class="reply-comment">Reply Commets ({{count($reviewRoomChild->where('parent',$rR->id))}}) <i class="fas fa-long-arrow-alt-right"></i></a>
                                                     </div>
+                                                    <div id="cmt-child-{{$i}}" class="cmtChild">
                                                     @foreach($reviewRoomChild->where('parent',$rR->id) as $cC)
                                                     <ul class="children">
                                                         <li>
@@ -306,6 +313,7 @@
                                                         </li>
                                                     </ul>
                                                     @endforeach
+                                                    </div>
                                                     <form action="{{route('postReviewRoomChild',['id'=>$room->id,'parent'=>$rR->id])}}" method="POST" style="display:flex">
                                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                         <div>
@@ -317,13 +325,15 @@
                                                     </form>
                                                 </li>
                                             </ul>
+                                            <?php $i++ ?>
+                                            @endif
                                             @endforeach
                                         </div>
                                         <div class="review-form">
                                             <h5 class="tab-title">Write a Review</h5>
                                             <div class="star-given-box">
                                                 <ul class="list-inline">
-                                                    <li>
+                                                    <li class="To">
                                                         <p class="st-title">Acaommodation</p>
                                                         <!-- <p class="rating-box">
                                                             <i class="fa fa-star"></i>
@@ -340,35 +350,35 @@
                                                             <li class="star" data-star="1"></li>
                                                         </ul>
                                                     </li>
-                                                    <li>
+                                                    <li class="To">
                                                         <p class="st-title">Destination</p>
-                                                        <p class="rating-box">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                        </p>
+                                                        <ul class="ratings">
+                                                            <li class="star1" data-star="5"></li>
+                                                            <li class="star1" data-star="4"></li>
+                                                            <li class="star1" data-star="3"></li>
+                                                            <li class="star1" data-star="2"></li>
+                                                            <li class="star1" data-star="1"></li>
+                                                        </ul>
                                                     </li>
-                                                    <li>
+                                                    <li class="To">
                                                         <p class="st-title">Transport</p>
-                                                        <p class="rating-box">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                        </p>
+                                                        <ul class="ratings">
+                                                            <li class="star2" data-star="5"></li>
+                                                            <li class="star2" data-star="4"></li>
+                                                            <li class="star2" data-star="3"></li>
+                                                            <li class="star2" data-star="2"></li>
+                                                            <li class="star2" data-star="1"></li>
+                                                        </ul>
                                                     </li>
-                                                    <li>
+                                                    <li class="To">
                                                         <p class="st-title">Overall</p>
-                                                        <p class="rating-box">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                        </p>
+                                                        <ul class="ratings">
+                                                            <li class="star3" data-star="5"></li>
+                                                            <li class="star3" data-star="4"></li>
+                                                            <li class="star3" data-star="3"></li>
+                                                            <li class="star3" data-star="2"></li>
+                                                            <li class="star3" data-star="1"></li>
+                                                        </ul>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -377,6 +387,9 @@
                                                 <div class="input-wrap text-area">
                                                     <textarea placeholder="Write Review" name="content"></textarea>
                                                     <i class="fas fa-pencil"></i>
+                                                    @error('content')
+                                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                                    @enderror
                                                 </div>
                                                 <!-- <div class="input-wrap">
                                                     <input type="text" placeholder="Name" id="name">

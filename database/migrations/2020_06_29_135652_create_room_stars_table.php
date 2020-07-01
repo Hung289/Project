@@ -19,7 +19,10 @@ class CreateRoomStarsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('room_id')->unsigned();
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
-            $table->integer('star');
+            $table->integer('starAcao')->nullable()->default(null);
+            $table->integer('starDes')->nullable()->default(null);
+            $table->integer('starTran')->nullable()->default(null);
+            $table->integer('starOver')->nullable()->default(null);   
             $table->timestamps();
         });
     }

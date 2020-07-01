@@ -124,7 +124,7 @@
                         <h4 class="widget-title">Your Reservation</h4>
                         <form>
                             <div class="input-wrap">
-                                <input type="text" placeholder="Location" id="location">
+                                <input type="text" placeholder="Location" id="location" name="location">
                                 <i class="fas fa-search"></i>
                             </div>
                             <div class="input-wrap">

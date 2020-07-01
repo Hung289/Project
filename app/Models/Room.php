@@ -8,7 +8,7 @@ use App\Models\RoomImage;
 class Room extends Model
 {
     protected $fillable = [
-        'name','location','bed','bath','area','priceNight','priceWeekends','priceWeekly','priceClearFee','description','status','gym','Laundry','tvCable','wifi','FreeParking','Security','category_room_id','user_room_id'
+        'name','location','bed','bath','area','priceNight','priceWeekends','priceWeekly','priceClearFee','description','status','gym','Laundry','tvCable','wifi','FreeParking','Security','category_room_id','user_room_id','brand_id'
     ];
 
     public function cateRoom(){
@@ -33,6 +33,11 @@ class Room extends Model
         return $this->hasMany('App\Models\RoomStar','room_id','id');
     }
 
+    public function brand()
+    {
+        return $this->belongsTo('App\Models\Brand','brand_id','id');
+    }
+
     public function add(){
         
         $model = $this->create([
@@ -54,7 +59,8 @@ class Room extends Model
             'FreeParking'=>request()->FreeParking,
             'Security'=>request()->Security,
             'category_room_id'=>request()->category_room_id,
-            'user_room_id'=>request()->user_room_id
+            'user_room_id'=>request()->user_room_id,
+            'brand_id'=>request()->brand_id
         ]);
         $images = request()->file('files');
         foreach($images as $img){

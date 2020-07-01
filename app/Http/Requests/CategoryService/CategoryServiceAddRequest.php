@@ -25,8 +25,8 @@ class CategoryServiceAddRequest extends FormRequest
     {
         return [
             'name'=>'required|unique:category_services',
-            'image'=>'required|mimes:jpge,jpg,png,gif',
-            'imageHover'=>'required|mimes:jpge,jpg,png,gif'
+            'image'=>'required|mimes:png,jpeg,gif',
+            'imageHover'=>'required|mimes:png,jpeg,gif'
         ];
     }
     public function messages()

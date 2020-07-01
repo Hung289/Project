@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\ReviewRoom;
 use App\Models\CommentBlog;
 use App\Models\RoomStar;
+use App\Models\Brand;
 use Session;
 
 class webPageController extends Controller
@@ -47,6 +48,9 @@ class webPageController extends Controller
 
         $blogImages = BlogImage::all();
         view()->share('blogImages', $blogImages);
+
+        $brands = Brand::all();
+        view()->share('brands',$brands);
     }
 
     public function indexWeb()
@@ -89,7 +93,9 @@ class webPageController extends Controller
 
     public function getGallery()
     {
-        return view('page.gallery');
+        $rooms = Room::all();
+        $RoomImages = RoomImage::all();
+        return view('page.gallery',['rooms'=>$rooms,'RoomImages'=>$RoomImages]);
     }
 
 
@@ -141,7 +147,7 @@ class webPageController extends Controller
         return view('page.reservation');
     }
 
-    public function getRoomDetail(Request $request, $id)
+    public function getRoomDetail(Request $request, $id, RoomStar $roomStar)
     {
 
         $this->validate($request, [], []);
@@ -150,9 +156,14 @@ class webPageController extends Controller
         // dd($reviewRoom);
         $room = Room::where('id', $id)->first();
         $rImage = RoomImage::where('room_id', $id)->first();
-        
-        // dd($room);
-        return view('page.room_detail', ['room' => $room, 'rImage' => $rImage, 'reviewRoom' => $reviewRoom, 'reviewRoomChild' => $reviewRoomChild]);
+       
+        $roomStars = $roomStar->calAvg($id);
+        return view('page.room_detail', [
+            'room' => $room, 'rImage' => $rImage,
+            'reviewRoom' => $reviewRoom, 'reviewRoomChild' => $reviewRoomChild,
+            'avgStarAcao' => $roomStars['bien1'], 'avgStarDes' => $roomStars['bien2'], 'avgStarTran' => $roomStars['bien3'], 'avgStarOver' => $roomStars['bien4'],
+            'tb' => $roomStars['bien5']
+        ]);
     }
 
     public function getBlogDetail(Request $request, $id)
@@ -259,9 +270,13 @@ class webPageController extends Controller
     //     return back();
     // }
 
-    public function postReviewRoom(ReviewRoom $reviewRoom, $id)
+    public function postReviewRoom(Request $request,ReviewRoom $reviewRoom, $id)
     {
-
+        $this->validate($request, [
+            'content' => 'required',
+        ], [
+            'content.required' => 'Bạn chưa nhập content',
+        ]);
         if (Auth::check()) {
             $reviewRooomTo = $reviewRoom->postRR($id);
             return redirect()->back()->with('success', 'Đăng thành công bình luận');
@@ -280,7 +295,7 @@ class webPageController extends Controller
             if ($reviewRoomChild) {
                 return redirect()->back()->with('success', 'Đăng thành công bình luận');
             }
-        }else{
+        } else {
             session::flash('error_login', 'Bạn Cần Phải Đăng Nhập Để Thực Hiện Chức Năng Này');
             return back();
         }
@@ -312,13 +327,19 @@ class webPageController extends Controller
             return back();
         }
     }
-    public function voteStar(Request $request,RoomStar $roomStar){
+    public function voteStar(Request $request, RoomStar $roomStar)
+    {
         // dd($req);
         // dd($request->idRoom);
-        $model = $roomStar->postStar();
-        dd($model);
-        if($model){
-            return redirect()->back()->with('success','Đăng thành công đánh giá');
+        if (Auth::check()) {
+            $model = $roomStar->postStar();
+            // dd($model);
+            if ($model) {
+                return redirect()->back()->with('success', 'Đăng thành công đánh giá');
+            }
+        } else {
+            session::flash('error_login', 'Bạn Cần Phải Đăng Nhập Để Thực Hiện Chức Năng Này');
+            return back();
         }
     }
 }

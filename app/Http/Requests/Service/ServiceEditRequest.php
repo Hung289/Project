@@ -25,7 +25,7 @@ class ServiceEditRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'image'=>'mimes:jpeg,jpg,png,gif',
+            'image'=>'mimes:png,jpeg,gif',
             'price'=>'required',
             'category_service_id'=>'required',
             'description'=>'required'

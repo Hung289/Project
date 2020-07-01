@@ -25,7 +25,7 @@ class UserAddRequest extends FormRequest
     {
         return [
             'name'=>'required|unique:users',
-            'avatar' => 'required|mimes:jpge,png,gif,jpg',
+            'avatar' => 'required|mimes:png,jpeg,gif',
             'email'=>'required|unique:users',
             'password'=>'required | min:3 | max:32'
         ];

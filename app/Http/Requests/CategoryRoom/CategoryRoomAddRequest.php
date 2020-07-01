@@ -25,7 +25,7 @@ class CategoryRoomAddRequest extends FormRequest
     {
         return [
             'name'=>'required|unique:category_rooms',
-            'image'=>'required|mimes:jpge,png,jpg,gif'
+            'image'=>'required|mimes:png,jpeg,gif'
         ];
     }
 
@@ -35,7 +35,7 @@ class CategoryRoomAddRequest extends FormRequest
             'name.required'=>'Tên danh mục phòng không được để trống',
             'name.unique'=>'Tên danh muc đã tồn tại',
             'image.required'=>'Ảnh không được để trống',
-            'immage.mimes'=>'Ảnh không đúng định dạng. Vui lòng chọn lại ảnh'
+            'image.mimes'=>'Ảnh không đúng định dạng. Vui lòng chọn lại ảnh'
         ];
     }
 }

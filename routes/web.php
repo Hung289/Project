@@ -164,7 +164,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin' ,'middleware' => 'admi
         'categoryBlog' => 'CategoryBlogController',
         'room' => 'RoomController',
         'service' => 'ServiceController',
-        'blog' => 'BlogController'
+        'blog' => 'BlogController',
+        'brand'=>'BrandController',
+        'banner'=>'BannerController'
     ]);
 
     Route::get('searchBlog','BlogController@search')->name('searchBlog');

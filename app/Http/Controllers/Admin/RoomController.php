@@ -8,6 +8,7 @@ use App\Models\CategoryRoom;
 use App\Models\RoomImage;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Brand;
 use Session;
 use App\Http\Requests\Room\RoomAddRequest;
 use App\Http\Requests\Room\RoomEditRequest;
@@ -32,8 +33,9 @@ class RoomController extends Controller
      */
     public function create()
     {
+        $brands = Brand::all();
         $CateRoom = CategoryRoom::all();
-        return view('admin.Room.add',compact('CateRoom'));
+        return view('admin.Room.add',compact('CateRoom','brands'));
     }
 
     /**

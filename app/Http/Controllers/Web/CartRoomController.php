@@ -14,6 +14,8 @@ use App\Models\Blog;
 use App\Models\CategoryBlog;
 use App\Models\BlogImage;
 use App\Models\Service;
+use App\Models\Banner;
+use App\Models\Brand;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Carbon\Carbon;
@@ -43,6 +45,9 @@ class CartRoomController extends Controller
 
         $blogImages = BlogImage::all();
         view()->share('blogImages',$blogImages);
+
+        $brands = Brand::all();
+        view()->share('brands',$brands);
     }
     public function view(CartRoom $cart){
         // dd($cart);

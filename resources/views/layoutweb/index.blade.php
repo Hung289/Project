@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="public/web/plugin/dist/assets/owl.theme.default.css">
 
   <link rel="stylesheet" href="public/web/css/ratingStar.css">
-
+  <link rel="stylesheet" href="public/sweetalert2.min.css">
 </head>
 
 <body>
@@ -29,7 +29,6 @@
 
   @include('layoutweb.header')
   <!-- Chỗ header -->
-
   @yield('content')
 
 
@@ -54,107 +53,17 @@
   <script src="public/web/js/jquery-ui.min.js"></script>
   <script src="public/web/js/wow.min.js"></script>
   <script src="public/web/js/hung.js"></script>
-  <!-- <script src="public/web/js/ratingStar.js"></script> -->
+  <script src="public/web/js/isotope.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="public/sweetalert2.min.js"></script>
+  <script src="sweetalert2.all.min.js"></script>
+  <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
   <script>
     new WOW().init();
   </script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $("#arrive-date").datepicker({
-        format: "dd/mm/yyyy",
-      });
-    });
-    $(document).ready(function() {
-      $("#depart-date").datepicker({
-        format: "dd/mm/yyyy",
-      });
-    });
-  </script>
-  <script>
-    $('#hai.owl-carousel').owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      responsive: {
-        0: {
-          items: 1
-        },
-        600: {
-          items: 1
-        },
-        1000: {
-          items: 1
-        }
-      },
-      autoplay: true,
-      autoplayTimeout: 3000,
-      autoplayHoverPause: true
-    })
-    $('.play').on('click', function() {
-      owl.trigger('play.owl.autoplay', [1000])
-    })
-    $('.stop').on('click', function() {
-      owl.trigger('stop.owl.autoplay')
-    })
-  </script>
-  <script>
-    $('#mot.owl-carousel').owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      responsive: {
-        0: {
-          items: 2
-        },
-        600: {
-          items: 4
-        },
-        1000: {
-          items: 6
-        }
-      },
-      autoplay: true,
-      autoplayTimeout: 3000,
-      autoplayHoverPause: true
-    })
-    $('.play').on('click', function() {
-      owl.trigger('play.owl.autoplay', [1000])
-    })
-    $('.stop').on('click', function() {
-      owl.trigger('stop.owl.autoplay')
-    })
-  </script>
-  <script>
-    var star = '.star',
-      selected = '.selected';
 
-    $(star).on('click', function() {
-      $(selected).each(function() {
-        $(this).removeClass('selected');
-      });
-      $(this).addClass('selected');
-      var star = $(this).data("star");
-      // alert(star);
-      var idRoom = $("[name='roomD']").val();
-      var idUser = $("[name='userId']").val();
-      // alert(idRoom);
-      // alert(idUser);
-      var _token = $('meta[name="csrf-token"]').attr('content');
-      $.ajax({
-        url: "{{ route('postStar') }}",
-        type: "POST",
-        data: {
-          '_token': _token,
-          'idRoom': idRoom,
-          'idUser': idUser,
-          'star': star,
-        },
-        success: function(response) {
-          console.log(response);
-        },
-      });
-    });
-  </script>
+  @include('page.javascript')
 </body>
 
 </html>

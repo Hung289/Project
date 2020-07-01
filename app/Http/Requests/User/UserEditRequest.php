@@ -25,7 +25,7 @@ class UserEditRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'avatar'=>'mimes:jpeg,png,gif,jpg',
+            'avatar'=>'mimes:png,jpeg,gif',
             'email'=>'required',
             'password'=>'required',
         ];

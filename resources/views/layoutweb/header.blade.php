@@ -19,11 +19,8 @@
           <nav class="main-menu">
             <ul>
               <li class="hasmenu">
-                <a href="{{route('indexWeb')}}" class="active">Home <i class="fas fa-chevron-down"></i></a>
-                <ul class="menunho">
-                  <li><a href="">Home1</a></li>
-                  <li><a href="">Home2</a></li>
-                </ul>
+                <a href="{{route('indexWeb')}}" class="active">Home </a>
+               
               </li>
               <li class="hasmenu">
                 <a href="{{route('roomList')}}">Room <i class="fas fa-chevron-down"></i></a>

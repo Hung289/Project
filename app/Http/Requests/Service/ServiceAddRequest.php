@@ -25,7 +25,7 @@ class ServiceAddRequest extends FormRequest
     {
         return [
             'name'=>'required|unique:services',
-            'image'=>'required|mimes:jpeg,jpg,png,gif',
+            'image'=>'required|mimes:png,jpeg,gif',
             'price'=>'required',
             'category_service_id'=>'required',
             'description'=>'required'

@@ -129,7 +129,7 @@
                         <h4 class="widget-title">Your Reservation</h4>
                         <form action="{{route('roomList')}}" method="GET">
                             <div class="input-wrap">
-                                <input type="text" placeholder="Location" id="location" name="boxSearchLocation">
+                                <input type="text" placeholder="Location" name="location" id="location" name="boxSearchLocation">
                                 <i class="fas fa-search"></i>
                             </div>
                             <div class="input-wrap">

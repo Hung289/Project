@@ -1,0 +1,7 @@
+#preview{
+    overflow: hidden;
+}
+#preview img{
+    margin-bottom: 20px;
+    width: 100%;
+}

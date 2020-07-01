@@ -25,7 +25,7 @@ class CategoryBlogAddRequest extends FormRequest
     {
         return [
             'name'=>'required|unique:category_blogs',
-            'image'=>'required|mimes:jpg,png,jpeg,gif'
+            'image'=>'required|mimes:png,jpeg,gif'
         ];
     }
     public function messages()

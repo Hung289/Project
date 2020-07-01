@@ -36,8 +36,8 @@ class RoomAddRequest extends FormRequest
             // 'description '=>'required|min:3|max:2555',
             'category_room_id'=>'required',
             'files'=>'required',
-            'files.*'=>'mimes:jpg,jpeg,png,bmp|max:20000'
-
+            'files.*'=>'mimes:png,jpeg,gif|max:20000',
+            'brand_id'=>'required',
         ];
     }
     public function messages()
@@ -57,7 +57,8 @@ class RoomAddRequest extends FormRequest
             'category_room_id.required'=>'Phải chọn danh mục phòng',
             'files.required'=>'Phải chọn ít nhất 1 ảnh',
             'files.*.mimes'=>'Ảnh nhập vào không đúng định dạng',
-            'files.*.max'=>'Ảnh nhập vào không đc lớn hơn 20MB'
+            'files.*.max'=>'Ảnh nhập vào không đc lớn hơn 20MB',
+            'brand_id.required'=>'Thương hiệu không được bỏ trống'
         ];
     }
 }

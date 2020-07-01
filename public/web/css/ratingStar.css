@@ -7,19 +7,19 @@
     text-align: left;
   }
   
-  .star {
+  .star,.star1,.star2,.star3 {
     position: relative;
     line-height: 60px;
     display: inline-block;
     transition: color 0.2s ease;
-    color: #ebebeb;
+    color: gray;
   }
   
-  .star:before {
+  .star:before ,.star1::before,.star2::before,.star3::before{
     content: '\2605';
     width: 60px;
     height: 60px;
-    font-size: 60px;
+    font-size: 20px;
   }
   
   .star:hover,
@@ -27,5 +27,26 @@
   .star:hover ~ .star,
   .star.selected ~ .star{
     transition: color 0.8s ease;
-    color: black;
+    color: #fea116;
+  }
+  .star1:hover,
+  .star1.selected,
+  .star1:hover ~ .star1,
+  .star1.selected ~ .star1{
+    transition: color 0.8s ease;
+    color: #fea116;
+  }
+  .star2:hover,
+  .star2.selected,
+  .star2:hover ~ .star2,
+  .star2.selected ~ .star2{
+    transition: color 0.8s ease;
+    color: #fea116;
+  }
+  .star3:hover,
+  .star3.selected,
+  .star3:hover ~ .star3,
+  .star3.selected ~ .star3{
+    transition: color 0.8s ease;
+    color: #fea116;
   }
