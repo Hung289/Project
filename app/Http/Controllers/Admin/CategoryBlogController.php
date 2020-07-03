@@ -93,8 +93,12 @@ class CategoryBlogController extends Controller
      */
     public function destroy(CategoryBlog $categoryBlog)
     {
-        $categoryBlog->delete();
-        return redirect()->route('categoryBlog.index')->with('success','Xóa thành công');
+        if($categoryBlog->delete()){
+            return response(['success'=>true]);
+            
+        }else{
+            return response(['success'=>false]);
+        }
     }
 
     public function search(Request $request){

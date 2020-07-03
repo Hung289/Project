@@ -120,23 +120,31 @@
                 </div>
 
                 <div style="float:right">
-                    {!! $rooms->links() !!}
+                    {!! $rooms->links()!!}
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="sidebar-wrap">
                     <div class="widget fillter-widget">
                         <h4 class="widget-title">Your Reservation</h4>
-                        <form action="{{route('roomList')}}" method="GET">
+                        <form action="{{route('getFilterRoom')}}" method="POST">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="input-wrap">
                                 <input type="text" placeholder="Location" name="location" id="location" name="boxSearchLocation">
                                 <i class="fas fa-search"></i>
                             </div>
                             <div class="input-wrap">
-                                <input type="date" placeholder="Arrive Date" name="searchFromDate">
+                                <input type="date" placeholder="Arrive Date" min="" name="searchFromDate">
+                                @error('searchFromDate')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                @enderror
                             </div>
                             <div class="input-wrap">
-                                <input type="date" placeholder="Depart Date" name="searchToDate" >
+                                <!--  echo date("Y-m-d", strtotime (date('Y-m-d')."+1 days")); -->
+                                <input type="date" placeholder="Depart Date" min="" name="searchToDate" >
+                                @error('searchToDate')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                @enderror
                             </div>
                             <div class="input-wrap">
                                 <select name="rooms" id="rooms">

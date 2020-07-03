@@ -30,7 +30,8 @@ class UserAddRequest extends FormRequest
             'password'=>'required | min:3 | max:32'
         ];
     }
-
+//taoj casi lafm password rlà
+// mjxem thoi, taojfile validate di
     public function messages()
     {
         return [

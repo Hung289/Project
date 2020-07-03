@@ -17,9 +17,9 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::all();
+        $brands = Brand::paginate(5);
         // dd($brands);
-        return view('admin.Brand.list',['brands'=>$brands]);
+        return view('admin.Brand.list', ['brands' => $brands]);
     }
 
     /**
@@ -38,14 +38,14 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Brand $brand,BrandAddRequest $request)
+    public function store(Brand $brand, BrandAddRequest $request)
     {
         // dd($brand);
         $brands = $brand->add();
-        if($brands){
-            return redirect()->route('brand.create')->with('success','Thêm mới danh mục thành công');
-        }else{
-            return redirect()->back()->with('errors','Thêm mới thất bại');
+        if ($brands) {
+            return redirect()->route('brand.create')->with('success', 'Thêm mới danh mục thành công');
+        } else {
+            return redirect()->back()->with('errors', 'Thêm mới thất bại');
         }
     }
 
@@ -69,7 +69,7 @@ class BrandController extends Controller
     public function edit(Brand $brand)
     {
         // dd($brand);
-        return view('admin.Brand.edit',['brand'=>$brand]);
+        return view('admin.Brand.edit', ['brand' => $brand]);
     }
 
     /**
@@ -82,8 +82,8 @@ class BrandController extends Controller
     public function update(BrandEditRequest $request, Brand $brand)
     {
         $brands = $brand->updateEdit();
-        if($brands){
-            return redirect()->route('brand.index')->with('success','Cập nhật thành công');
+        if ($brands) {
+            return redirect()->route('brand.index')->with('success', 'Cập nhật thành công');
         }
     }
 
@@ -95,7 +95,22 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        $brand->delete();
-        return redirect()->route('brand.index')->with('success','Xóa thành công');
+        if($brand->delete()){
+            return response(['success'=>true]);
+        }else{
+            return response(['success'=>false]);
+        }
+        
+    }
+
+    public function search(Request $request)
+    {
+        // $blogs = Blog::where('name', 'like', '%' . $request->key . '%')
+        //     ->orWhere('title', 'like', '%' . $request->key . '%')
+        //     ->paginate(5);
+        // return view('admin.Blog.list', ['blogs' => $blogs]);
+        $brands = Brand::where('name','like', '%' . $request->key . '%')
+                ->paginate(5);
+        return view('admin.Brand.list',['brands'=>$brands]);
     }
 }

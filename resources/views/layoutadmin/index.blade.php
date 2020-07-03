@@ -29,7 +29,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- Toast -->
-  
+
   <link rel="stylesheet" href="public/toastr/toastr.min.css">
   <link rel="stylesheet" href="public/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- Css thêm vào -->
@@ -104,9 +104,9 @@
   <script src="public/dist/js/pages/dashboard.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="public/dist/js/demo.js"></script>
-  
 
-  
+
+
   <script>
     $(function() {
       //     $('.content .custom-file-input').change(function (e) { 
@@ -179,15 +179,47 @@
   <script src="public/toastr/toastr.min.js"></script>
   <script src="public/sweetalert/sweetalert2.all.min.js"></script>
   <script type="text/javascript">
-
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000
-        });
-        
-    </script>
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+  </script>
+  <script>
+    $(function() {
+      $('.nutxoa').on('click', function() {
+        $url = $(this).attr('url');
+        Swal.fire({
+          title: 'Bạn có chắc không?',
+          text: "Bạn sẽ không thể hoàn lại thao tác này!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.value) {
+            $.ajax({
+              type:"POST",
+              url:$url,
+              data:{
+                _method:'DELETE',
+                _token:'<?php echo csrf_token();?>'
+              },
+              success:function(res){
+                if(res.success){
+                  location.reload();
+                }else{
+                  alert(res.error);
+                }
+              }
+            });
+          }
+        })
+      })
+    })
+  </script>
 </body>
 
 </html>

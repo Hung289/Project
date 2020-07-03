@@ -147,4 +147,40 @@ class Room extends Model
         // dd($query);
         return $query;
     }
+
+    public function filteRoom($params)
+    {
+        // biết hàm này ko//biết thế éo nào đc vc
+        // cái này nó phân tích cai mảng params ra 
+        // ví dụ// $params = [
+        //     'location' =>$request->location,
+        //     'from_date' => $request->searchFromDate,
+        //     'to_date' => $request->searchToDate,
+        // ];
+        // thằng params nó là như thế nó se phân tích ra cho biển $loccation $from_datte $to_date
+        // cho nên có dữ liệu gì chỉ cần để trong thằng params =))
+        //vc xong rồi à hiểu luồng ko ?//hiểu thế éo nào đc vl //giờ nhá //để đjc lại là hiêu
+        // đm code sướng vl, đam mê cmnr =))//vl
+        //xong chưa để dọc 
+        extract($params);
+        // laravel đéo nối được query//vl//
+        // đéo nối được thì viết queryy hơi nhiều rồi phải if liên tục code lại đéo dry
+        // được này =))
+
+        $query = $this;
+
+        // viết này sau dễ phát triển nếu có search thì 
+        // ko sowj looix =)
+        // code super dry =))? đang tẩu hỏa đm//zô 
+        if(!empty($search)){
+            $query = $query->where('name', 'like', $search);
+        }
+
+        if(!empty($listRoomUsed)){
+            $query = $query->whereNotIn('id', $listRoomUsed);
+        }
+
+        return $query->get();
+        // $rom = Room::whereNotIn('id', $cc)->get();
+    }
 }

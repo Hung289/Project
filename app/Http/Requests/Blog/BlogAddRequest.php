@@ -23,12 +23,15 @@ class BlogAddRequest extends FormRequest
      */
     public function rules()
     {
+        // day la rules nay, gio custom rieng cho 1 rules =))//la sao
+        // nhu kieu regex ay,viet nhu nay a
         return [
             'name'=>'required | unique:blogs',
             'content'=>'required',
             'title'=>'required',
             'category_blog_id'=>'required',
-            'user_id'=>'required'
+            'user_id'=>'required',
+            'files'=>'required '
         ];
     }
 
@@ -40,7 +43,8 @@ class BlogAddRequest extends FormRequest
             'content.required'=>'Content không được bỏ trống',
             'title.required'=>'Title không được bỏ trống',
             'category_blog_id.required'=>'Danh muc của blog không được bỏ trống',
-            'user_id.required'=>'Người đăng bài không được bỏ trống'
+            'user_id.required'=>'Người đăng bài không được bỏ trống',
+            'files.required'=>'Ảnh không được bỏ trống'
         ];        
     }
 }

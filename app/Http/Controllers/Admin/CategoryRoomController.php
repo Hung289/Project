@@ -92,8 +92,12 @@ class CategoryRoomController extends Controller
      */
     public function destroy(CategoryRoom $categoryRoom)
     {
-        $categoryRoom->delete();
-        return redirect()->route('categoryRoom.index')->with('success','Xóa thành công danh mục');
+        if($categoryRoom->delete()){
+            return response(['success'=>true]);
+        }else{
+            return response(['success'=>false]);
+        }
+        
     }
 
     public function search(Request $request){

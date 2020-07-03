@@ -127,7 +127,7 @@ Route::get('getDate','Web\webPageController@get_total_price')->name('getDate');
 
 
 //Route search room
-Route::get('search','Web\webPageController@getFilterRoom')->name('getFilterRoom');
+Route::post('search/{location?}/{searchFromDate?}/{searchToDate?}','Web\webPageController@getFilterRoom')->name('getFilterRoom');
 
 // Route rating star
 Route::post('postStar','Web\webPageController@voteStar')->name('postStar');
@@ -176,6 +176,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin' ,'middleware' => 'admi
     Route::get('searchUser','UserController@search')->name('searchUser');
     Route::get('searchCateService','CategoryServiceController@search')->name('searchCateService');
     Route::get('searchService','ServiceController@search')->name('searchService');
+    Route::get('searchBrand','BrandController@search')->name('searchBrand');
+    Route::get('searchBanner','BannerController@search')->name('searchBanner');
 });
 
 // Login trang admin

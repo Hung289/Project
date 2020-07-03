@@ -92,8 +92,11 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        $service->delete();
-        return redirect()->route('service.index')->with('success','Xóa thành công');
+        if($service->delete()){
+            return response(['success'=>true]);
+        }else{
+            return response(['success'=>false]);
+        }
     }
 
     public function search(Request $request){

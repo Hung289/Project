@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use Illuminate\Http\Request;
 use App\Models\CategoryService;
 use App\Models\User;
@@ -20,6 +21,7 @@ use App\Models\CommentBlog;
 use App\Models\RoomStar;
 use App\Models\Brand;
 use Session;
+use App\Http\Requests\Date\DateRequest;
 
 class webPageController extends Controller
 {
@@ -57,8 +59,11 @@ class webPageController extends Controller
     {
         $Services = CategoryService::paginate(3);
         $rooms = Room::paginate(6);
-
-        return view('page.home', ['Services' => $Services, 'rooms' => $rooms]);
+        $banners = Banner::all();
+        $commentBlogs = CommentBlog::all();
+        $blogNew = Blog::where('new',0)->first();
+        $blogs = Blog::limit(3)->get();
+        return view('page.home', ['Services' => $Services, 'rooms' => $rooms,'banners'=>$banners,'commentBlogs'=>$commentBlogs,'blogNew'=>$blogNew,'blogs'=>$blogs]);
     }
 
     public function getAbout()
@@ -245,30 +250,106 @@ class webPageController extends Controller
         return view('page.room_list_master', ['rooms' => $rooms]);
     }
 
-    public function getFilterRoom(Request $request)
+    public function getFilterRoom(Request $request,OrderDetail $orderDetail,Room $room)
     {
-        $from = $request->searchFromDate;
-        $to = $request->searchToDate;
-        $cc  = OrderDetail::whereDate('from_date', '>=', $from)->whereDate('to_date', '<=', $to)->get();
-        dd($cc);
+        // đéo ai làm như này. Biết chuyển rồi yên tâm ok
+        // $params = [
+        //     'location' =>$request->location,
+        //     'from_date' => $request->searchFromDate,
+        //     'to_date' => $request->searchToDate,
+        // ];
+
+        // cái params này hãy để 1 ít tham số mặc định như là search
+        // cái sreach thì sẽ là
+        // $params['search'] = $request->search ? $request->location : '';
+        // okk
+        //ok
+        // 1 số cái nữa là limit hay price .... 
+        // còn lại là phải if else hết nếu ko thì nó sẽ tạo biển trong model xong lại mất công query vỡ vẫn//từ từ đọc đã//tí ko hiểu hỏi tieps //vl
+        // ok nhows =)), leader baor doc xong cai nay to đầu ngay =))//vc
+
+        // dd($request);
+        // cais nayf phair lamf nhuư nay 
+        // cái query này dùng nhiều này =))
+        // vẫn chưa tháy tác dụng rõ rệt lắm. tại chưa thấy nó tái lại nhiều
+        // sau gọi ajax gọi đến 1 controoler cái controler lấy ra list data, cái đấy 1 hàm
+        // có thế dùng được từ controller user, product, ooder mọi databse mọi bảng =))
+        //vẫn chưa thấy rõ vl
+        // teamview qua đây =))
+        
+
+        if(!empty($request->searchFromDate) && !empty($request->searchToDate )){
+            // cái params date này ko cần cho vào room đâu, gọi vào thằng order detail là được
+            // nên là ko cần cho vào params
+            $from_date = $request->searchFromDate;
+            $to_date = $request->searchToDate;
+            // cái $listRoomUsed nayf ms cho vaof parrams //SAO KO ĐẶT TÊN GIỐNG TÊN BIẾN LÚC ĐỔ RA
+            // cais orrder detail nayf cungx vieets hamf vaof order detail
+            $listRoomUsed  = $orderDetail->checkRoomForDate($from_date, $to_date);
+            // dd($listRoomUsed);
+            $params['listRoomUsed'] = $listRoomUsed;
+        }
+
+        // $from_date = $request->searchFromDate;
+        // $to_date = $request->searchToDate;
+
+        // lamf sao de dd ra query sql nhi
+        //CHƯA LÀM THẾ BAO GIỜ vl
+        //not between chứ
+        // TAI no or giua 2 ngay do ddmn
+        // phai check lon hon hoac nho hon thoi
+        //KO jdgfjgsd
+        // maf thioi an com dm //VL
+
+
+        // $ss = OrderDetail::where('from_date', [$from_date, $to_date])
+        //     ->whereotBetween('to_date', [$from_date, $to_date])
+        //     ->get('room_id');
+
+        // dd($params['listRoomUsed']);
+
+        // dd($params);
+        $rooms = $room->filteRoom($params);
+
+        // dd($rooms);
+        
+        // test di//vc ddungs
+        //  kaka ka k=))vkl cái câu truy vấn  =))
+        return view('page.room_list', ['rooms' => $rooms]);
+        // GỌI HÀM ĐẤY À ừ
+        // lắm trò vl
+        // ghê ko
+        // ? 2 controoler khasc nhau ĐẤY - cais list cuar controler nay dau
+        // ĐÂY - nhinf  chan vl =))
+
+        
+        // dd($params);
+        // đm rối //vl bảo rối vl màvlvl
+        // nếu mà so sảnh thế này thì phairphair so sảnh ngày đến nhỏ dơn ngày đi và lớn hơn ngày đến
+        // lại alaau bó mẹ
+        // $reservations = OrderDetail::where('from_date', '>=',$params['from_date'])
+        // ->where('to_date', '<=', $params['to_date'])
+        // ->get();
+
+        // dd($reservations);
+        // if ($params['from_date'] && $params['to_date']) {
+        //     $xxx = 'SELECT * FROM order_details WHERE from_date NOT BETWEEN '.$params['from_date'].' AND '.$params['to_date'];
+        // };
+        // dd($xxx);
+        // lag vl
+        // thế này ththooi
+        // $cc  = OrderDetail::whereBetween('from_date', ['2020-06-20', '2020-06-28'])
+        //                     ->whereBetween('to_date', ['2020-06-20', '2020-06-28'])
+        //                     ->get('room_id');
+
+        // $rom = Room::get(); //array 13
+        // $rom = Room::whereNotIn('id', $cc)->get(); //12 ok daady =)) //cos ver ddungs
+        // // tiep nho
+        // // xong rooif thaay
+        // dd($rom);
     }
 
-    // public function postReviewRoom(Request $request, $id)
-    // {       
-    //     $room = Room::find($id);       
-    //     if (Auth::check()) {
-    //         $reviewRoom = ReviewRoom::create([
-    //             'user_id'=>Auth::user()->id,
-    //             'room_id'=>$room->id,
-    //             'content'=>$request->content
-    //         ]);
-    //         return redirect()->back()->with('success','Đăng thành công bình luận');
-    //     } else {
-    //         session::flash('error_login', 'Bạn Cần Phải Đăng Nhập Để Thực Hiện Chức Năng Này');
-    //         return back();
-    //     }
-    //     return back();
-    // }
+    
 
     public function postReviewRoom(Request $request,ReviewRoom $reviewRoom, $id)
     {

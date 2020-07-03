@@ -73,16 +73,12 @@
                   @else
                   <td>Hiện</td>
                   @endif
-                  <form action="{{route('categoryService.destroy',['categoryService'=>$CS->id])}}" method="POST">
-                    @csrf @method('DELETE')
-                    <td>
-                      <a href="{{route('categoryService.edit',['categoryService'=>$CS->id])}}" class="btn btn-primary">sửa</a>
-                    </td>
-                    <td>
-                      <button class="btn btn-danger">Xóa</button>
-                    </td>
-                  </form>
-
+                  <td>
+                    <a href="{{route('categoryService.edit',['categoryService'=>$CS->id])}}" class="btn btn-primary">sửa</a>
+                  </td>
+                  <td>
+                    <button type="botton" url="{{route('categoryService.destroy',['categoryService'=>$CS->id])}}" class="btn btn-danger nutxoa">Xóa</button>
+                  </td>
                 </tr>
                 @endforeach
               </tbody>

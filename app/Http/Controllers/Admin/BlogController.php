@@ -70,6 +70,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
+        // dd($blog);
         $admins = User::all();
         $CategoryBlog = CategoryBlog::all();
         return view('admin.Blog.edit',['CategoryBlog'=>$CategoryBlog,'blog'=>$blog,'admins'=>$admins]);
@@ -96,8 +97,13 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        $blog->delete();
-        return redirect()->route('blog.index')->with('success','Xóa thành công');
+        if($blog->delete()){
+            return response(['success'=>true]);
+        }else{
+            return response(['success'=>false]);
+        }
+        // $blog->delete();
+        // return redirect()->route('blog.index')->with('success','Xóa thành công');
     }
 
     public function search(Request $request){

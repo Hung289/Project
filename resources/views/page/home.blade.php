@@ -18,7 +18,7 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active" data-interval="10000">
+      <!-- <div class="carousel-item active" data-interval="10000">
         <img src="public/web/images/img/bg/hero-bg-1.jpg" class="d-block w-100" alt="..." />
         <div class="carousel-caption d-none d-md-block">
           <h1 class="chutoslide wow fadeInDown">
@@ -45,21 +45,21 @@
             him some here ways.
           </p>
         </div>
-      </div>
-      <div class="carousel-item">
-        <img src="public/web/images/img/bg/hero-bg-3.jpg" class="d-block w-100" alt="..." />
+      </div> -->
+      @foreach($banners as $banner)
+      <div class="carousel-item {{ ($loop->index+1 == 1)?'active':'' }}">
+        <img src="public/uploads/images/Banner/{{$banner->banner}}" class="d-block w-100" alt="..." />
         <div class="carousel-caption d-none d-md-block">
           <h1>
-            Luxury Hotel <br />& Room Service <br />
-            Agency
+            {{$banner->name}}
           </h1>
           <p>
-            Desires to obtain pain of itself, because it is pain, but
-            because occacu stances occur in which toil and pain can procure
-            him some here ways.
+            {{$banner->content}}
           </p>
         </div>
       </div>
+      @endforeach
+
     </div>
     <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -339,6 +339,7 @@
       <h1>Our Satisfaction People Say <br> About Our Services</h1>
     </div>
     <div class="owl-carousel owl-theme" id="hai">
+      @foreach($commentBlogs as $cB)
       <div class="item">
         <div class="row">
           <div class="col-md-6">
@@ -347,15 +348,15 @@
           <div class="col-md-5 offset-md-1">
             <div class="phanhoi">
               <div class="phanhoiavaname">
-                <div class="client_avar">
-                  <img src="public/web/images/img/man-image/man-small-01.png" alt="">
+                <div class="client_avar" style="border-radius:50%;overflow:hidden">
+                  <img src="public/uploads/images/user/{{$cB->user->avatar}}" alt="">
                 </div>
                 <div class="client_name">
-                  <h3>David K. Vinson</h3>
-                  <span>Business Manager</span>
+                  <h3>{{$cB->user->name}}</h3>
+                  <span>{{$cB->user->lever}}</span>
                 </div>
               </div>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet id quisquam expedita vel harum mollitia obcaecati dicta molestias et. Enim iusto fuga adipisci iste minima cumque magni provident ea similique.</p>
+              <p>{{$cB->comment}}</p>
               <div class="dauphay">
                 <img src="public/web/images/images/dauphay_03.png" alt="">
               </div>
@@ -363,54 +364,7 @@
           </div>
         </div>
       </div>
-      <div class="item">
-        <div class="row">
-          <div class="col-md-6">
-            <img src="public/web/images/img/man-image/01.jpg" alt="">
-          </div>
-          <div class="col-md-5 offset-md-1">
-            <div class="phanhoi">
-              <div class="phanhoiavaname">
-                <div class="client_avar">
-                  <img src="public/web/images/img/man-image/man-small-01.png" alt="">
-                </div>
-                <div class="client_name">
-                  <h3>David K. Vinson</h3>
-                  <span>Business Manager</span>
-                </div>
-              </div>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet id quisquam expedita vel harum mollitia obcaecati dicta molestias et. Enim iusto fuga adipisci iste minima cumque magni provident ea similique.</p>
-              <div class="dauphay">
-                <img src="public/web/images/images/dauphay_03.png" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="row">
-          <div class="col-md-6">
-            <img src="public/web/images/img/man-image/01.jpg" alt="">
-          </div>
-          <div class="col-md-5 offset-md-1">
-            <div class="phanhoi">
-              <div class="phanhoiavaname">
-                <div class="client_avar">
-                  <img src="public/web/images/img/man-image/man-small-01.png" alt="">
-                </div>
-                <div class="client_name">
-                  <h3>David K. Vinson</h3>
-                  <span>Business Manager</span>
-                </div>
-              </div>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet id quisquam expedita vel harum mollitia obcaecati dicta molestias et. Enim iusto fuga adipisci iste minima cumque magni provident ea similique.</p>
-              <div class="dauphay">
-                <img src="public/web/images/images/dauphay_03.png" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      @endforeach
     </div>
   </div>
 
@@ -427,84 +381,38 @@
       Get More Tips
     </div>
     <div class="row">
-      <div class="col-md-3">
+      @foreach($blogs as $blog)
+      <div class="col-md-3 {{ ($loop->index+1 == 2)?'col-md-6':'' }} ">
         <div class="tomotkhoi wow wow fadeIn animated" data-wow-duration="1500ms" data-wow-delay="400ms" style="
                 visibility: visible;
                 animation-duration: 1500ms;
                 animation-delay: 400ms;
                 animation-name: fadeIn;
               ">
-          <div class="khoianh">
-            <img src="public/web/images/img/recent-post/03.jpg" alt="" />
+          <div class="khoianh" style="height:250px">
+            @foreach($blogImages as $bI)
+            <?php $check = ($bI->blog_id == $blog->id) ? "$bI->image" : "" ?>
+            @if($check!="")
+            <img src="public/uploads/images/Blog/{{$check}}" alt="" />
+            @break
+            @endif
+            @endforeach
           </div>
-          <div class="khoiduoianh">
+          <div class="khoiduoianh " style="height:325px">
             <div class="row1">
               <img src="public/web/images/images/lich_03.png" alt="" />
-              20 Jan 2020
+              {{$blog->created_at}}
             </div>
             <div class="row2">
-              Css Grid Chanllenge Build A Template, Win sorne Smashing
-              Prizes
+              {{$blog->name}}
             </div>
             <div class="row3">
-              <a href="">READ MORE <i class="fas fa-arrow-right"></i></a>
+              <a href="{{route('blogDetail',['id'=>$blog->id])}}">READ MORE <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="tomotkhoi wow fadeInUp animated" data-wow-duration="1500ms" data-wow-delay="600ms" style="
-                visibility: visible;
-                animation-duration: 1500ms;
-                animation-delay: 600ms;
-                animation-name: fadeInUp;
-              ">
-          <div class="khoianh">
-            <img src="public/web/images/img/recent-post/04.jpg" alt="" />
-          </div>
-          <div class="khoiduoianh">
-            <div class="row1">
-              <img src="public/web/images/images/lich_03.png" alt="" />
-              20 Jan 2020
-            </div>
-            <div class="row2">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi
-              autem iste similique repellendus quo et voluptatibus a, minima
-              ea? Ipsam, quidem fugiat commodi aliquid maxime eligendi sint
-              laboriosam enim perferendis totam, harum reiciendis quibusdam
-              dolorum placeat illum esse alias.
-            </div>
-            <div class="row3">
-              <a href="">READ MORE <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 wow fadeIn animated" data-wow-duration="1500ms" data-wow-delay="800ms" style="
-              visibility: visible;
-              animation-duration: 1500ms;
-              animation-delay: 800ms;
-              animation-name: fadeIn;
-            ">
-        <div class="tomotkhoi">
-          <div class="khoianh">
-            <img src="public/web/images/img/recent-post/05.jpg" alt="" />
-          </div>
-          <div class="khoiduoianh">
-            <div class="row1">
-              <img src="public/web/images/images/lich_03.png" alt="" />
-              20 Jan 2020
-            </div>
-            <div class="row2">
-              Css Grid Chanllenge Build A Template, Win sorne Smashing
-              Prizes
-            </div>
-            <div class="row3">
-              <a href="">READ MORE <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
+      @endforeach
     </div>
   </div>
 </section>

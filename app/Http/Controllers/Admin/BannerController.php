@@ -16,7 +16,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        $banners = Banner::paginate(5);
+        return view('admin.Banner.list',['banners'=>$banners]);
     }
 
     /**
@@ -65,7 +66,8 @@ class BannerController extends Controller
      */
     public function edit(Banner $banner)
     {
-        //
+        // dd($banner->content);
+        return view('admin.Banner.edit',['banner'=>$banner]);
     }
 
     /**
@@ -77,7 +79,9 @@ class BannerController extends Controller
      */
     public function update(Request $request, Banner $banner)
     {
-        //
+        $model = $banner->updateEdit();
+        // dd($model);
+        return redirect()->route('banner.index')->with('success','Cập nhật thành công banner');
     }
 
     /**
@@ -88,6 +92,19 @@ class BannerController extends Controller
      */
     public function destroy(Banner $banner)
     {
-        //
+        // dd($banner);
+        if($banner->delete()){
+            return response(['success'=>true]);
+        }else{
+            return response(['success'=>false]);
+        }
+        
+        
+    }
+
+    public function search(Request $request)
+    {
+        $banners = Banner::where('name','like','%' . $request->key . '%')->paginate(5);
+        return view('admin.Banner.list',['banners'=>$banners]);
     }
 }

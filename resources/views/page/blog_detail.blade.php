@@ -135,6 +135,7 @@
                 <div class="comment-area">
                     <h2 class="comment-title">Client’s Comments</h2>
                     @foreach($commentBlog as $cB)
+                    @if($cB->blog_id == $blog->id)
                     <ul class="comment-list">
                         <li>
                             <div class="comment-autor">
@@ -169,6 +170,7 @@
                             </form>
                         </li>
                     </ul>
+                    @endif
                     @endforeach
                 </div>
                 <div class="comment-form">

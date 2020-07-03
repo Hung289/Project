@@ -95,7 +95,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary" id="nuttao">Tạo dịch vụ</button>
+                                <button type="submit" class="btn btn-primary" id="nuttao">Tạo banner</button>
                             </div>
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                         </form>

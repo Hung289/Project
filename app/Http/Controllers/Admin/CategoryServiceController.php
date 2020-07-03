@@ -93,8 +93,12 @@ class CategoryServiceController extends Controller
     public function destroy(CategoryService $categoryService)
     {
         
-        $categoryService->delete();
-        return redirect()->route('categoryService.index')->with('success','Xóa thành công');
+        if($categoryService->delete()){
+            return response(['success'=>true]);
+        }else{
+            return response(['success'=>false]);
+        }
+        
     }
 
 

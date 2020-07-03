@@ -69,6 +69,8 @@ class CartRoomController extends Controller
             $songay =  ($to->day)-($from->day);
             // dd($songay);
             // return $songay;
+        }else{
+            $songay = null;
         }
 
         

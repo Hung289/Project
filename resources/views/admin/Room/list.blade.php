@@ -87,15 +87,14 @@
                                     <td>Đã bị thuê</td>
                                     @endif
                                     <td>{{$room->user->name}}</td>
-                                    <form action="{{route('room.destroy',['room'=>$room->id])}}" method="POST">
-                                        @csrf @method('DELETE')
-                                        <td>
-                                            <a href="{{route('room.edit',['room'=>$room->id])}}" class="btn btn-primary">Sửa</a>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-danger">Xóa</button>
-                                        </td>
-                                    </form>
+
+                                    <td>
+                                        <a href="{{route('room.edit',['room'=>$room->id])}}" class="btn btn-primary">Sửa</a>
+                                    </td>
+                                    <td>
+                                        <button type="buton" url="{{route('room.destroy',['room'=>$room->id])}}" class="btn btn-danger nutxoa">Xóa</button>
+                                    </td>
+
                                 </tr>
                                 @endforeach
                             </tbody>

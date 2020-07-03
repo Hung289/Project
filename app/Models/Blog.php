@@ -8,7 +8,7 @@ use App\Models\BlogImage;
 class Blog extends Model
 {
     protected $fillable = [
-        'name','content','title','status','user_id','category_blog_id'
+        'name','content','title','status','user_id','category_blog_id','new'
     ];
 
     public function blogImage(){
@@ -69,7 +69,8 @@ class Blog extends Model
                 'title'=>request()->title,
                 'status'=>request()->status,
                 'user_id'=>request()->user_id,
-                'category_blog_id'=>request()->category_blog_id
+                'category_blog_id'=>request()->category_blog_id,
+                'new'=>request()->new
             ]);
             return $model;
         }else{
@@ -79,7 +80,8 @@ class Blog extends Model
                 'title'=>request()->title,
                 'status'=>request()->status,
                 'user_id'=>request()->user_id,
-                'category_blog_id'=>request()->category_blog_id
+                'category_blog_id'=>request()->category_blog_id,
+                'new'=>request()->new
             ]);
             return $model;
         }

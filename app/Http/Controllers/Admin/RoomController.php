@@ -107,8 +107,11 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        $room->delete();
-        return redirect()->route('room.index')->with('success','Xóa thành công');
+        if($room->delete()){
+            return response(['success'=>true]);
+        }else{
+            return response(['success'=>false]);
+        }
     }
 
     public function search(Request $request){

@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Room;
 class OrderDetail extends Model
 {
     protected $fillable = [
@@ -25,28 +25,54 @@ class OrderDetail extends Model
         return $this->belongsTo('App\Models\Service','service_id','id');
     }
 
-    public function myQuery($params)
+
+    public function checkRoomForDate($from_date, $to_date)
     {
-        // vao day la coi nhu ham filter trong nay
-        // tạo 1 cai array params[] chua select
-//dm mới à . nhìn đi.day laf mang cac cai co the search a, uwf
-        // mấy cài này làm sao mà truyền vào đây thì cụ lo nhớ =))
-        // j đấy//truy vân đâu vl
-        // từ từ
-        // cai  nay cở cty tôi là nó viết ajaxx gứi đến controller, controller khới tạo params sau đó gọi đến hàm ở model
-        $params[] = [
-            'search' => request()->location,
-            'from_date' => request()->searchFromDate,
-            'to_date' => '..',
-            'type_room' => 'chich',
-            'price' => '',
-        ];
+        // model goij query kieeur gif nhir :v$this nay u dung roi oke 
+        // owr day ko on 
+        //loi roi
+        // query sai, 2 cot 
+        // 24/6 - 27-6
+        // 25/6 - 1/7 
+        //toi afm tiep
+        //het gio cmnr vl =))oke 
+        // de suy nghi
+        // ngồi ăn cơm suy nghĩ lớn hơn bé hơn cũng đéo được =))
+        //vcc, giờ chỉ cần check no owrnam trong cai ngay den ngay di
+        //ông thầy bảo datebetween
+        // cai dau la no ow giua =))//vl//eos ddc a
+        // 
+        // dd(date_create_from_format('F d, Y', 'Apr 30, 2010');$from_date);
+        // duoc nay =))//sao ruyeefn vaof kia ddc
+        // e he he =)) kkkkkk =)))//
+        //phải biết xài google =))//vl sang địt vã mồ hôi đít
+        //sao phải cần 2 cái return $this->whereBetween('from_date', [$from_date, $to_date])
+          //  ->orwhereBetween('to_date', [$from_date, $to_date])
+        //   thì phai so sanh 2 ngay nhạp vao chu, 1 ngay nhap vao thi da de//đấy hôm nọ bảo
+        //cái này 2 ngày rồi//
+        //validate cái form lịch mới vc//
 
-        // đây sẽ là query
-
-        if ($params['from_date'] && $params['to_date']) {
-            // thif query den thang order_detail
-            $xxx = 'SELECT * FROM order_details WHERE from_date NOT BETWEEN '.$params['from_date'].' AND '.$params['to_date']
-        }
+        // cái đấy là ko được chọn ngày sau ngày hiện tại =)) , ngày đến vs lớn hơn ngày đi =))/
+        //biết làm ko
+        //làm luôn
+        // dễ vl =))
+        //vl gáy ti thôi =)) để xem đã =))
+        // xem file validete nào//cái lịch của html mà
+        // validate tren server chứ//bấm vào đấy
+        //mấy ngày trước hôm nay bị tối đi ko bấm vào đc.Đây vẫn bấm đc hết
+        // cái nào.cái chọn thời gian.để demo cho
+        // file html ?
+        return $this->whereBetween('from_date', [$from_date, $to_date])
+            ->orwhereBetween('to_date', [$from_date, $to_date])
+            ->orwhere(function ($query) use ($from_date, $to_date){
+                return $query->where('from_date', '<=', $from_date)
+                     ->where('to_date', '>=',  $to_date);
+            })
+            ->get('room_id');
+       
     }
+
+    
+
+    
 }

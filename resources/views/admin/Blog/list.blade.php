@@ -38,16 +38,16 @@
                     <div class="card-header">
                         <h3 class="card-title">Danh Sách blog</h3>
 
-                            <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('searchBlog')}}">
-                                <div class="input-group input-group-sm">
-                                    <input class="form-control form-control-navbar" type="text" placeholder="Tìm Kiếm" aria-label="Search" name="key">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-navbar" type="submit" style="background-color: black;">
-                                            <i class="fas fa-search" style="background-color: black;color: #FFF;"></i>
-                                        </button>
-                                    </div>
+                        <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('searchBlog')}}">
+                            <div class="input-group input-group-sm">
+                                <input class="form-control form-control-navbar" type="text" placeholder="Tìm Kiếm" aria-label="Search" name="key">
+                                <div class="input-group-append">
+                                    <button class="btn btn-navbar" type="submit" style="background-color: black;">
+                                        <i class="fas fa-search" style="background-color: black;color: #FFF;"></i>
+                                    </button>
                                 </div>
-                            </form>
+                            </div>
+                        </form>
 
                     </div>
                     <!-- /.card-header -->
@@ -61,6 +61,7 @@
                                     <th>Tên blog</th>
                                     <th>title</th>
                                     <th>trạng thái</th>
+                                    <th>Trạng thái mới/cũ</th>
                                     <th>Người đăng blog</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -77,17 +78,14 @@
                                     @else
                                     <td>Ẩn</td>
                                     @endif
+                                    <td>{{($blog->new == 0)?'Mới':'Cũ'}}</td>
                                     <td>{{$blog->user->name}}</td>
-                                    <form action="{{route('blog.destroy',['blog'=>$blog->id])}}" method="POST">
-                                        @csrf @method('DELETE')
-                                        <td>
-                                            <a href="{{route('blog.edit',['blog'=>$blog->id])}}" class="btn btn-primary">Sửa</a>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-danger">Xóa</button>
-                                        </td>
-                                    </form>
-
+                                    <td>
+                                        <a href="{{route('blog.edit',['blog'=>$blog->id])}}" class="btn btn-primary">Sửa</a>
+                                    </td>
+                                    <td>
+                                        <button type="button" url="{{route('blog.destroy',['blog'=>$blog->id])}}" class="btn btn-danger nutxoa">Xóa</button>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -109,5 +107,6 @@
     </section>
     <!-- /.content -->
 </div>
+
 
 @stop

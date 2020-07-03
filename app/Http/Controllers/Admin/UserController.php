@@ -92,8 +92,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
-        return redirect()->route('user.index')->with('success','Xóa thành công');
+        if($user->delete()){
+            return response(['success'=>true]);
+        }else{
+            return response(['success'=>false]);
+        }
     }
 
     public function search(Request $request){

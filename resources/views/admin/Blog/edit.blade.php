@@ -75,6 +75,7 @@
                                     <small class="error help-block" style="color:red">{{$message}}</small>
                                     @enderror
                                 </div>
+                                
                                 <div class="form-group">
                                     <label for="">title</label>
                                     <textarea name="title" id="content" cols="30" rows="10">{{$blog->title}}</textarea>
@@ -120,6 +121,23 @@
                                             <input class="form-check-input" type="radio" name="status" id="gridRadios2" value="1" @if($blog->status == 1) checked @endif>
                                             <label class="form-check-label" for="gridRadios2">
                                                 Ẩn
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Trạng thái(Mới/cũ)</label>
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="new" id="gridRadios3" value="0" @if($blog->new == 0) checked @endif>
+                                            <label class="form-check-label" for="gridRadios3">
+                                                Mới
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="new" id="gridRadios4" value="1" @if($blog->new == 1) checked @endif>
+                                            <label class="form-check-label" for="gridRadios4">
+                                                Cũ
                                             </label>
                                         </div>
                                     </div>

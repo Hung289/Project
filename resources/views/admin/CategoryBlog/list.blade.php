@@ -73,15 +73,12 @@
                   @else
                   <td>Hiện</td>
                   @endif
-                  <form action="{{route('categoryBlog.destroy',['categoryBlog'=>$CateB->id])}}" method="POST">
-                    @csrf @method('DELETE')
-                    <td>
-                      <a href="{{route('categoryBlog.edit',['categoryBlog'=>$CateB->id])}}" class="btn btn-primary">Sửa</a>
-                    </td>
-                    <td>
-                      <button class="btn btn-danger">Xóa</button>
-                    </td>
-                  </form>
+                  <td>
+                    <a href="{{route('categoryBlog.edit',['categoryBlog'=>$CateB->id])}}" class="btn btn-primary">Sửa</a>
+                  </td>
+                  <td>
+                    <button type="button" url="{{route('categoryBlog.destroy',['categoryBlog'=>$CateB->id])}}" class="btn btn-danger nutxoa">Xóa</button>
+                  </td>
                 </tr>
                 @endforeach()
               </tbody>

@@ -39,15 +39,11 @@
                                 @foreach($roomImages as $rI)
                                 <?php $check = ($rI->room_id == $room->id) ? "$rI->image" : "" ?>
                                 @if(!$check=="")
-                                <div class="carousel-item ">
+                                <div class="carousel-item {{ ($loop->index+1 == 1)?'active':'' }}">
                                     <img src="public/uploads/images/rooms/{{$check}}" class="d-block w-100" alt="...">
                                 </div>
                                 @endif
                                 @endforeach
-                                <div class="carousel-item active">
-                                    <img src="public/uploads/images/rooms/{{$rImage->image}}" class="d-block w-100" alt="...">
-                                </div>
-
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

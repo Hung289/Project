@@ -19,6 +19,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Auth;
 use Session;
+use App\Models\Brand;
 
 class CheckOutController extends Controller
 {
@@ -45,6 +46,9 @@ class CheckOutController extends Controller
 
         $blogImages = BlogImage::all();
         view()->share('blogImages', $blogImages);
+
+        $brands = Brand::all();
+        view()->share('brands',$brands);
     }
 
     public function getCheckOut()

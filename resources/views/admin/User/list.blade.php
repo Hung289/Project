@@ -82,15 +82,13 @@
                                     @if($user->level==2)
                                     <td>Thường dân</td>
                                     @endif
-                                    <form action="{{route('user.destroy',['user'=>$user->id])}}" method="POST">
-                                        @csrf @method('DELETE')
-                                        <td>
-                                            <a href="{{route('user.edit',['user'=>$user->id])}}" class="btn btn-primary">Sửa</a>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-danger">Xóa</button>
-                                        </td>
-                                    </form>
+
+                                    <td>
+                                        <a href="{{route('user.edit',['user'=>$user->id])}}" class="btn btn-primary">Sửa</a>
+                                    </td>
+                                    <td>
+                                        <button type="button" url="{{route('user.destroy',['user'=>$user->id])}}" class="btn btn-danger nutxoa">Xóa</button>
+                                    </td>
 
                                 </tr>
                                 @endforeach
