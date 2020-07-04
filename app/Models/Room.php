@@ -163,24 +163,32 @@ class Room extends Model
         // đm code sướng vl, đam mê cmnr =))//vl
         //xong chưa để dọc 
         extract($params);
-        // laravel đéo nối được query//vl//
-        // đéo nối được thì viết queryy hơi nhiều rồi phải if liên tục code lại đéo dry
-        // được này =))
-
+        
         $query = $this;
 
-        // viết này sau dễ phát triển nếu có search thì 
-        // ko sowj looix =)
-        // code super dry =))? đang tẩu hỏa đm//zô 
         if(!empty($search)){
-            $query = $query->where('name', 'like', $search);
+            $query = $query->where('location', 'like','%' . $search . '%' );
         }
 
         if(!empty($listRoomUsed)){
             $query = $query->whereNotIn('id', $listRoomUsed);
         }
+ 
+        if(!empty($prices)){
+            $arr = explode(' ', $prices);
+            $price['min'] = substr($arr[0], 1, strlen($arr[0]));
+            $price['max'] = substr($arr[2], 1, strlen($arr[2]));
+            $query = $query->whereBetween('priceNight', [$price['min'], $price['max']]);
+        }
+
+        if(!empty($beds)){
+            $query = $query->where('bed', $beds);
+        }
+
+        if(!empty($baths)){
+            $query = $query->where('bath',$baths);
+        }
 
         return $query->get();
-        // $rom = Room::whereNotIn('id', $cc)->get();
     }
 }

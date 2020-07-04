@@ -22,6 +22,7 @@ use App\Models\RoomStar;
 use App\Models\Brand;
 use Session;
 use App\Http\Requests\Date\DateRequest;
+use Illuminate\Support\Facades\DB;
 
 class webPageController extends Controller
 {
@@ -52,7 +53,7 @@ class webPageController extends Controller
         view()->share('blogImages', $blogImages);
 
         $brands = Brand::all();
-        view()->share('brands',$brands);
+        view()->share('brands', $brands);
     }
 
     public function indexWeb()
@@ -61,9 +62,9 @@ class webPageController extends Controller
         $rooms = Room::paginate(6);
         $banners = Banner::all();
         $commentBlogs = CommentBlog::all();
-        $blogNew = Blog::where('new',0)->first();
+        $blogNew = Blog::where('new', 0)->first();
         $blogs = Blog::limit(3)->get();
-        return view('page.home', ['Services' => $Services, 'rooms' => $rooms,'banners'=>$banners,'commentBlogs'=>$commentBlogs,'blogNew'=>$blogNew,'blogs'=>$blogs]);
+        return view('page.home', ['Services' => $Services, 'rooms' => $rooms, 'banners' => $banners, 'commentBlogs' => $commentBlogs, 'blogNew' => $blogNew, 'blogs' => $blogs]);
     }
 
     public function getAbout()
@@ -100,7 +101,7 @@ class webPageController extends Controller
     {
         $rooms = Room::all();
         $RoomImages = RoomImage::all();
-        return view('page.gallery',['rooms'=>$rooms,'RoomImages'=>$RoomImages]);
+        return view('page.gallery', ['rooms' => $rooms, 'RoomImages' => $RoomImages]);
     }
 
 
@@ -110,16 +111,9 @@ class webPageController extends Controller
     // }
     public function getRoomList(Request $request)
     {
-        $rooms = Room::orderByParam()->paginate(6);
-        // dd($rooms);
-        // $from = $request->searchFromDate;
-        // $to = $request->searchToDate;
-        // $cc  = OrderDetail::whereDate('from_date','>=', $from)->whereDate('to_date', '<=',$to)->get();
-
-        $roomSearchLocation = Room::where('location', 'like', '%' . $request->boxSearchLocation . '%')
-            ->paginate(6);
-
-        return view('page.room_list', ['rooms' => $rooms, 'roomSearchLocation' => $roomSearchLocation]);
+        $rooms = Room::orderByParam()->paginate();
+        
+        return view('page.room_list', ['rooms' => $rooms]);
     }
 
 
@@ -154,14 +148,14 @@ class webPageController extends Controller
 
     public function getRoomDetail(Request $request, $id, RoomStar $roomStar)
     {
-
+        // dd(request()->searchFromDate);
         $this->validate($request, [], []);
         $reviewRoom = ReviewRoom::where('parent', 0)->orderBy('id', 'DESC')->paginate(2);
         $reviewRoomChild = ReviewRoom::all();
         // dd($reviewRoom);
         $room = Room::where('id', $id)->first();
         $rImage = RoomImage::where('room_id', $id)->first();
-       
+
         $roomStars = $roomStar->calAvg($id);
         return view('page.room_detail', [
             'room' => $room, 'rImage' => $rImage,
@@ -250,7 +244,7 @@ class webPageController extends Controller
         return view('page.room_list_master', ['rooms' => $rooms]);
     }
 
-    public function getFilterRoom(Request $request,OrderDetail $orderDetail,Room $room)
+    public function getFilterRoom(Request $request, OrderDetail $orderDetail, Room $room)
     {
         // đéo ai làm như này. Biết chuyển rồi yên tâm ok
         // $params = [
@@ -275,83 +269,53 @@ class webPageController extends Controller
         // sau gọi ajax gọi đến 1 controoler cái controler lấy ra list data, cái đấy 1 hàm
         // có thế dùng được từ controller user, product, ooder mọi databse mọi bảng =))
         //vẫn chưa thấy rõ vl
-        // teamview qua đây =))
-        
 
-        if(!empty($request->searchFromDate) && !empty($request->searchToDate )){
+        //Tìm theo ngày đến ngày đi
+        if (!empty($request->searchFromDate) && !empty($request->searchToDate)) {
             // cái params date này ko cần cho vào room đâu, gọi vào thằng order detail là được
             // nên là ko cần cho vào params
             $from_date = $request->searchFromDate;
             $to_date = $request->searchToDate;
-            // cái $listRoomUsed nayf ms cho vaof parrams //SAO KO ĐẶT TÊN GIỐNG TÊN BIẾN LÚC ĐỔ RA
-            // cais orrder detail nayf cungx vieets hamf vaof order detail
             $listRoomUsed  = $orderDetail->checkRoomForDate($from_date, $to_date);
-            // dd($listRoomUsed);
             $params['listRoomUsed'] = $listRoomUsed;
         }
 
-        // $from_date = $request->searchFromDate;
-        // $to_date = $request->searchToDate;
+        //Tìm theo vị trí
+        if (!empty($request->location)) {
+            $location = $request->location;
+            $params['search'] = $location ? $location : "";
+        }
 
-        // lamf sao de dd ra query sql nhi
-        //CHƯA LÀM THẾ BAO GIỜ vl
-        //not between chứ
-        // TAI no or giua 2 ngay do ddmn
-        // phai check lon hon hoac nho hon thoi
-        //KO jdgfjgsd
-        // maf thioi an com dm //VL
+        //Tìm theo giá
+        if (!empty($request->price)) {
+            $prices = $request->price;
+            $params['prices'] = $prices ? $prices : "";    
+        }
 
+        //Tìm theo số giường
+        if(!empty($request->bed)){
+            $beds = $request->bed;
+            // dd($beds);
+            $params['beds'] = $beds ? $beds : "";
+        }
 
-        // $ss = OrderDetail::where('from_date', [$from_date, $to_date])
-        //     ->whereotBetween('to_date', [$from_date, $to_date])
-        //     ->get('room_id');
+        //Tìm theo sô bồn tắm
+        if(!empty($request->bath)){
+            $baths = $request->bath;
+            $params['baths'] = $baths ? $baths : "";
+        }
 
-        // dd($params['listRoomUsed']);
 
         // dd($params);
         $rooms = $room->filteRoom($params);
-
         // dd($rooms);
-        
-        // test di//vc ddungs
-        //  kaka ka k=))vkl cái câu truy vấn  =))
+
         return view('page.room_list', ['rooms' => $rooms]);
-        // GỌI HÀM ĐẤY À ừ
-        // lắm trò vl
-        // ghê ko
-        // ? 2 controoler khasc nhau ĐẤY - cais list cuar controler nay dau
-        // ĐÂY - nhinf  chan vl =))
-
-        
-        // dd($params);
-        // đm rối //vl bảo rối vl màvlvl
-        // nếu mà so sảnh thế này thì phairphair so sảnh ngày đến nhỏ dơn ngày đi và lớn hơn ngày đến
-        // lại alaau bó mẹ
-        // $reservations = OrderDetail::where('from_date', '>=',$params['from_date'])
-        // ->where('to_date', '<=', $params['to_date'])
-        // ->get();
-
-        // dd($reservations);
-        // if ($params['from_date'] && $params['to_date']) {
-        //     $xxx = 'SELECT * FROM order_details WHERE from_date NOT BETWEEN '.$params['from_date'].' AND '.$params['to_date'];
-        // };
-        // dd($xxx);
-        // lag vl
-        // thế này ththooi
-        // $cc  = OrderDetail::whereBetween('from_date', ['2020-06-20', '2020-06-28'])
-        //                     ->whereBetween('to_date', ['2020-06-20', '2020-06-28'])
-        //                     ->get('room_id');
-
-        // $rom = Room::get(); //array 13
-        // $rom = Room::whereNotIn('id', $cc)->get(); //12 ok daady =)) //cos ver ddungs
-        // // tiep nho
-        // // xong rooif thaay
-        // dd($rom);
     }
 
-    
 
-    public function postReviewRoom(Request $request,ReviewRoom $reviewRoom, $id)
+
+    public function postReviewRoom(Request $request, ReviewRoom $reviewRoom, $id)
     {
         $this->validate($request, [
             'content' => 'required',

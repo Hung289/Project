@@ -76,12 +76,13 @@
   <div class="continer-fuild align-items-center">
     <div class="row">
       <div class="col-md-10 offset-md-1 toinput">
-        <form action="">
+        <form action="{{route('getFilterRoom')}}" method="POST">
+        <input type="hidden" name="_token" value="{{csrf_token()}}">
           <div class="oto">
-            <input type="text" id="arrive-date" placeholder="Arrive Date" /><i class="fas fa-calendar-alt"></i>
+            <input type="date" name="searchFromDate" placeholder="Arrive Date" />
           </div>
           <div class="oto">
-            <input type="text" id="depart-date" placeholder="Depart Date" /><i class="fas fa-calendar-alt"></i>
+            <input type="date" name="searchToDate" placeholder="Depart Date" />
           </div>
           <div class="oto">
             <select name="" id="">

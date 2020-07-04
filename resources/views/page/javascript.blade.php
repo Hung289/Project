@@ -251,13 +251,43 @@
 
 
 <script>
-    $(function(){
+    $(function() {
         $('.cmtChild').hide();
-        $('.comment-area .reply-comment').on('click',function(event){
+        $('.comment-area .reply-comment').on('click', function(event) {
             event.preventDefault();
             console.log('đã click');
-            $("#cmt-child-"+$(this).attr("id")).toggle();
+            $("#cmt-child-" + $(this).attr("id")).toggle();
         })
     })
 </script>
 
+<script>
+    //slide ranger
+    $('#slider-range').slider({
+        range: true,
+        min: 0,
+        max: 1500,
+        values: [200, 1070],
+        slide: function(event, ui) {
+            $('#amount').val('$' + ui.values[0] + ' - $' + ui.values[1]);
+            var value1 = ui.values[0];
+            var value2 = ui.values[1];
+
+            $.ajax({
+                type: "GET",
+                url: "{{ route('getFilterRoom') }}",
+                data: "min=" + value1 + "&max=" + value2,
+                cache: false,
+                success: function(html) {
+                    $('public.products.list');
+                }
+            })
+        }
+    });
+    $('#amount').val(
+        '$' +
+        $('#slider-range').slider('values', 0) +
+        ' - $' +
+        $('#slider-range').slider('values', 1)
+    );
+</script>

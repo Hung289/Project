@@ -26,13 +26,28 @@ class CartRoom
         $this->total_quantity = $this->get_total_quantity_service();
     }
 
-    public function add($room, $qty = 1, $arriveDate, $departDate,$songay)
+    public function add($room, $qty = 1, $from_date, $to_date,$songay)
     {
         $image = RoomImage::where('room_id', $room->id)->first();
         $cateRoom = CategoryRoom::where('id', $room->category_room_id)->first();
         // dd($cateRoom);
         if (isset($this->items[$room->id])) {
-            $this->items[$room->id]['quantity'] += $qty;
+            // $this->items[$room->id]['quantity'] += $qty;
+            $this->items[$room->id] = [
+                'id' => $room->id,
+                'name' => $room->name,
+                'quantity' => $qty,
+                'price' => $room->priceNight ? $room->priceNight : $room->priceNight,
+                'image' => $image->image,
+                'bed' => $room->bed,
+                'bath' => $room->bath,
+                'area' => $room->area,
+                'location' => $room->location,
+                'category_room_id' => $cateRoom->name,
+                'arriveDate' => $from_date,
+                'departDate' => $to_date,
+                'songay'=>$songay
+            ];
         } else {
             $this->items[$room->id] = [
                 'id' => $room->id,
@@ -45,8 +60,8 @@ class CartRoom
                 'area' => $room->area,
                 'location' => $room->location,
                 'category_room_id' => $cateRoom->name,
-                'arriveDate' => $arriveDate,
-                'departDate' => $departDate,
+                'arriveDate' => $from_date,
+                'departDate' => $to_date,
                 'songay'=>$songay
             ];
         }

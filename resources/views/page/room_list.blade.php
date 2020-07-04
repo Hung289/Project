@@ -120,7 +120,6 @@
                 </div>
 
                 <div style="float:right">
-                    {!! $rooms->links()!!}
                 </div>
             </div>
             <div class="col-lg-4">
@@ -155,6 +154,22 @@
                                 </select>
                             </div>
                             <div class="input-wrap">
+                                <select name="bed" id="bed">
+                                    <option value="" disabled="" selected="">bed</option>
+                                    <option value="1">1 bed</option>
+                                    <option value="2">2 bed</option>
+                                    <option value="3">3 bed</option>
+                                </select>
+                            </div>
+                            <div class="input-wrap">
+                                <select name="bath" id="bath">
+                                    <option value="" disabled="" selected="">bath</option>
+                                    <option value="1">1 bath</option>
+                                    <option value="2">2 bath</option>
+                                    <option value="3">3 bath</option>
+                                </select>
+                            </div>
+                            <div class="input-wrap">
                                 <select name="adults" id="adults">
                                     <option value="" disabled="" selected="">Adults</option>
                                     <option value="1">1</option>
@@ -174,7 +189,9 @@
                                 <div class="price-range-wrap">
                                     <div class="slider-range">
                                         <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                                            <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 3.57143%; width: 91.0714%;"></div><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 3.57143%;"></span><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 94.6429%;"></span>
+                                            <div class="ui-slider-range ui-widget-header ui-corner-all" ></div>
+                                            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 3.57143%;"></span>
+                                            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 94.6429%;"></span>
                                         </div>
                                     </div>
                                     <div class="price-ammount">
