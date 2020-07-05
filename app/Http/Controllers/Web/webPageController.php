@@ -144,6 +144,19 @@ class webPageController extends Controller
     public function getReservation()
     {
         return view('page.reservation');
+        // làm cái to hơn đi =))
+        // làm search đi =))
+        //xong cái này đã vl
+        // nhỏ quá =))
+        //vl
+        //nhỏ đã chạy méo đâu
+        // thích to =))
+        //fix đê vl:v
+        // làm search di =))
+        // tối 
+        // đéo =))
+        //vl
+
     }
 
     public function getRoomDetail(Request $request, $id, RoomStar $roomStar)
@@ -151,7 +164,7 @@ class webPageController extends Controller
         // dd(request()->searchFromDate);
         $this->validate($request, [], []);
         $reviewRoom = ReviewRoom::where('parent', 0)->orderBy('id', 'DESC')->paginate(2);
-        $reviewRoomChild = ReviewRoom::all();
+        $reviewRoomChild = ReviewRoom::orderBy('id', 'DESC')->get();
         // dd($reviewRoom);
         $room = Room::where('id', $id)->first();
         $rImage = RoomImage::where('room_id', $id)->first();
@@ -244,33 +257,10 @@ class webPageController extends Controller
         return view('page.room_list_master', ['rooms' => $rooms]);
     }
 
-    public function getFilterRoom(Request $request, OrderDetail $orderDetail, Room $room)
+    public function getFilterRoom(DateRequest $request, OrderDetail $orderDetail, Room $room)
     {
-        // đéo ai làm như này. Biết chuyển rồi yên tâm ok
-        // $params = [
-        //     'location' =>$request->location,
-        //     'from_date' => $request->searchFromDate,
-        //     'to_date' => $request->searchToDate,
-        // ];
+        $params = array();
 
-        // cái params này hãy để 1 ít tham số mặc định như là search
-        // cái sreach thì sẽ là
-        // $params['search'] = $request->search ? $request->location : '';
-        // okk
-        //ok
-        // 1 số cái nữa là limit hay price .... 
-        // còn lại là phải if else hết nếu ko thì nó sẽ tạo biển trong model xong lại mất công query vỡ vẫn//từ từ đọc đã//tí ko hiểu hỏi tieps //vl
-        // ok nhows =)), leader baor doc xong cai nay to đầu ngay =))//vc
-
-        // dd($request);
-        // cais nayf phair lamf nhuư nay 
-        // cái query này dùng nhiều này =))
-        // vẫn chưa tháy tác dụng rõ rệt lắm. tại chưa thấy nó tái lại nhiều
-        // sau gọi ajax gọi đến 1 controoler cái controler lấy ra list data, cái đấy 1 hàm
-        // có thế dùng được từ controller user, product, ooder mọi databse mọi bảng =))
-        //vẫn chưa thấy rõ vl
-
-        //Tìm theo ngày đến ngày đi
         if (!empty($request->searchFromDate) && !empty($request->searchToDate)) {
             // cái params date này ko cần cho vào room đâu, gọi vào thằng order detail là được
             // nên là ko cần cho vào params
@@ -305,15 +295,56 @@ class webPageController extends Controller
             $params['baths'] = $baths ? $baths : "";
         }
 
+        // dd($params);
+        $rooms = $room->filteRoom($params);
+
+        return view('page.room_list',['rooms'=>$rooms]);
+    }
+
+    
+    public function ajax_list(DateRequest $request, OrderDetail $orderDetail, Room $room)
+    {
+        $params = array();
+
+        if (!empty($request->searchFromDate) && !empty($request->searchToDate)) {
+            // cái params date này ko cần cho vào room đâu, gọi vào thằng order detail là được
+            // nên là ko cần cho vào params
+            $from_date = $request->searchFromDate;
+            $to_date = $request->searchToDate;
+            $listRoomUsed  = $orderDetail->checkRoomForDate($from_date, $to_date);
+            $params['listRoomUsed'] = $listRoomUsed;
+        }
+
+        //Tìm theo vị trí
+        if (!empty($request->location)) {
+            $location = $request->location;
+            $params['search'] = $location ? $location : "";
+        }
+
+        //Tìm theo giá
+        if (!empty($request->price)) {
+            $prices = $request->price;
+            $params['prices'] = $prices ? $prices : "";    
+        }
+
+        //Tìm theo số giường
+        if(!empty($request->bed)){
+            $beds = $request->bed;
+            // dd($beds);
+            $params['beds'] = $beds ? $beds : "";
+        }
+
+        //Tìm theo sô bồn tắm
+        if(!empty($request->bath)){
+            $baths = $request->bath;
+            $params['baths'] = $baths ? $baths : "";
+        }
 
         // dd($params);
         $rooms = $room->filteRoom($params);
-        // dd($rooms);
 
-        return view('page.room_list', ['rooms' => $rooms]);
+        return response()->json($rooms);
     }
-
-
 
     public function postReviewRoom(Request $request, ReviewRoom $reviewRoom, $id)
     {

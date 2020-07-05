@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use App\Models\RoomImage;
 
 class Room extends Model
@@ -162,10 +163,22 @@ class Room extends Model
         //vc xong rồi à hiểu luồng ko ?//hiểu thế éo nào đc vl //giờ nhá //để đjc lại là hiêu
         // đm code sướng vl, đam mê cmnr =))//vl
         //xong chưa để dọc 
+        //ôi vl cái j đây
+        // dang jion bảng 
+        // chu xong roi =))//
+        //viết tí đọc thì vc ra à
+        //ko ra
+        // từ//căng vậy
         extract($params);
         
+        // $query = $this->join('room_images', function ($join) {
+        //                 $join->on('rooms.id', '=', 'room_images.room_id');
+        //                 // lỗi ở đây =)), để suy nghĩ
+        //             })
+        //             ->join('category_rooms', 'rooms.category_room_id', '=', 'category_rooms.id')
+        //             ->select('rooms.*', 'room_images.image', 'category_rooms.name as cat_name');
         $query = $this;
-
+        
         if(!empty($search)){
             $query = $query->where('location', 'like','%' . $search . '%' );
         }

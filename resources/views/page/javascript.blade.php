@@ -252,12 +252,12 @@
 
 <script>
     $(function() {
-        $('.cmtChild').hide();
-        $('.comment-area .reply-comment').on('click', function(event) {
-            event.preventDefault();
-            console.log('đã click');
-            $("#cmt-child-" + $(this).attr("id")).toggle();
-        })
+        // $('.cmtChild').hide();
+        // $('.comment-area .reply-comment').on('click', function(event) {
+        //     event.preventDefault();
+        //     console.log('đã click');
+        //     $("#cmt-child-" + $(this).attr("id")).toggle();
+        // })
     })
 </script>
 
@@ -275,7 +275,7 @@
 
             $.ajax({
                 type: "GET",
-                url: "{{ route('getFilterRoom') }}",
+                url: "",
                 data: "min=" + value1 + "&max=" + value2,
                 cache: false,
                 success: function(html) {
@@ -290,4 +290,92 @@
         ' - $' +
         $('#slider-range').slider('values', 1)
     );
+</script>
+
+<!-- post comment to phòng  -->
+<script>
+    $(function() {
+        // phải lên chứ 
+        // nhưng nó là DOM ảo =)), muốn tác động vào DOM tạo ra sau khi trang đã được load thì phải dùng on on j
+        // biết thế là được  =))
+        // ko đc viết là click(à)
+        // ừ //vl mấy cái click chỉ tác động vào DOM đã có sẵn trên web
+        // còn sau khi web chạy xong mà lại có thêm DOM Mới thì phải dùng on//đù
+        // ăn cứt nhiều ms biết được =))
+        //chơi game đê
+        // vl code đi 
+        // code cái search 
+        // đả bảo cái này nhỏ vl rồi =))
+        //search thì bỏ hết foem đi à
+        // hả.ajax search thì bỏ form đi à
+        // ko có form thì lấy data chỉ cần 1 dòng thôi =))
+        $(document).on('click', '.nutguiblto', function() {
+            var content = $("[name='content']").val();
+            var idRoom = $("[name='roomD']").val();
+            var idUser = $("[name='userId']").val();
+            var url = $(this).attr('url');
+            var _token = $('meta[name="csrf-token"]').attr('content');
+            if (idUser == null) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lỗi...',
+                    text: 'Bạn cần đăng nhập bình luận về phòng!',
+                })
+            } else {
+                if (content == '') {
+                    
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Lỗi...',
+                        text: 'Bạn chưa nhập nội dung!',
+                    })
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {
+                            '_token': _token,
+                            'content': content,
+                            'idUser': idUser,
+                            'idRoom': idRoom,
+                        },
+                        success: function(response) {
+                            $("#khoicmt").load(window.location.href + " #cckhoicmt");
+                        },
+                    })
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $(function() {
+        $(document).on('click', '.nutche', function() {
+            var contentChild = $("#form-cmt-" + $(this).attr("id")).val();
+            var idRoom = $("[name='roomD']").val();
+            var idUser = $("[name='userId']").val();
+            var parentcmtchild = $("[name='parentcmtchild']").val();
+            var url = $(this).attr('url');
+            var _token = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    '_token': _token,
+                    'contentChild': contentChild,
+                    'idUser': idUser,
+                    'idRoom': idRoom,
+                    'parentcmtchild': parentcmtchild,
+                },
+                success: function(response) {
+                    $("#khoicmt").load(window.location.href + " #cckhoicmt");
+                }
+            })
+        });
+    })
+</script>
+
+<script>
+
 </script>

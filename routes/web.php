@@ -128,6 +128,7 @@ Route::get('getDate','Web\webPageController@get_total_price')->name('getDate');
 
 //Route search room
 Route::post('search/{min?}/{max?}','Web\webPageController@getFilterRoom')->name('getFilterRoom');
+// Route::post('search','Web\webPageController@ajax_list')->name('ajax_list');
 
 // Route rating star
 Route::post('postStar','Web\webPageController@voteStar')->name('postStar');

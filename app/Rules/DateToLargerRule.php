@@ -28,7 +28,9 @@ class DateToLargerRule implements Rule
         if(request()->has('searchFromDate')) {
             if (strtotime($value) < strtotime(request()->get('searchFromDate'))) {
                 return false;
-            }    
+            }else{
+                return true;
+            }   
         }
     }
 

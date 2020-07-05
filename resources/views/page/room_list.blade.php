@@ -44,41 +44,43 @@
 
             <div class="col-lg-8">
 
-                <div class="list">
-                    @foreach($rooms as $room)
-                    <div class="single-room list-style">
-                        <div class="row align-items-center no-gutters">
-                            <div class="col-lg-6">
-                                <div class="room-thumb">
-                                    @foreach($roomImages as $rI)
-                                    <?php $check = ($rI->room_id == $room->id) ? "$rI->image" : "" ?>
-                                    @if(!$check=="")
-                                    <img src="public/uploads/images/rooms/{{$check}}" alt="Room">
-                                    @break
-                                    @endif
-                                    @endforeach
+                <div class="list" id="listRoom">
+                    <div id="listRoomChild">
+                        @foreach($rooms as $room)
+                        <div class="single-room list-style" id="cclistRoom">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col-lg-6">
+                                    <div class="room-thumb">
+                                        @foreach($roomImages as $rI)
+                                        <?php $check = ($rI->room_id == $room->id) ? "$rI->image" : "" ?>
+                                        @if(!$check=="")
+                                        <img src="public/uploads/images/rooms/{{$check}}" alt="Room">
+                                        @break
+                                        @endif
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="room-desc">
-                                    <div class="room-cat">
-                                        <p>{{$room->cateRoom->name}}</p>
+                                <div class="col-lg-6">
+                                    <div class="room-desc">
+                                        <div class="room-cat">
+                                            <p>{{$room->cateRoom->name}}</p>
+                                        </div>
+                                        <h4><a href="{{route('roomDetail',['id'=>$room->id])}}">{{$room->name}}</a></h4>
+                                        <ul class="room-info list-inline">
+                                            <li><i class="fas fa-bed"></i>{{$room->bed}} Bed</li>
+                                            <li><i class="fas fa-bath"></i>{{$room->bath}} Baths</li>
+                                            <li><i class="fas fa-ruler-triangle"></i>{{$room->area}} m</li>
+                                        </ul>
+                                        <div class="room-price">
+                                            <p>{{number_format($room->priceNight)}} $</p>
+                                        </div>
+
                                     </div>
-                                    <h4><a href="{{route('roomDetail',['id'=>$room->id])}}">{{$room->name}}</a></h4>
-                                    <ul class="room-info list-inline">
-                                        <li><i class="fas fa-bed"></i>{{$room->bed}} Bed</li>
-                                        <li><i class="fas fa-bath"></i>{{$room->bath}} Baths</li>
-                                        <li><i class="fas fa-ruler-triangle"></i>{{$room->area}} m</li>
-                                    </ul>
-                                    <div class="room-price">
-                                        <p>{{number_format($room->priceNight)}} $</p>
-                                    </div>
-                                    
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
 
 
@@ -126,8 +128,8 @@
                 <div class="sidebar-wrap">
                     <div class="widget fillter-widget">
                         <h4 class="widget-title">Your Reservation</h4>
-                        <form action="{{route('getFilterRoom')}}" method="POST">
-                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <form id="form_search" action="{{route('getFilterRoom')}}" method="POST">
+                            <input type="hidden" name="_token" id="csrf_token" value="{{csrf_token()}}">
                             <div class="input-wrap">
                                 <input type="text" placeholder="Location" name="location" id="location" name="boxSearchLocation">
                                 <i class="fas fa-search"></i>
@@ -135,14 +137,14 @@
                             <div class="input-wrap">
                                 <input type="date" placeholder="Arrive Date" min="" name="searchFromDate">
                                 @error('searchFromDate')
-                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                <small class="error help-block" style="color:red">{{$message}}</small>
                                 @enderror
                             </div>
                             <div class="input-wrap">
                                 <!--  echo date("Y-m-d", strtotime (date('Y-m-d')."+1 days")); -->
-                                <input type="date" placeholder="Depart Date" min="" name="searchToDate" >
+                                <input type="date" placeholder="Depart Date" min="" name="searchToDate">
                                 @error('searchToDate')
-                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                <small class="error help-block" style="color:red">{{$message}}</small>
                                 @enderror
                             </div>
                             <div class="input-wrap">
@@ -189,7 +191,7 @@
                                 <div class="price-range-wrap">
                                     <div class="slider-range">
                                         <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                                            <div class="ui-slider-range ui-widget-header ui-corner-all" ></div>
+                                            <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
                                             <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 3.57143%;"></span>
                                             <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 94.6429%;"></span>
                                         </div>
@@ -236,7 +238,7 @@
                                 </div>
                             </div>
                             <div class="input-wrap">
-                                <button  class="btn filled-btn btn-block">
+                                <button type="submit" class="btn filled-btn btn-block" id="nuttimkiem">
                                     Filter Results <i class="fas fa-long-arrow-right"></i>
                                 </button>
                             </div>
