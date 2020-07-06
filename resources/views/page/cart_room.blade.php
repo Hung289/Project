@@ -71,6 +71,7 @@
                                     <th>Tên dịch vụ</th>
                                     <th>Hình ảnh</th>
                                     <th>Số lượng</th>
+                                    <th>Thuộc về phòng</th>
                                     <th>Tiền</th>
                                     <th>Xóa</th>
                                 </tr>
@@ -86,9 +87,11 @@
                                             <button class="btn btn-primary">Cập nhật</button>
                                         </form>    
                                     </td>
+                                    <td>{{$itemSer['room_id']}}</td>
                                     <td>
                                         ${{number_format($itemSer['price']*$itemSer['quantity'])}}
                                     </td>
+                                    
                                     <td>
                                         <div class="xoaphong">
                                             <a href="{{route('cart.removeService',['id'=>$itemSer['id']])}}"><i class="fas fa-backspace"></i></a>

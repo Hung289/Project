@@ -28,8 +28,7 @@ class webPageController extends Controller
 {
     function __construct()
     {
-        // $Category=Category::where('parent',null)->get();//lấy ra tất cả với parent=0
-        // view()->share('Category',$Category);
+
         $CategoryRoom = CategoryRoom::all();
         view()->share('CategoryRoom', $CategoryRoom);
 
@@ -37,7 +36,6 @@ class webPageController extends Controller
         view()->share('CategoryService', $CategoryService);
 
         $CategoryBlog = CategoryBlog::all();
-        // dd($CategoryBlog);
         view()->share('CategoryBlog', $CategoryBlog);
 
         // $rooms = Room::all();
@@ -104,11 +102,6 @@ class webPageController extends Controller
         return view('page.gallery', ['rooms' => $rooms, 'RoomImages' => $RoomImages]);
     }
 
-
-    // public function getRoomList(){
-    //     $rooms = Room::all();
-    //     return view('page.room_list',['rooms'=>$rooms]);
-    // }
     public function getRoomList(Request $request)
     {
         $rooms = Room::orderByParam()->paginate();
@@ -116,15 +109,13 @@ class webPageController extends Controller
         return view('page.room_list', ['rooms' => $rooms]);
     }
 
-
-    public function getServiceMaster($id)
+    public function getServiceMaster($id,$room)
     {
+        // dd($room);
         $cateService = CategoryService::where('id', $id)->get();
-        // dd($cateService);
         $Services = Service::where('category_service_id', $id)->get();
-        // dd($Services);
         $new_service = Service::where('category_service_id', $id)->where('new', 0)->paginate(4);
-        return view('page.service_detail', ['Services' => $Services, 'new_service' => $new_service, 'cateService' => $cateService]);
+        return view('page.service_detail', ['Services' => $Services, 'new_service' => $new_service, 'cateService' => $cateService,'room'=>$room]);
     }
 
 
@@ -132,7 +123,6 @@ class webPageController extends Controller
     {
         $Services = Service::all();
         $new_service = Service::where('new', 0)->paginate(4);
-        // dd($new_service);
         return view('page.restaurant', ['Services' => $Services, 'new_service' => $new_service]);
     }
 
@@ -144,35 +134,18 @@ class webPageController extends Controller
     public function getReservation()
     {
         return view('page.reservation');
-        // làm cái to hơn đi =))
-        // làm search đi =))
-        //xong cái này đã vl
-        // nhỏ quá =))
-        //vl
-        //nhỏ đã chạy méo đâu
-        // thích to =))
-        //fix đê vl:v
-        // làm search di =))
-        // tối 
-        // đéo =))
-        //vl
-
     }
 
     public function getRoomDetail(Request $request, $id, RoomStar $roomStar)
     {
-        // dd(request()->searchFromDate);
         $this->validate($request, [], []);
-        $reviewRoom = ReviewRoom::where('parent', 0)->orderBy('id', 'DESC')->paginate(2);
-        $reviewRoomChild = ReviewRoom::orderBy('id', 'DESC')->get();
-        // dd($reviewRoom);
+        // $reviewRoom = ReviewRoom::where('parent', 0)->where('room_id',$id)->orderBy('id', 'DESC')->paginate(2);
+        // $reviewRoomChild = ReviewRoom::orderBy('id', 'DESC')->get();
         $room = Room::where('id', $id)->first();
         $rImage = RoomImage::where('room_id', $id)->first();
-
         $roomStars = $roomStar->calAvg($id);
         return view('page.room_detail', [
             'room' => $room, 'rImage' => $rImage,
-            'reviewRoom' => $reviewRoom, 'reviewRoomChild' => $reviewRoomChild,
             'avgStarAcao' => $roomStars['bien1'], 'avgStarDes' => $roomStars['bien2'], 'avgStarTran' => $roomStars['bien3'], 'avgStarOver' => $roomStars['bien4'],
             'tb' => $roomStars['bien5']
         ]);
@@ -180,16 +153,12 @@ class webPageController extends Controller
 
     public function getBlogDetail(Request $request, $id)
     {
-        // dd($id);
         $blog = Blog::where('id', $id)->first();
-        // dd($blog);
         $bImage = BlogImage::where('blog_id', $id)->first();
         $blog2 = BlogImage::where('blog_id', $id)->paginate(2);
         $cateBlog = CategoryBlog::all();
         $commentBlog = CommentBlog::where('parent', 0)->orderBy('id', 'DESC')->paginate(2);
         $commentBlogChild = CommentBlog::all();
-        // dd($blog2);
-        // dd($bImageAfter1);
         return view('page.blog_detail', ['blog' => $blog, 'bImage' => $bImage, 'blog2' => $blog2, 'cateBlog' => $cateBlog, 'commentBlog' => $commentBlog, 'commentBlogChild' => $commentBlogChild]);
     }
 
@@ -340,7 +309,6 @@ class webPageController extends Controller
             $params['baths'] = $baths ? $baths : "";
         }
 
-        // dd($params);
         $rooms = $room->filteRoom($params);
 
         return response()->json($rooms);
@@ -379,7 +347,6 @@ class webPageController extends Controller
 
     public function postCommentBlog(CommentBlog $commentBlog, $id)
     {
-        // dd($commentBlog);
         if (Auth::check()) {
             $commentBlogTo = $commentBlog->postCB($id);
             return redirect()->back()->with('success', 'Đăng thành công bình luận');
@@ -392,7 +359,6 @@ class webPageController extends Controller
 
     public function postCommentBlogChild(CommentBlog $commentBlog, $id, $parent)
     {
-        // dd($parent);
         if (Auth::check()) {
             $commentBlogChild = $commentBlog->postCBC($id, $parent);
             if ($commentBlogChild) {
@@ -405,11 +371,8 @@ class webPageController extends Controller
     }
     public function voteStar(Request $request, RoomStar $roomStar)
     {
-        // dd($req);
-        // dd($request->idRoom);
         if (Auth::check()) {
             $model = $roomStar->postStar();
-            // dd($model);
             if ($model) {
                 return redirect()->back()->with('success', 'Đăng thành công đánh giá');
             }

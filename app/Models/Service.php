@@ -14,6 +14,11 @@ class Service extends Model
         return $this->belongsTo('App\Models\CategoryService','category_service_id','id');
     }
 
+    public function orderDetailService()
+    {
+        return $this->hasMany('App\Models\OrderDetailService','service_id','id');
+    }
+
     public function add(){
         $img = request()->image;
         $img_name = $img->getClientOriginalName();

@@ -252,12 +252,12 @@
 
 <script>
     $(function() {
-        // $('.cmtChild').hide();
-        // $('.comment-area .reply-comment').on('click', function(event) {
-        //     event.preventDefault();
-        //     console.log('đã click');
-        //     $("#cmt-child-" + $(this).attr("id")).toggle();
-        // })
+        $('.cmtChild').hide();
+        $('.comment-area .reply-comment').on('click', function(event) {
+            event.preventDefault();
+            console.log('đã click');
+            $("#cmt-child-" + $(this).attr("id")).toggle();
+        })
     })
 </script>
 

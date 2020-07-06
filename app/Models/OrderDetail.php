@@ -20,6 +20,11 @@ class OrderDetail extends Model
         return $this->belongsTo('App\Models\Room','room_id','id');
     }
 
+    protected function orderDetailService()
+    {
+        return $this->hasMany('App\Models\OrderDetailService','order_detail_id','id');
+    }
+
     protected function service()
     {
         return $this->belongsTo('App\Models\Service','service_id','id');

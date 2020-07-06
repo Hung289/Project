@@ -289,8 +289,7 @@
 
                                             <h2 class="comment-title">Client’s Comments</h2>
                                             <?php $i = 0 ?>
-                                            @foreach($reviewRoom as $rR)
-                                            @if($rR->room_id == $room->id)
+                                            @foreach($room->reviewRoom as $rR)
                                             <ul class="comment-list" id="cckhoicmt">
                                                 <li>
                                                     <div class="comment-autor">
@@ -299,14 +298,12 @@
                                                     <div class="comment-desc">
                                                         <h6>{{$rR->user->name}}<span class="comment-date"> {{$rR->created_at}}</span></h6>
                                                         <p>{{$rR->content}}</p>
-                                                        <a href="#" id="{{$i}}" class="reply-comment">Reply Commets ({{count($reviewRoomChild->where('parent',$rR->id))}}) <i class="fas fa-long-arrow-alt-right"></i></a>
+                                                        <a href="#" id="{{$rR->id}}" class="reply-comment">Reply Commets ( {{$rR->ReviewRoomchilds->count()}} ) <i class="fas fa-long-arrow-alt-right"></i></a>
                                                     </div>
-
-                                                    <div id="" class="cmtChild">
+                                                    <div id="cmt-child-{{$rR->id}}" class="cmtChild">
                                                         <div id="khoicmtChild">
-                                                            @foreach($reviewRoomChild->where('parent',$rR->id) as $cC)
+                                                            @foreach($rR->ReviewRoomchilds as $cC)
                                                             <input type="hidden" name="parentcmtchild" value="{{$cC->id}}">
-                                                            <!-- <h1>{{$cC->id}}</h1> -->
                                                             <ul class="children" id="cckhoicmtChild">
                                                                 <li>
                                                                     <div class="comment-autor">
@@ -342,7 +339,6 @@
                                                 </li>
                                             </ul>
                                             <?php $i++ ?>
-                                            @endif
                                             @endforeach
                                         </div>
                                         <div class="review-form">

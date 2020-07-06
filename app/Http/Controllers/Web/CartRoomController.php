@@ -82,12 +82,13 @@ class CartRoomController extends Controller
             } else {
                 $songay =  ($to->day) - ($from->day);
                 $model = $cart->add($room, $qty, $from_date, $to_date, $songay);
-        return redirect()->route('indexWeb')->with('success', 'Thêm thành công ' . $room->name . ' vào giỏ phòng');
+                // return redirect()->route('indexWeb')->with('success', 'Thêm thành công ' . $room->name . ' vào giỏ phòng');
+                return view('page.service',['room'=>$room]);
             }
         } else {
             return redirect()->back()->with('error', 'Ngày đi nhỏ hơn đến đi. Không thể tiến hành booking room');
         }
-        
+
 
         // // dd($cart);
         // $room = Room::find($id);
@@ -126,14 +127,16 @@ class CartRoomController extends Controller
         return redirect()->route('cart.view');
     }
 
-    public function addService(Request $request, CartRoom $cartService, $id)
+    public function addService(Request $request, CartRoom $cartService, $id,$room)
     {
+        // dd($room);
         $service = Service::find($id);
         // dd($cartService);
         $qty = $request->qty ? $request->qty : 1;
-        $cartService->addService($service, $qty);
+        $cartService->addService($service, $qty,$room);
         // dd(session('cartService'));
         return redirect()->route('indexWeb')->with('success', 'Thêm thành công ' . $service->name . ' vào giỏ hàng');
+        
     }
 
     public function removeService(CartRoom $cartService, $id)

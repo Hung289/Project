@@ -22,24 +22,26 @@ class ReviewRoom extends Model
         return $this->belongsTo('App\Models\Room', 'room_id', 'id');
     }
 
+    public function ReviewRoomchilds()
+    {
+        return $this->hasMany('App\Models\ReviewRoom', 'parent', 'id')->orderBy('id', 'DESC')->limit(2);
+    }
+
+
     public function postRR($id)
     {
         $room = Room::find($id);
-        // dd($room);
         $model = ReviewRoom::create([
             'user_id' => Auth::user()->id,
             'room_id' => $room->id,
             'content' => request()->content
         ]);
-        // dd($model);
         return $model;
     }
 
     public function postRRChild($id, $parent)
     {
-        // dd(Auth::user()->id);
         $room = Room::find($id);
-        // dd($room);
         $model = $this->create([
             'user_id' => Auth::user()->id,
             'room_id' => $room->id,

@@ -32,22 +32,22 @@ class CartRoom
         $cateRoom = CategoryRoom::where('id', $room->category_room_id)->first();
         // dd($cateRoom);
         if (isset($this->items[$room->id])) {
-            // $this->items[$room->id]['quantity'] += $qty;
-            $this->items[$room->id] = [
-                'id' => $room->id,
-                'name' => $room->name,
-                'quantity' => $qty,
-                'price' => $room->priceNight ? $room->priceNight : $room->priceNight,
-                'image' => $image->image,
-                'bed' => $room->bed,
-                'bath' => $room->bath,
-                'area' => $room->area,
-                'location' => $room->location,
-                'category_room_id' => $cateRoom->name,
-                'arriveDate' => $from_date,
-                'departDate' => $to_date,
-                'songay'=>$songay
-            ];
+            $this->items[$room->id]['quantity'] += $qty;
+            // $this->items[$room->id] = [
+            //     'id' => $room->id,
+            //     'name' => $room->name,
+            //     'quantity' => $qty,
+            //     'price' => $room->priceNight ? $room->priceNight : $room->priceNight,
+            //     'image' => $image->image,
+            //     'bed' => $room->bed,
+            //     'bath' => $room->bath,
+            //     'area' => $room->area,
+            //     'location' => $room->location,
+            //     'category_room_id' => $cateRoom->name,
+            //     'arriveDate' => $from_date,
+            //     'departDate' => $to_date,
+            //     'songay'=>$songay
+            // ];
         } else {
             $this->items[$room->id] = [
                 'id' => $room->id,
@@ -94,7 +94,7 @@ class CartRoom
 
 
     //service
-    public function addService($service, $qty = 1)
+    public function addService($service, $qty = 1,$room)
     {
         if (isset($this->services[$service->id])) {
             $this->services[$service->id]['quantity'] += $qty;
@@ -105,7 +105,7 @@ class CartRoom
                 'quantity' => $qty,
                 'price' => $service->price ? $service->price : $service->price,
                 'imageService' => $service->image,
-
+                'room_id'=>$room
             ];
         }
         session(['cartService' => $this->services]);

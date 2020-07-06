@@ -26,7 +26,7 @@ class Room extends Model
 
     public function reviewRoom()
     {
-        return $this->hasMany('App\Models\ReviewRoom','room_id','id');
+        return $this->hasMany('App\Models\ReviewRoom','room_id','id')->where('parent', 0)->orderBy('id', 'DESC')->limit(2);
     }
 
     public function roomStar()
@@ -38,6 +38,8 @@ class Room extends Model
     {
         return $this->belongsTo('App\Models\Brand','brand_id','id');
     }
+
+
 
     public function add(){
         
@@ -160,15 +162,6 @@ class Room extends Model
         // ];
         // thằng params nó là như thế nó se phân tích ra cho biển $loccation $from_datte $to_date
         // cho nên có dữ liệu gì chỉ cần để trong thằng params =))
-        //vc xong rồi à hiểu luồng ko ?//hiểu thế éo nào đc vl //giờ nhá //để đjc lại là hiêu
-        // đm code sướng vl, đam mê cmnr =))//vl
-        //xong chưa để dọc 
-        //ôi vl cái j đây
-        // dang jion bảng 
-        // chu xong roi =))//
-        //viết tí đọc thì vc ra à
-        //ko ra
-        // từ//căng vậy
         extract($params);
         
         // $query = $this->join('room_images', function ($join) {

@@ -83,7 +83,7 @@ Route::get('room-list/{orderby?}/{ord?}','Web\webPageController@getRoomList')->n
 
 
 //trang list service chung
-Route::get('serviceMaster/{id}','Web\webPageController@getServiceMaster')->name('serviceMaster');
+Route::get('serviceMaster/{id}/{room?}','Web\webPageController@getServiceMaster')->name('serviceMaster');
 
 
 
@@ -102,7 +102,7 @@ Route::group(['prefix' => 'web-page','namespace' => 'Web'],function(){
     Route::get('remove/{id}','CartRoomController@remove')->name('cart.remove');
     Route::get('update/{id}','CartRoomController@update')->name('cart.update');
     Route::get('clear','CartRoomController@clear')->name('cart.clear');
-    Route::get('addService/{id}','CartRoomController@addService')->name('addService');
+    Route::get('addService/{id}/{room?}','CartRoomController@addService')->name('addService');
     Route::get('removeService/{id}','CartRoomController@removeService')->name('cart.removeService');
     Route::get('updateService/{id}','CartRoomController@update')->name('cart.updateService');
 });

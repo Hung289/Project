@@ -17,6 +17,7 @@ use App\CartRoom\CartRoom;
 use App\Models\Service;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\OrderDetailService;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Models\Brand;
@@ -48,7 +49,7 @@ class CheckOutController extends Controller
         view()->share('blogImages', $blogImages);
 
         $brands = Brand::all();
-        view()->share('brands',$brands);
+        view()->share('brands', $brands);
     }
 
     public function getCheckOut()
@@ -58,12 +59,8 @@ class CheckOutController extends Controller
 
     public function postCheckOut(Request $request, CartRoom $cart)
     {
-        
-        // dd($service);
-        // dd($cart->items);
-        // dd($cart->services);
+
         $total_price_room_service = (($cart->total_price) + ($cart->total_price_service));
-        // dd($total_price_room_service);
 
         $customer = new Customer;
         $customer->name = $request->name;
@@ -75,40 +72,45 @@ class CheckOutController extends Controller
         $customer->save();
 
         $u_id = Auth::user()->id;
-        
+
 
         $order = Order::create([
-            'total_price'=>$total_price_room_service, 
-            'payment'=>$request->payment, 
+            'total_price' => $total_price_room_service,
+            'payment' => $request->payment,
             // 'note'=>$request->note, 
-            'user_id'=>$u_id, 
-            'customer_id'=>$customer->id
+            'user_id' => $u_id,
+            'customer_id' => $customer->id
         ]);
-        if($cart->services == null){
-            foreach($cart->items as $item)
+        // if ($cart->services == null) {
+        //     foreach ($cart->items as $item)
+        //         $orderDetail = OrderDetail::create([
+        //             'order_id' => $order->id,
+        //             'room_id' => $item['id'],
+        //             'from_date' => $item['arriveDate'],
+        //             'to_date' => $item['departDate']
+        //         ]);
+        // } else {
+        // }
+        foreach ($cart->items as $item) {
             $orderDetail = OrderDetail::create([
-                'order_id'=>$order->id,
-                'room_id'=>$item['id'],
-                'from_date'=>$item['arriveDate'],
-                'to_date'=>$item['departDate']
+                'order_id' => $order->id,
+                'room_id' => $item['id'],
+                'from_date' => $item['arriveDate'],
+                'to_date' => $item['departDate']
             ]);
-        }else{
-            foreach($cart->items as $item)
-            foreach($cart->services as $service)
-            $orderDetail = OrderDetail::create([
-                'order_id'=>$order->id,
-                'room_id'=>$item['id'],
-                'service_id'=>$service['id'],
-                'quantity_service'=>$service['quantity'],
-                'from_date'=>$item['arriveDate'],
-                'to_date'=>$item['departDate']
-            ]);
+            foreach ($cart->services as $service) {
+                if ($service['room_id'] == $orderDetail->room_id) {
+                    $orderDetailService = OrderDetailService::create([
+                        'order_detail_id' => $orderDetail->id,
+                        'service_id' => $service['id'],
+                        'quantity_service' => $service['quantity'],
+                    ]);
+                }
+            }
         }
-        
-        // session(['cart'=>[]]);
-        // session(['cartService'=>[]]);
 
-        
-        
+
+        session(['cart' => []]);
+        session(['cartService' => []]);
     }
 }
