@@ -133,6 +133,8 @@ Route::post('search/{min?}/{max?}','Web\webPageController@getFilterRoom')->name(
 // Route rating star
 Route::post('postStar','Web\webPageController@voteStar')->name('postStar');
 
+//đw
+
 
 
 
