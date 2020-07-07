@@ -63,8 +63,10 @@ Route::get('restaurant','Web\webPageController@getRestaurant')->name('restaurant
 Route::get('reservation','Web\webPageController@getReservation')->name('reservation');
 //Trang service
 Route::get('service','Web\webPageController@getService')->name('service');
-
-//
+Route::get('service-view','Web\webPageController@getViewService')->name('viewService');
+//Trang sửa thông tin tài khoản khách hàng
+Route::get('Customer-infor/{id}','Web\webPageController@getCustomerInfor')->name('CustomerInfor');
+Route::post('Customer_infor/{id}','Web\webPageController@postCustomerInfor')->name('PostCustomerInfor');
 
 
 
@@ -84,6 +86,8 @@ Route::get('room-list/{orderby?}/{ord?}','Web\webPageController@getRoomList')->n
 
 //trang list service chung
 Route::get('serviceMaster/{id}/{room?}','Web\webPageController@getServiceMaster')->name('serviceMaster');
+//trang list service chung chỉ để xem không thêm
+Route::get('serviceMasterView/{id}','Web\webPageController@getServiceMasterNotIdRoom')->name('serviceMasterNotIdRoom');
 
 
 
@@ -154,9 +158,9 @@ Route::post('postStar','Web\webPageController@voteStar')->name('postStar');
 /**
  * 
  * Route trang admin
- * 
+ * ,'middleware' => 'adminLogin'
  */
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin' ,'middleware' => 'adminLogin'],function(){
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin' ],function(){
     Route::get('/','AdminController@index')->name('admin.index');
     Route::get('/file','AdminController@file')->name('admin.file');
 

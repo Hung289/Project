@@ -67,20 +67,28 @@
                                     <small class="error help-block" style="color:red">{{$message}}</small>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Số giường</label>
-                                    <input type="number" name="bed" min="1" max="3" class="form-control" placeholder="Nhập số giường ngủ" value="{{old('bed')}}">
-                                    @error('bed')
-                                    <small class="error help-block" style="color:red">{{$message}}</small>
-                                    @enderror
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Số giường</label>
+                                            <input type="number" name="bed" min="1" max="3" class="form-control" placeholder="Nhập số giường ngủ" value="{{old('bed')}}">
+                                            @error('bed')
+                                            <small class="error help-block" style="color:red">{{$message}}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Số bồn tắm</label>
+                                            <input type="number" name="bath" min="1" max="3" class="form-control" placeholder="Nhập số bồn tắm của phòng" value="{{old('bath')}}">
+                                            @error('bath')
+                                            <small class="error help-block" style="color:red">{{$message}}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Số bồn tắm</label>
-                                    <input type="number" name="bath" min="1" max="3" class="form-control" placeholder="Nhập số bồn tắm của phòng" value="{{old('bath')}}">
-                                    @error('bath')
-                                    <small class="error help-block" style="color:red">{{$message}}</small>
-                                    @enderror
-                                </div>
+
+
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Diện tích phòng</label>
                                     <input type="number" name="area" min="30" max="100" class="form-control" placeholder="Nhập diện tích phòng" value="{{old('area')}}">
@@ -134,8 +142,8 @@
                                     @if($errors->has('files'))
                                     <span class="help-block text-danger">{{ $errors->first('files') }}</span>
                                     @endif
-                                    
-                                    
+
+
                                 </div>
 
                                 <div class="form-group">

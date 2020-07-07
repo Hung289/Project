@@ -71,9 +71,7 @@ class CartRoomController extends Controller
         $room = Room::find($id);
         $qty = $request->qty ? $request->qty : 1;
         $arrRoomUsed = array();
-        // foreach ($listRoomUsed)
         foreach ($listRoomUsed as $key => $value) {
-            // dd($value->room_id);
             array_push($arrRoomUsed, $value->room_id);
         }
         if (($to->day) > ($from->day)) {
@@ -135,7 +133,7 @@ class CartRoomController extends Controller
         $qty = $request->qty ? $request->qty : 1;
         $cartService->addService($service, $qty,$room);
         // dd(session('cartService'));
-        return redirect()->route('indexWeb')->with('success', 'Thêm thành công ' . $service->name . ' vào giỏ hàng');
+        return redirect()->back()->with('success', 'Thêm thành công ' . $service->name . ' vào giỏ hàng');
         
     }
 

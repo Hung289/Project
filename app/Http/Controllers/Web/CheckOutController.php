@@ -73,24 +73,13 @@ class CheckOutController extends Controller
 
         $u_id = Auth::user()->id;
 
-
         $order = Order::create([
             'total_price' => $total_price_room_service,
             'payment' => $request->payment,
-            // 'note'=>$request->note, 
             'user_id' => $u_id,
             'customer_id' => $customer->id
         ]);
-        // if ($cart->services == null) {
-        //     foreach ($cart->items as $item)
-        //         $orderDetail = OrderDetail::create([
-        //             'order_id' => $order->id,
-        //             'room_id' => $item['id'],
-        //             'from_date' => $item['arriveDate'],
-        //             'to_date' => $item['departDate']
-        //         ]);
-        // } else {
-        // }
+
         foreach ($cart->items as $item) {
             $orderDetail = OrderDetail::create([
                 'order_id' => $order->id,
@@ -108,8 +97,6 @@ class CheckOutController extends Controller
                 }
             }
         }
-
-
         session(['cart' => []]);
         session(['cartService' => []]);
     }

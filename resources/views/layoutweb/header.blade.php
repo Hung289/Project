@@ -32,7 +32,7 @@
                 </ul>
 
               </li>
-              <li><a href="{{route('service')}}">Service <i class="fas fa-chevron-down"></i></a>
+              <li><a href="{{route('viewService')}}">Service <i class="fas fa-chevron-down"></i></a>
                 <ul class="menunho">
                   @foreach($CategoryService as $CateService)
                   <li><a href="{{route('serviceMaster',['id'=>$CateService->id])}}">{{$CateService->name}}</a></li>

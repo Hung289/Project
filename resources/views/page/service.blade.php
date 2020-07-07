@@ -106,7 +106,10 @@
 					<span class="title-top">Our Services</span>
 					<h1>We Provide Most Exclusive <br> Hotel &amp; Room Services </h1>
 				</div>
-        <h1>Chọn dịch vụ cho phòng có id --- {{$room->id}}</h1>
+        <h1>Chọn dịch vụ cho phòng có id --- {{$room->id}} ---</h1><span>Phòng bạn vừa đặt</span>
+        <br>
+        <br>
+        <p>Tiếp tục chọn dịch vụ</p>
 				<!-- Service Boxes -->
 				<div class="row">
           <?php $i = 1 ?>

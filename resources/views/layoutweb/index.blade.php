@@ -20,6 +20,7 @@
 
   <link rel="stylesheet" href="public/web/css/ratingStar.css">
   <link rel="stylesheet" href="public/sweetalert2.min.css">
+  
 </head>
 
 <body>
@@ -65,6 +66,7 @@
   </script>
 
   @include('page.javascript')
+  @include('page.ms')
 </body>
 
 </html>

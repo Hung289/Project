@@ -109,13 +109,6 @@
 
   <script>
     $(function() {
-      //     $('.content .custom-file-input').change(function (e) { 
-
-      //       var fileName = e.target.files[0].name;
-      //         console.log(fileName);
-      //         $('.profile-user-img').attr('src','public/uploads/images/user/'+fileName);
-      //      });
-      // });
 
       $('.content .nameuser').change(function() {
 

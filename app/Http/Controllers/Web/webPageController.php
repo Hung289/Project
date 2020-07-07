@@ -23,6 +23,7 @@ use App\Models\Brand;
 use Session;
 use App\Http\Requests\Date\DateRequest;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\User\CustomerRequest;
 
 class webPageController extends Controller
 {
@@ -104,19 +105,39 @@ class webPageController extends Controller
 
     public function getRoomList(Request $request)
     {
+        $roombt = Room::all();
         $rooms = Room::orderByParam()->paginate();
-        
+        // dd($rooms);
         return view('page.room_list', ['rooms' => $rooms]);
     }
 
-    public function getServiceMaster($id,$room)
+
+
+    public function getService()
     {
-        // dd($room);
+        $CategoryService = CategoryService::all();
+        return view('page.service', ['CategoryService' => $CategoryService]);
+    }
+    public function getViewService()
+    {
+        $CategoryService = CategoryService::all();
+        return view('page.view_sevice', ['CategoryService' => $CategoryService]);
+    }
+    public function getServiceMaster($id, $room)
+    {
         $cateService = CategoryService::where('id', $id)->get();
         $Services = Service::where('category_service_id', $id)->get();
         $new_service = Service::where('category_service_id', $id)->where('new', 0)->paginate(4);
-        return view('page.service_detail', ['Services' => $Services, 'new_service' => $new_service, 'cateService' => $cateService,'room'=>$room]);
+        return view('page.service_detail', ['Services' => $Services, 'new_service' => $new_service, 'cateService' => $cateService, 'room' => $room]);
     }
+    public function getServiceMasterNotIdRoom($id)
+    {
+        $cateService = CategoryService::where('id', $id)->get();
+        $Services = Service::where('category_service_id', $id)->get();
+        $new_service = Service::where('category_service_id', $id)->where('new', 0)->paginate(4);
+        return view('page.view_service_detail', ['Services' => $Services, 'new_service' => $new_service, 'cateService' => $cateService]);
+    }
+
 
 
     public function getRestaurant()
@@ -163,11 +184,7 @@ class webPageController extends Controller
     }
 
 
-    public function getService()
-    {
-        $CategoryService = CategoryService::all();
-        return view('page.service', ['CategoryService' => $CategoryService]);
-    }
+
 
 
     public function getRegisterWeb()
@@ -248,18 +265,18 @@ class webPageController extends Controller
         //Tìm theo giá
         if (!empty($request->price)) {
             $prices = $request->price;
-            $params['prices'] = $prices ? $prices : "";    
+            $params['prices'] = $prices ? $prices : "";
         }
 
         //Tìm theo số giường
-        if(!empty($request->bed)){
+        if (!empty($request->bed)) {
             $beds = $request->bed;
             // dd($beds);
             $params['beds'] = $beds ? $beds : "";
         }
 
         //Tìm theo sô bồn tắm
-        if(!empty($request->bath)){
+        if (!empty($request->bath)) {
             $baths = $request->bath;
             $params['baths'] = $baths ? $baths : "";
         }
@@ -267,10 +284,10 @@ class webPageController extends Controller
         // dd($params);
         $rooms = $room->filteRoom($params);
 
-        return view('page.room_list',['rooms'=>$rooms]);
+        return view('page.room_list', ['rooms' => $rooms]);
     }
 
-    
+
     public function ajax_list(DateRequest $request, OrderDetail $orderDetail, Room $room)
     {
         $params = array();
@@ -293,18 +310,18 @@ class webPageController extends Controller
         //Tìm theo giá
         if (!empty($request->price)) {
             $prices = $request->price;
-            $params['prices'] = $prices ? $prices : "";    
+            $params['prices'] = $prices ? $prices : "";
         }
 
         //Tìm theo số giường
-        if(!empty($request->bed)){
+        if (!empty($request->bed)) {
             $beds = $request->bed;
             // dd($beds);
             $params['beds'] = $beds ? $beds : "";
         }
 
         //Tìm theo sô bồn tắm
-        if(!empty($request->bath)){
+        if (!empty($request->bath)) {
             $baths = $request->bath;
             $params['baths'] = $baths ? $baths : "";
         }
@@ -380,5 +397,24 @@ class webPageController extends Controller
             session::flash('error_login', 'Bạn Cần Phải Đăng Nhập Để Thực Hiện Chức Năng Này');
             return back();
         }
+    }
+
+    public function getCustomerInfor(Request $request, $id)
+    {
+        $users = User::find($id);
+        return view('page.CustomerInfor', ['users' => $users]);
+    }
+
+    public function PostCustomerInfor(CustomerRequest $request, User $user, $id)
+    {
+        $users = User::find($id);
+        $oldPass = $request->OldPass;
+        $cc = $users->password;
+        $model = $users->editCustomerInfor();
+        
+            return redirect()->back()->with('success', 'Cập nhật thành công');
+        
+       
+        
     }
 }
