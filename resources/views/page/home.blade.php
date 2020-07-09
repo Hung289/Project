@@ -76,7 +76,7 @@
   <div class="continer-fuild align-items-center">
     <div class="row">
       <div class="col-md-10 offset-md-1 toinput">
-        <form action="" method="POST">
+        <form action="{{route('getFilterRoom')}}" method="POST">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
           <div class="oto">
             <input type="date" name="searchFromDate" placeholder="Arrive Date" />

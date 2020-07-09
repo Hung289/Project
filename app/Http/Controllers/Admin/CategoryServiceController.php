@@ -56,7 +56,7 @@ class CategoryServiceController extends Controller
      */
     public function show(CategoryService $categoryService)
     {
-        //
+        return view('admin.CategoryService.view',['categoryService'=>$categoryService]);
     }
 
     /**

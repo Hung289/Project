@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\BlogImage;
 use Illuminate\Http\Request;
 use App\Models\CategoryBlog;
 use App\Models\User;
@@ -59,7 +60,10 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        //
+        // dd($blog);
+        $blogImages = BlogImage::all();
+        // dd($blogImages);
+        return view('admin.Blog.view',['blog'=>$blog,'blogImages'=>$blogImages]);
     }
 
     /**

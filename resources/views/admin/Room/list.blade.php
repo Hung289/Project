@@ -5,19 +5,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>DataTables</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">DataTables</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
+
     </section>
     <!-- Main content -->
     @if(count($errors) > 0)
@@ -38,7 +26,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Danh Sách Danh Mục</h3>
-                        <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('searchRoom')}}">
+                        <!-- <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('searchRoom')}}">
                             <div class="input-group input-group-sm">
                                 <input class="form-control form-control-navbar" type="text" placeholder="Tìm Kiếm" aria-label="Search" name="key">
                                 <div class="input-group-append">
@@ -47,31 +35,26 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        </form> -->
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example2" class="table table-bordered table-hover" style="text-align: center;height: 100px;
-  line-height: 100px;
-  white-space: nowrap;margin-bottom:20px">
+                        <table id="myTable" class="table table-striped table-bordered dt-responsive nowrap" style="text-align: center;line-height: 100px;width:100%">
                             <thead>
                                 <tr>
                                     <th>STT</th>
                                     <th>Tên phòng</th>
-                                    <th>Loại phòng</th>
                                     <th>Hình Ảnh</th>
                                     <th>Status</th>
-                                    <th>Người đăng phòng</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($rooms as $room)
                                 <tr>
-                                    <td>{{$room->id}}</td>
+                                    <td>{{$loop->index+1}}</td>
                                     <td>{{$room->name}}</td>
-                                    <td>{{$room->cateRoom->name}}</td>
+                                    <!-- <td>{{$room->cateRoom->name}}</td> -->
                                     <td>
                                         @foreach($roomImage as $roomI)
                                         <?php $check = ($roomI->room_id == $room->id) ? "$roomI->image" : "" ?>
@@ -86,13 +69,13 @@
                                     @else
                                     <td>Đã bị thuê</td>
                                     @endif
-                                    <td>{{$room->user->name}}</td>
-
+                                    <!-- <td>{{$room->user->name}}</td> -->
                                     <td>
-                                        <a href="{{route('room.edit',['room'=>$room->id])}}" class="btn btn-primary">Sửa</a>
-                                    </td>
-                                    <td>
-                                        <button type="buton" url="{{route('room.destroy',['room'=>$room->id])}}" class="btn btn-danger nutxoa">Xóa</button>
+                                        <button type="button" url="{{route('room.show',['room'=>$room->id])}}" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-success xemchitiet">
+                                            <i class="far fa-eye"></i>
+                                        </button>
+                                        <a href="{{route('room.edit',['room'=>$room->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                                        <button type="buton" url="{{route('room.destroy',['room'=>$room->id])}}" class="btn btn-danger nutxoa"><i class="fas fa-trash"></i></button>
                                     </td>
 
                                 </tr>
@@ -100,7 +83,7 @@
                             </tbody>
                         </table>
                         <div style="float:right">
-                            {!! $rooms->links() !!}
+
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -112,6 +95,8 @@
         <!-- /.row -->
     </section>
     <!-- /.content -->
+    
+    @include('admin.modal')
 </div>
 
 @stop

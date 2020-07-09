@@ -57,7 +57,7 @@ class CategoryBlogController extends Controller
      */
     public function show(CategoryBlog $categoryBlog)
     {
-        //
+        return view('admin.CategoryBlog.view',['categoryBlog'=>$categoryBlog]);
     }
 
     /**

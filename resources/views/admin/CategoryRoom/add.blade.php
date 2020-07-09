@@ -18,18 +18,6 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-    <!-- @if(count($errors) > 0)
-    <div class="alert alert-danger">
-        @foreach($errors->all() as $err)
-        {{$err}}<br>
-        @endforeach
-    </div>
-    @endif -->
-    <!-- @if(Session::has('errors'))
-        <div class="alert alert-danger">
-            {{Session::get('errors')}}
-        </div>
-    @endif -->
     @if(Session::has('success'))
     <div class="alert alert-success">
         {{Session::get('success')}}
@@ -55,10 +43,7 @@
                                     @error('name')
                                         <small class="error help-block" style="color:red">{{$message}}</small>
                                     @enderror
-                                </div>
-                                
-                                
-                                
+                                </div>    
                                 <div class="form-group">
                                     <label for="exampleInputFile">Hình Ảnh</label>
                                     <div class="input-group">

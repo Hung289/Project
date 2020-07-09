@@ -5,3 +5,24 @@
     margin-bottom: 20px;
     width: 100%;
 }
+#viewUser .col-md-6{
+    overflow: hidden;
+}
+#viewUser img{
+    width: 100%;
+    margin-bottom: 20px;
+}
+#viewUser .khunganh{
+    border-right: 1px solid gray; 
+}
+#viewUser .bordertop{
+    border-top: 1px solid gray;
+    padding-top: 20px; 
+}
+
+/* .col-12{
+    padding: 0px !important;
+} */
+.row{
+    margin: 0px !important;
+}

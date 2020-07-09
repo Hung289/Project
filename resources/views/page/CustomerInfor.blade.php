@@ -34,7 +34,7 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form action="{{route('PostCustomerInfor',['id'=>$users->id])}}" method="POST" role="form" enctype="multipart/form-data" action="">
+                  <form id="form_update_cus" action="{{route('PostCustomerInfor',['id'=>$users->id])}}" method="POST"  enctype="multipart/form-data" >
                     <div class="card-body">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Tên Người Dùng</label>
@@ -44,7 +44,7 @@
                         <label for="exampleInputFile">Chọn Ảnh Đại Diện</label>
                         <div class="input-group">
                           <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="avatar" id="file-field" onchange="previewImage(event)">
+                            <input type="file" class="custom-file-input" name="avatar" id="img" onchange="previewImage(event)">
                             <label class="custom-file-label" for="exampleInputFile" value="">Chọn Ảnh</label>
                           </div>
                         </div>
@@ -74,7 +74,7 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                      <button type="submit" class="btn btn-warning">Cập Nhật Lại Thông Tin</button>
+                      <button type="submit" id="post_up_cus" class="btn btn-warning">Cập Nhật Lại Thông Tin</button>
                     </div>
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                   </form>
@@ -132,9 +132,9 @@
   <!-- /.content -->
 </div>
 
-<script src="public/dist/js/adminlte.min.js"></script>
+<!-- <script src="public/dist/js/adminlte.min.js"></script> -->
 <!-- AdminLTE for demo purposes -->
-<script src="public/dist/js/demo.js"></script>
+<!-- <script src="public/dist/js/demo.js"></script> -->
 <script>
   function previewImage(event) {
     var reader = new FileReader();
@@ -148,6 +148,7 @@
     reader.readAsDataURL(event.target.files[0]);
   }
 </script>
+
 
 
 

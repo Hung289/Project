@@ -55,7 +55,7 @@ class BannerController extends Controller
      */
     public function show(Banner $banner)
     {
-        //
+        return view('admin.Banner.view',['banner'=>$banner]);
     }
 
     /**

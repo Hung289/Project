@@ -57,7 +57,7 @@ class CategoryRoomController extends Controller
      */
     public function show(CategoryRoom $categoryRoom)
     {
-        //
+        return view('admin.CategoryRoom.view',['categoryRoom'=>$categoryRoom]);
     }
 
     /**

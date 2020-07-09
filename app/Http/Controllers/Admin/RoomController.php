@@ -22,7 +22,7 @@ class RoomController extends Controller
     public function index()
     {
         $roomImage = RoomImage::all();
-        $rooms = Room::orderBy('id','DESC')->paginate(5);
+        $rooms = Room::orderBy('id','DESC')->get();
         return view('admin.Room.list',['rooms'=>$rooms,'roomImage'=>$roomImage]);
     }
 
@@ -64,7 +64,9 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        //
+        // dd($room);
+        $roomImage = RoomImage::all();
+        return view('admin.Room.view',['room'=>$room,'roomImage'=>$roomImage]);
     }
 
     /**

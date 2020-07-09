@@ -17,7 +17,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::orderBy('id','DESC')->paginate(5);
+        $services = Service::orderBy('id','DESC')->get();
         return view('admin.Servicess.list',['services'=>$services]);
     }
 
@@ -56,7 +56,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        return view('admin.Servicess.view',['service'=>$service]);
     }
 
     /**

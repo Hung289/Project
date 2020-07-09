@@ -4,19 +4,7 @@
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>DataTables</h1>
-        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">DataTables</li>
-          </ol>
-        </div>
-      </div>
-    </div><!-- /.container-fluid -->
+
   </section>
   <!-- Main content -->
 
@@ -36,7 +24,7 @@
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Danh sách danh mục dịch vụ</h3>
-            <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('searchCateService')}}">
+            <!-- <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('searchCateService')}}">
               <div class="input-group input-group-sm">
                 <input class="form-control form-control-navbar" type="text" placeholder="Tìm Kiếm" aria-label="Search" name="key">
                 <div class="input-group-append">
@@ -45,48 +33,40 @@
                   </button>
                 </div>
               </div>
-            </form>
+            </form> -->
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="example2" class="table table-bordered table-hover" style="text-align: center;margin-bottom:20px">
+            <table id="myTable" class="table table-striped table-bordered dt-responsive nowrap" style="text-align: center;line-height: 100px;width:100%">
               <thead>
                 <tr>
                   <th>ID</th>
                   <th>Tên danh mục dịch vụ</th>
                   <th>Hình Ảnh</th>
-                  <th>Status</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 @foreach($cateService as $CS)
                 <tr>
-                  <td>{{$CS->id}}</td>
+                  <td>{{$loop->index+1}}</td>
                   <td>{{$CS->name}}</td>
                   <td>
                     <img src="public/uploads/images/CategoryService/{{$CS->image}}" alt="" style="width:120px;height:80px">
                   </td>
-                  @if($CS->status == 0)
-                  <td>Ẩn</td>
-                  @else
-                  <td>Hiện</td>
-                  @endif
                   <td>
-                    <a href="{{route('categoryService.edit',['categoryService'=>$CS->id])}}" class="btn btn-primary">sửa</a>
-                  </td>
-                  <td>
-                    <button type="botton" url="{{route('categoryService.destroy',['categoryService'=>$CS->id])}}" class="btn btn-danger nutxoa">Xóa</button>
+                    <button type="button" url="{{route('categoryService.show',['categoryService'=>$CS->id])}}" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-success xemchitiet">
+                      <i class="far fa-eye"></i>
+                    </button>
+                    <a href="{{route('categoryService.edit',['categoryService'=>$CS->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                    <button type="botton" url="{{route('categoryService.destroy',['categoryService'=>$CS->id])}}" class="btn btn-danger nutxoa"><i class="fas fa-trash"></i></button>
                   </td>
                 </tr>
                 @endforeach
               </tbody>
 
             </table>
-            <div style="float:right">
-              {!! $cateService->links() !!}
-            </div>
+
           </div>
           <!-- /.card-body -->
         </div>
@@ -97,6 +77,7 @@
     <!-- /.row -->
   </section>
   <!-- /.content -->
+  @include('admin.modal')
 </div>
 
 @stop

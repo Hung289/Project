@@ -253,7 +253,7 @@
 <script>
     $(function() {
         $('.cmtChild').hide();
-        $('.comment-area .reply-comment').on('click', function(event) {
+        $(document).on('click', '.comment-area .reply-comment', function(event) {
             event.preventDefault();
             console.log('đã click');
             $("#cmt-child-" + $(this).attr("id")).toggle();
@@ -272,7 +272,6 @@
             $('#amount').val('$' + ui.values[0] + ' - $' + ui.values[1]);
             var value1 = ui.values[0];
             var value2 = ui.values[1];
-
             $.ajax({
                 type: "GET",
                 url: "",
@@ -369,6 +368,8 @@
                     'parentcmtchild': parentcmtchild,
                 },
                 success: function(response) {
+
+                    // console.log(data);
                     $("#khoicmt").load(window.location.href + " #cckhoicmt");
                 }
             })
@@ -384,4 +385,33 @@
             $('.resetPass').slideToggle();
         });
     })
+</script>
+
+<script>
+    // let url = $('#form_update_cus').attr('action');
+    
+    // function loadCusInFor(form = '') {
+        
+    //     $.ajax({
+    //         type:"POST",
+    //         url:url,
+    //         data:form,
+    //         dataType: 'json',
+    //         success :function(data){
+
+    //         }
+    //     })
+    // }
+    // loadCusInFor();
+    // $(function() {
+    //     $('#post_up_cus').click(function() {
+            
+    //         let data = $('#form_update_cus').serialize();
+    //         // alert(data);
+    //         var img = $('#img')[0].files[0].name;
+    //         console.log(img);
+    //         loadCusInFor(data);
+    //     })
+
+    // })
 </script>

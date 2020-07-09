@@ -34,6 +34,13 @@
   <link rel="stylesheet" href="public/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- Css thêm vào -->
   <link rel="stylesheet" href="public/dist/css/hungadmin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.bootstrap4.min.css">
+  <!-- fontsomeone -->
+  <link rel="stylesheet" href="public/web/fonts/fontawesome/fontawesome-free-5.13.0-web/css/all.min.css" />
+  <link rel="stylesheet" href="public/web/fonts/fontawesome/fontawesome-free-5.13.0-web/css/fontawesome.min.css" />
+
 
   <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.css" id="theme-styles"> -->
@@ -51,8 +58,6 @@
     <!-- chỗ nội dung trang index khi mới vào trang admin -->
     @yield('content')
     <!-- /.content-wrapper -->
-
-
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Control sidebar content goes here -->
@@ -104,68 +109,11 @@
   <script src="public/dist/js/pages/dashboard.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="public/dist/js/demo.js"></script>
-
-
-
-  <script>
-    $(function() {
-
-      $('.content .nameuser').change(function() {
-
-        var cardN = $('input[data-id="CardName"]').val();
-        console.log(cardN);
-        $("#DivNameEdit").html(cardN);
-      });
-
-      function previewImages() {
-
-        var preview = document.querySelector('#preview');
-
-        if (this.files) {
-          [].forEach.call(this.files, readAndPreview);
-        }
-
-        function readAndPreview(file) {
-
-          // Make sure `file.name` matches our extensions criteria
-          if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
-            return alert(file.name + " is not an image");
-          } // else...
-
-          var reader = new FileReader();
-
-          reader.addEventListener("load", function() {
-            var image = new Image();
-            image.width = 400;
-
-            image.title = file.name;
-            image.src = this.result;
-            preview.appendChild(image);
-          });
-
-          reader.readAsDataURL(file);
-
-        }
-
-      }
-
-      document.querySelector('#file-input').addEventListener("change", previewImages);
-    })
-  </script>
-
-  <!-- <script>
-    function previewImage(event) {
-      var reader = new FileReader();
-      var imageField = document.getElementById("image-field");
-
-      reader.onload = function() {
-        if (reader.readyState == 2) {
-          imageField.src = reader.result;
-        }
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  </script> -->
+  <!-- datatable -->
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.5/js/responsive.bootstrap4.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="public/hung.js"></script>
   <!-- Toastr -->
@@ -179,40 +127,7 @@
       timer: 3000
     });
   </script>
-  <script>
-    $(function() {
-      $('.nutxoa').on('click', function() {
-        $url = $(this).attr('url');
-        Swal.fire({
-          title: 'Bạn có chắc không?',
-          text: "Bạn sẽ không thể hoàn lại thao tác này!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-          if (result.value) {
-            $.ajax({
-              type:"POST",
-              url:$url,
-              data:{
-                _method:'DELETE',
-                _token:'<?php echo csrf_token();?>'
-              },
-              success:function(res){
-                if(res.success){
-                  location.reload();
-                }else{
-                  alert(res.error);
-                }
-              }
-            });
-          }
-        })
-      })
-    })
-  </script>
-</body>
 
+  @include('admin.js')
+</body>
 </html>
