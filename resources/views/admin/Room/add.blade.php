@@ -18,32 +18,6 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-
-    <!-- @if (count($errors) > 0)
-
-    <div class="alert alert-danger">
-
-        <strong>Sorry!</strong> There were more problems with your HTML input.<br><br>
-
-        <ul>
-
-            @foreach ($errors->all() as $error)
-
-            <li>{{ $error }}</li>
-
-            @endforeach
-
-        </ul>
-
-    </div>
-
-    @endif -->
-    @if(Session::has('success'))
-    <div class="alert alert-success">
-        {{Session::get('success')}}
-    </div>
-
-    @endif
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -51,14 +25,14 @@
 
                 <div class="col-md-8">
                     <!-- general form elements -->
-                    <div class="card card-primary">
+                    <div class="card card-primary addroom">
 
                         <div class="card-header">
                             <h3 class="card-title">Thêm mới phòng</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('room.store')}}" method="POST" role="form" enctype="multipart/form-data">
+                        <form action="{{route('admin.room.store')}}" method="POST" role="form" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên phòng</label>
@@ -68,7 +42,7 @@
                                     @enderror
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 left">
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Số giường</label>
                                             <input type="number" name="bed" min="1" max="3" class="form-control" placeholder="Nhập số giường ngủ" value="{{old('bed')}}">
@@ -77,7 +51,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 right">
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Số bồn tắm</label>
                                             <input type="number" name="bath" min="1" max="3" class="form-control" placeholder="Nhập số bồn tắm của phòng" value="{{old('bath')}}">
@@ -87,8 +61,66 @@
                                         </div>
                                     </div>
                                 </div>
-
-
+                                <div class="row">
+                                    <div class="col-md-6 left">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Số người lớn</label>
+                                            <input type="number" name="guest" min="1" max="3" class="form-control" placeholder="Nhập số giường ngủ" value="{{old('bed')}}">
+                                            @error('guest')
+                                            <small class="error help-block" style="color:red">{{$message}}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 right">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Số trẻ em</label>
+                                            <input type="number" name="adult" min="1" max="3" class="form-control" placeholder="Nhập số bồn tắm của phòng" value="{{old('bath')}}">
+                                            @error('adult')
+                                            <small class="error help-block" style="color:red">{{$message}}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 left">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Giá phòng 1 đêm</label>
+                                            <input type="text" name="priceNight" class="form-control" placeholder="Nhập vào giá phòng 1 đêm" value="{{old('priceNight')}}">
+                                            @error('priceNight')
+                                            <small class="error help-block" style="color:red">{{$message}}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 right">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Giá phòng Cuối tuần(T6-T7)</label>
+                                            <input type="text" name="priceWeekends" class="form-control" placeholder="Nhập vào giá phòng cuối tuần" value="{{old('priceWeekends')}}">
+                                            @error('priceWeekends')
+                                            <small class="error help-block" style="color:red">{{$message}}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 left">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Giá phòng hàng tuần</label>
+                                            <input type="text" name="priceWeekly" class="form-control" placeholder="Nhập vào giá phòng hàng tuần" value="{{old('priceWeekly')}}">
+                                            @error('priceWeekly')
+                                            <small class="error help-block" style="color:red">{{$message}}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 right">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Phí dọn dẹp phòng</label>
+                                            <input type="text" name="priceClearFee" class="form-control" placeholder="Nhập vào phí dọn dẹp phòng" value="{{old('priceClearFee')}}">
+                                            @error('priceClearFee')
+                                            <small class="error help-block" style="color:red">{{$message}}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Diện tích phòng</label>
                                     <input type="number" name="area" min="30" max="100" class="form-control" placeholder="Nhập diện tích phòng" value="{{old('area')}}">
@@ -103,34 +135,10 @@
                                     <small class="error help-block" style="color:red">{{$message}}</small>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Giá phòng 1 đêm</label>
-                                    <input type="text" name="priceNight" class="form-control" placeholder="Nhập vào giá phòng 1 đêm" value="{{old('priceNight')}}">
-                                    @error('priceNight')
-                                    <small class="error help-block" style="color:red">{{$message}}</small>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Giá phòng Cuối tuần(T6-T7)</label>
-                                    <input type="text" name="priceWeekends" class="form-control" placeholder="Nhập vào giá phòng cuối tuần" value="{{old('priceWeekends')}}">
-                                    @error('priceWeekends')
-                                    <small class="error help-block" style="color:red">{{$message}}</small>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Giá phòng hàng tuần</label>
-                                    <input type="text" name="priceWeekly" class="form-control" placeholder="Nhập vào giá phòng hàng tuần" value="{{old('priceWeekly')}}">
-                                    @error('priceWeekly')
-                                    <small class="error help-block" style="color:red">{{$message}}</small>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Phí dọn dẹp phòng</label>
-                                    <input type="text" name="priceClearFee" class="form-control" placeholder="Nhập vào phí dọn dẹp phòng" value="{{old('priceClearFee')}}">
-                                    @error('priceClearFee')
-                                    <small class="error help-block" style="color:red">{{$message}}</small>
-                                    @enderror
-                                </div>
+
+
+
+
                                 <div class="form-group">
                                     <label for="exampleInputFile">Hình Ảnh</label>
                                     <div class="input-group">
@@ -153,30 +161,38 @@
                                         <option value="1">Đã bị thuê</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Brand(Thương hiệu)</label>
-                                    <select name="brand_id" class="form-control" id="">
-                                        <option value="">---Chọn thương hiệu---</option>
-                                        @foreach($brands as $brand)
-                                        <option value="{{$brand->id}}">{{$brand->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('brand_id')
-                                    <small class="error help-block" style="color:red">{{$message}}</small>
-                                    @enderror
+                                <div class="row">
+                                    <div class="col-md-6 left">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Brand(Thương hiệu)</label>
+                                            <select name="brand_id" class="form-control" id="">
+                                                <option value="">---Chọn thương hiệu---</option>
+                                                @foreach($brands as $brand)
+                                                <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('brand_id')
+                                            <small class="error help-block" style="color:red">{{$message}}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 right">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Chọn Danh Mục phòng</label>
+                                            <select name="category_room_id" class="form-control" id="">
+                                                <option value="">--Chọn Danh Mục--</option>
+                                                @foreach($CateRoom as $CateR)
+                                                <option value="{{$CateR->id}}">{{$CateR->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('category_room_id')
+                                            <small class="error help-block" style="color:red">{{$message}}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Chọn Danh Mục phòng</label>
-                                    <select name="category_room_id" class="form-control" id="">
-                                        <option value="">--Chọn Danh Mục--</option>
-                                        @foreach($CateRoom as $CateR)
-                                        <option value="{{$CateR->id}}">{{$CateR->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('category_room_id')
-                                    <small class="error help-block" style="color:red">{{$message}}</small>
-                                    @enderror
-                                </div>
+
+
                                 <div class="form-group">
                                     <label for="">Chọn admin đăng phòng</label>
                                     <select name="user_room_id" class="form-control" id="">
@@ -184,7 +200,103 @@
 
                                     </select>
                                     <!-- <input type="text" class="form-control" value="{{Auth::User()->id}}" name="user_room_id" placeholder="{{Auth::User()->name}}"> -->
+                                </div>
 
+                                <div class="row">
+                                    <div class="col-md-6 left">
+                                        <div class="form-group">
+                                            <label for="">Gym</label>
+                                            <div class="col-sm-10">
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="gym" value="1" checked>có
+                                                    </label>
+                                                </div>
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="gym" value="0">không
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Laundry</label>
+                                            <div class="col-sm-10">
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="Laundry" value="1" checked>có
+                                                    </label>
+                                                </div>
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="Laundry" value="0">không
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">TV Cable</label>
+                                            <div class="col-sm-10">
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="tvCable" value="1" checked>có
+                                                    </label>
+                                                </div>
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="tvCable" value="0">không
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 right">
+                                        <div class="form-group">
+                                            <label for="">Wi-Fi</label>
+                                            <div class="col-sm-10">
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="wifi" value="1" checked>có
+                                                    </label>
+                                                </div>
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="wifi" value="0">không
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Bãi đậu xe miễn phí</label>
+                                            <div class="col-sm-10">
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="FreeParking" value="1" checked>có
+                                                    </label>
+                                                </div>
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="FreeParking" value="0">không
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Bảo vệ</label>
+                                            <div class="col-sm-10">
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="Security" value="1" checked>có
+                                                    </label>
+                                                </div>
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="Security" value="0">không
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -194,96 +306,12 @@
                                     <small class="error help-block" style="color:red">{{$message}}</small>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="">Gym</label>
-                                    <div class="col-sm-10">
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="gym" value="1" checked>có
-                                            </label>
-                                        </div>
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="gym" value="0">không
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Laundry</label>
-                                    <div class="col-sm-10">
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="Laundry" value="1" checked>có
-                                            </label>
-                                        </div>
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="Laundry" value="0">không
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">TV Cable</label>
-                                    <div class="col-sm-10">
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="tvCable" value="1" checked>có
-                                            </label>
-                                        </div>
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="tvCable" value="0">không
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Wi-Fi</label>
-                                    <div class="col-sm-10">
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="wifi" value="1" checked>có
-                                            </label>
-                                        </div>
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="wifi" value="0">không
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Bãi đậu xe miễn phí</label>
-                                    <div class="col-sm-10">
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="FreeParking" value="1" checked>có
-                                            </label>
-                                        </div>
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="FreeParking" value="0">không
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Bảo vệ</label>
-                                    <div class="col-sm-10">
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="Security" value="1" checked>có
-                                            </label>
-                                        </div>
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="Security" value="0">không
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
+
+
+
+
+
+
                             </div>
                             <!-- /.card-body -->
 

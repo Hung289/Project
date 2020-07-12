@@ -12,6 +12,8 @@ use App\Models\Brand;
 use Session;
 use App\Http\Requests\Room\RoomAddRequest;
 use App\Http\Requests\Room\RoomEditRequest;
+use Illuminate\Support\Facades\Auth;
+
 class RoomController extends Controller
 {
     /**
@@ -21,7 +23,11 @@ class RoomController extends Controller
      */
     public function index()
     {
+        $user = Auth::user()->id;
+        // dd($user);
         $roomImage = RoomImage::all();
+        $roomTheoId = Room::where('user_room_id',$user)->get();
+        // dd($roomTheoId);
         $rooms = Room::orderBy('id','DESC')->get();
         return view('admin.Room.list',['rooms'=>$rooms,'roomImage'=>$roomImage]);
     }
@@ -50,9 +56,9 @@ class RoomController extends Controller
         $model = $Room->add();
         // dd($model);
         if($model){
-            return redirect()->route('room.create')->with('success','Thêm mới thành công');
+            return redirect()->route('admin.room.create')->with('success','Thêm mới thành công');
         }else{
-            return redirect()->route('room.create')->with('success','Thêm mới thất bại');
+            return redirect()->route('admin.room.create')->with('success','Thêm mới thất bại');
         }
     }
 
@@ -78,9 +84,10 @@ class RoomController extends Controller
     public function edit(Room $room)
     {
         // dd($room);
+        $BrandRoom = Brand::all();
         $CateRoom = CategoryRoom::all();
         $Users = User::all();
-        return view('admin.Room.edit',['room'=>$room,'CateRoom'=>$CateRoom,'Users'=>$Users]);
+        return view('admin.Room.edit',['room'=>$room,'CateRoom'=>$CateRoom,'Users'=>$Users,'BrandRoom'=>$BrandRoom]);
     }
 
     /**
@@ -95,7 +102,7 @@ class RoomController extends Controller
         // dd($room);
         $model = $room->updateEdit();
         if($model){
-            return redirect()->route('room.index')->with('success','Cập nhật thành công');
+            return redirect()->route('admin.room.index')->with('success','Cập nhật thành công');
         }else{
             return redirect()->back()->with('errors','Cập nhật thất bại');
         }

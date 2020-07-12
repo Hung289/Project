@@ -172,21 +172,23 @@
                                 </select>
                             </div>
                             <div class="input-wrap">
-                                <select name="adults" id="adults">
-                                    <option value="" disabled="" selected="">Adults</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+                                <select name="guest" id="guest">
+                                    <option value="" disabled="" selected="">Guests</option>
+                                    <option value="1">1 guest</option>
+                                    <option value="2">2 guest</option>
+                                    <option value="3">3 guest</option>
+                                    <option value="4">4 guest</option>
                                 </select>
                             </div>
                             <div class="input-wrap">
-                                <select name="child" id="child">
-                                    <option value="" disabled="" selected="">Children</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+                                <select name="adult" id="adult">
+                                    <option value="" disabled="" selected="">Adults</option>
+                                    <option value="1">1 adult</option>
+                                    <option value="2">2 adult</option>
+                                    <option value="3">3 adult</option>
                                 </select>
                             </div>
+
                             <div class="input-wrap">
                                 <div class="price-range-wrap">
                                     <div class="slider-range">

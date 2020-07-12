@@ -33,17 +33,36 @@
                         <span class="login100-form-title p-b-43">
                             Login to continue
                         </span>
-
+                        @if(count($errors) > 0)
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                            {{$error}}<br>
+                            @endforeach
+                        </div>
+                        @endif
+                        @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{session('error')}}
+                        </div>
+                        @endif
+                        @if(Session::has('error_login'))
+                        <div class="alert alert-danger ">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            {{Session::get('error_login')}}</small>
+                        </div>
+                        @endif
+                        @if(Session::has('error_login'))
+                        <div class="alert alert-danger ">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            {{Session::get('error_login')}}</small>
+                        </div>
+                        @endif
 
                         <div class="wrap-input100 validate-input">
                             <input class="input100" type="text" name="email" placeholder="email">
-
                         </div>
-
-
                         <div class="wrap-input100 validate-input">
                             <input class="input100" type="password" name="password" placeholder="password">
-
                         </div>
 
 

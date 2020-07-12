@@ -18,11 +18,7 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-    @if(Session::has('success'))
-    <div class="alert alert-success">
-        {{Session::get('success')}}
-    </div>
-    @endif
+    
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -35,7 +31,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('categoryRoom.store')}}" method="POST" role="form" enctype="multipart/form-data">
+                        <form action="{{route('admin.categoryRoom.store')}}" method="POST" role="form" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="form-group @error('name') has-error @enderror">
                                     <label for="exampleInputEmail1">Tên danh mục</label>

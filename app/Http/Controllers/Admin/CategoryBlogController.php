@@ -43,7 +43,7 @@ class CategoryBlogController extends Controller
         $model = $categoryBlog->add();
         // dd($model);
         if($model){
-            return redirect()->route('categoryBlog.create')->with('success','Thêm mới danh mục thành công');
+            return redirect()->route('admin.categoryBlog.create')->with('success','Thêm mới danh mục thành công');
         }else{
             return redirect()->back()->with('errors','Thêm mới thất bại');
         }
@@ -82,7 +82,7 @@ class CategoryBlogController extends Controller
     public function update(CategoryBlogEditRequest $request, CategoryBlog $categoryBlog)
     {
         $model = $categoryBlog->updateEdit();
-        return redirect()->route('categoryBlog.index')->with('success','Cập nhật thành công');
+        return redirect()->route('admin.categoryBlog.index')->with('success','Cập nhật thành công');
     }
 
     /**

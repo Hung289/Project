@@ -26,3 +26,11 @@
 .row{
     margin: 0px !important;
 }
+
+.addroom .left{
+    padding-left: 0px;
+}
+
+.addroom .right{
+    padding-right: 0px;
+}

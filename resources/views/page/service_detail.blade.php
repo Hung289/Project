@@ -14,7 +14,7 @@
                 <li><a href="{{route('indexWeb')}}">Home</a></li>
                 <li><i class="fas fa-angle-double-right"></i></li>
                 @foreach($cateService as $cS)
-                    <li>{{$cS->name}}</li>
+                <li>{{$cS->name}}</li>
                 @endforeach
             </ul>
         </div>
@@ -22,6 +22,9 @@
 </section>
 
 <section class="latest-food section-padding">
+    <div class="titleChoiceService">Tiếp tục chọn dịch vụ cho phòng --- {{$rooms->name}} ---
+        <p>Nếu không muốn chọn dịch vụ bạn có thể tiến hành thanh toán bằng chuyển sang trang <a href="{{route('cart.view')}}">CartRoom</a></p>
+    </div>
     <div class="container">
         <div class="section-title text-center">
             <span class="title-top">Latest Food</span>
@@ -68,7 +71,6 @@
             <h1>Main Menu / {{$cS->name}} list</h1>
             @endforeach
         </div>
-        <h1>Chọn dịch vụ cho phòng có id ---{{$room}}</h1>
         <div class="regular-food-wrap">
             <div class="row">
                 @foreach($Services as $service)
@@ -81,7 +83,7 @@
                             <h4>{{$service->name}}</h4>
                             <p>{!!$service->description!!}</p>
                             <p class="price">$ {{number_format($service->price)}}</p>
-                            <a href="{{route('addService',['id'=>$service->id,'room'=>$room])}}">Thêm vào giỏ</a>
+                            <a href="{{route('addService',['id'=>$service->id,'room'=>$rooms->id])}}">Add Service to Room</a>
                         </div>
                     </div>
                 </div>

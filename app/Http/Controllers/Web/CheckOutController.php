@@ -21,6 +21,8 @@ use App\Models\OrderDetailService;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Models\Brand;
+use App\Http\Requests\CheckOut\CheckOutAddRequest;
+use Illuminate\Support\Facades\Mail;
 
 class CheckOutController extends Controller
 {
@@ -54,50 +56,37 @@ class CheckOutController extends Controller
 
     public function getCheckOut()
     {
-        return view('page.checkout');
+        $orders = Order::all();
+        return view('page.checkout',compact('orders'));
     }
 
-    public function postCheckOut(Request $request, CartRoom $cart)
+    public function postCheckOut(CheckOutAddRequest $request, CartRoom $cart,Order $orders,OrderDetail $orderDetails,OrderDetailService $orderDetailServices,Customer $customers)
     {
-
-        $total_price_room_service = (($cart->total_price) + ($cart->total_price_service));
-
-        $customer = new Customer;
-        $customer->name = $request->name;
-        $customer->gender = $request->gender;
-        $customer->phone = $request->phone;
-        $customer->address = $request->address;
-        $customer->email = $request->email;
-        $customer->note = $request->note;
-        $customer->save();
-
-        $u_id = Auth::user()->id;
-
-        $order = Order::create([
-            'total_price' => $total_price_room_service,
-            'payment' => $request->payment,
-            'user_id' => $u_id,
-            'customer_id' => $customer->id
-        ]);
-
+        $customer = $customers->addCustomer();
+        $order = $orders->addOrder($customer,$cart);
         foreach ($cart->items as $item) {
-            $orderDetail = OrderDetail::create([
-                'order_id' => $order->id,
-                'room_id' => $item['id'],
-                'from_date' => $item['arriveDate'],
-                'to_date' => $item['departDate']
-            ]);
+            $orderDetail = $orderDetails->addOrderDetail($order,$item);
             foreach ($cart->services as $service) {
                 if ($service['room_id'] == $orderDetail->room_id) {
-                    $orderDetailService = OrderDetailService::create([
-                        'order_detail_id' => $orderDetail->id,
-                        'service_id' => $service['id'],
-                        'quantity_service' => $service['quantity'],
-                    ]);
+                    $orderDetailService = $orderDetailServices->addOrderDetailService($orderDetail,$service);
                 }
             }
         }
+        $c_email = Auth::user()->email;
+        $c_name = Auth::user()->name;
+        // dd($c_name);
+        Mail::send('email.booking',[
+            'order'=>$order,
+            'room'=>$cart->items,
+            'service'=>$cart->services,
+            'c_name'=>$c_name
+        ],function($mail) use ($c_email,$c_name){
+            $mail->to($c_email,$c_name);
+            $mail->from('nthung2896@gmail.com');
+            $mail->subject('AVSON - Hotel & Room Services');
+        });
         session(['cart' => []]);
         session(['cartService' => []]);
+        return redirect()->route('indexWeb')->with('success','Đặt phòng Thành Công. Bạn cui lòng kiểm tra gmail để biết chi tiết');
     }
 }

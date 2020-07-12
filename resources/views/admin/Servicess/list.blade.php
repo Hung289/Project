@@ -7,25 +7,13 @@
 
     </section>
     <!-- Main content -->
-    @if(count($errors) > 0)
-    <div class="alert alert-danger">
-        @foreach($errors->all() as $err)
-        {{$err}}<br>
-        @endforeach
-    </div>
-    @endif
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{session('success')}}
-    </div>
-    @endif
     <section class="content">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Danh Sách Danh Mục</h3>
-                        <!-- <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('searchService')}}">
+                        <!-- <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('admin.searchService')}}">
                             <div class="input-group input-group-sm">
                                 <input class="form-control form-control-navbar" type="text" placeholder="Tìm Kiếm" aria-label="Search" name="key">
                                 <div class="input-group-append">
@@ -58,11 +46,11 @@
                                     </td>
                                     <td>{{$service->categoryService->name}}</td>
                                     <td>
-                                        <button type="button" url="{{route('service.show',['service'=>$service->id])}}" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-success xemchitiet">
+                                        <button type="button" url="{{route('admin.service.show',['service'=>$service->id])}}" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-success xemchitiet">
                                             <i class="far fa-eye"></i>
                                         </button>
-                                        <a href="{{route('service.edit',['service'=>$service->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
-                                        <button type="button" url="{{route('service.destroy',['service'=>$service->id])}}" class="btn btn-danger nutxoa"><i class="fas fa-trash"></i></button>
+                                        <a href="{{route('admin.service.edit',['service'=>$service->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                                        <button type="button" url="{{route('admin.service.destroy',['service'=>$service->id])}}" class="btn btn-danger nutxoa"><i class="fas fa-trash"></i></button>
                                     </td>
 
                                 </tr>

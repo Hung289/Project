@@ -43,5 +43,15 @@ class OrderDetail extends Model
        
     }
 
+    public function addOrderDetail($order,$item)
+    {
+        $orderDetail = $this->create([
+            'order_id' => $order->id,
+            'room_id' => $item['id'],
+            'from_date' => $item['arriveDate'],
+            'to_date' => $item['departDate']
+        ]);
+        return $orderDetail;
+    }
     
 }

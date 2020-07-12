@@ -77,7 +77,7 @@
     <div class="row">
       <div class="col-md-10 offset-md-1 toinput">
         <form action="{{route('getFilterRoom')}}" method="POST">
-        <input type="hidden" name="_token" value="{{csrf_token()}}">
+          <input type="hidden" name="_token" value="{{csrf_token()}}">
           <div class="oto">
             <input type="date" name="searchFromDate" placeholder="Arrive Date" />
           </div>
@@ -85,17 +85,20 @@
             <input type="date" name="searchToDate" placeholder="Depart Date" />
           </div>
           <div class="oto">
-            <select name="" id="">
-              <option value="">Guest</option>
-              <option value="">Guest</option>
-              <option value="">Guest</option>
+            <select name="guest" id="">
+              <option value="" disabled="" selected="">Guests</option>
+              <option value="1">1 guest</option>
+              <option value="2">2 guest</option>
+              <option value="3">3 guest</option>
+              <option value="4">4 guest</option>
             </select>
           </div>
           <div class="oto">
-            <select name="" id="">
-              <option value="">Adult</option>
-              <option value="">Adult</option>
-              <option value="">Adult</option>
+            <select name="adult" id="">
+              <option value="" disabled="" selected="">Adults</option>
+              <option value="1">1 adult</option>
+              <option value="2">2 adult</option>
+              <option value="3">3 adult</option>
             </select>
           </div>
           <div class="oto nut">

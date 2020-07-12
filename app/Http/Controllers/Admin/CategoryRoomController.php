@@ -43,7 +43,7 @@ class CategoryRoomController extends Controller
         $model = $CategoryRoom->add();
         
         if($model){
-            return redirect()->route('categoryRoom.create')->with('success','Thêm mới thành công');
+            return redirect()->route('admin.categoryRoom.create')->with('success','Thêm mới thành công');
         }else{
             return redirect()->back()->with('error','Thêm mới thất bại');
         }
@@ -81,7 +81,7 @@ class CategoryRoomController extends Controller
     public function update(CategoryRoomEditRequest $request, CategoryRoom $categoryRoom)
     {
         $model = $categoryRoom->updateEdit();
-        return redirect()->route('categoryRoom.index')->with('success','Cập nhật thành công danh mục');
+        return redirect()->route('admin.categoryRoom.index')->with('success','Cập nhật thành công danh mục');
     }
 
     /**

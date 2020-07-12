@@ -57,13 +57,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('user.index')}}" class="nav-link">
+                <a href="{{route('admin.user.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách người dùng</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('user.create')}}" class="nav-link">
+                <a href="{{route('admin.user.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm mới người dùng</p>
                 </a>
@@ -80,13 +80,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('categoryRoom.index')}}" class="nav-link">
+                <a href="{{route('admin.categoryRoom.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh Sách danh mục phòng</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('categoryRoom.create')}}" class="nav-link">
+                <a href="{{route('admin.categoryRoom.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm mới danh mục phòng</p>
                 </a>
@@ -103,13 +103,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('categoryService.index')}}" class="nav-link">
+                <a href="{{route('admin.categoryService.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh Sách danh mục dịch vụ</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('categoryService.create')}}" class="nav-link">
+                <a href="{{route('admin.categoryService.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm mới danh mục dịch vụ</p>
                 </a>
@@ -126,13 +126,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('categoryBlog.index')}}" class="nav-link">
+                <a href="{{route('admin.categoryBlog.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh Sách danh mục blog</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('categoryBlog.create')}}" class="nav-link">
+                <a href="{{route('admin.categoryBlog.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm mới danh mục blog</p>
                 </a>
@@ -149,13 +149,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('room.index')}}" class="nav-link">
+                <a href="{{route('admin.room.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách phòng</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('room.create')}}" class="nav-link">
+                <a href="{{route('admin.room.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm mới phòng</p>
                 </a>
@@ -172,13 +172,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('service.index')}}" class="nav-link">
+                <a href="{{route('admin.service.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách dịch vụ</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('service.create')}}" class="nav-link">
+                <a href="{{route('admin.service.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm mới dịch vụ</p>
                 </a>
@@ -195,13 +195,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('blog.create')}}" class="nav-link">
+                <a href="{{route('admin.blog.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm mới blogs</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('blog.index')}}" class="nav-link">
+                <a href="{{route('admin.blog.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách blogs</p>
                 </a>
@@ -218,13 +218,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('brand.create')}}" class="nav-link">
+                <a href="{{route('admin.brand.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm mới brands</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('brand.index')}}" class="nav-link">
+                <a href="{{route('admin.brand.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách brands</p>
                 </a>
@@ -241,19 +241,43 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('banner.index')}}" class="nav-link">
+                <a href="{{route('admin.banner.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách banner</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('banner.create')}}" class="nav-link">
+                <a href="{{route('admin.banner.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm mới banner</p>
                 </a>
               </li>
             </ul>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Role
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('admin.role.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách Role</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('admin.role.create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm mới Role</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

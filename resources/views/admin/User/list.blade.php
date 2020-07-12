@@ -26,7 +26,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Danh Sách Tài khoản</h3>
-                        <!-- <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('searchUser')}}">
+                        <!-- <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('admin.searchUser')}}">
                             <div class="input-group input-group-sm">
                                 <input class="form-control form-control-navbar" type="text" placeholder="Tìm Kiếm" aria-label="Search" name="key">
                                 <div class="input-group-append">
@@ -67,11 +67,11 @@
                                     <td>Thường dân</td>
                                     @endif
                                     <td>
-                                        <button  type="button" url="{{route('user.show',['user'=>$user->id])}}" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-success xemchitiet">
+                                        <button  type="button" url="{{route('admin.user.show',['user'=>$user->id])}}" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-success xemchitiet">
                                             <i class="far fa-eye"></i>
                                         </button>
-                                        <a href="{{route('user.edit',['user'=>$user->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
-                                        <button type="button" url="{{route('user.destroy',['user'=>$user->id])}}" class="btn btn-danger nutxoa"><i class="fas fa-trash"></i></button>
+                                        <a href="{{route('admin.user.edit',['user'=>$user->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                                        <button type="button" url="{{route('admin.user.destroy',['user'=>$user->id])}}" class="btn btn-danger nutxoa"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                                 @endforeach

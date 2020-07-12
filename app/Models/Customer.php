@@ -41,4 +41,17 @@ class Customer extends Authenticatable
     public function order(){
         return $this->hasMany('App\Models\Order','customer_id');
     }
+
+    public function addCustomer()
+    {
+        $customer = $this->create([
+            'name'=>request()->name,
+            'gender'=>request()->gender ,
+            'email'=>request()->email,
+            'address'=>request()->address, 
+            'phone'=>request()->phone,
+            'note'=>request()->note
+        ]);
+        return $customer;
+    }
 }

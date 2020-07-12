@@ -6,6 +6,24 @@ body {
     box-sizing: border-box;
 }
 /* ======================================service============================ */
+.titleChoiceService{
+    text-align: center;
+    font-size: 35px;
+    padding: 30px 0px;
+    font-weight: 600;
+}
+.titleChoiceService p{
+    font-size: 20px;
+    font-weight: 200;
+}
+.titleChoiceService a{
+    font-weight: 600;
+}
+.titleChoiceService a:hover{
+    font-weight: 600;
+    color: #fea116;
+    transition: all 0.4s ease-out 0s;
+}
 .single-service-box {
     position: relative;
     border: 2px solid #dfe9f4;
@@ -1837,6 +1855,14 @@ a.read-more {
 }
 
 /* ===================================Trang RoomDetail ================================= */
+.chitietphong .khoitime{
+    padding-bottom: 20px;
+}
+.chitietphong .khoitime .khoilisttime{
+    
+    height: 100px;
+    overflow-y: auto;
+}
 .chitietphong .comment-area .formcmt {
     height: 40px;
 }
@@ -3888,6 +3914,7 @@ textarea:focus {
 }
 .Bill .viewroombooked {
     margin-bottom: 20px;
+    overflow: hidden;
 }
 .Bill .tongoaitrai {
     padding: 0px;
@@ -3914,6 +3941,7 @@ textarea:focus {
 }
 .Bill .tongoaitrai .tongoai {
     background-color: white;
+    height: 250px;
 }
 .Bill .tongoaitrai .tongoai img {
     width: 100%;
@@ -3965,7 +3993,7 @@ textarea:focus {
     display: inline-block;
     border-radius: 5px;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .Bill .tongoaitrai .tongoai .khoithongtin p {
     color: #fff;

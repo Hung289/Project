@@ -46,7 +46,7 @@ class BlogController extends Controller
     {
         $model = $blog->add();
         if($model){
-            return redirect()->route('blog.create')->with('success','Thêm mới thành công');
+            return redirect()->route('admin.blog.create')->with('success','Thêm mới thành công');
         }else{
             return redirect()->back()->with('errors','Thêm mới thất bại');
         }
@@ -90,7 +90,7 @@ class BlogController extends Controller
     public function update(BlogEditRequest $request, Blog $blog)
     {
         $model = $blog->updateEdit();
-        return redirect()->route('blog.index')->with('success','Cập nhật thành công blog');
+        return redirect()->route('admin.blog.index')->with('success','Cập nhật thành công blog');
     }
 
     /**
@@ -107,7 +107,7 @@ class BlogController extends Controller
             return response(['success'=>false]);
         }
         // $blog->delete();
-        // return redirect()->route('blog.index')->with('success','Xóa thành công');
+        // return redirect()->route('admin.blog.index')->with('success','Xóa thành công');
     }
 
     public function search(Request $request){

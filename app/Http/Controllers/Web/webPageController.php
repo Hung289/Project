@@ -15,6 +15,7 @@ use App\Models\RoomImage;
 use App\Models\BlogImage;
 use App\Models\Service;
 use App\Models\OrderDetail;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ReviewRoom;
 use App\Models\CommentBlog;
@@ -24,6 +25,8 @@ use Session;
 use App\Http\Requests\Date\DateRequest;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\User\CustomerRequest;
+use App\Http\Requests\LoginWeb\LoginWebAddRequest;
+use App\Http\Requests\RegisterWeb\RegisterWebAddRequest;
 
 class webPageController extends Controller
 {
@@ -86,10 +89,11 @@ class webPageController extends Controller
         return view('page.blog_stand');
     }
 
-    public function getCheckout()
-    {
-        return view('page.checkout');
-    }
+    // public function getCheckout()
+    // {
+
+    //     return view('page.checkout');
+    // }
 
     public function getContact()
     {
@@ -115,6 +119,7 @@ class webPageController extends Controller
 
     public function getService()
     {
+
         $CategoryService = CategoryService::all();
         return view('page.service', ['CategoryService' => $CategoryService]);
     }
@@ -125,10 +130,11 @@ class webPageController extends Controller
     }
     public function getServiceMaster($id, $room)
     {
+        $rooms = Room::find($room);
         $cateService = CategoryService::where('id', $id)->get();
         $Services = Service::where('category_service_id', $id)->get();
         $new_service = Service::where('category_service_id', $id)->where('new', 0)->paginate(4);
-        return view('page.service_detail', ['Services' => $Services, 'new_service' => $new_service, 'cateService' => $cateService, 'room' => $room]);
+        return view('page.service_detail', ['Services' => $Services, 'new_service' => $new_service, 'cateService' => $cateService, 'rooms' => $rooms]);
     }
     public function getServiceMasterNotIdRoom($id)
     {
@@ -137,8 +143,6 @@ class webPageController extends Controller
         $new_service = Service::where('category_service_id', $id)->where('new', 0)->paginate(4);
         return view('page.view_service_detail', ['Services' => $Services, 'new_service' => $new_service, 'cateService' => $cateService]);
     }
-
-
 
     public function getRestaurant()
     {
@@ -157,18 +161,19 @@ class webPageController extends Controller
         return view('page.reservation');
     }
 
-    public function getRoomDetail(Request $request, $id, RoomStar $roomStar)
+    public function getRoomDetail(Request $request, $id, RoomStar $roomStar, Room $room, CategoryRoom $categoryRoom, OrderDetail $orderDetail)
     {
-        $this->validate($request, [], []);
-        // $reviewRoom = ReviewRoom::where('parent', 0)->where('room_id',$id)->orderBy('id', 'DESC')->paginate(2);
-        // $reviewRoomChild = ReviewRoom::orderBy('id', 'DESC')->get();
+        $listDateFormTo = OrderDetail::where('room_id', $id)->get();
         $room = Room::where('id', $id)->first();
         $rImage = RoomImage::where('room_id', $id)->first();
         $roomStars = $roomStar->calAvg($id);
+        $lastRoom = Room::orderBy('created_at', 'DESC')->paginate(3);
+        $listCateRoom = CategoryRoom::all();
         return view('page.room_detail', [
             'room' => $room, 'rImage' => $rImage,
             'avgStarAcao' => $roomStars['bien1'], 'avgStarDes' => $roomStars['bien2'], 'avgStarTran' => $roomStars['bien3'], 'avgStarOver' => $roomStars['bien4'],
-            'tb' => $roomStars['bien5']
+            'tb' => $roomStars['bien5'], 'lastRoom' => $lastRoom, 'listCateRoom' => $listCateRoom,
+            'listDateFormTo' => $listDateFormTo
         ]);
     }
 
@@ -183,26 +188,13 @@ class webPageController extends Controller
         return view('page.blog_detail', ['blog' => $blog, 'bImage' => $bImage, 'blog2' => $blog2, 'cateBlog' => $cateBlog, 'commentBlog' => $commentBlog, 'commentBlogChild' => $commentBlogChild]);
     }
 
-
-
-
-
     public function getRegisterWeb()
     {
         return view('register');
     }
 
-    public function postRegisterWeb(Request $request, User $user)
+    public function postRegisterWeb(RegisterWebAddRequest $request, User $user)
     {
-        $this->validate($request, [
-            'email' => 'required',
-            'password' => 'required|min:3|max:32'
-        ], [
-            'email.required' => 'Bạn chưa nhập email',
-            'password.required' => 'Bạn chưa nhập password',
-            'password.min' => 'Password không nhỏ hơn 3 kí tự',
-            'password.max' => 'Password không lớn hơn 32 ký tự'
-        ]);
         $users = $user->registerWeb();
         return redirect()->back()->with('success', 'Chúc mừng bạn đã đăng ký thành công');
     }
@@ -212,21 +204,12 @@ class webPageController extends Controller
         return view('login');
     }
 
-    public function postLoginWeb(Request $request)
+    public function postLoginWeb(LoginWebAddRequest $request)
     {
-        $this->validate($request, [
-            'email' => 'required',
-            'password' => 'required | min:3 |max: 32'
-        ], [
-            'email.required' => 'Bạn chưa nhập email',
-            'password.required' => 'Bạn chưa nhập password',
-            'password.min' => 'Password không nhỏ hơn 3 ký tự',
-            'password.max' => 'Password không lớn hơn 32 ký tự'
-        ]);
         if (Auth::attempt($request->only('email', 'password'), $request->has('remember'))) {
             return redirect()->route('indexWeb');
         } else {
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Tài khoản hoặc mật khẩu không đúng');;
         }
     }
 
@@ -239,7 +222,6 @@ class webPageController extends Controller
     public function getRoomListMaster($id)
     {
         $rooms = Room::where('category_room_id', $id)->get();
-        // dd($rooms);
         return view('page.room_list_master', ['rooms' => $rooms]);
     }
 
@@ -279,6 +261,18 @@ class webPageController extends Controller
         if (!empty($request->bath)) {
             $baths = $request->bath;
             $params['baths'] = $baths ? $baths : "";
+        }
+
+        //Tìm kiếm theo số người lớn
+        if (!empty($request->guest)) {
+            $guest = $request->guest;
+            $params['guests'] = $guest ? $guest : "";
+        }
+
+        //Tìm kiếm theo số trẻ em
+        if (!empty($request->adult)) {
+            $adult = $request->adult;
+            $params['adults'] = $adult ? $adult : "";
         }
 
         // dd($params);
@@ -333,11 +327,6 @@ class webPageController extends Controller
 
     public function postReviewRoom(Request $request, ReviewRoom $reviewRoom, $id)
     {
-        $this->validate($request, [
-            'content' => 'required',
-        ], [
-            'content.required' => 'Bạn chưa nhập content',
-        ]);
         if (Auth::check()) {
             $reviewRooomTo = $reviewRoom->postRR($id);
             return redirect()->back()->with('success', 'Đăng thành công bình luận');
@@ -411,10 +400,7 @@ class webPageController extends Controller
         $oldPass = $request->OldPass;
         $cc = $users->password;
         $model = $users->editCustomerInfor();
-        
-            return redirect()->back()->with('success', 'Cập nhật thành công');
-        
-       
-        
+
+        return redirect()->back()->with('success', 'Cập nhật thành công');
     }
 }

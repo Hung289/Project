@@ -41,7 +41,7 @@ class BannerController extends Controller
         // dd($banner);
         $model = $banner->add();
         if($model){
-            return redirect()->route('banner.create')->with('success','Thêm mới thành công');
+            return redirect()->route('admin.banner.create')->with('success','Thêm mới thành công');
         }else{
             return redirect()->back()->with('errors','Thêm mới thất bại');
         }
@@ -81,7 +81,7 @@ class BannerController extends Controller
     {
         $model = $banner->updateEdit();
         // dd($model);
-        return redirect()->route('banner.index')->with('success','Cập nhật thành công banner');
+        return redirect()->route('admin.banner.index')->with('success','Cập nhật thành công banner');
     }
 
     /**

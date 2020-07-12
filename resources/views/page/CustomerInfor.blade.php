@@ -57,14 +57,14 @@
                         <label for="exampleInputPassword1" id="nutmo">Đổi mật khẩu <i class="fas fa-chevron-down"></i></label>
                         <div class="resetPass">
                           <p>Mật khẩu cũ</p>
-                          <input type="password" name="OldPass" class="form-control" placeholder="Mật khẩu cũ" value="">
+                          <input type="password" name="OldPass" class="form-control" placeholder="Mật khẩu cũ" >
                           @error('OldPass')
                           <small class="error help-block" style="color:red">{{$message}}</small>
                           @enderror
                           <p>Mật khẩu mới</p>
-                          <input type="password" name="NewPass" class="form-control" placeholder="Mật khẩu mới" value="">
+                          <input type="password" name="NewPass" class="form-control" placeholder="Mật khẩu mới" >
                           <p>Nhập lại mật khẩu</p>
-                          <input type="password" name="ResNewPass" class="form-control" placeholder="Nhập lại mật khẩu mới" value="">
+                          <input type="password" name="ResNewPass" class="form-control" placeholder="Nhập lại mật khẩu mới" >
                           @error('ResNewPass')
                           <small class="error help-block" style="color:red">{{$message}}</small>
                           @enderror

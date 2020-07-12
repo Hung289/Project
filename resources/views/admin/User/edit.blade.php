@@ -42,7 +42,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="{{route('user.update',$user->id)}}" method="POST" name="pForm" role="form" enctype="multipart/form-data">
+            <form action="{{route('admin.user.update',$user->id)}}" method="POST" name="pForm" role="form" enctype="multipart/form-data">
               @csrf @method('PUT')
               <div class="card-body">
                 <div class="form-group">
@@ -88,6 +88,23 @@
                     <option value="2" @if($user->level == 2) selected @endif>Dân thường</option>
                   </select>
                 </div>
+
+                <div class="form-group">
+                  <label for="">Roles</label>
+
+                  @foreach($roles as $role)
+                  @if($user->level == 1)
+                  <div class="checkbox">
+                    <label for="">
+                      <input type="checkbox" name="role[]" value="{{$role->id}}">{{$role->name}}
+                    </label>
+                  </div>
+                  @endif
+                  @endforeach
+                  @if($user->level == 0)
+                  <p>Bạn là Super Admin nên có quyền truy cập tối cao</p>
+                  @endif
+                </div>
               </div>
               <!-- /.card-body -->
 
@@ -104,8 +121,7 @@
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
               <div class="text-center">
-                <img style="width:200px;height:200px" class="profile-user-img img-fluid img-circle" 
-                src="public/uploads/images/user/{{$user->avatar}}" id="image-field">
+                <img style="width:200px;height:200px" class="profile-user-img img-fluid img-circle" src="public/uploads/images/user/{{$user->avatar}}" id="image-field">
               </div>
 
               <h3 class="profile-username text-center">{{$user->name}}</h3>

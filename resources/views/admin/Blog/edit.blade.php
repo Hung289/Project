@@ -19,11 +19,6 @@
         </div><!-- /.container-fluid -->
     </section>
     
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{session('success')}}
-    </div>
-    @endif
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -36,7 +31,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('blog.update',['blog'=>$blog->id])}}" method="POST" name="pForm" role="form" enctype="multipart/form-data">
+                        <form action="{{route('admin.blog.update',['blog'=>$blog->id])}}" method="POST" name="pForm" role="form" enctype="multipart/form-data">
                         @csrf @method('PUT')   
                         <div class="card-body">
                                 <div class="form-group">

@@ -42,7 +42,7 @@ class ServiceController extends Controller
     {
         $model = $service->add();
         if($model){
-            return redirect()->route('service.create')->with('success','Thêm mới thành công');
+            return redirect()->route('admin.service.create')->with('success','Thêm mới thành công');
         }else{
             return redirect()->back()->with('error','Thêm mới thất bại');
         }
@@ -81,7 +81,7 @@ class ServiceController extends Controller
     public function update(ServiceEditRequest $request, Service $service)
     {
         $model = $service->updateEdit();
-        return redirect()->route('service.index')->with('success','Cập nhật thành công');
+        return redirect()->route('admin.service.index')->with('success','Cập nhật thành công');
     }
 
     /**

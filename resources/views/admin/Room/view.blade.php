@@ -19,8 +19,24 @@
             <p> {{ $room->name}}</p>
         </div>
         <div class="form-group row">
-            <label for="">Vị trí : </label>
-            <p> {{ $room->location}}</p>
+            <label for="">Số giường : </label>
+            <p> {{ $room->bed}}</p>
+        </div>
+        <div class="form-group row">
+            <label for="">Số bồn tắm : </label>
+            <p> {{ $room->bath}}</p>
+        </div>
+        <div class="form-group row">
+            <label for="">Diện tích phòng : </label>
+            <p> {{ $room->area}}</p>
+        </div>
+        <div class="form-group row">
+            <label for="">Số người lớn : </label>
+            <p> {{ $room->guest}}</p>
+        </div>
+        <div class="form-group row">
+            <label for="">Số trẻ em : </label>
+            <p> {{ $room->adult}}</p>
         </div>
         <div class="form-group row">
             <label for="">Danh mục phòng : </label>

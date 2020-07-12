@@ -42,7 +42,7 @@ class CategoryServiceController extends Controller
     {
         $model = $CategoryService->add();
         if($model){
-            return redirect()->route('categoryService.create')->with('success','Thêm mới thành công');
+            return redirect()->route('admin.categoryService.create')->with('success','Thêm mới thành công');
         }else{
             return redirect()->back()->with('error','Thêm mới thất bại');
         }
@@ -81,7 +81,7 @@ class CategoryServiceController extends Controller
     public function update(CategoryServiceEditRequest $request, CategoryService $categoryService)
     {
         $model = $categoryService->updateEdit();
-        return redirect()->route('categoryService.index')->with('success','Cập nhật thành công danh mục');
+        return redirect()->route('admin.categoryService.index')->with('success','Cập nhật thành công danh mục');
     }
 
     /**

@@ -42,7 +42,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="{{route('user.store')}}" method="POST" name="pForm" role="form" enctype="multipart/form-data">
+            <form action="{{route('admin.user.store')}}" method="POST" name="pForm" role="form" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Tên Người Dùng</label>

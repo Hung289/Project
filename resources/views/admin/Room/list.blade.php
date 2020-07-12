@@ -8,7 +8,7 @@
 
     </section>
     <!-- Main content -->
-    @if(count($errors) > 0)
+    <!-- @if(count($errors) > 0)
     <div class="alert alert-danger">
         @foreach($errors->all() as $err)
         {{$err}}<br>
@@ -19,14 +19,14 @@
     <div class="alert alert-success">
         {{session('success')}}
     </div>
-    @endif
+    @endif -->
     <section class="content">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Danh Sách Danh Mục</h3>
-                        <!-- <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('searchRoom')}}">
+                        <!-- <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('admin.searchRoom')}}">
                             <div class="input-group input-group-sm">
                                 <input class="form-control form-control-navbar" type="text" placeholder="Tìm Kiếm" aria-label="Search" name="key">
                                 <div class="input-group-append">
@@ -71,11 +71,11 @@
                                     @endif
                                     <!-- <td>{{$room->user->name}}</td> -->
                                     <td>
-                                        <button type="button" url="{{route('room.show',['room'=>$room->id])}}" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-success xemchitiet">
+                                        <button type="button" url="{{route('admin.room.show',['room'=>$room->id])}}" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-success xemchitiet">
                                             <i class="far fa-eye"></i>
                                         </button>
-                                        <a href="{{route('room.edit',['room'=>$room->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
-                                        <button type="buton" url="{{route('room.destroy',['room'=>$room->id])}}" class="btn btn-danger nutxoa"><i class="fas fa-trash"></i></button>
+                                        <a href="{{route('admin.room.edit',['room'=>$room->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                                        <button type="buton" url="{{route('admin.room.destroy',['room'=>$room->id])}}" class="btn btn-danger nutxoa"><i class="fas fa-trash"></i></button>
                                     </td>
 
                                 </tr>

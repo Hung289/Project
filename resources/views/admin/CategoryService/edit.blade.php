@@ -18,23 +18,7 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-    <!-- @if(count($errors) > 0)
-    <div class="alert alert-danger">
-        @foreach($errors->all() as $err)
-        {{$err}}<br>
-        @endforeach
-    </div>
-    @endif -->
-    <!-- @if(Session::has('errors'))
-        <div class="alert alert-danger">
-            {{Session::get('errors')}}
-        </div>
-    @endif -->
-    @if(Session::has('success'))
-    <div class="alert alert-success">
-        {{Session::get('success')}}
-    </div>
-    @endif
+    
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -47,7 +31,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('categoryService.update',['categoryService'=>$categoryService->id])}}" method="POST" role="form" enctype="multipart/form-data">
+                        <form action="{{route('admin.categoryService.update',['categoryService'=>$categoryService->id])}}" method="POST" role="form" enctype="multipart/form-data">
                         @csrf @method('PUT')    
                         <div class="card-body">
                                 <div class="form-group @error('name') has-error @enderror">

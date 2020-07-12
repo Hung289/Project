@@ -6,19 +6,6 @@
     <section class="content-header">
         
     </section>
-    <!-- Main content -->
-    @if(count($errors) > 0)
-    <div class="alert alert-danger">
-        @foreach($errors->all() as $err)
-        {{$err}}<br>
-        @endforeach
-    </div>
-    @endif
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{session('success')}}
-    </div>
-    @endif
     <section class="content">
         <div class="row">
             <div class="col-12">
@@ -26,7 +13,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Danh Sách thương hiệu</h3>
 
-                        <!-- <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('searchBrand')}}">
+                        <!-- <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('admin.searchBrand')}}">
                             <div class="input-group input-group-sm">
                                 <input class="form-control form-control-navbar" type="text" placeholder="Tìm Kiếm" aria-label="Search" name="key">
                                 <div class="input-group-append">
@@ -58,8 +45,8 @@
                                         <img src="public/uploads/images/Brand/{{$brand->logo}}" style="width:250px;height:150px" alt="">
                                     </td>
                                     <td>
-                                        <a href="{{route('brand.edit',['brand'=>$brand->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
-                                        <button type="button" url="{{route('brand.destroy',['brand'=>$brand->id])}}" class="btn btn-danger nutxoa"><i class="fas fa-trash"></i></button>
+                                        <a href="{{route('admin.brand.edit',['brand'=>$brand->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                                        <button type="button" url="{{route('admin.brand.destroy',['brand'=>$brand->id])}}" class="btn btn-danger nutxoa"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                                 @endforeach

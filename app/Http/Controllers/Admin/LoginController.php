@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests;
 use Session;
+use App\Http\Requests\LoginAdmin\LoginAdminAddRequest;
 
 class LoginController extends Controller
 {
@@ -15,18 +16,8 @@ class LoginController extends Controller
     {
         return view('loginAdmin');
     }
-    public function postLogin(Request $request)
+    public function postLogin(LoginAdminAddRequest $request)
     {
-
-        $this->validate($request,[
-            'email'=>'required',
-            'password'=>'required | min:3 |max: 32'
-        ],[
-            'email.required'=>'Bạn chưa nhập email',
-            'password.required'=>'Bạn chưa nhập password',
-            'password.min'=>'Password không nhỏ hơn 3 ký tự',
-            'password.max'=>'Password không lớn hơn 32 ký tự'
-        ]);
         $users = User::all();
         if(Auth::attempt($request->only('email','password'),$request->has('remember'))){
             foreach ($users as $user ) {
@@ -39,8 +30,7 @@ class LoginController extends Controller
                     }
                 }
             }
-
-            return redirect()->route('index')->with('success','Đăng nhập thành công');
+            return redirect()->route('admin.index')->with('success','Đăng nhập thành công');
         }else{
             return redirect()->back()->with('error','Tài khoản hoặc mật khẩu không đúng');
         }

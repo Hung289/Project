@@ -158,11 +158,11 @@ Route::post('postStar','Web\webPageController@voteStar')->name('postStar');
 /**
  * 
  * Route trang admin
- * ,'middleware' => 'adminLogin'
+ * 
  */
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin' ],function(){
-    Route::get('/','AdminController@index')->name('admin.index');
-    Route::get('/file','AdminController@file')->name('admin.file');
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => 'auth' ,'as'=>'admin.'],function(){
+    Route::get('/','AdminController@index')->name('index');//admin.index
+    Route::get('/file','AdminController@file')->name('file');//admin.file
 
     Route::resources([
         'user' => 'UserController',
@@ -173,7 +173,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin' ],function(){
         'service' => 'ServiceController',
         'blog' => 'BlogController',
         'brand'=>'BrandController',
-        'banner'=>'BannerController'
+        'banner'=>'BannerController',
+        'role'=>'RoleController'
     ]);
 
     Route::get('searchBlog','BlogController@search')->name('searchBlog');

@@ -52,7 +52,6 @@ class CartRoomController extends Controller
     }
     public function view(CartRoom $cart)
     {
-        // dd($cart);
         $CategoryRoom = CategoryRoom::all();
         return view('page.cart_room', ['CategoryRoom' => $CategoryRoom]);
     }
@@ -63,8 +62,6 @@ class CartRoomController extends Controller
             $from_date = $request->ArriveDate;
             $to_date = $request->DepartDate;
             $listRoomUsed  = $orderDetail->checkRoomForDate($from_date, $to_date);
-            // dd($listRoomUsed[0]->room_id);
-            // $params['listRoomUsed'] = $listRoomUsed;
             $from =  Carbon::parse($from_date);
             $to = Carbon::parse($to_date);
         }
@@ -80,7 +77,6 @@ class CartRoomController extends Controller
             } else {
                 $songay =  ($to->day) - ($from->day);
                 $model = $cart->add($room, $qty, $from_date, $to_date, $songay);
-                // return redirect()->route('indexWeb')->with('success', 'Thêm thành công ' . $room->name . ' vào giỏ phòng');
                 return view('page.service',['room'=>$room]);
             }
         } else {
@@ -119,27 +115,20 @@ class CartRoomController extends Controller
 
     public function remove(CartRoom $cart, $id)
     {
-        // dd($cart);
-
         $cart->remove($id);
         return redirect()->route('cart.view');
     }
 
     public function addService(Request $request, CartRoom $cartService, $id,$room)
     {
-        // dd($room);
         $service = Service::find($id);
-        // dd($cartService);
         $qty = $request->qty ? $request->qty : 1;
         $cartService->addService($service, $qty,$room);
-        // dd(session('cartService'));
         return redirect()->back()->with('success', 'Thêm thành công ' . $service->name . ' vào giỏ hàng');
-        
     }
 
     public function removeService(CartRoom $cartService, $id)
     {
-        // dd($cartService);
         $cartService->removeService($id);
         return redirect()->route('cart.view');
     }
@@ -147,7 +136,6 @@ class CartRoomController extends Controller
     public function update(CartRoom $cartService, $id, Request $request)
     {
         $qty = $request->qty;
-        // dd($qty);
         $cartService->update($id, $qty);
         return redirect()->route('cart.view');
     }

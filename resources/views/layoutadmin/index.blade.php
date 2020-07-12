@@ -32,6 +32,7 @@
 
   <link rel="stylesheet" href="public/toastr/toastr.min.css">
   <link rel="stylesheet" href="public/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <link rel="stylesheet" href="public/sweetalert2.min.css">
   <!-- Css thêm vào -->
   <link rel="stylesheet" href="public/dist/css/hungadmin.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
@@ -115,10 +116,13 @@
   <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.5/js/responsive.bootstrap4.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  
   <script src="public/hung.js"></script>
   <!-- Toastr -->
   <script src="public/toastr/toastr.min.js"></script>
-  <script src="public/sweetalert/sweetalert2.all.min.js"></script>
+  <script src="public/sweetalert2.min.js"></script>
+  <script src="sweetalert2.all.min.js"></script>
+
   <script type="text/javascript">
     const Toast = Swal.mixin({
       toast: true,
@@ -129,5 +133,6 @@
   </script>
 
   @include('admin.js')
+  @include('page.ms')
 </body>
 </html>

@@ -21,10 +21,14 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 tongoaitrai">
                 <div class="payer-infor">
                     <h2>Payer Information</h2>
+
                     <form action="{{route('post.checkout')}}" method="POST" role="form" enctype="multipart/form-data">
                         <div class="khoidiv content_firstname">
                             <label for="">full Name <span>*</span></label>
-                            <input type="text" name="name" placeholder="... fulname">
+                            <input type="text" name="name" placeholder="... fulname" value="{{Auth::user()->name}}">
+                            @error('name')
+                            <small class="error help-block" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="khoidiv">
                             <label for="">Giới Tính <span>*</span></label>
@@ -35,28 +39,39 @@
                         </div>
                         <div class="khoidiv content_phone">
                             <label for="">Phone Number <span>*</span></label>
-                            <input type="text" name="phone" placeholder="... Phone">
+                            <input type="text" name="phone" placeholder="... Phone" value="{{Auth::user()->phone}}">
+                            @error('phone')
+                            <small class="error help-block" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="khoidiv content_email">
                             <label for="">Email <span>*</span></label>
-                            <input type="text" name="email" placeholder="... Email">
+                            <input type="text" name="email" placeholder="... Email" value="{{Auth::user()->email}}">
+                            @error('email')
+                            <small class="error help-block" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="khoidiv content_email">
                             <label for="">Address <span>*</span></label>
                             <input type="text" name="address" placeholder="... Address">
+                            @error('address')
+                            <small class="error help-block" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="khoidiv content_country">
                             <label for="">Phương thức thanh toán <span>*</span></label>
                             <select name="payment" id="">
                                 <option value="0">Thanh toán tại quầy</option>
                                 <option value="1">Thanh toán trực tuyến</option>
-
                             </select>
                         </div>
 
                         <div class="khoidiv content_note">
                             <label for="">Note <span>*</span></label>
                             <textarea name="note" id="" cols="30" rows="10" placeholder="Take note of what you need at check-in"></textarea>
+                            @error('note')
+                            <small class="error help-block" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <button class="btn btn-primary">Place order</button>
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -69,23 +84,31 @@
                     <div class="khoithongtinphong">
                         <table>
                             <tbody>
+
                                 <tr class="tr_name">
                                     <th>Name Room</th>
-                                    <td>Living Room</td>
+                                    @foreach($cart->items as $item)
+                                    <td>{{$item['name']}}</td>
+                                    @endforeach
                                 </tr>
                                 <tr class="tr_location">
                                     <th>Location</th>
-                                    <td>10th floor, room 25</td>
+                                    @foreach($cart->items as $item)
+                                    <td>{{$item['location']}}</td>
+                                    @endforeach
                                 </tr>
                                 <tr class="tr_date">
                                     <th>Date</th>
-                                    <td>10/5/2020 - 20/5/2020</td>
+                                    @foreach($cart->items as $item)
+                                    <td>{{$item['arriveDate']}} - {{$item['departDate']}}</td>
+                                    @endforeach
                                 </tr>
                                 <tr class="tr_payment">
                                     <th>payment amount</th>
-                                    <td>$1000</td>
+                                    <td>${{number_format($cart->total_price+$cart->total_price_service)}}</td>
                                 </tr>
                             </tbody>
+
                         </table>
                     </div>
                     <div class="thanhtoan">

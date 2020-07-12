@@ -43,7 +43,7 @@ class BrandController extends Controller
         // dd($brand);
         $brands = $brand->add();
         if ($brands) {
-            return redirect()->route('brand.create')->with('success', 'Thêm mới danh mục thành công');
+            return redirect()->route('admin.brand.create')->with('success', 'Thêm mới danh mục thành công');
         } else {
             return redirect()->back()->with('errors', 'Thêm mới thất bại');
         }
@@ -83,7 +83,7 @@ class BrandController extends Controller
     {
         $brands = $brand->updateEdit();
         if ($brands) {
-            return redirect()->route('brand.index')->with('success', 'Cập nhật thành công');
+            return redirect()->route('admin.brand.index')->with('success', 'Cập nhật thành công');
         }
     }
 

@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Role;
 use App\Http\Requests\User\UserAddRequest;
 use App\Http\Requests\User\UserEditRequest;
+use App\Models\UserRole;
 
 class UserController extends Controller
 {
@@ -42,7 +44,7 @@ class UserController extends Controller
         $model = $User->add();
         // dd($model);
         if($model){
-            return redirect()->route('user.create')->with('success','Thêm mới người dùng thành công');
+            return redirect()->route('admin.user.create')->with('success','Thêm mới người dùng thành công');
         }else{
             return redirect()->back()->with('error','Thêm mới người dùng thất bại');
         }
@@ -67,7 +69,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.User.edit',['user'=>$user]);
+        $roles = Role::orderBy('name','ASC')->get();
+        return view('admin.User.edit',['user'=>$user,'roles'=>$roles]);
     }
 
     /**
@@ -79,8 +82,19 @@ class UserController extends Controller
      */
     public function update(UserEditRequest $request, User $user)
     {
+        // dd($request->all());
         $model = $user->updateEdit();
-        return redirect()->route('user.index')->with('success','Cập nhật thành công tài khoản');
+        $roleUser = $request->role;
+        // dd($roleUser);
+        if(is_array($roleUser)){
+            foreach($roleUser as $role_id){
+                UserRole::create([
+                    'user_id'=>$user->id,
+                    'role_id'=>$role_id
+                ]);
+            }
+        }
+        return redirect()->route('admin.user.index')->with('success','Cập nhật thành công tài khoản');
     }
 
     /**

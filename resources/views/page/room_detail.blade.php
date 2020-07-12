@@ -429,9 +429,18 @@
             </div>
             <div class="col-lg-4">
                 <!-- Sidebars Area -->
+
                 <div class="sidebar-wrap">
                     <div class="widget booking-widget">
                         <h4 class="widget-title">$160.00 <span>Night</span></h4>
+                        <div class="khoitime">
+                            <h5>Booking time for this room</h5>
+                            <ul class="khoilisttime">
+                                @foreach($listDateFormTo as $listDFT)
+                                <li>{{$listDFT->from_date}} - {{$listDFT->to_date}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                         <form action="{{route('cart.add',['id'=>$room->id])}}" method="GET">
                             <div class="input-wrap">
                                 <input type="date" placeholder="Arrive Date" name="ArriveDate">
@@ -449,15 +458,11 @@
                     </div>
                     <div class="widget category-widget">
                         <h4 class="widget-title">Category</h4>
-                        <div class="single-cat bg-img-center" style="background-image: url(public/web/images/img/blog/cat-01.jpg);">
-                            <a href="">Luxury Room</a>
+                        @foreach($listCateRoom as $lCR)
+                        <div class="single-cat bg-img-center" style="background-image: url(public/uploads/images/CategoryRoom/{{$lCR->image}});">
+                            <a href="{{route('RoomListMaster',['id'=>$lCR->id])}}">{{$lCR->name}}</a>
                         </div>
-                        <div class="single-cat bg-img-center" style="background-image: url(public/web/images/img/blog/cat-02.jpg);">
-                            <a href="">Couple Room</a>
-                        </div>
-                        <div class="single-cat bg-img-center" style="background-image: url(public/web/images/img/blog/cat-03.jpg);">
-                            <a href="">Hotel Views</a>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="widget banner-widget" style="background-image: url(public/web/images/img/blog/sidebar-banner.jpg);">
                         <h2>Booking Your Latest apartment</h2>
@@ -480,87 +485,39 @@
             <h1>Explore Latest Product</h1>
         </div>
         <div class="row">
+            @foreach($lastRoom as $lR)
             <div class="col-lg-4 col-md-6">
                 <!-- Single Room -->
                 <div class="single-room">
                     <div class="room-thumb">
-                        <img src="public/web/images/img/rooms/01.jpg" alt="Room">
+                        @foreach($roomImages as $rI)
+                        <?php $check = ($rI->room_id == $lR->id) ? "$rI->image" : "" ?>
+                        @if(!$check=="")
+                        <img src="public/uploads/images/rooms/{{$check}}" alt="Room">
+                        @break
+                        @endif
+                        @endforeach
                     </div>
                     <div class="room-desc">
                         <div class="room-cat">
-                            <p>Guest House</p>
+                            <p>{{$lR->cateRoom->name}}</p>
                         </div>
-                        <h4><a href="single-room.html">Modern Guest Rooms</a></h4>
+                        <h4><a href="{{route('roomDetail',['id'=>$lR->id])}}">{{$lR->name}}</a></h4>
                         <p class="p">
-                            Avoids pleasure itself, because pleasure,
-                            but because those who do not know how
-                            to pursue pleasure rationally encounter
+                            {!!$lR->description!!}
                         </p>
                         <ul class="room-info list-inline">
-                            <li><i class="fas fa-bed"></i>3 Bed</li>
-                            <li><i class="fas fa-bath"></i>2 Baths</li>
-                            <li><i class="fas fa-ruler-triangle"></i>72 m</li>
+                            <li><i class="fas fa-bed"></i>{{$lR->bed}} Bed</li>
+                            <li><i class="fas fa-bath"></i>{{$lR->bath}} Baths</li>
+                            <li><i class="fas fa-ruler-triangle"></i>{{$lR->area}} m</li>
                         </ul>
                         <div class="room-price">
-                            <p>$180.00</p>
+                            <p>{{number_format($lR->priceNight)}} $</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <!-- Single Room -->
-                <div class="single-room">
-                    <div class="room-thumb">
-                        <img src="public/web/images/img/rooms/02.jpg" alt="Room">
-                    </div>
-                    <div class="room-desc">
-                        <div class="room-cat">
-                            <p>Meeting Room</p>
-                        </div>
-                        <h4><a href="single-room.html">Conference Room</a></h4>
-                        <p class="p">
-                            Great explorer of the truth, the master-
-                            builder of human happiness one rejects,
-                            dislikes avoids pleasure because
-                        </p>
-                        <ul class="room-info list-inline">
-                            <li><i class="fas fa-bed"></i>3 Bed</li>
-                            <li><i class="fas fa-bath"></i>2 Baths</li>
-                            <li><i class="fas fa-ruler-triangle"></i>72 m</li>
-                        </ul>
-                        <div class="room-price">
-                            <p>$205.00</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mx-auto">
-                <!-- Single Room -->
-                <div class="single-room">
-                    <div class="room-thumb">
-                        <img src="public/web/images/img/rooms/03.jpg" alt="Room">
-                    </div>
-                    <div class="room-desc">
-                        <div class="room-cat">
-                            <p>Guest Room</p>
-                        </div>
-                        <h4><a href="single-room.html">Deluxe Couple Room</a></h4>
-                        <p class="p">
-                            Provident, similique sunt in culpa qui
-                            officia deserunt mollitia animi laborum
-                            dolorum fuga. Et harum quidem
-                        </p>
-                        <ul class="room-info list-inline">
-                            <li><i class="fas fa-bed"></i>3 Bed</li>
-                            <li><i class="fas fa-bath"></i>2 Baths</li>
-                            <li><i class="fas fa-ruler-triangle"></i>72 m</li>
-                        </ul>
-                        <div class="room-price">
-                            <p>$199.00</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

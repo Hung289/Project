@@ -12,11 +12,11 @@
     <div class="col-md-6">
         <h3>Thông tin phòng</h3>
         <div class="form-group row">
-            <label for="">ID danh mục blog: </label>
+            <label for="">ID blog: </label>
             <p> {{ $blog->id}}</p>
         </div>
         <div class="form-group row">
-            <label for="">Tên danh mục blog : </label>
+            <label for="">Tên blog : </label>
             <p> {{ $blog->name}}</p>
         </div>
         <div class="form-group row">

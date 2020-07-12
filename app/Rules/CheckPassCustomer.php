@@ -27,7 +27,7 @@ class CheckPassCustomer implements Rule
      */
     public function passes($attribute, $value)
     {
-        if (Auth::attempt(['email' => Auth::user()->email, 'password' => request()->OldPass]) ) {
+        if (Auth::attempt(['email' => Auth::user()->email, 'password' => $value]) || $value == '') {
             return true;
         } else {
             return false;
