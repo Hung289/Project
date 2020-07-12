@@ -59,7 +59,7 @@
                         @endif
 
                         <div class="wrap-input100 validate-input">
-                            <input class="input100" type="text" name="email" placeholder="email">
+                            <input class="input100" type="text" name="email" placeholder="email" value="{{old('email')}}">
                         </div>
                         <div class="wrap-input100 validate-input">
                             <input class="input100" type="password" name="password" placeholder="password">

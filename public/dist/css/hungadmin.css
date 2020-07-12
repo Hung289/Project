@@ -34,3 +34,13 @@
 .addroom .right{
     padding-right: 0px;
 }
+.motdong{
+    border-bottom: 1px solid gray;
+    padding: 20px 0px;
+}
+.chitietdon{
+    border-right: 1px dashed gray;
+}
+.dongdichvu p{
+    margin: 5px 0px;
+}

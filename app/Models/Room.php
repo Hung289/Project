@@ -42,6 +42,10 @@ class Room extends Model
         return $this->belongsTo('App\Models\Brand', 'brand_id', 'id');
     }
 
+    public function orderDetail()
+    {
+        return $this->hasMany('App\Models\OrderDetail','room_id','id');
+    }
 
 
     public function add()

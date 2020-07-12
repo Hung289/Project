@@ -18,6 +18,8 @@ class Service extends Model
     {
         return $this->hasMany('App\Models\OrderDetailService','service_id','id');
     }
+    
+    
 
     public function add(){
         $img = request()->image;

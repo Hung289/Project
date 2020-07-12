@@ -20,6 +20,11 @@ class Order extends Model
         return $this->belongsTo('App\Models\Customer','customer_id','id');
     }
 
+    public function orderDetail()
+    {
+        return $this->hasMany('App\Models\OrderDetail','order_id','id');
+    }
+
     public function addOrder($customer,$cart)
     {
         $total_price_room_service = (($cart->total_price) + ($cart->total_price_service));

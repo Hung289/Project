@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\User\CustomerRequest;
 use App\Http\Requests\LoginWeb\LoginWebAddRequest;
 use App\Http\Requests\RegisterWeb\RegisterWebAddRequest;
+use Illuminate\Support\Facades\Mail;
 
 class webPageController extends Controller
 {
@@ -97,7 +98,23 @@ class webPageController extends Controller
 
     public function getContact()
     {
+
         return view('page.contact');
+    }
+
+    public function postContact(Request $request)
+    {
+        Mail::send('email.contact', [
+            'email' => $request->email,
+            'name' => $request->name,
+            'content' => $request->content,
+            'address' => $request->address
+        ], function ($mail) use ($request) {
+            $mail->to('nthung2896@gmail.com');
+            $mail->from($request->email);
+            $mail->subject('Phản Hồi Khách Hàng');
+        });
+        return redirect()->route('contact')->with('success', 'Bạn đã gửi phản hồi thành công');
     }
 
     public function getGallery()
@@ -403,4 +420,5 @@ class webPageController extends Controller
 
         return redirect()->back()->with('success', 'Cập nhật thành công');
     }
+
 }

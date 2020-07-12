@@ -52,6 +52,7 @@ Route::group(['prefix'=>'cartRoom','namespace'=>'Web','middleware'=>'auth'],func
 });
 //Trang contact
 Route::get('contact','Web\webPageController@getContact')->name('contact');
+Route::post('contactPost','Web\webPageController@postContact')->name('postContact');
 //Trang gallery
 Route::get('gallery','Web\webPageController@getGallery')->name('gallery');
 
@@ -174,7 +175,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => 'auth'
         'blog' => 'BlogController',
         'brand'=>'BrandController',
         'banner'=>'BannerController',
-        'role'=>'RoleController'
+        'role'=>'RoleController',
+        'order'=>'OrderController'
     ]);
 
     Route::get('searchBlog','BlogController@search')->name('searchBlog');
