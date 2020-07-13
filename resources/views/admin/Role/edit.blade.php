@@ -30,11 +30,12 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('admin.role.store')}}" method="POST" name="pForm" enctype="multipart/form-data">
-                            <div class="card-body">
+                        <form action="{{route('admin.role.update',$role->id)}}" method="POST" name="pForm" enctype="multipart/form-data">
+                                    @csrf @method("PUT")
+                        <div class="card-body">
                                 <div class="form-group">
                                     <label for="">Tên Nhóm Quyền</label>
-                                    <input type="text" class="form-control" name="name">
+                                    <input type="text" class="form-control" name="name" value="{{$role->name}}">
                                     @error('name')
                                     <small class="error help-block" style="color:red">{{$message}}</small>
                                     @enderror
@@ -43,7 +44,7 @@
                                 <input type="text" class="form-control" ng-model="rname">
                                 <div class="form-group" style="height:300px;overflow-y:auto" >
                                     <div class="checkbox" ng-repeat="r in roles | filter:rname">
-                                        <input type="checkbox" class="role-item" name="route[]" value="@{{r}}">
+                                        <input type="checkbox" ng-checked="set_checked(r)" ng-model="role" class="role-item" name="route[]" value="@{{r}}">
                                         @{{r}}
                                     </div>
                                 </div>
@@ -52,7 +53,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary" id="nuttao">Tạo role</button>
+                                <button type="submit" class="btn btn-primary" id="nuttao">Cập nhật role</button>
                                 <label for="check-all"><input type="checkbox" id="check-all">Check All</label>
                             </div>
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -98,7 +99,18 @@
     var app = angular.module('role', []);
     app.controller('roleController', function($scope) {
         var roles = '<?php echo json_encode($routes); ?>';
+        var permissions = '<?php echo json_encode($permissions); ?>';
         $scope.roles = angular.fromJson(roles);
+        $scope.role = angular.fromJson(permissions);
+
+        $scope.set_checked = function(r) {
+            for (var i = 0; i < $scope.role.length; i++) {
+                if($scope.role[i] == r){
+                    return true;
+                }
+            }
+            return false;
+        }
     })
 
 

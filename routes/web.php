@@ -178,6 +178,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => 'auth'
         'role'=>'RoleController',
         'order'=>'OrderController'
     ]);
+    
+    Route::get('admin/room','RoomController@getIndexAdmin')->name('room.indexAdmin');
 
     Route::get('searchBlog','BlogController@search')->name('searchBlog');
     Route::get('searchCateBlog','CategoryBlogController@search')->name('searchCateBlog');
@@ -189,7 +191,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => 'auth'
     Route::get('searchBrand','BrandController@search')->name('searchBrand');
     Route::get('searchBanner','BannerController@search')->name('searchBanner');
 });
-
+//admin error
+Route::get('admin/error','Admin\AdminController@error')->name('error');
 // Login trang admin
 Route::get('admin/login','Admin\LoginController@getLogin')->name('Login');
 Route::post('admin/login','Admin\LoginController@postLogin')->name('postLogin');

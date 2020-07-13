@@ -127,47 +127,6 @@ class User extends Authenticatable
 
     public function editCustomerInfor()
     {
-        // if (request()->has('avatar') && request()->has('NewPass')) {
-        //     $img = request()->avatar;
-        //     $image_name = $img->getClientOriginalName();
-        //     $img->move(base_path('public/uploads/images/user'), $image_name);
-        //     $model = $this->update([
-        //         'name' => request()->name,
-        //         'phone' => request()->phone,
-        //         'avatar' => $image_name,
-        //         'password' => bcrypt(request()->NewPass)
-        //     ]);
-        //     return $model;
-        // }
-        // else if (request()->has('avatar')) {
-        //     $img = request()->avatar;
-        //     $image_name = $img->getClientOriginalName();
-        //     $img->move(base_path('public/uploads/images/user'), $image_name);
-        //     // dd(request()->OldPass);
-        //     $model = $this->update([
-        //         'name' => request()->name,
-        //         'phone' => request()->phone,
-        //         'avatar' => $image_name,
-        //     ]);
-        //     return $model;
-        // }else if (request()->has('NewPass')){
-        //     // dd(request()->OldPass);
-        //     $model = $this->update([
-        //         'name' => request()->name,
-        //         'phone' => request()->phone,
-        //         'password' => bcrypt(request()->NewPass)
-        //     ]);
-        //     return $model;
-        // }else if(request()->has('avatar') && request()->OldPass == '' && request()->NewPass == '') {
-        //     // dd(request()->OldPass);
-        //     $model = $this->update([
-        //         'name' => request()->name,
-        //         'phone' => request()->phone,
-
-        //     ]);
-        //     return $model;
-        // }
-
         if (request()->NewPass !== null) {
             if (request()->has('avatar')) {
                 $img = request()->avatar;

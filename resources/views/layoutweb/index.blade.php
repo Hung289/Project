@@ -45,6 +45,7 @@
 
 
   <script src="public/web/js/jquery-3.5.1.min.js"></script>
+  
   <!-- <script src="bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script> -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   <script src="public/web/bootstrap-datepicker-master/bootstrap-datepicker-master/js/bootstrap-datepicker.js"></script>
@@ -60,12 +61,16 @@
   <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
   <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
   <script src="public/hung.js"></script>
+  
+  
   <script>
     new WOW().init();
   </script>
 
   @include('page.javascript')
   @include('page.ms')
+  
+  
 </body>
 
 </html>

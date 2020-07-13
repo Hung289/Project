@@ -93,16 +93,17 @@
                   <label for="">Roles</label>
 
                   @foreach($roles as $role)
-                  @if($user->level == 1)
+                  @if($user->level == 1 || $user->level == 0)
+                  <?php $checked = in_array($role->name,$role_assigments) ? 'checked' : ''?>
                   <div class="checkbox">
                     <label for="">
-                      <input type="checkbox" name="role[]" value="{{$role->id}}">{{$role->name}}
+                      <input type="checkbox" {{$checked}} name="role[]" value="{{$role->id}}">{{$role->name}}
                     </label>
                   </div>
                   @endif
                   @endforeach
-                  @if($user->level == 0)
-                  <p>Bạn là Super Admin nên có quyền truy cập tối cao</p>
+                  @if($user->level == 2)
+                  <p>Thường dân không được vào đây nên không cần chọn quyền</p>
                   @endif
                 </div>
               </div>

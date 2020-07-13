@@ -31,6 +31,9 @@ class Authenticate extends Middleware
         $route = $request->route()->getName();
         // dd($route);
         // dd($user->can($route));
+        if($user->cant($route)){
+            return redirect()->route('error',['code'=>403]);
+        }
 
         return $next($request);
     }

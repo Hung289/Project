@@ -69,8 +69,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $role_assigments = $user->getRoles->pluck('name','id')->toArray();
         $roles = Role::orderBy('name','ASC')->get();
-        return view('admin.User.edit',['user'=>$user,'roles'=>$roles]);
+        return view('admin.User.edit',['user'=>$user,'roles'=>$roles,'role_assigments'=>$role_assigments]);
     }
 
     /**
@@ -87,6 +88,7 @@ class UserController extends Controller
         $roleUser = $request->role;
         // dd($roleUser);
         if(is_array($roleUser)){
+            UserRole::where('user_id',$user->id)->delete();
             foreach($roleUser as $role_id){
                 UserRole::create([
                     'user_id'=>$user->id,

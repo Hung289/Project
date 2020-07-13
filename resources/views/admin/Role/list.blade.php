@@ -31,8 +31,8 @@
                                     <td>{{$loop->index+1}}</td>
                                     <td>{{$model->name}}</td>
                                     <td>                                
-                                        <a href="" class="btn btn-primary"><i class="far fa-edit"></i></a>
-                                        <a href="" class="btn btn-danger"><i class="far fa-trash"></i></a>                                      
+                                        <a href="{{route('admin.role.edit',['role'=>$model->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                                        <a href="" class="btn btn-danger"><i class="fas fa-trash"></i></a>                                      
                                     </td>
                                 </tr>
                                 @endforeach

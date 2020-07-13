@@ -85,13 +85,12 @@
                                         <form action="{{route('cart.updateService',['id'=>$itemSer['id']])}}" method="GET">
                                             <input type="number" name="qty" value="{{$itemSer['quantity']}}">
                                             <button class="btn btn-primary">Cập nhật</button>
-                                        </form>    
+                                        </form>
                                     </td>
                                     <td>{{$itemSer['room_id']}}</td>
                                     <td>
                                         ${{number_format($itemSer['price']*$itemSer['quantity'])}}
                                     </td>
-                                    
                                     <td>
                                         <div class="xoaphong">
                                             <a href="{{route('cart.removeService',['id'=>$itemSer['id']])}}"><i class="fas fa-backspace"></i></a>

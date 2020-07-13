@@ -17,7 +17,7 @@ class RoleController extends Controller
     public function index()
     {
         $data = Role::paginate(15);
-        return view('admin.Role.list',compact('data'));
+        return view('admin.Role.list', compact('data'));
     }
 
     /**
@@ -30,17 +30,15 @@ class RoleController extends Controller
         $routes = [];
         $all = Route::getRoutes();
         // dd($all);
-        foreach($all as $r){
+        foreach ($all as $r) {
             $name = $r->getName();
-            $pos = strpos($name,'admin');
-            if($pos !== false){
-                array_push($routes,$r->getName());
+            $pos = strpos($name, 'admin');
+            if ($pos !== false && !in_array($name, $routes)) {
+                array_push($routes, $name);
             }
-           
         }
-        // dd($routes);
 
-        return view('admin.Role.add',compact('routes'));
+        return view('admin.Role.add', compact('routes'));
     }
 
     /**
@@ -52,19 +50,20 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required'
-        ],[
-             'name.required'=>'Tên Nhóm quyền không được bỏ trống'   
+            'name' => 'required'
+        ], [
+            'name.required' => 'Tên Nhóm quyền không được bỏ trống'
         ]);
+        
         // dd($request->route);
-        $routes = json_encode($request->route);//db không lưu được bảng . Câu lệnh này chuyển mảng thành chuỗi json để lưu vao db
+        $routes = json_encode($request->route); //db không lưu được bảng . Câu lệnh này chuyển mảng thành chuỗi json để lưu vao db
         // dd($routes);
         Role::create([
-            'name'=>$request->name,
-            'permissions'=>$routes
+            'name' => $request->name,
+            'permissions' => $routes
         ]);
 
-        return redirect()->route('admin.role.index')->with('success','Thêm mới nhóm quyền thành công');
+        return redirect()->route('admin.role.index')->with('success', 'Thêm mới nhóm quyền thành công');
     }
 
     /**
@@ -86,7 +85,21 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        // dd($role->permissions);
+        $routes = [];
+        $permissions = json_decode($role->permissions);
+        // dd($permissions);
+        $all = Route::getRoutes();
+        // dd($all);
+        foreach ($all as $r) {
+            $name = $r->getName();
+            $pos = strpos($name, 'admin');
+            if ($pos !== false && !in_array($name, $routes)) {
+                array_push($routes, $name);
+            }
+        }
+
+        return view('admin.Role.edit',compact('routes','role','permissions'));
     }
 
     /**
@@ -98,7 +111,19 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ], [
+            'name.required' => 'Tên Nhóm quyền không được bỏ trống'
+        ]);
+        
+        $routes = json_encode($request->route); //db không lưu được bảng . Câu lệnh này chuyển mảng thành chuỗi json để lưu vao db
+        // dd($routes);
+        $role->update([
+            'name' => $request->name,
+            'permissions' => $routes
+        ]);
+        return redirect()->route('admin.role.index')->with('success', 'Cập nhật nhóm quyền thành công');
     }
 
     /**

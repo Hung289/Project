@@ -116,13 +116,13 @@
   <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.5/js/responsive.bootstrap4.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-  
+
   <script src="public/hung.js"></script>
   <!-- Toastr -->
   <script src="public/toastr/toastr.min.js"></script>
   <script src="public/sweetalert2.min.js"></script>
   <script src="sweetalert2.all.min.js"></script>
-
+  
   <script type="text/javascript">
     const Toast = Swal.mixin({
       toast: true,
@@ -134,5 +134,7 @@
 
   @include('admin.js')
   @include('page.ms')
+  @yield('js')
 </body>
+
 </html>

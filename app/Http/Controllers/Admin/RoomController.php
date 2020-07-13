@@ -16,6 +16,22 @@ use Illuminate\Support\Facades\Auth;
 
 class RoomController extends Controller
 {
+
+    /**
+     * Hiển thị danh sách phòng theo admin đối tác
+     * 
+     */
+    public function getIndexAdmin()
+    {
+        $user = Auth::user()->id;
+        // dd($user);
+        $roomImage = RoomImage::all();
+        // $roomTheoId = Room::where('user_room_id',$user)->get();
+        $rooms = Room::where('user_room_id',$user)->orderBy('id','DESC')->get();
+        return view('admin.Room.listAdmin',['rooms'=>$rooms,'roomImage'=>$roomImage]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *

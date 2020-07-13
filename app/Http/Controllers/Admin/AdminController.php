@@ -19,5 +19,16 @@ class AdminController extends Controller
         return view('admin.file');
     }
 
+    public function error()
+    {
+        $code = request()->code;
+        $errors = [
+            'code' => 403,
+            'title'=>'Unauthorized',
+            'message'=>'Bạn không có quyền truy cập ...!'
+        ];
+        return view('admin.error',$errors);
+    }
+
 
 }
