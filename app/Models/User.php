@@ -211,17 +211,24 @@ class User extends Authenticatable
     //Các route đã được gán cho người dùng này
     public function routes()
     {
-        $roles = $this->getRoles();
-        dd($roles->count());
-        foreach ($this->getRoles as $role) {
-            var_dump($role->name);
+        $data = [];
+        $roles = $this->getRoles;
+        // dd($roles->count());
+        foreach($roles as $role){
+            $permission = json_decode($role->permissions);//chuyển từ json sang mảng=>lưu vào biến data
+            foreach($permission as $per){
+                if(!in_array($per,$data)){
+                    array_push($data,$per);
+                }
+            }    
         }
-        return ['admin.room.create', 'admin.user.edit', 'admin.room.index', 'admin.blog.index', 'admin.index'];
+        return $data;
     }
 
     public function getRoles()
     {
-        return $this->belongsToMany('App\Models\Role', 'user_roles', 'role_id', 'user_id');
+        // return $this->belongsToMany('App\Models\Role','user_roles','user_id','role_id');
         // return $this->hasMany('App\Models\UserRole','role_id','id');
+        return $this->belongsToMany(Role::class,'user_roles','user_id','role_id');
     }
 }
