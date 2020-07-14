@@ -6,6 +6,8 @@ use App\Models\Room;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\User;
+use App\Http\Requests\User\CustomerRequest;
 
 class AdminController extends Controller
 {
@@ -30,5 +32,17 @@ class AdminController extends Controller
         return view('admin.error',$errors);
     }
 
+    public function getEditAdminPartner(Request $request,$id)
+    {
+        $users = User::find($id);
+        // dd($user);
+        return view('admin.User.editPartner',compact('users'));
+    }
 
+    public function postEditAdminPartner(CustomerRequest $request,User $user,$id)
+    {
+        $users = User::find($id);
+        $model = $users->editCustomerInfor();
+        return redirect()->back()->with('success', 'Cập nhật thành công');
+    }
 }

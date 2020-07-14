@@ -96,3 +96,12 @@
         })
     })
 </script>
+<script>
+    $(function() {
+        $('.resetPass').hide();
+        $('#nutmo').on('click', function() {
+            $('#nutmo i').toggleClass('xoay');
+            $('.resetPass').slideToggle();
+        });
+    })
+</script>

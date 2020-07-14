@@ -57,13 +57,14 @@ class CartRoomController extends Controller
     }
 
     public function add(Request $request, CartRoom $cart, $id, OrderDetail $orderDetail, Room $room)
-    {
+    {   
         if (!empty($request->ArriveDate) && !empty($request->DepartDate)) {
             $from_date = $request->ArriveDate;
             $to_date = $request->DepartDate;
             $listRoomUsed  = $orderDetail->checkRoomForDate($from_date, $to_date);
             $from =  Carbon::parse($from_date);
             $to = Carbon::parse($to_date);
+            $hieu2ngay =(strtotime($to)-strtotime($from))/86400;
         }
         $room = Room::find($id);
         $qty = $request->qty ? $request->qty : 1;
@@ -71,13 +72,13 @@ class CartRoomController extends Controller
         foreach ($listRoomUsed as $key => $value) {
             array_push($arrRoomUsed, $value->room_id);
         }
-        if (($to->day) > ($from->day)) {
+        if ($hieu2ngay>0) {
             if (in_array($id, $arrRoomUsed)) {
                 return redirect()->back()->with('error', 'Phòng này vào thời gian này đã bị đặt');
             } else {
-                $songay =  ($to->day) - ($from->day);
+                $songay =  $hieu2ngay;
                 $model = $cart->add($room, $qty, $from_date, $to_date, $songay);
-                return view('page.service',['room'=>$room]);
+                return view('page.service',['room'=>$room])->with('success', 'Chọn thành công phòng. Tiếp tục chọn dịch vụ hoặc xem hóa đơn tại cartRoom');
             }
         } else {
             return redirect()->back()->with('error', 'Ngày đi nhỏ hơn đến đi. Không thể tiến hành booking room');

@@ -6,20 +6,20 @@ body {
     box-sizing: border-box;
 }
 /* ======================================service============================ */
-.titleChoiceService{
+.titleChoiceService {
     text-align: center;
     font-size: 35px;
     padding: 30px 0px;
     font-weight: 600;
 }
-.titleChoiceService p{
+.titleChoiceService p {
     font-size: 20px;
     font-weight: 200;
 }
-.titleChoiceService a{
+.titleChoiceService a {
     font-weight: 600;
 }
-.titleChoiceService a:hover{
+.titleChoiceService a:hover {
     font-weight: 600;
     color: #fea116;
     transition: all 0.4s ease-out 0s;
@@ -1855,11 +1855,10 @@ a.read-more {
 }
 
 /* ===================================Trang RoomDetail ================================= */
-.chitietphong .khoitime{
+.chitietphong .khoitime {
     padding-bottom: 20px;
 }
-.chitietphong .khoitime .khoilisttime{
-    
+.chitietphong .khoitime .khoilisttime {
     height: 100px;
     overflow-y: auto;
 }
@@ -3905,6 +3904,11 @@ textarea:focus {
 }
 
 /* ===================================Trang Bill================================= */
+#soluongser input {
+    width: 50% !important;
+    float: left !important;
+
+}
 .Bill table .btn {
     padding: 5px 10px !important;
 }
@@ -4632,10 +4636,10 @@ textarea:focus {
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
     margin-bottom: 1rem;
 }
-.wrapper #nutmo{
+.wrapper #nutmo {
     cursor: pointer;
 }
-.wrapper #nutmo:hover{
+.wrapper #nutmo:hover {
     color: #fea116;
     transition: all 0.4s ease-out 0s;
 }
@@ -4643,13 +4647,13 @@ textarea:focus {
 .wrapper .resetPass {
     margin: 0px 20px;
 }
-.wrapper .xoay{
+.wrapper .xoay {
     transform: rotate(180deg);
     transition: all 0.4s ease-out 0s;
 }
-.wrapper .mb-2{
+.wrapper .mb-2 {
     padding: 20px 20px;
 }
-.wrapper #post_up_cus{
+.wrapper #post_up_cus {
     padding: 20px 10px;
 }

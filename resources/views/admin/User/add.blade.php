@@ -90,6 +90,20 @@
                     <option value="2">Thường Dân</option>
                   </select>
                 </div>
+                <div class="form-group">
+                  <label for="">Roles</label>
+                  @foreach($roles as $role)
+                  <div class="checkbox">
+                    <label for="">
+                      <input type="checkbox" name="role[]" value="{{$role->id}}"> {{$role->name}}
+                    </label>
+                  </div>
+                  @error('role.*')
+                  <small class="error help-block" style="color:red">{{$message}}</small>
+                  @enderror
+                  @endforeach
+                </div>
+                
               </div>
               <!-- /.card-body -->
 

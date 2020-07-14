@@ -27,7 +27,8 @@ class UserAddRequest extends FormRequest
             'name'=>'required|unique:users',
             'avatar' => 'required|mimes:png,jpeg,gif',
             'email'=>'required|unique:users',
-            'password'=>'required | min:3 | max:32'
+            'password'=>'required | min:3 | max:32',
+            'role.*'=>'required'
         ];
     }
 //taoj casi lafm password rlà
@@ -41,7 +42,8 @@ class UserAddRequest extends FormRequest
             'email.unique'=>'Email đã tồn tại',
             'password.required'=>'Password không được để trống',
             'avatar.mimes'=>'Ảnh bạn nhập không đúng định dạng',
-            'avatar.required'=>'Bạn chưa chọn ảnh đại diện'
+            'avatar.required'=>'Bạn chưa chọn ảnh đại diện',
+            'role.*.required'=>'Bạn chưa chọn quyền cho người dùng'
         ];
     }
 }

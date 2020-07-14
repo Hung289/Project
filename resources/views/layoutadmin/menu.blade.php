@@ -27,8 +27,7 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+        <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
         <?php
         $user = Auth::user();
         $menus = config('menu');
@@ -50,7 +49,17 @@
             </p>
           </a>
         </li>
-        @foreach($menus as $m)
+        @if($user->can('admin.getEditAdminPartner'))
+        <li class="nav-item">
+          <a href="{{route('admin.getEditAdminPartner',['id'=>Auth::user()->id])}}" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Cập nhật tài khoản
+            </p>
+          </a>
+        </li>
+        @endif
+        <!-- @foreach($menus as $m)
         @if($user->can($m['route']))
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
@@ -76,7 +85,8 @@
           @endif
         </li>
         @endif
-        @endforeach
+        @endforeach -->
+        @if($user->can('admin.user.index'))
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
@@ -100,6 +110,8 @@
             </li>
           </ul>
         </li>
+        @endif
+        @if($user->can('admin.categoryRoom.index'))
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-chart-pie"></i>
@@ -123,6 +135,8 @@
             </li>
           </ul>
         </li>
+        @endif
+        @if($user->can('admin.categoryService.index'))
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-chart-pie"></i>
@@ -146,6 +160,8 @@
             </li>
           </ul>
         </li>
+        @endif
+        @if($user->can('admin.categoryBlog.index'))
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-chart-pie"></i>
@@ -169,6 +185,7 @@
             </li>
           </ul>
         </li>
+        @endif
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-tree"></i>
@@ -178,26 +195,33 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
+            @if($user->can('admin.room.indexAdmin'))
             <li class="nav-item">
               <a href="{{route('admin.room.indexAdmin')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Danh sách phòng Admin khách</p>
+                <p>Danh sách phòng </p>
               </a>
             </li>
+            @endif
+            @if($user->can('admin.room.index'))
             <li class="nav-item">
               <a href="{{route('admin.room.index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Danh sách phòng</p>
               </a>
             </li>
+            @endif
+            @if($user->can('admin.room.create'))
             <li class="nav-item">
               <a href="{{route('admin.room.create')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Thêm mới phòng</p>
               </a>
             </li>
+            @endif
           </ul>
         </li>
+        @if($user->can('admin.service.index'))
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-tree"></i>
@@ -221,6 +245,8 @@
             </li>
           </ul>
         </li>
+        @endif
+        @if($user->can('admin.blog.create'))
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-edit"></i>
@@ -244,6 +270,8 @@
             </li>
           </ul>
         </li>
+        @endif
+        @if($user->can('admin.brand.create'))
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-edit"></i>
@@ -267,6 +295,8 @@
             </li>
           </ul>
         </li>
+        @endif
+        @if($user->can('admin.banner.index'))
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-table"></i>
@@ -290,6 +320,8 @@
             </li>
           </ul>
         </li>
+        @endif
+        @if($user->can('admin.role.index'))
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-table"></i>
@@ -313,7 +345,7 @@
             </li>
           </ul>
         </li>
-
+        @endif
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

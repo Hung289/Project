@@ -74,8 +74,15 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Mật Khẩu</label>
-                  <input type="password" name="password" class="form-control" value="">
+                  <input type="password" name="password" class="form-control" >
                   @error('password')
+                  <small class="error help-block" style="color:red">{{$message}}</small>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Nhập Lại Mật Khẩu</label>
+                  <input type="password" name="confirm_password" class="form-control" >
+                  @error('confirm_password')
                   <small class="error help-block" style="color:red">{{$message}}</small>
                   @enderror
                 </div>

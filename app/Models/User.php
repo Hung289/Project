@@ -87,7 +87,7 @@ class User extends Authenticatable
         return $model;
     }
 
-    public function updateEdit()
+    public function updateEdit($user)
     {
         if (request()->has('avatar')) {
             $img = request()->avatar;
@@ -96,7 +96,7 @@ class User extends Authenticatable
             $model = $this->update([
                 'name' => request()->name,
                 'email' => request()->email,
-                'password' => bcrypt(request()->password),
+                'password' => request()->password ? bcrypt(request()->password) : $user->password,
                 'phone' => request()->phone,
                 'level' => request()->level,
                 'avatar' => $image_name
@@ -106,7 +106,7 @@ class User extends Authenticatable
             $model = $this->update([
                 'name' => request()->name,
                 'email' => request()->email,
-                'password' => bcrypt(request()->password),
+                'password' => request()->password ? bcrypt(request()->password) : $user->password,
                 'phone' => request()->phone,
                 'level' => request()->level,
             ]);

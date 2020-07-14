@@ -46,7 +46,7 @@ Route::get('blog-grid','Web\webPageController@getBlogGrid')->name('blogGrid');
 //Trang blof-stand
 Route::get('blog-stand','Web\webPageController@getBlogStand')->name('blogStand');
 //Trang checkout
-Route::group(['prefix'=>'cartRoom','namespace'=>'Web','middleware'=>'auth'],function(){
+Route::group(['prefix'=>'cartRoom','namespace'=>'Web','middleware' => 'webLogin'],function(){
     Route::get('checkout','CheckOutController@getCheckOut')->name('checkout');
     Route::post('checkout','CheckOutController@postCheckOut')->name('post.checkout');
 });
@@ -180,6 +180,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => 'auth'
     ]);
     
     Route::get('admin/room','RoomController@getIndexAdmin')->name('room.indexAdmin');
+
+    Route::get('admin/editPartner/{id}','AdminController@getEditAdminPartner')->name('getEditAdminPartner');
+    Route::post('admin/editPartner/{id}','AdminController@postEditAdminPartner')->name('postEditAdminPartner');
 
     Route::get('searchBlog','BlogController@search')->name('searchBlog');
     Route::get('searchCateBlog','CategoryBlogController@search')->name('searchCateBlog');

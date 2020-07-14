@@ -36,11 +36,12 @@
                             </div>
                             <div class="col-lg-6 khoithongtin">
                                 <div class="loaiphong">
-
                                     <p>{{$item['category_room_id']}}</p>
                                 </div>
+
                                 <div class="tenphong">
                                     <a href="">{{$item['name']}}</a>
+                                    <span> -- Id : {{$item['id']}}</span>
                                 </div>
                                 <ul>
                                     <li><i class="fas fa-bed"></i>{{$item['bed']}} Bed</li>
@@ -82,14 +83,16 @@
                                     <td>{{$itemSer['name']}}</td>
                                     <td><img src="public/uploads/images/servicess/{{$itemSer['imageService']}}" alt="" style="width:100px;height:100px"></td>
                                     <td>
-                                        <form action="{{route('cart.updateService',['id'=>$itemSer['id']])}}" method="GET">
-                                            <input type="number" name="qty" value="{{$itemSer['quantity']}}">
+                                        <form id="soluongser" action="{{route('cart.updateService',['id'=>$itemSer['id']])}}" method="GET">
+                                            <input type="number" id="nutsoluong" name="qty" value="{{$itemSer['quantity']}}">
                                             <button class="btn btn-primary">Cập nhật</button>
                                         </form>
                                     </td>
                                     <td>{{$itemSer['room_id']}}</td>
                                     <td>
-                                        ${{number_format($itemSer['price']*$itemSer['quantity'])}}
+                                        <div id="priceService" >
+                                            {{number_format($itemSer['price']*$itemSer['quantity'])}}
+                                        </div>
                                     </td>
                                     <td>
                                         <div class="xoaphong">

@@ -136,7 +136,6 @@ class webPageController extends Controller
 
     public function getService()
     {
-
         $CategoryService = CategoryService::all();
         return view('page.service', ['CategoryService' => $CategoryService]);
     }

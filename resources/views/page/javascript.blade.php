@@ -415,3 +415,17 @@
 
     // })
 </script>
+
+
+<script>
+    $(function(){
+        $('#nutsoluong').change(function(){
+            // alert('ok');
+            var valinput = $(this).val();
+            var priceService = parseInt($('#priceService').text());
+            var totalPrice = valinput*priceService
+            // alert(totalPrice);
+            $('#priceService').html(totalPrice);
+        })
+    })
+</script>

@@ -44,3 +44,24 @@
 .dongdichvu p{
     margin: 5px 0px;
 }
+.wrapper #nutmo{
+    cursor: pointer;
+}
+.wrapper #nutmo:hover{
+    color: #007bff;
+    transition: all 0.4s ease-out 0s;
+}
+
+.wrapper .resetPass {
+    margin: 0px 20px;
+}
+.wrapper .xoay{
+    transform: rotate(180deg);
+    transition: all 0.4s ease-out 0s;
+}
+.wrapper .mb-2{
+    padding: 20px 20px;
+}
+.wrapper #post_up_cus{
+    padding: 20px 10px;
+}

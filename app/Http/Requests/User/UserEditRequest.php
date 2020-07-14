@@ -3,6 +3,8 @@
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\User;
+
 
 class UserEditRequest extends FormRequest
 {
@@ -21,23 +23,22 @@ class UserEditRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(User $user)
     {
+        
         return [
-            'name'=>'required',
-            'avatar'=>'mimes:png,jpeg,gif',
-            'email'=>'required',
-            'password'=>'required',
+            'name' => 'required',
+            'email' => 'required | email | unique:users,email,'.request()->id,
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required'=>'Tên không được để trống',
-            'avatar.mimes'=>'Ảnh không đúng định dạng',
-            'email.required'=>'Email không được để trống',
-            'password.required'=>'Password không được để trống'
+            'name.required'=>'name không được bỏ trống',
+            'email.required'=>'email không được bỏ trống',
+            'email.email'=>'email không đúng định dạng email',
+            'email.unique'=>'email đã tồn tại',
         ];
     }
 }
