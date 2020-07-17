@@ -20,7 +20,7 @@ class OrderController extends Controller
     public function index()
     {
         
-        $orders = Order::all();
+        $orders = Order::orderBy('id','desc')->get();
         // dd($orders);
         return view('admin.Order.list',['orders'=>$orders]);
     }

@@ -40,7 +40,7 @@
                                     <ul class="room-info list-inline">
                                         <li><i class="fas fa-bed"></i>3 Bed</li>
                                         <li><i class="fas fa-bath"></i>2 Baths</li>
-                                        <li><i class="fas fa-ruler-triangle"></i>72 m</li>
+                                        <li><i class="fas fa-ruler-combined"></i></i>72 m</li>
                                     </ul>
                                     <div class="room-price">
                                         <p>$180.00</p>

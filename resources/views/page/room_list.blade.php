@@ -69,7 +69,7 @@
                                         <ul class="room-info list-inline">
                                             <li><i class="fas fa-bed"></i>{{$room->bed}} Bed</li>
                                             <li><i class="fas fa-bath"></i>{{$room->bath}} Baths</li>
-                                            <li><i class="fas fa-ruler-triangle"></i>{{$room->area}} m</li>
+                                            <li><i class="fas fa-ruler-combined"></i>{{$room->area}} m</li>
                                         </ul>
                                         <div class="room-price">
                                             <p>{{number_format($room->priceNight)}} $</p>

@@ -23,6 +23,7 @@
 
 <section class="latest-food section-padding">
     <div class="titleChoiceService">Tiếp tục chọn dịch vụ cho phòng --- {{$rooms->name}} ---
+        <p>Ngày đến/ Ngày đi -- {{$from_date}} -> {{$to_date}} --</p>
         <p>Nếu không muốn chọn dịch vụ bạn có thể tiến hành thanh toán bằng chuyển sang trang <a href="{{route('cart.view')}}">CartRoom</a></p>
     </div>
     <div class="container">
@@ -83,7 +84,7 @@
                             <h4>{{$service->name}}</h4>
                             <p>{!!$service->description!!}</p>
                             <p class="price">$ {{number_format($service->price)}}</p>
-                            <a href="{{route('addService',['id'=>$service->id,'room'=>$rooms->id])}}">Add Service to Room</a>
+                            <a href="{{route('addService',['id'=>$service->id,'room'=>$rooms->id,'from_date'=>$from_date,'to_date'=>$to_date])}}">Add Service to Room</a>
                         </div>
                     </div>
                 </div>

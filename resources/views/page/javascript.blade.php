@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
     $(document).ready(function() {
         $("#arrive-date").datepicker({
@@ -389,9 +390,9 @@
 
 <script>
     // let url = $('#form_update_cus').attr('action');
-    
+
     // function loadCusInFor(form = '') {
-        
+
     //     $.ajax({
     //         type:"POST",
     //         url:url,
@@ -405,7 +406,7 @@
     // loadCusInFor();
     // $(function() {
     //     $('#post_up_cus').click(function() {
-            
+
     //         let data = $('#form_update_cus').serialize();
     //         // alert(data);
     //         var img = $('#img')[0].files[0].name;
@@ -418,14 +419,18 @@
 
 
 <script>
-    $(function(){
-        $('#nutsoluong').change(function(){
+    $(function() {
+        $(document).on('change', '#nutsoluong', function() {
             // alert('ok');
             var valinput = $(this).val();
-            var priceService = parseInt($('#priceService').text());
-            var totalPrice = valinput*priceService
-            // alert(totalPrice);
-            $('#priceService').html(totalPrice);
+            var priceService = parseInt($('#layprice').val());
+            var getPriceRoomTotal = parseInt($('#getPriceRoomTotal').val());
+            var totalPriceService = valinput * priceService;
+            var totalOrder = getPriceRoomTotal + totalPriceService
+            // alert(priceService);
+            $('#priceService').html(totalPriceService);
+            $('#priceServiceRT').html(totalPriceService);
+            $('#totalOrder').html(totalOrder);
         })
     })
 </script>

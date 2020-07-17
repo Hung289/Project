@@ -46,7 +46,7 @@
                                 <ul>
                                     <li><i class="fas fa-bed"></i>{{$item['bed']}} Bed</li>
                                     <li><i class="fas fa-bath"></i>{{$item['bath']}} Baths</li>
-                                    <li>{{$item['area']}}m</li>
+                                    <li><i class="fas fa-ruler-combined"></i>{{$item['area']}}m</li>
                                     <li>{{$item['arriveDate']}} - {{$item['departDate']}}</li>
                                     <br>
                                     <li>Số ngày: {{$item['songay']}}</li>
@@ -60,6 +60,7 @@
                             </div>
                         </div>
                     </div>
+
                     @endforeach
                 </div>
                 <div>
@@ -78,25 +79,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($cart->services as $itemSer)
+                                @foreach($cart->services as $key=>$itemSer)
                                 <tr>
                                     <td>{{$itemSer['name']}}</td>
                                     <td><img src="public/uploads/images/servicess/{{$itemSer['imageService']}}" alt="" style="width:100px;height:100px"></td>
                                     <td>
-                                        <form id="soluongser" action="{{route('cart.updateService',['id'=>$itemSer['id']])}}" method="GET">
-                                            <input type="number" id="nutsoluong" name="qty" value="{{$itemSer['quantity']}}">
+                                        <form id="soluongser" action="{{route('cart.updateService',['id'=>$key])}}" method="GET">
+                                            
+                                            <input type="number" min="1" max="20" id="nutsoluong" name="qty" value="{{$itemSer['quantity']}}">
                                             <button class="btn btn-primary">Cập nhật</button>
                                         </form>
                                     </td>
                                     <td>{{$itemSer['room_id']}}</td>
                                     <td>
-                                        <div id="priceService" >
-                                            {{number_format($itemSer['price']*$itemSer['quantity'])}}
+                                        <input type="hidden" id="layprice" value="{{number_format($itemSer['price'])}}">
+                                        <div id="priceService">
+                                            ${{number_format($itemSer['price']*$itemSer['quantity'])}}
                                         </div>
                                     </td>
                                     <td>
                                         <div class="xoaphong">
-                                            <a href="{{route('cart.removeService',['id'=>$itemSer['id']])}}"><i class="fas fa-backspace"></i></a>
+                            
+                                            <a href="{{route('cart.removeService',['id'=>$key])}}"><i class="fas fa-backspace"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -131,14 +135,15 @@
                             <tr class="priceroom">
                                 <th>Price Room</th>
                                 <td><span>$</span>{{number_format($cart->total_price)}}</td>
+                                <input id="getPriceRoomTotal" type="hidden" value="{{number_format($cart->total_price)}}">
                             </tr>
                             <tr class="foodmoney">
                                 <th>Other Services</th>
-                                <td><span>$</span>{{number_format($cart->total_price_service)}}</td>
+                                <td id="priceServiceRT"><span>$</span>{{number_format($cart->total_price_service)}}</td>
                             </tr>
                             <tr class="total">
                                 <th>Total</th>
-                                <td><span>$</span>{{number_format($cart->total_price+$cart->total_price_service)}}</td>
+                                <td id="totalOrder"><span>$</span>{{number_format($cart->total_price+$cart->total_price_service)}}</td>
                             </tr>
                         </tbody>
                     </table>

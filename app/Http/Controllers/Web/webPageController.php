@@ -144,13 +144,13 @@ class webPageController extends Controller
         $CategoryService = CategoryService::all();
         return view('page.view_sevice', ['CategoryService' => $CategoryService]);
     }
-    public function getServiceMaster($id, $room)
+    public function getServiceMaster($id,$room,$from_date,$to_date)
     {
         $rooms = Room::find($room);
         $cateService = CategoryService::where('id', $id)->get();
         $Services = Service::where('category_service_id', $id)->get();
         $new_service = Service::where('category_service_id', $id)->where('new', 0)->paginate(4);
-        return view('page.service_detail', ['Services' => $Services, 'new_service' => $new_service, 'cateService' => $cateService, 'rooms' => $rooms]);
+        return view('page.service_detail', ['from_date'=>$from_date,'to_date'=>$to_date,'Services' => $Services, 'new_service' => $new_service, 'cateService' => $cateService, 'rooms' => $rooms]);
     }
     public function getServiceMasterNotIdRoom($id)
     {

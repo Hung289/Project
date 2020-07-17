@@ -78,7 +78,7 @@ class CartRoomController extends Controller
             } else {
                 $songay =  $hieu2ngay;
                 $model = $cart->add($room, $qty, $from_date, $to_date, $songay);
-                return view('page.service',['room'=>$room])->with('success', 'Chọn thành công phòng. Tiếp tục chọn dịch vụ hoặc xem hóa đơn tại cartRoom');
+                return view('page.service',['room'=>$room,'from_date'=>$from_date,'to_date'=>$to_date])->with('success', 'Chọn thành công phòng. Tiếp tục chọn dịch vụ hoặc xem hóa đơn tại cartRoom');
             }
         } else {
             return redirect()->back()->with('error', 'Ngày đi nhỏ hơn đến đi. Không thể tiến hành booking room');
@@ -120,11 +120,11 @@ class CartRoomController extends Controller
         return redirect()->route('cart.view');
     }
 
-    public function addService(Request $request, CartRoom $cartService, $id,$room)
+    public function addService(Request $request, CartRoom $cartService, $id,$room,$from_date,$to_date)
     {
         $service = Service::find($id);
         $qty = $request->qty ? $request->qty : 1;
-        $cartService->addService($service, $qty,$room);
+        $cartService->addService($service, $qty,$room,$from_date,$to_date);
         return redirect()->back()->with('success', 'Thêm thành công ' . $service->name . ' vào giỏ hàng');
     }
 

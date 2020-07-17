@@ -15,11 +15,12 @@
 </section>
 
 <section class="tinhnang2 feature-section-two">
-<div class="titleChoiceService">Tiếp tục chọn dịch vụ cho phòng --- {{$room->name}} ---
-  <p>Nếu không muốn chọn dịch vụ bạn có thể tiến hành thanh toán bằng chuyển sang trang  <a href="{{route('cart.view')}}">CartRoom</a></p>
-</div>
+  <div class="titleChoiceService">Tiếp tục chọn dịch vụ cho phòng --- {{$room->name}} ---
+    <p>Ngày đến/ Ngày đi -- {{$from_date}} -> {{$to_date}} --</p>
+    <p>Nếu không muốn chọn dịch vụ bạn có thể tiến hành thanh toán bằng chuyển sang trang <a href="{{route('cart.view')}}">CartRoom</a></p>
+  </div>
   <div class="wcu-section section-padding">
-  
+
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6">
@@ -127,7 +128,7 @@
           </div>
           <h4>{{$Cate->name}}</h4>
           <p>Great explorer of the truth the ter-blade human happiness one reject</p>
-          <a href="{{route('serviceMaster',['id'=>$Cate->id,'room'=>$room->id])}}" class="read-more">read more <i class="fas fa-long-arrow-alt-right"></i></a>
+          <a href="{{route('serviceMaster',['id'=>$Cate->id,'room'=>$room->id,'from_date'=>$from_date,'to_date'=>$to_date])}}" class="read-more">read more <i class="fas fa-long-arrow-alt-right"></i></a>
         </div>
       </div>
       <?php $i++ ?>
