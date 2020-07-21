@@ -33,8 +33,11 @@ Route::post('home-register','Web\webPageController@postRegisterWeb')->name('post
 //Logout
 Route::get('home-logout','Web\webPageController@WebLogout')->name('getLogoutWeb');
 
-
-
+//forgot password
+Route::get('forgot-password','Web\webPageController@getForgot')->name('getForgot');
+Route::post('post/email-forgot','Web\ResetPasswordController@getForgotPassword')->name('getForgotPassword');
+Route::get('resetPassword/{token}','Web\ResetPasswordController@resetPassword')->name('resetPassword');
+Route::post('newPass','Web\ResetPasswordController@newPass')->name('newPass');
 
 // Trang about
 Route::get('about','Web\webPageController@getAbout')->name('about');

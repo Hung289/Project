@@ -42,7 +42,7 @@
   <link rel="stylesheet" href="public/web/fonts/fontawesome/fontawesome-free-5.13.0-web/css/all.min.css" />
   <link rel="stylesheet" href="public/web/fonts/fontawesome/fontawesome-free-5.13.0-web/css/fontawesome.min.css" />
 
-
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
   <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.css" id="theme-styles"> -->
 </head>
@@ -126,7 +126,7 @@
   <script src="public/sweetalert2.min.js"></script>
   <script src="sweetalert2.all.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-
+  <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
   <script type="text/javascript">
     const Toast = Swal.mixin({
       toast: true,

@@ -38,7 +38,8 @@
                                     <td>{{$rR->content}}</td>
                                     <td>{{$rR->created_at}}</td>
                                     <td>
-                                        <input type="checkbox" name="checkt" url="{{route('admin.reviewRoom2.update',['id'=>$rR->id])}}" class="nutstatus" data-nutstatus="{{$rR->id}}" @if($rR->status == 0) checked @endif>Hiện/Ẩn
+                                    <input type="checkbox"  data-toggle="toggle" data-onstyle="primary" url="{{route('admin.reviewRoom2.update',['id'=>$rR->id])}}" class="nutstatus" data-nutstatus="{{$rR->id}}" @if($rR->status == 0) checked @endif>
+                                        
                                     </td>
                                 </tr>
                                 @endforeach

@@ -106,7 +106,7 @@
               <ul class="users-list clearfix">
                 @foreach($users as $us)
                 <li>
-                  <img src="public/uploads/images/user/{{$us->avatar}}" style="height: 100px;width:100pxs" alt="User Image">
+                  <img src="public/uploads/images/user/{{$us->avatar}}" style="height: 100px;width:100px" alt="User Image">
                   <a class="users-list-name" href="#">{{$us->name}}</a>
                   <span class="users-list-date">{{$us->created_at}}</span>
                 </li>

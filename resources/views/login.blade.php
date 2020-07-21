@@ -72,7 +72,7 @@
                                 <label for="">Remember me</label>
                             </div>
                             <div>
-                                <a href="#" class="txt1">
+                                <a href="{{route('getForgot')}}" class="txt1">
                                     Forgot Password?
                                 </a>
                             </div>

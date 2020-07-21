@@ -224,7 +224,7 @@ class webPageController extends Controller
     public function postLoginWeb(LoginWebAddRequest $request)
     {
         if (Auth::attempt($request->only('email', 'password'), $request->has('remember'))) {
-            return redirect()->route('indexWeb');
+            return redirect()->route('indexWeb')->with('success','Chúc mừng bạn đã đăng nhập thành công');
         } else {
             return redirect()->back()->with('error', 'Tài khoản hoặc mật khẩu không đúng');;
         }
@@ -233,7 +233,7 @@ class webPageController extends Controller
     public function WebLogout()
     {
         Auth::logout();
-        return redirect()->route('indexWeb');
+        return redirect()->route('indexWeb')->with('success','Đăng xuất thành công');
     }
 
     public function getRoomListMaster($id)
@@ -419,6 +419,12 @@ class webPageController extends Controller
         $model = $users->editCustomerInfor();
 
         return redirect()->back()->with('success', 'Cập nhật thành công');
+    }
+
+    public function getForgot(Request $request)
+    {
+        return view('page.forgot_password');
+        
     }
 
 }
