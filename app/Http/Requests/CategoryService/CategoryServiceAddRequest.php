@@ -26,7 +26,9 @@ class CategoryServiceAddRequest extends FormRequest
         return [
             'name'=>'required|unique:category_services',
             'image'=>'required|mimes:png,jpeg,gif',
-            'imageHover'=>'required|mimes:png,jpeg,gif'
+            'imageHover'=>'required|mimes:png,jpeg,gif',
+            'bannerService'=>'required|mimes:png,jpeg,gif',
+            'linkVideoService'=>'required'
         ];
     }
     public function messages()
@@ -37,7 +39,10 @@ class CategoryServiceAddRequest extends FormRequest
             'image.required'=>'Ảnh không được để trống',
             'image.mimes'=>'Image không đúng định dạng',
             'imageHover.required'=>'ImageHover không được để trống',
-            'imageHover.mimes'=>'ImageHover không đúng định dạng'
+            'imageHover.mimes'=>'ImageHover không đúng định dạng',
+            'bannerService.required'=>'BannerService không được để trống',
+            'bannerService.mimes'=>'bannerService không đúng định dạng',
+            'linkVideoService.required'=>'linkVideoService không được để trống'
         ];
     }
 }

@@ -18,7 +18,7 @@ class CategoryServiceController extends Controller
      */
     public function index()
     {
-        $cateService = CategoryService::orderBy('id','DESC')->paginate(5);
+        $cateService = CategoryService::orderBy('id','DESC')->get();
         return view('admin.CategoryService.list',compact('cateService'));
     }
 

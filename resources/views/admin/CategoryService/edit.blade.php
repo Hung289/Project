@@ -65,6 +65,23 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleInputFile">Hình ảnh banner service</label>
+                                    <div class="input-group">
+                                            <input type="file" class="custom-file-input" name="bannerService" placeholder="Chọn ảnh"  multiple/>
+                                            <label class="custom-file-label" for="exampleInputFile">Chọn Ảnh</label>        
+                                    </div>
+                                    @error('bannerService')
+                                        <small style="color:red">{{$message}}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group @error('name') has-error @enderror">
+                                    <label for="exampleInputEmail1">Thêm link video service</label>
+                                    <input name="linkVideoService" id="name" type="text" class="form-control  " placeholder="Thêm link video" value="{{$categoryService->link_video_service}}">
+                                    @error('linkVideoService')
+                                        <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <label for="">Description</label>
                                     <textarea name="description" id="content" cols="30" rows="10">{{$categoryService->description}}</textarea>
                                 </div>

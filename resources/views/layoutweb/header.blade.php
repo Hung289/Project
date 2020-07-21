@@ -4,7 +4,7 @@
       <div class="col-lg-4 col-md-3 col-7">
         <div class="logoandphone justify-content-between align-items-center">
           <div class="logo">
-            <a href="">
+            <a href="{{route('indexWeb')}}">
               <img src="public/web/images/img/logo-transparent.png" alt="Avson" />
             </a>
           </div>

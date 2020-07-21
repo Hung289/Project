@@ -7,14 +7,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\User;
+use App\Models\RoomImage;
 use App\Http\Requests\User\CustomerRequest;
 
 class AdminController extends Controller
 {
     public function index(){
+        $users = User::where('level',2)->get();
+        $rooms = Room::all();
+        $roomImage = RoomImage::all();
         $totalRoom = Room::count();
         $totalOrder = Order::count();
-        return view('layoutadmin.home',compact('totalRoom','totalOrder'));
+        return view('layoutadmin.home',compact('totalRoom','totalOrder','users','rooms','roomImage'));
     }
 
     public function file(){

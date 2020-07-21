@@ -295,20 +295,6 @@
 <!-- post comment to phòng  -->
 <script>
     $(function() {
-        // phải lên chứ 
-        // nhưng nó là DOM ảo =)), muốn tác động vào DOM tạo ra sau khi trang đã được load thì phải dùng on on j
-        // biết thế là được  =))
-        // ko đc viết là click(à)
-        // ừ //vl mấy cái click chỉ tác động vào DOM đã có sẵn trên web
-        // còn sau khi web chạy xong mà lại có thêm DOM Mới thì phải dùng on//đù
-        // ăn cứt nhiều ms biết được =))
-        //chơi game đê
-        // vl code đi 
-        // code cái search 
-        // đả bảo cái này nhỏ vl rồi =))
-        //search thì bỏ hết foem đi à
-        // hả.ajax search thì bỏ form đi à
-        // ko có form thì lấy data chỉ cần 1 dòng thôi =))
         $(document).on('click', '.nutguiblto', function() {
             var content = $("[name='content']").val();
             var idRoom = $("[name='roomD']").val();
@@ -323,7 +309,6 @@
                 })
             } else {
                 if (content == '') {
-
                     Swal.fire({
                         icon: 'error',
                         title: 'Lỗi...',
@@ -369,7 +354,6 @@
                     'parentcmtchild': parentcmtchild,
                 },
                 success: function(response) {
-
                     // console.log(data);
                     $("#khoicmt").load(window.location.href + " #cckhoicmt");
                 }
@@ -420,17 +404,49 @@
 
 <script>
     $(function() {
-        $(document).on('change', '#nutsoluong', function() {
+        
+        $(document).on('change', '.nutsoluong', function() {
+            
+            // alert(buttonClick);
             // alert('ok');
             var valinput = $(this).val();
-            var priceService = parseInt($('#layprice').val());
+            // alert(valinput);
+            var priceService = parseInt($('#layprice-' + $(this).data('nutsoluong')).val());
+            
+            // alert(priceService);
             var getPriceRoomTotal = parseInt($('#getPriceRoomTotal').val());
             var totalPriceService = valinput * priceService;
             var totalOrder = getPriceRoomTotal + totalPriceService
             // alert(priceService);
-            $('#priceService').html(totalPriceService);
+            $('#priceService-'+ $(this).data('nutsoluong')).html(totalPriceService);
             $('#priceServiceRT').html(totalPriceService);
             $('#totalOrder').html(totalOrder);
         })
     })
+</script>
+
+<script>
+    // $(function(){
+    //     $(document).on('click','.NutUpdateQty',function(){
+    //         // alert($('.soluongser-' + $(this).attr('id')));
+    //         let url_update_qty = $('.soluongser-' + $(this).attr('id')).attr('action');
+    //         // alert(url_update_qty);
+    //         var soluong = $('#soluong-' + $(this).attr('id')).val();
+    //         // alert(soluong);
+    //         var _token = $('meta[name="csrf-token"]').attr('content');
+    //         $.ajax({
+    //             type:'GET',
+    //             url:url_update_qty,
+    //             data:{
+    //                 'qty': soluong,
+    //                 '_token':_token
+    //             },
+    //             success: function(response) {
+    //                 $('#priceService-' + $(this).attr('id')).html();
+    //                 // $("#priceService-"+$(this).attr('id')).load(window.location.href + '#cc321-'+$(this).attr('id'));
+    //             }
+                
+    //         })
+    //     })
+    // })
 </script>

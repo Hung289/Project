@@ -290,6 +290,7 @@
                                             <h2 class="comment-title">Client’s Comments</h2>
                                             <?php $i = 0 ?>
                                             @foreach($room->reviewRoom as $rR)
+                                            @if($rR->status == 0)
                                             <ul class="comment-list" id="cckhoicmt">
                                                 <li>
                                                     <div class="comment-autor">
@@ -338,6 +339,7 @@
 
                                                 </li>
                                             </ul>
+                                            @endif
                                             <?php $i++ ?>
                                             @endforeach
                                         </div>

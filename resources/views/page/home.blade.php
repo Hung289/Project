@@ -274,7 +274,7 @@
         <div class="counter-box style-two">
           <img src="public/web/images/img/icons/07.png" alt="icon" />
           <p class="fact-num">
-            <span class="counter-number">506</span>
+            <span class="counter-number">{{$room_all->count()}}</span>
           </p>
           <p>Luxury Appartment</p>
         </div>
@@ -421,42 +421,7 @@
   </div>
 </section>
 
-<!-- <section id="icontrenfooter">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2 col-sm-6 moticon">
-            <div class="ngoaianh">
-              <img src="public/web/images/images/icontrenfooter_03.png" alt="" />
-            </div>
-          </div>
-          <div class="col-md-2 col-sm-6 moticon">
-            <div class="ngoaianh">
-              <img src="public/web/images/images/icontrenfooter_03.png" alt="" />
-            </div>
-          </div>
-          <div class="col-md-2 col-sm-6 moticon">
-            <div class="ngoaianh">
-              <img src="public/web/images/images/icontrenfooter_05.png" alt="" />
-            </div>
-          </div>
-          <div class="col-md-2 col-sm-6 moticon">
-            <div class="ngoaianh">
-              <img src="public/web/images/images/icontrenfooter_05.png" alt="" />
-            </div>
-          </div>
-          <div class="col-md-2 col-sm-6 moticon">
-            <div class="ngoaianh">
-              <img src="public/web/images/images/icontrenfooter_07.png" alt="" />
-            </div>
-          </div>
-          <div class="col-md-2 col-sm-6 moticon">
-            <div class="ngoaianh">
-              <img src="public/web/images/images/icontrenfooter_09.png" alt="" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
+
 
 
 

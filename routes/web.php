@@ -176,9 +176,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => 'auth'
         'brand'=>'BrandController',
         'banner'=>'BannerController',
         'role'=>'RoleController',
-        'order'=>'OrderController'
+        'order'=>'OrderController',
+        'reviewRoom'=>'ReviewRoomController'
     ]);
     
+    Route::post('post-update-status/{id}','ReviewRoom2Controller@update')->name('reviewRoom2.update');
+    
+
     Route::get('admin/room','RoomController@getIndexAdmin')->name('room.indexAdmin');
 
     Route::get('admin/editPartner/{id}','AdminController@getEditAdminPartner')->name('getEditAdminPartner');

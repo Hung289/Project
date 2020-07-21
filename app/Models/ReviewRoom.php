@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class ReviewRoom extends Model
 {
     protected $fillable = [
-        'user_id', 'room_id', 'parent', 'content'
+        'user_id', 'room_id', 'parent', 'content','status'
     ];
 
     public function user()
@@ -34,7 +34,8 @@ class ReviewRoom extends Model
         $model = ReviewRoom::create([
             'user_id' => Auth::user()->id,
             'room_id' => $room->id,
-            'content' => request()->content
+            'content' => request()->content,
+            
         ]);
         return $model;
     }
@@ -47,6 +48,13 @@ class ReviewRoom extends Model
             'room_id' => $room->id,
             'content' => request()->contentChild,
             'parent' => $parent
+        ]);
+        return $model;
+    }
+
+    public function updateStatus(){
+        $model = $this->update([
+            'status'=>request()->status
         ]);
         return $model;
     }

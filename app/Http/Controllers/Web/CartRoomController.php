@@ -136,8 +136,11 @@ class CartRoomController extends Controller
 
     public function update(CartRoom $cartService, $id, Request $request)
     {
+
         $qty = $request->qty;
+        // dd($qty);
         $cartService->update($id, $qty);
+        // dd($cartService);
         return redirect()->route('cart.view');
     }
 }

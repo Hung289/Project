@@ -14,7 +14,7 @@
     </div>
 </section>
 
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <section class="Bill">
     <div class="container">
         <div class="go-booking">
@@ -84,22 +84,25 @@
                                     <td>{{$itemSer['name']}}</td>
                                     <td><img src="public/uploads/images/servicess/{{$itemSer['imageService']}}" alt="" style="width:100px;height:100px"></td>
                                     <td>
-                                        <form id="soluongser" action="{{route('cart.updateService',['id'=>$key])}}" method="GET">
-                                            
-                                            <input type="number" min="1" max="20" id="nutsoluong" name="qty" value="{{$itemSer['quantity']}}">
-                                            <button class="btn btn-primary">Cập nhật</button>
+                                        <form id="soluongser" class="soluongser-{{$itemSer['id']}} soluong-{{$itemSer['id']}}" action="{{route('cart.updateService',['id'=>$key])}}" method="GET">
+
+                                            <input type="number" min="1" max="20" id="soluong-{{$itemSer['id']}}" class="nutsoluong " data-nutsoluong="{{$itemSer['id']}}" name="qty" value="{{$itemSer['quantity']}}">
+                                            <button type="submit" class="btn btn-primary NutUpdateQty" id="{{$itemSer['id']}}">Cập nhật</button>
                                         </form>
                                     </td>
                                     <td>{{$itemSer['room_id']}}</td>
                                     <td>
-                                        <input type="hidden" id="layprice" value="{{number_format($itemSer['price'])}}">
-                                        <div id="priceService">
-                                            ${{number_format($itemSer['price']*$itemSer['quantity'])}}
+                                        <input type="hidden" id="layprice-{{$itemSer['id']}}" value="{{number_format($itemSer['price'])}}">
+                                        <div id="priceService-{{$itemSer['id']}}" class="cc321">
+                                            <div id="cc123-{{$itemSer['id']}}">
+                                                ${{number_format($itemSer['price']*$itemSer['quantity'])}}
+                                            </div>
+
                                         </div>
                                     </td>
                                     <td>
                                         <div class="xoaphong">
-                            
+
                                             <a href="{{route('cart.removeService',['id'=>$key])}}"><i class="fas fa-backspace"></i></a>
                                         </div>
                                     </td>

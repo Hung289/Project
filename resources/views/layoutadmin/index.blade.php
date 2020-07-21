@@ -110,6 +110,8 @@
   <script src="public/dist/js/pages/dashboard.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="public/dist/js/demo.js"></script>
+  <!-- Bootstrap Switch -->
+  <script src="public/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
   <!-- datatable -->
   <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
@@ -117,12 +119,14 @@
   <script src="https://cdn.datatables.net/responsive/2.2.5/js/responsive.bootstrap4.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
+
   <script src="public/hung.js"></script>
   <!-- Toastr -->
   <script src="public/toastr/toastr.min.js"></script>
   <script src="public/sweetalert2.min.js"></script>
   <script src="sweetalert2.all.min.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
   <script type="text/javascript">
     const Toast = Swal.mixin({
       toast: true,
@@ -130,6 +134,26 @@
       showConfirmButton: false,
       timer: 3000
     });
+  </script>
+  <script>
+    $(function() {
+      $(document).on('change', '.nutstatus', function() {
+        var isChecked = $(this).is(":checked") ? 0 : 1;
+        var _token = $('meta[name="csrf-token"]').attr('content');
+        var url = $(this).attr('url');
+        $.ajax({
+          url: url,
+          type: "POST",
+          data: {
+            'status': isChecked,
+            '_token': _token,
+          },
+          success: function(response) {
+
+          },
+        })
+      })
+    })
   </script>
 
   @include('admin.js')

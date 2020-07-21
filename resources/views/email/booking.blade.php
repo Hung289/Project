@@ -24,7 +24,7 @@
             <td>{{$loop->index+1}}</td>
             <td>{{$r['id']}}</td>
 			<td>{{$r['name']}}</td>
-			<td>{{$r['price']}}</td>
+			<td>{{number_format($r['price'])}}$</td>
 			<td>{{$r['arriveDate']}} -> {{$r['departDate']}}</td>
 			<td>{{$r['songay']}}</td>
 			<td>{{number_format($r['price']*$r['songay'])}}$</td>
@@ -50,7 +50,7 @@
 		<tr>
 			<td>{{$loop->index+1}}</td>
 			<td>{{$s['name']}}</td>
-			<td>{{$s['price']}}</td>
+			<td>{{number_format($s['price'])}}$</td>
 			<td>{{$s['quantity']}}</td>
 			<td>{{$s['room_id']}}</td>
 			<td>{{number_format($s['price']*$s['quantity'])}}$</td>
@@ -58,3 +58,5 @@
 		@endforeach
 	</tbody>
 </table>
+<hr>
+<h3>Tổng số tiền phải thanh toán: {{number_format($order->total_price)}}$</h3>

@@ -28,8 +28,10 @@
     </div>
     <div class="container">
         <div class="section-title text-center">
-            <span class="title-top">Latest Food</span>
-            <h1>Popular Dishes</h1>
+            @foreach($cateService as $cS)
+            <span class="title-top">Latest</span>
+            <h1>{{$cS->name}}</h1>
+            @endforeach
         </div>
         <!-- Foods Wrap -->
         <div class="row">
@@ -51,17 +53,28 @@
 </section>
 
 
-<section class="food-cta bg-img-center" style="background-image: url(public/web/images/img/food/food-cta.jpg);">
+@foreach($cateService as $cS)
+<section class="food-cta bg-img-center video-section" style="background-image: url(public/uploads/images/CategoryService/{{$cS->banner_service}});">
     <div class="container">
         <div class="food-cta-text">
-            <h1>Special Offer <span>For Burgers</span></h1>
-            <a href="" class="btn filled-btn">SHOP NOW <i class="far fa-long-arrow-right"></i></a>
+            <h1>{{$cS->name}}</h1>
+            <div class="video-play">
+                <a href="https://youtu.be/csInAyfVSwg" data-toggle="modal" data-target=".bd-example-modal-lg" class="video-popup"> <i class="fas fa-play"></i></a>
+            </div>
         </div>
     </div>
     <h1 class="big-text">
-        Burgers
+        AVSON
     </h1>
 </section>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <iframe width="860" height="515" src="{{$cS->link_video_service}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+@endforeach
 
 
 <section class="food-section section-padding">
@@ -89,9 +102,7 @@
                     </div>
                 </div>
                 @endforeach
-                <div class="col-12 text-center">
-                    <a href="#" class="btn filled-btn">View More Food <i class="fas fa-long-arrow-alt-right"></i></a>
-                </div>
+
             </div>
         </div>
     </div>

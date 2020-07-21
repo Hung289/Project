@@ -17,7 +17,7 @@ class WebLoginMiddleware
     public function handle($request, Closure $next)
     {
         if(!Auth::check()){//Chưa đăng nhập
-            return redirect()->route('Login');
+            return redirect()->route('getloginWeb');
         }
         return $next($request);
     }

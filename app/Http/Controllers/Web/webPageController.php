@@ -67,7 +67,8 @@ class webPageController extends Controller
         $commentBlogs = CommentBlog::all();
         $blogNew = Blog::where('new', 0)->first();
         $blogs = Blog::limit(3)->get();
-        return view('page.home', ['Services' => $Services, 'rooms' => $rooms, 'banners' => $banners, 'commentBlogs' => $commentBlogs, 'blogNew' => $blogNew, 'blogs' => $blogs]);
+        $room_all = Room::all();   
+        return view('page.home', ['room_all'=>$room_all,'Services' => $Services, 'rooms' => $rooms, 'banners' => $banners, 'commentBlogs' => $commentBlogs, 'blogNew' => $blogNew, 'blogs' => $blogs]);
     }
 
     public function getAbout()

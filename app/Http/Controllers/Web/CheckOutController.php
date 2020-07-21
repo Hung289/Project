@@ -75,6 +75,7 @@ class CheckOutController extends Controller
         $c_email = Auth::user()->email;
         $c_name = Auth::user()->name;
         // dd($c_name);
+        
         Mail::send('email.booking',[
             'order'=>$order,
             'room'=>$cart->items,
