@@ -86,20 +86,24 @@ class webPageController extends Controller
         return view('page.blog_grid');
     }
 
-    public function getBlogStand()
+    public function getBlogStand($id)
     {
-        return view('page.blog_stand');
+        $blogs = Blog::where('category_blog_id',$id)->get();
+        // dd($blogs);
+        $blogNew = Blog::where('new',0)->limit(3)->get();
+        
+        $listCateRoom = CategoryRoom::all();
+        return view('page.blog_stand',compact('blogs','blogNew','listCateRoom'));
     }
 
-    // public function getCheckout()
-    // {
-
-    //     return view('page.checkout');
-    // }
+    public function getSearchBlog(Request $request,Blog $blog)
+    {
+        $blogs = $blog->searchBlog();
+        return view('page.blog_grid', ['blogs' => $blogs]);
+    }
 
     public function getContact()
     {
-
         return view('page.contact');
     }
 
@@ -200,9 +204,11 @@ class webPageController extends Controller
         $bImage = BlogImage::where('blog_id', $id)->first();
         $blog2 = BlogImage::where('blog_id', $id)->paginate(2);
         $cateBlog = CategoryBlog::all();
+        $blogNew = Blog::where('new',0)->limit(3)->get();
+        $listCateRoom = CategoryRoom::all();
         $commentBlog = CommentBlog::where('parent', 0)->orderBy('id', 'DESC')->paginate(2);
         $commentBlogChild = CommentBlog::all();
-        return view('page.blog_detail', ['blog' => $blog, 'bImage' => $bImage, 'blog2' => $blog2, 'cateBlog' => $cateBlog, 'commentBlog' => $commentBlog, 'commentBlogChild' => $commentBlogChild]);
+        return view('page.blog_detail', ['listCateRoom'=>$listCateRoom,'blogNew'=>$blogNew,'blog' => $blog, 'bImage' => $bImage, 'blog2' => $blog2, 'cateBlog' => $cateBlog, 'commentBlog' => $commentBlog, 'commentBlogChild' => $commentBlogChild]);
     }
 
     public function getRegisterWeb()
@@ -375,7 +381,7 @@ class webPageController extends Controller
             return redirect()->back()->with('success', 'Đăng thành công bình luận');
         } else {
             session::flash('error_login', 'Bạn Cần Phải Đăng Nhập Để Thực Hiện Chức Năng Này');
-            return back();
+            return redirect()->back()->with('error', 'Bạn phải đăng nhập để bình luận về bài viết');
         }
         return back();
     }

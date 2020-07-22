@@ -39,7 +39,7 @@
               <li><a href="{{route('blogGrid')}}">Blog <i class="fas fa-chevron-down"></i></a>
                 <ul class="menunho">
                   @foreach($CategoryBlog as $CateBlog)
-                  <li><a href="">{{$CateBlog->name}}</a></li>
+                  <li><a href="{{route('blogStand',['id'=>$CateBlog->id])}}">{{$CateBlog->name}}</a></li>
                   @endforeach
                 </ul>
               </li>

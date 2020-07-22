@@ -50,10 +50,10 @@
       <div class="carousel-item {{ ($loop->index+1 == 1)?'active':'' }}">
         <img src="public/uploads/images/Banner/{{$banner->banner}}" class="d-block w-100" alt="..." />
         <div class="carousel-caption d-none d-md-block">
-          <h1>
+          <h1 class="wow flipInX">
             {{$banner->name}}
           </h1>
-          <p>
+          <p class="wow zoomIn">
             {{$banner->content}}
           </p>
         </div>

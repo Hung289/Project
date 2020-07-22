@@ -4,8 +4,8 @@
 <section id="headernhochung" class="align-items-center">
     <div class="container">
         <div class="khoichu ">
-            <h1>Room Detail</h1>
-            <ul>
+            <h1 class="wow flipInX">Room Detail</h1>
+            <ul class="wow zoomIn">
                 <li><a href="">Home</a></li>
                 <li><i class="fas fa-angle-double-right"></i></li>
                 <li>Room Detail</li>
@@ -257,34 +257,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
-                                        <!-- <div class="comment-area">
-                                            <h5 class="tab-title">All Reviews</h5>
-                                            <ul class="comment-list">
-                                                <li>
-                                                    <div class="comment-autor">
-                                                        <img src="public/web/images/img/blog-details/04.jpg" alt="reviews">
-                                                    </div>
-                                                    <div class="comment-desc">
-                                                        <h6>Alexzeder Alex <span class="comment-date"> 25 Feb
-                                                                2020</span></h6>
-                                                        <p>But I must explain to you how all this mistaken idea
-                                                            of denouncing pleasure
-                                                            and praising pain was born and I will give you a
-                                                            complete account</p>
-                                                        <a href="#" class="reply-comment">Reply <i class="fas fa-long-arrow-right"></i></a>
-                                                        <div class="autor-rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-alt"></i>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div> -->
                                         <div class="comment-area" id="khoicmt">
 
                                             <h2 class="comment-title">Client’s Comments</h2>

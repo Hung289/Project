@@ -4,8 +4,8 @@
 <section id="headernhochung" class="align-items-center">
     <div class="container">
         <div class="khoichu ">
-            <h1>Blog Detail</h1>
-            <ul>
+            <h1 class="wow flipInX">Blog Detail</h1>
+            <ul class="wow zoomIn">
                 <li><a href="">Home</a></li>
                 <li><i class="fas fa-angle-double-right"></i></li>
                 <li>Blogs Details</li>
@@ -58,7 +58,7 @@
                         </div>
                         <blockquote>
                             {!!$blog->title!!}
-                            <h6 class="blockquote-v">Tony R. Francois</h6>
+                            <h6 class="blockquote-v">{{$blog->user->name}}</h6>
                         </blockquote>
                     </div>
                     <div class="entry-footer d-flex justify-content-md-between">
@@ -91,47 +91,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="comment-area">
-                        <h2 class="comment-title">Client’s Comments</h2>
-                        <ul class="comment-list">
-                            <li>
-                                <div class="comment-autor">
-                                    <img src="images/img/blog-details/04.jpg" alt="Comment">
-                                </div>
-                                <div class="comment-desc">
-                                    <h6>Alexzeder Alex <span class="comment-date"> 25 Feb 2020</span></h6>
-                                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure
-                                        and praising pain was born and I will give you a complete account</p>
-                                    <a href="#" class="reply-comment">Reply Commets <i class="fas fa-long-arrow-right"></i></a>
-                                </div>
-                                <ul class="children">
-                                    <li>
-                                        <div class="comment-autor">
-                                            <img src="images/img/blog-details/05.jpg" alt="Comment">
-                                        </div>
-                                        <div class="comment-desc">
-                                            <h6>Alexzeder Alex <span class="comment-date"> 25 Feb 2020</span></h6>
-                                            <p>But I must explain to you how all this mistaken idea of denouncing
-                                                pleasure and praising pain was born and I will give you a complete
-                                                account</p>
-                                            <a href="#" class="reply-comment">Reply Commets <i class="fas fa-long-arrow-right"></i></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <div class="comment-autor">
-                                    <img src="images/img/blog-details/06.jpg" alt="Comment">
-                                </div>
-                                <div class="comment-desc">
-                                    <h6>Alexzeder Alex <span class="comment-date"> 25 Feb 2020</span></h6>
-                                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure
-                                        and praising pain was born and I will give you a complete account</p>
-                                    <a href="#" class="reply-comment">Reply Commets <i class="fas fa-long-arrow-right"></i></a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div> -->
                 <div class="comment-area">
                     <h2 class="comment-title">Client’s Comments</h2>
                     @foreach($commentBlog as $cB)
@@ -204,46 +163,32 @@
                     <div class="widget recent-news">
                         <h4 class="widget-title">Latest News</h4>
                         <ul>
+                            @foreach($blogNew as $bN)
                             <li>
                                 <div class="recent-post-img">
-                                    <img src="public/web/images/img/blog/rp01.jpg" alt="Image">
+                                    @foreach($blogImages as $bI)
+                                    <?php $check = ($bI->blog_id == $bN->id) ?$bI->image:"" ?>
+                                    @if($check !="")
+                                    <img src="public/uploads/images/Blog/{{$check}}" alt="Image" style="width:150px;height:150px">
+                                    @break
+                                    @endif
+                                    @endforeach
                                 </div>
                                 <div class="recent-post-desc">
-                                    <h6><a href="">Quick Win For Impre Perfor Securitys</a>. </h6>
-                                    <span class="date">05 Feb 2020</span>
+                                    <h6><a href="{{route('blogDetail',[$bN->id])}}">{{$bN->name}}</a>. </h6>
+                                    <span class="date">{{$bN->created_at}}</span>
                                 </div>
                             </li>
-                            <li>
-                                <div class="recent-post-img">
-                                    <img src="public/web/images/img/blog/rp02.jpg" alt="Image">
-                                </div>
-                                <div class="recent-post-desc">
-                                    <h6><a href="">Quick Win Imperfora Security Web ses.</a> </h6>
-                                    <span class="date">05 Feb 2020</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="recent-post-img">
-                                    <img src="public/web/images/img/blog/rp03.jpg" alt="Image">
-                                </div>
-                                <div class="recent-post-desc">
-                                    <h6><a href="">We’ve Got Announce ment Make Rachel</a></h6>
-                                    <span class="date">05 Feb 2020</span>
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="widget category-widget">
                         <h4 class="widget-title">Gategory</h4>
-                        <div class="single-cat bg-img-center" style="background-image: url(public/web/images/img/blog/cat-01.jpg);">
-                            <a href="">Luxury Room</a>
+                        @foreach($listCateRoom as $lCR)
+                        <div class="single-cat bg-img-center" style="background-image: url(public/uploads/images/CategoryRoom/{{$lCR->image}});">
+                            <a href="{{route('RoomListMaster',['id'=>$lCR->id])}}">{{$lCR->name}}</a>
                         </div>
-                        <div class="single-cat bg-img-center" style="background-image: url(public/web/images/img/blog/cat-02.jpg);">
-                            <a href="">Couple Room</a>
-                        </div>
-                        <div class="single-cat bg-img-center" style="background-image: url(public/web/images/img/blog/cat-03.jpg);">
-                            <a href="">Hotel Views</a>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="widget popular-tag">
                         <h4 class="widget-title">Populer Tag</h4>

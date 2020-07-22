@@ -5,8 +5,8 @@
 <section id="headernhochung" class="align-items-center">
     <div class="container">
         <div class="khoichu ">
-            <h1>Our Restaurant</h1>
-            <ul>
+            <h1 class="wow flipInX">Our Restaurant</h1>
+            <ul class="wow zoomIn">
                 <li><a href="">Home</a></li>
                 <li><i class="fas fa-angle-double-right"></i></li>
                 <li>Our Restaurant</li>

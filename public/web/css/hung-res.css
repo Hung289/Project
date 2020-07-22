@@ -569,6 +569,8 @@
     .comment-area .comment-list li .comment-autor {
         position: unset;
         margin-bottom: 20px;
+        float: left;
+        margin-right: 20px;
     }
     .chitietphong .comment-area .formcmt {
         height: 40px;
@@ -600,5 +602,34 @@
     .comment-area .comment-list li ul.children {
         margin-left: 26px;
         padding-left: 20px;
+    }
+
+
+    .tinchitiet .comment-area .formcmt {
+        height: 40px;
+        margin-left: 96px;
+    }
+    .tinchitiet .comment-area .formcmt:focus {
+        outline: none;
+    }
+    .tinchitiet .comment-area .nutche {
+        height: 40px;
+        padding: 0px 10px;
+        margin-left: 96px;
+    }
+    .tinchitiet .comment-area .comment-list li {
+        padding-left: 0px;
+        position: relative;
+        min-height: 100px;
+        margin-bottom: 50px;
+    }
+    .tinchitiet .comment-area .formcmt {
+        height: 40px;
+        margin-left: 0px;
+    }
+    .tinchitiet .comment-area .nutche {
+        height: 40px;
+        padding: 0px 10px;
+        margin-left: 0px;
     }
 }

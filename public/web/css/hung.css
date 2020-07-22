@@ -2444,6 +2444,9 @@ p {
 }
 
 /* =========================================Trang blogs Details==================================== */
+.tinchitiet .post-thumb img{
+    width: 100%;
+} 
 .tinchitiet .comment-area .formcmt {
     height: 40px;
 }
@@ -4375,6 +4378,14 @@ textarea:focus {
     border-radius: 0;
     color: #666565;
     font-size: 16px;
+}
+.blog-wrapper .sidebar-wrap .widget.search-widget form input {
+    background-color: #fff;  
+    height: 80px;
+    font-weight: 600;   
+    padding: 0 45px 0 30px;  
+    width: 100%;
+    line-height: 80px;
 }
 .blog-wrapper .sidebar-wrap .widget.recent-news li {
     display: -webkit-box;

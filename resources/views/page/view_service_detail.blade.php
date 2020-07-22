@@ -6,9 +6,9 @@
     <div class="container">
         <div class="khoichu ">
             @foreach($cateService as $cS)
-            <h1>{{$cS->name}}</h1>
+            <h1 class="wow flipInX">{{$cS->name}}</h1>
             @endforeach
-            <ul>
+            <ul class="wow zoomIn">
                 <li><a href="{{route('indexWeb')}}">Home</a></li>
                 <li><i class="fas fa-angle-double-right"></i></li>
                 @foreach($cateService as $cS)

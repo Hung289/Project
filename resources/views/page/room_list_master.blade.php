@@ -4,8 +4,8 @@
 <section id="headernhochung" class="align-items-center">
     <div class="container">
         <div class="khoichu ">
-            <h1>List</h1> Room</h1>
-            <ul>
+            <h1 class="wow flipInX">List Room</h1>
+            <ul class="wow zoomIn">
                 <li><a href="">Home</a></li>
                 <li><i class="fas fa-angle-double-right"></i></li>
                 <li>Room List</li>
@@ -122,19 +122,24 @@
                 <div class="sidebar-wrap">
                     <div class="widget fillter-widget">
                         <h4 class="widget-title">Your Reservation</h4>
-                        <form>
+                        <form id="form_search" action="{{route('getFilterRoom')}}" method="POST">
+                            <input type="hidden" name="_token" id="csrf_token" value="{{csrf_token()}}">
                             <div class="input-wrap">
-                                <input type="text" placeholder="Location" id="location" name="location">
+                                <input type="text" placeholder="Location" name="location" id="location" name="boxSearchLocation">
                                 <i class="fas fa-search"></i>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" placeholder="Arrive Date" id="arrive-date">
-                                <i class="fas fa-calendar-alt"></i>
+                                <input type="date" placeholder="Arrive Date" min="" name="searchFromDate">
+                                @error('searchFromDate')
+                                <small class="error help-block" style="color:red">{{$message}}</small>
+                                @enderror
                             </div>
                             <div class="input-wrap">
-                                <input type="text" placeholder="Depart Date" id="depart-date">
-                                <i class=""></i>
-                                <i class="fas fa-calendar-alt"></i>
+                                <!--  echo date("Y-m-d", strtotime (date('Y-m-d')."+1 days")); -->
+                                <input type="date" placeholder="Depart Date" min="" name="searchToDate">
+                                @error('searchToDate')
+                                <small class="error help-block" style="color:red">{{$message}}</small>
+                                @enderror
                             </div>
                             <div class="input-wrap">
                                 <select name="rooms" id="rooms">
@@ -145,26 +150,46 @@
                                 </select>
                             </div>
                             <div class="input-wrap">
-                                <select name="adults" id="adults">
-                                    <option value="" disabled="" selected="">Adults</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+                                <select name="bed" id="bed">
+                                    <option value="" disabled="" selected="">bed</option>
+                                    <option value="1">1 bed</option>
+                                    <option value="2">2 bed</option>
+                                    <option value="3">3 bed</option>
                                 </select>
                             </div>
                             <div class="input-wrap">
-                                <select name="child" id="child">
-                                    <option value="" disabled="" selected="">Children</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+                                <select name="bath" id="bath">
+                                    <option value="" disabled="" selected="">bath</option>
+                                    <option value="1">1 bath</option>
+                                    <option value="2">2 bath</option>
+                                    <option value="3">3 bath</option>
                                 </select>
                             </div>
+                            <div class="input-wrap">
+                                <select name="guest" id="guest">
+                                    <option value="" disabled="" selected="">Guests</option>
+                                    <option value="1">1 guest</option>
+                                    <option value="2">2 guest</option>
+                                    <option value="3">3 guest</option>
+                                    <option value="4">4 guest</option>
+                                </select>
+                            </div>
+                            <div class="input-wrap">
+                                <select name="adult" id="adult">
+                                    <option value="" disabled="" selected="">Adults</option>
+                                    <option value="1">1 adult</option>
+                                    <option value="2">2 adult</option>
+                                    <option value="3">3 adult</option>
+                                </select>
+                            </div>
+
                             <div class="input-wrap">
                                 <div class="price-range-wrap">
                                     <div class="slider-range">
                                         <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                                            <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 3.57143%; width: 91.0714%;"></div><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 3.57143%;"></span><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 94.6429%;"></span>
+                                            <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                                            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 3.57143%;"></span>
+                                            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 94.6429%;"></span>
                                         </div>
                                     </div>
                                     <div class="price-ammount">
@@ -209,7 +234,7 @@
                                 </div>
                             </div>
                             <div class="input-wrap">
-                                <button type="submit" class="btn filled-btn btn-block">
+                                <button type="submit" class="btn filled-btn btn-block" id="nuttimkiem">
                                     Filter Results <i class="fas fa-long-arrow-right"></i>
                                 </button>
                             </div>

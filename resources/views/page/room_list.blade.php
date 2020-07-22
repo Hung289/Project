@@ -4,8 +4,8 @@
 <section id="headernhochung" class="align-items-center">
     <div class="container">
         <div class="khoichu ">
-            <h1>List</h1> Room</h1>
-            <ul>
+            <h1 class="wow flipInX">List Room</h1>
+            <ul class="wow zoomIn">
                 <li><a href="">Home</a></li>
                 <li><i class="fas fa-angle-double-right"></i></li>
                 <li>Room List</li>

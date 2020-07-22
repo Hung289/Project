@@ -86,4 +86,14 @@ class Blog extends Model
             return $model;
         }
     }
+
+    public function searchBlog()
+    {
+        // dd(request()->searchKeyBlog);
+        $query = $this;
+        if(isset(request()->searchKeyBlog)){
+            $query = $query->where('title', 'like', '%' . request()->searchKeyBlog . '%');
+        }
+        return $query->get();
+    }
 }

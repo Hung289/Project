@@ -44,10 +44,10 @@ Route::get('about','Web\webPageController@getAbout')->name('about');
 //Trang Bill
 Route::get('cart-room','Web\webPageController@getCartRoom')->name('CartRoom');
 
-//Trang blog-grid
+//Trang blog-grid 
 Route::get('blog-grid','Web\webPageController@getBlogGrid')->name('blogGrid');
-//Trang blof-stand
-Route::get('blog-stand','Web\webPageController@getBlogStand')->name('blogStand');
+//Trang blof-stand master
+Route::get('blog-stand/{id}','Web\webPageController@getBlogStand')->name('blogStand');
 //Trang checkout
 Route::group(['prefix'=>'cartRoom','namespace'=>'Web','middleware' => 'webLogin'],function(){
     Route::get('checkout','CheckOutController@getCheckOut')->name('checkout');
@@ -137,6 +137,10 @@ Route::get('getDate','Web\webPageController@get_total_price')->name('getDate');
 //Route search room
 Route::post('search/{min?}/{max?}','Web\webPageController@getFilterRoom')->name('getFilterRoom');
 // Route::post('search','Web\webPageController@ajax_list')->name('ajax_list');
+
+//Route search blog
+Route::post('search-blog','Web\webPageController@getSearchBlog')->name('getSearchBlog');
+
 
 // Route rating star
 Route::post('postStar','Web\webPageController@voteStar')->name('postStar');
