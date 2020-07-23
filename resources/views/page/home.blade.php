@@ -218,7 +218,7 @@
           <p>
             {!!$Service->description!!}
           </p>
-          <a href="{{route('serviceMaster',['id'=>$Service->id])}}" class="read-more">raed more <i class="fas fa-long-arrow-alt-right"></i></i></a>
+          <a href="{{route('serviceMasterNotIdRoom',['id'=>$Service->id])}}" class="read-more">raed more <i class="fas fa-long-arrow-alt-right"></i></i></a>
         </div>
       </div>
       @endforeach

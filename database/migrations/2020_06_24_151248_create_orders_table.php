@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->double('total_price');
             $table->string('payment');
-            $table->string('note');
+            $table->string('note');//được null
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('customer_id')->unsigned();

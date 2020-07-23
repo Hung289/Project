@@ -25,15 +25,14 @@ class CartRoom
         $this->total_quantity = $this->get_total_quantity_service();
     }
 
-    public function add($room, $qty = 1, $from_date, $to_date, $songay)
+    public function add($room, $from_date, $to_date, $songay)
     {
         $image = RoomImage::where('room_id', $room->id)->first();
         $cateRoom = CategoryRoom::where('id', $room->category_room_id)->first();
-        if (isset($this->items[$room->id])) {
+        if (!isset($this->items[$room->id])) {
             $this->items[$room->id] = [
                 'id' => $room->id,
                 'name' => $room->name,
-                'quantity' => $qty,
                 'price' => $room->priceNight ? $room->priceNight : $room->priceNight,
                 'image' => $image->image,
                 'bed' => $room->bed,
@@ -43,25 +42,11 @@ class CartRoom
                 'category_room_id' => $cateRoom->name,
                 'arriveDate' => $from_date,
                 'departDate' => $to_date,
-                'songay' => $songay
-            ];
-        } else {
-            $this->items[$room->id] = [
-                'id' => $room->id,
-                'name' => $room->name,
-                'quantity' => $qty,
-                'price' => $room->priceNight ? $room->priceNight : $room->priceNight,
-                'image' => $image->image,
-                'bed' => $room->bed,
-                'bath' => $room->bath,
-                'area' => $room->area,
-                'location' => $room->location,
-                'category_room_id' => $cateRoom->name,
-                'arriveDate' => $from_date,
-                'departDate' => $to_date,
-                'songay' => $songay
+                'songay' => $songay,
+                'services' => [],
             ];
         }
+        // dd( $this->items);
         session(['cart' => $this->items]);
     }
 
@@ -83,44 +68,29 @@ class CartRoom
         return $t;
     }
 
-
-
-
-
-
     //service
-    public function addService($service, $qty = 1, $room, $from_date, $to_date)
+    public function addService($room_id,$service, $qty = 1, $from_date, $to_date)
     {
-        if (isset($this->services[$service->id])) {
-            $mang = $this->services;
-            if ($room == $this->services[$service->id]['room_id']) {
-                $this->services[$service->id]['quantity'] += $qty;
-            } else {
-                $themmoi = $this->services[$service->id] = [
+        if (isset($this->items[$room_id])) {
+            $services = $this->items[$room_id]['services'];
+            if (isset($services[$service->id])) {
+                $services[$service->id]['quantity'] += 1;
+            }else{
+                $service_item = [
                     'id' => $service->id,
                     'name' => $service->name,
                     'quantity' => $qty,
                     'price' => $service->price ? $service->price : $service->price,
                     'imageService' => $service->image,
-                    'room_id' => $room,
                     'from_date' => $from_date,
                     'to_date' => $to_date
                 ];
-                array_push($mang, $themmoi);
-                session(['cartService' => $mang]);
+
+                $services[$service->id] = $service_item;
             }
-        } else {
-            $this->services[$service->id] = [
-                'id' => $service->id,
-                'name' => $service->name,
-                'quantity' => $qty,
-                'price' => $service->price ? $service->price : $service->price,
-                'imageService' => $service->image,
-                'room_id' => $room,
-                'from_date' => $from_date,
-                'to_date' => $to_date
-            ];
-            session(['cartService' => $this->services]);
+
+            $this->items[$room_id]['services'] = $services;
+            session(['cart' => $this->items]);
         }
     }
 
@@ -142,22 +112,23 @@ class CartRoom
         return $t;
     }
 
-    public function removeService($id)
+    public function removeService($room_id,$service_id)
     {
 
-        if (isset($this->services[$id])) {
-            unset($this->services[$id]);
+        if (isset($this->items[$room_id]['services'][$service_id])) {
+            unset($this->items[$room_id]['services'][$service_id]);
+            session(['cart' => $this->items]);
         }
-        session(['cartService' => $this->services]);
-        return true;
+
     }
 
 
-    public function update($id, $qty)
+    public function update($room_id,$service_id, $qty)
     {
-        if (isset($this->services[$id])) {
-            $this->services[$id]['quantity'] = $qty;
+        if (isset($this->items[$room_id]['services'][$service_id])) {
+            $this->items[$room_id]['services'][$service_id]['quantity'] = $qty;
         }
-        session(['cartService' => $this->services]);
+
+        session(['cart' => $this->items]);
     }
 }

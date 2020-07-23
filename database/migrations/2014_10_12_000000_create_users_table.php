@@ -17,11 +17,11 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone')->unique();
+            $table->string('phone')->unique();//được null
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->tinyInteger('level');
-            $table->string('avatar');
+            $table->string('avatar');//đước null
             $table->rememberToken();
             $table->timestamps();
         });
