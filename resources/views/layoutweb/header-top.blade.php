@@ -18,9 +18,15 @@
             </ul>
             @else
             <ul class="top-menu list-inline d-inline">
-              <li class="khac">
+              <li class="khac chouser">
                 <img id="avatar_auth" src="public/uploads/images/user/{{Auth::user()->avatar}}" class="img-circle elevation-2" alt="User Image" style="width: 30px;height:30px;border-radius: 50%">
                 <a href="{{route('CustomerInfor',['id'=>Auth::User()->id])}}">{{Auth::User()->email}}</a>
+                <div class="thongtinuser">
+                  <ul class="menuuser">
+                    <li><a href="{{route('CustomerInfor',['id'=>Auth::User()->id])}}">Thông tin tài khoản</a> </li>
+                    <li><a href="{{route('historyBooking')}}">Lịch sử đơn hàng</a></li>
+                  </ul>
+                </div>
               </li>
               <li><a href="{{route('getLogoutWeb')}}">Logout</a></li>
             </ul>

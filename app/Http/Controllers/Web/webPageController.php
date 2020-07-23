@@ -21,6 +21,7 @@ use App\Models\ReviewRoom;
 use App\Models\CommentBlog;
 use App\Models\RoomStar;
 use App\Models\Brand;
+use App\Models\OrderDetailService;
 use Session;
 use App\Http\Requests\Date\DateRequest;
 use Illuminate\Support\Facades\DB;
@@ -431,7 +432,15 @@ class webPageController extends Controller
     public function getForgot(Request $request)
     {
         return view('page.forgot_password');
-        
     }
 
+    public function historyBooking()
+    {
+        $orders = Order::all();
+        $roomImages = RoomImage::all();
+        $orderDetils = OrderDetail::all();
+        $orderDetilService = OrderDetailService::all();
+        $services = Service::all();
+        return view('page.historyBooking',compact('services','orders','roomImages','orderDetils','orderDetilService'));
+    }
 }

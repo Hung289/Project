@@ -58,7 +58,7 @@ class CartRoomController extends Controller
 
     public function add(Request $request, CartRoom $cart, $id, OrderDetail $orderDetail, Room $room)
     {   
-        dd($cart);
+        // dd($cart);
         if (!empty($request->ArriveDate) && !empty($request->DepartDate)) {
             $from_date = $request->ArriveDate;
             $to_date = $request->DepartDate;

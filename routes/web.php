@@ -71,7 +71,8 @@ Route::get('service-view','Web\webPageController@getViewService')->name('viewSer
 //Trang sửa thông tin tài khoản khách hàng
 Route::get('Customer-infor/{id}','Web\webPageController@getCustomerInfor')->name('CustomerInfor');
 Route::post('Customer_infor/{id}','Web\webPageController@postCustomerInfor')->name('PostCustomerInfor');
-
+//Lịch sử đơn hàng
+Route::get('historyBooking','Web\webPageController@historyBooking')->name('historyBooking');
 
 
 

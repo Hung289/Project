@@ -20,7 +20,7 @@
             <div class="post-loop">
                 <div class="row">
                     @foreach($blogs as $blog)
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6 ">
                         <div class="single-blog-wrap">
                             <div class="post-thumbnail" style="height:250px">
                                 @foreach($blogImages as $bI)

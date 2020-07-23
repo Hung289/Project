@@ -47,7 +47,7 @@
                 <div class="list" id="listRoom">
                     <div id="listRoomChild">
                         @foreach($rooms as $room)
-                        <div class="single-room list-style" id="cclistRoom">
+                        <div class="single-room list-style " id="cclistRoom" >
                             <div class="row align-items-center no-gutters">
                                 <div class="col-lg-6">
                                     <div class="room-thumb">
@@ -125,12 +125,12 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="sidebar-wrap">
+                <div class="sidebar-wrap  ">
                     <div class="widget fillter-widget">
                         <h4 class="widget-title">Your Reservation</h4>
                         <form id="form_search" action="{{route('getFilterRoom')}}" method="POST">
                             <input type="hidden" name="_token" id="csrf_token" value="{{csrf_token()}}">
-                            <div class="input-wrap">
+                            <div class="input-wrap wow backInLeft">
                                 <input type="text" placeholder="Location" name="location" id="location" name="boxSearchLocation">
                                 <i class="fas fa-search"></i>
                             </div>
@@ -203,42 +203,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <div>
-                                    <p>
-                                        <input type="checkbox" value="guest-room" id="guest-room">
-                                        <label for="guest-room">Guest Room</label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" value="meeting-room" id="meeting-room">
-                                        <label for="meeting-room">Meeting Room </label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" value="wifi" id="wifi">
-                                        <label for="wifi">Free Wifi</label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" value="pet" id="pet">
-                                        <label for="pet">Pet Friendly</label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" value="parking" id="parking">
-                                        <label for="parking">Parking</label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" value="pureair" id="pureair">
-                                        <label for="pureair">Pure Air</label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" value="airc" id="airc">
-                                        <label for="airc">Air Conditioner</label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" value="nosmoke" id="nosmoke">
-                                        <label for="nosmoke">No Smoking</label>
-                                    </p>
-                                </div>
-                            </div>
+                            
                             <div class="input-wrap">
                                 <button type="submit" class="btn filled-btn btn-block" id="nuttimkiem">
                                     Filter Results <i class="fas fa-long-arrow-right"></i>

@@ -197,42 +197,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <div>
-                                    <p>
-                                        <input type="checkbox" value="guest-room" id="guest-room">
-                                        <label for="guest-room">Guest Room</label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" value="meeting-room" id="meeting-room">
-                                        <label for="meeting-room">Meeting Room </label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" value="wifi" id="wifi">
-                                        <label for="wifi">Free Wifi</label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" value="pet" id="pet">
-                                        <label for="pet">Pet Friendly</label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" value="parking" id="parking">
-                                        <label for="parking">Parking</label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" value="pureair" id="pureair">
-                                        <label for="pureair">Pure Air</label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" value="airc" id="airc">
-                                        <label for="airc">Air Conditioner</label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" value="nosmoke" id="nosmoke">
-                                        <label for="nosmoke">No Smoking</label>
-                                    </p>
-                                </div>
-                            </div>
+                            
                             <div class="input-wrap">
                                 <button type="submit" class="btn filled-btn btn-block" id="nuttimkiem">
                                     Filter Results <i class="fas fa-long-arrow-right"></i>

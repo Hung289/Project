@@ -17,8 +17,8 @@ class CategoryBlogController extends Controller
      */
     public function index()
     {
-        $CategoryBlog = CategoryBlog::orderBy('id','DESC')->paginate(5);
-        return view('admin.CategoryBlog.list',['CategoryBlog'=>$CategoryBlog]);
+        $CategoryBlog = CategoryBlog::orderBy('id', 'DESC')->paginate(5);
+        return view('admin.CategoryBlog.list', ['CategoryBlog' => $CategoryBlog]);
     }
 
     /**
@@ -37,15 +37,15 @@ class CategoryBlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryBlogAddRequest $request,CategoryBlog $categoryBlog)
+    public function store(CategoryBlogAddRequest $request, CategoryBlog $categoryBlog)
     {
         // dd($categoryBlog);
         $model = $categoryBlog->add();
         // dd($model);
-        if($model){
-            return redirect()->route('admin.categoryBlog.create')->with('success','Thêm mới danh mục thành công');
-        }else{
-            return redirect()->back()->with('errors','Thêm mới thất bại');
+        if ($model) {
+            return redirect()->route('admin.categoryBlog.create')->with('success', 'Thêm mới danh mục thành công');
+        } else {
+            return redirect()->back()->with('errors', 'Thêm mới thất bại');
         }
     }
 
@@ -57,7 +57,7 @@ class CategoryBlogController extends Controller
      */
     public function show(CategoryBlog $categoryBlog)
     {
-        return view('admin.CategoryBlog.view',['categoryBlog'=>$categoryBlog]);
+        return view('admin.CategoryBlog.view', ['categoryBlog' => $categoryBlog]);
     }
 
     /**
@@ -69,7 +69,7 @@ class CategoryBlogController extends Controller
     public function edit(CategoryBlog $categoryBlog)
     {
         // dd($categoryBlog);
-        return view('admin.CategoryBlog.edit',['categoryBlog'=>$categoryBlog]);
+        return view('admin.CategoryBlog.edit', ['categoryBlog' => $categoryBlog]);
     }
 
     /**
@@ -82,7 +82,7 @@ class CategoryBlogController extends Controller
     public function update(CategoryBlogEditRequest $request, CategoryBlog $categoryBlog)
     {
         $model = $categoryBlog->updateEdit();
-        return redirect()->route('admin.categoryBlog.index')->with('success','Cập nhật thành công');
+        return redirect()->route('admin.categoryBlog.index')->with('success', 'Cập nhật thành công');
     }
 
     /**
@@ -93,16 +93,23 @@ class CategoryBlogController extends Controller
      */
     public function destroy(CategoryBlog $categoryBlog)
     {
-        if($categoryBlog->delete()){
-            return response(['success'=>true]);
+        if ($categoryBlog && $categoryBlog->blog->count() == 0) {
+            // if($categoryBlog->delete()){
+            //     return response(['success'=>true]);
+            // }else{
+            //     return response(['success'=>false]);
+            // }
+            $categoryBlog->delete() ;
+                return redirect()->route('admin.categoryBlog.index')->with('success','Xóa thành công');
             
-        }else{
-            return response(['success'=>false]);
+        } else {
+            return redirect()->route('admin.categoryBlog.index')->with('error','Xóa thất bại');
         }
     }
 
-    public function search(Request $request){
-        $CategoryBlog = CategoryBlog::where('name','like','%'.$request->key.'%')->paginate(5);
-        return view('admin.CategoryBlog.list',['CategoryBlog'=>$CategoryBlog]);
+    public function search(Request $request)
+    {
+        $CategoryBlog = CategoryBlog::where('name', 'like', '%' . $request->key . '%')->paginate(5);
+        return view('admin.CategoryBlog.list', ['CategoryBlog' => $CategoryBlog]);
     }
 }

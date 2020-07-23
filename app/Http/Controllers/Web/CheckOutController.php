@@ -57,37 +57,35 @@ class CheckOutController extends Controller
     public function getCheckOut()
     {
         $orders = Order::all();
-        return view('page.checkout',compact('orders'));
+        return view('page.checkout', compact('orders'));
     }
 
-    public function postCheckOut(CheckOutAddRequest $request, CartRoom $cart,Order $orders,OrderDetail $orderDetails,OrderDetailService $orderDetailServices,Customer $customers)
+    public function postCheckOut(CheckOutAddRequest $request, CartRoom $cart, Order $orders, OrderDetail $orderDetails, OrderDetailService $orderDetailServices, Customer $customers)
     {
         $customer = $customers->addCustomer();
-        $order = $orders->addOrder($customer,$cart);
+        $order = $orders->addOrder($customer, $cart);
         foreach ($cart->items as $item) {
-            $orderDetail = $orderDetails->addOrderDetail($order,$item);
-            foreach ($cart->services as $service) {
-                if ($service['room_id'] == $orderDetail->room_id) {
-                    $orderDetailService = $orderDetailServices->addOrderDetailService($orderDetail,$service);
-                }
+            $orderDetail = $orderDetails->addOrderDetail($order, $item);
+            foreach ($item['services'] as $service) {
+                $orderDetailService = $orderDetailServices->addOrderDetailService($orderDetail, $service);
             }
         }
         $c_email = Auth::user()->email;
         $c_name = Auth::user()->name;
         // dd($c_email);
-        
-        Mail::send('email.booking',[
-            'order'=>$order,
-            'room'=>$cart->items,
-            'service'=>$cart->services,
-            'c_name'=>$c_name
-        ],function($mail) use ($c_email,$c_name){
-            $mail->to($c_email,$c_name);
+
+        Mail::send('email.booking', [
+            'order' => $order,
+            'room' => $cart->items,
+            'service' => $cart->services,
+            'c_name' => $c_name
+        ], function ($mail) use ($c_email, $c_name) {
+            $mail->to($c_email, $c_name);
             $mail->from('nthung2896@gmail.com');
             $mail->subject('AVSON - Hotel & Room Services');
         });
         session(['cart' => []]);
         session(['cartService' => []]);
-        return redirect()->route('indexWeb')->with('success','Đặt phòng Thành Công. Bạn cui lòng kiểm tra gmail để biết chi tiết');
+        return redirect()->route('indexWeb')->with('success', 'Đặt phòng Thành Công. Bạn cui lòng kiểm tra gmail để biết chi tiết');
     }
 }

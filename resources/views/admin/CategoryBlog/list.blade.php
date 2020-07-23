@@ -4,11 +4,11 @@
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    
+
   </section>
   <!-- Main content -->
 
-  
+
   <section class="content">
     <div class="row">
       <div class="col-12">
@@ -50,13 +50,18 @@
                       <i class="far fa-eye"></i>
                     </button>
                     <a href="{{route('admin.categoryBlog.edit',['categoryBlog'=>$CateB->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
-                    <button type="button" url="{{route('admin.categoryBlog.destroy',['categoryBlog'=>$CateB->id])}}" class="btn btn-danger nutxoa"><i class="fas fa-trash"></i></button>
+                    <form action="{{route('admin.categoryBlog.destroy',['categoryBlog'=>$CateB->id])}}" method="POST">
+                      @csrf @method('DELETE')
+                      <button type="submit" url="" class="btn btn-danger "><i class="fas fa-trash"></i></button>
+                      <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    </form>
+
                   </td>
                 </tr>
                 @endforeach()
               </tbody>
               <div style="float:right">
-                
+
               </div>
             </table>
           </div>

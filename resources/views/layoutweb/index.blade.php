@@ -18,20 +18,25 @@
   <link rel="stylesheet" href="public/web/plugin/dist/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="public/web/plugin/dist/assets/owl.theme.default.css">
 
+
   <link rel="stylesheet" href="public/web/css/ratingStar.css">
   <link rel="stylesheet" href="public/sweetalert2.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.bootstrap4.min.css">
+
 
 </head>
 
 <body>
-  
+
   <!-- Khối trên menu -->
   @include('layoutweb.header-top')
   <!-- Chỗ header top -->
 
   @include('layoutweb.header')
   <!-- Chỗ header -->
-  
+
   @yield('content')
 
 
@@ -63,6 +68,10 @@
   <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
   <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
   <script src="public/hung.js"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.5/js/responsive.bootstrap4.min.js"></script>
 
 
   <script>
@@ -80,7 +89,11 @@
   </script>
   @include('page.javascript')
   @include('page.ms')
-
+  <script>
+    $(document).ready(function() {
+      $('#myTable').DataTable();
+    });
+  </script>
 
 </body>
 

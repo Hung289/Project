@@ -912,11 +912,13 @@ img {
     padding-right: 15px;
     position: relative;
 }
+
 .header .menu-right .main-menu ul li a {
     text-decoration: none;
     font-family: Montserrat-Bold;
     font-size: 12px;
     color: #0f172b;
+    text-transform: uppercase;
 }
 .header .menu-right .main-menu ul li:hover .menunho {
     position: absolute;
@@ -969,8 +971,14 @@ img {
     width: 100%;
     padding: 5px 10px;
     border-bottom: 1px solid gray;
+    
 }
-
+.header .main-menu ul li .menunho li:hover{
+    background-color: #0f172b;
+}
+.header .main-menu ul li .menunho li:hover a{
+    color: white;
+}
 .btn {
     background-color: #fea116;
     color: #fff;
@@ -2444,9 +2452,9 @@ p {
 }
 
 /* =========================================Trang blogs Details==================================== */
-.tinchitiet .post-thumb img{
+.tinchitiet .post-thumb img {
     width: 100%;
-} 
+}
 .tinchitiet .comment-area .formcmt {
     height: 40px;
 }
@@ -3089,7 +3097,7 @@ a:focus {
 .single-latest-food .food-img {
     overflow: hidden;
     position: relative;
-    height : 275px;
+    height: 275px;
 }
 .single-latest-food .food-img:before {
     position: absolute;
@@ -3199,6 +3207,14 @@ img {
     -webkit-transition: all 400ms ease-out 0s;
     transition: all 400ms ease-out 0s;
     height: 100%;
+    /* width:100% */
+}
+.food-section img {
+    max-width: 100%;
+    -webkit-transition: all 400ms ease-out 0s;
+    transition: all 400ms ease-out 0s;
+    height: 100%;
+    width: 100%;
 }
 .single-regular-food .food-dec {
     padding-left: 30px;
@@ -3914,7 +3930,6 @@ textarea:focus {
 #soluongser input {
     width: 50% !important;
     float: left !important;
-
 }
 .Bill table .btn {
     padding: 5px 10px !important;
@@ -3975,27 +3990,27 @@ textarea:focus {
     display: inline-block;
     border-radius: 5px;
 }
-.Bill .tongoaitrai .tongoai .khoithongtin .returnAddService{
-    padding: 8px 15px;
-    background-color: #fea116;
-    display: inline-block;
-    border-radius: 5px;
-    margin-bottom: 20px; 
-}
-.Bill .tongoaitrai .tongoai .khoithongtin .ViewService{
+.Bill .tongoaitrai .tongoai .khoithongtin .returnAddService {
     padding: 8px 15px;
     background-color: #fea116;
     display: inline-block;
     border-radius: 5px;
     margin-bottom: 20px;
 }
-.Bill .tongoaitrai .tongoai .khoithongtin .returnAddService a{
+.Bill .tongoaitrai .tongoai .khoithongtin .ViewService {
+    padding: 8px 15px;
+    background-color: #fea116;
+    display: inline-block;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.Bill .tongoaitrai .tongoai .khoithongtin .returnAddService a {
     color: white;
 }
-.Bill .tongoaitrai .tongoai .khoithongtin .ViewService a{
+.Bill .tongoaitrai .tongoai .khoithongtin .ViewService a {
     color: white;
 }
-.Bill .tongoaitrai .tongoai .khoithongtin .cuoi{
+.Bill .tongoaitrai .tongoai .khoithongtin .cuoi {
     margin: 10px 0px;
 }
 .Bill .tongoaitrai .tongoai .khoithongtin .tenphong {
@@ -4401,10 +4416,10 @@ textarea:focus {
     font-size: 16px;
 }
 .blog-wrapper .sidebar-wrap .widget.search-widget form input {
-    background-color: #fff;  
+    background-color: #fff;
     height: 80px;
-    font-weight: 600;   
-    padding: 0 45px 0 30px;  
+    font-weight: 600;
+    padding: 0 45px 0 30px;
     width: 100%;
     line-height: 80px;
 }
@@ -4694,19 +4709,119 @@ textarea:focus {
     padding: 20px 10px;
 }
 
+/* lịch sử đơn hàng */
+.thongtinuser ul li {
+    display: block;
+    border-bottom: 1px solid gray;
+}
+.chouser {
+    position: relative;
+}
+.chouser:hover .menuuser {
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    z-index: 10;
+    opacity: 1;
+    background-color: #fff;
+    visibility: visible;
+}
+.chouser .menuuser li:hover{
+    background-color: #0f172b;
+}
+.chouser .menuuser li:hover a{
+    color: white;
+}
+.chouser .menuuser {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+}
+/* lịch sử booking */
+.content .row{
+    margin: 0px;
+}
+#preview{
+    overflow: hidden;
+}
+#preview img{
+    margin-bottom: 20px;
+    width: 100%;
+}
+#viewUser .col-md-6{
+    overflow: hidden;
+}
+#viewUser img{
+    width: 100%;
+    margin-bottom: 20px;
+    height: auto;
+}
+#viewUser .khunganh{
+    border-right: 1px solid gray; 
+}
+#viewUser .bordertop{
+    border-top: 1px solid gray;
+    padding-top: 20px; 
+}
 
+/* .col-12{
+    padding: 0px !important;
+} */
+.row{
+    margin: 0px !important;
+}
 
+.addroom .left{
+    padding-left: 0px;
+}
 
+.addroom .right{
+    padding-right: 0px;
+}
+.motdong{
+    border-bottom: 1px solid gray;
+    padding: 20px 0px;
+}
+.chitietdon{
+    border-right: 1px dashed gray;
+}
+.dongdichvu p{
+    margin: 5px 0px;
+}
+.wrapper #nutmo{
+    cursor: pointer;
+}
+.wrapper #nutmo:hover{
+    color: #007bff;
+    transition: all 0.4s ease-out 0s;
+}
 
-
-
-
-
-
-
-
-
-
+.wrapper .resetPass {
+    margin: 0px 20px;
+}
+.wrapper .xoay{
+    transform: rotate(180deg);
+    transition: all 0.4s ease-out 0s;
+}
+.wrapper .mb-2{
+    padding: 20px 20px;
+}
+.wrapper #post_up_cus{
+    padding: 20px 10px;
+}
+.content {
+    margin: 30px 0px;
+}
+.content .btn{
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+.content .btn i{
+    margin: 0px;
+}
 
 
 /* load */
@@ -4715,67 +4830,66 @@ textarea:focus {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     position: fixed;
     width: 100%;
     height: 100%;
     z-index: 9999;
     background: #0f172b;
-  }
-  
-  .loader > span {
+}
+
+.loader > span {
     background: #fea116;
     border-radius: 50%;
     margin: 5rem 0.5rem;
     -webkit-animation: bouncingLoader 0.6s infinite alternate;
-            animation: bouncingLoader 0.6s infinite alternate;
-  }
-  
-  .loader > span:nth-child(2) {
+    animation: bouncingLoader 0.6s infinite alternate;
+}
+
+.loader > span:nth-child(2) {
     -webkit-animation-delay: 0.2s;
-            animation-delay: 0.2s;
-  }
-  
-  .loader > span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.loader > span:nth-child(3) {
     -webkit-animation-delay: 0.4s;
-            animation-delay: 0.4s;
-  }
-  
-  /* Animation keyfranes */
-  @-webkit-keyframes bouncingLoader {
+    animation-delay: 0.4s;
+}
+
+/* Animation keyfranes */
+@-webkit-keyframes bouncingLoader {
     from {
-      width: 0.1rem;
-      height: 0.1rem;
-      opacity: 1;
-      -webkit-transform: translate3d(0);
-              transform: translate3d(0);
+        width: 0.1rem;
+        height: 0.1rem;
+        opacity: 1;
+        -webkit-transform: translate3d(0);
+        transform: translate3d(0);
     }
     to {
-      width: 1rem;
-      height: 1rem;
-      opacity: 0.1;
-      -webkit-transform: translate3d(0, -1rem, 0);
-              transform: translate3d(0, -1rem, 0);
+        width: 1rem;
+        height: 1rem;
+        opacity: 0.1;
+        -webkit-transform: translate3d(0, -1rem, 0);
+        transform: translate3d(0, -1rem, 0);
     }
-  }
-  @keyframes bouncingLoader {
+}
+@keyframes bouncingLoader {
     from {
-      width: 0.1rem;
-      height: 0.1rem;
-      opacity: 1;
-      -webkit-transform: translate3d(0);
-              transform: translate3d(0);
+        width: 0.1rem;
+        height: 0.1rem;
+        opacity: 1;
+        -webkit-transform: translate3d(0);
+        transform: translate3d(0);
     }
     to {
-      width: 1rem;
-      height: 1rem;
-      opacity: 0.1;
-      -webkit-transform: translate3d(0, -1rem, 0);
-              transform: translate3d(0, -1rem, 0);
+        width: 1rem;
+        height: 1rem;
+        opacity: 0.1;
+        -webkit-transform: translate3d(0, -1rem, 0);
+        transform: translate3d(0, -1rem, 0);
     }
-  }
-  
+}
