@@ -3974,7 +3974,29 @@ textarea:focus {
     background-color: #fea116;
     display: inline-block;
     border-radius: 5px;
+}
+.Bill .tongoaitrai .tongoai .khoithongtin .returnAddService{
+    padding: 8px 15px;
+    background-color: #fea116;
+    display: inline-block;
+    border-radius: 5px;
+    margin-bottom: 20px; 
+}
+.Bill .tongoaitrai .tongoai .khoithongtin .ViewService{
+    padding: 8px 15px;
+    background-color: #fea116;
+    display: inline-block;
+    border-radius: 5px;
     margin-bottom: 20px;
+}
+.Bill .tongoaitrai .tongoai .khoithongtin .returnAddService a{
+    color: white;
+}
+.Bill .tongoaitrai .tongoai .khoithongtin .ViewService a{
+    color: white;
+}
+.Bill .tongoaitrai .tongoai .khoithongtin .cuoi{
+    margin: 10px 0px;
 }
 .Bill .tongoaitrai .tongoai .khoithongtin .tenphong {
     margin-top: 10px;
@@ -4003,7 +4025,6 @@ textarea:focus {
     background-color: #fea116;
     display: inline-block;
     border-radius: 5px;
-    margin-bottom: 20px;
     margin-top: 10px;
 }
 .Bill .tongoaitrai .tongoai .khoithongtin p {

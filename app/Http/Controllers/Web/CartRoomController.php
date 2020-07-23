@@ -58,6 +58,7 @@ class CartRoomController extends Controller
 
     public function add(Request $request, CartRoom $cart, $id, OrderDetail $orderDetail, Room $room)
     {   
+        dd($cart);
         if (!empty($request->ArriveDate) && !empty($request->DepartDate)) {
             $from_date = $request->ArriveDate;
             $to_date = $request->DepartDate;
@@ -128,18 +129,19 @@ class CartRoomController extends Controller
         return redirect()->back()->with('success', 'Thêm thành công ' . $service->name . ' vào giỏ hàng');
     }
 
-    public function removeService(CartRoom $cartService, $id)
+    public function removeService(CartRoom $cartService, $id,$room_id)
     {
-        $cartService->removeService($id);
+        $cartService->removeService($id,$room_id);
         return redirect()->route('cart.view');
     }
 
-    public function update(CartRoom $cartService, $id, Request $request)
+    public function update(CartRoom $cartService, Request $request, $id,$room_id)
     {
-
+        // dd($room_id);   
+        
         $qty = $request->qty;
         // dd($qty);
-        $cartService->update($id, $qty);
+        $cartService->update($id,$room_id, $qty);
         // dd($cartService);
         return redirect()->route('cart.view');
     }

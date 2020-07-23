@@ -66,7 +66,7 @@ Route::get('restaurant','Web\webPageController@getRestaurant')->name('restaurant
 // Trang Reservation
 Route::get('reservation','Web\webPageController@getReservation')->name('reservation');
 //Trang service
-Route::get('service','Web\webPageController@getService')->name('service');
+Route::get('service/{room_id?}/{from_date?}/{to_date?}','Web\webPageController@getService')->name('service');
 Route::get('service-view','Web\webPageController@getViewService')->name('viewService');
 //Trang sửa thông tin tài khoản khách hàng
 Route::get('Customer-infor/{id}','Web\webPageController@getCustomerInfor')->name('CustomerInfor');
@@ -112,7 +112,7 @@ Route::group(['prefix' => 'web-page','namespace' => 'Web'],function(){
     Route::get('clear','CartRoomController@clear')->name('cart.clear');
     Route::get('addService/{id}/{room?}/{from_date?}/{to_date?}','CartRoomController@addService')->name('addService');
     Route::get('removeService/{id}/{room_id?}','CartRoomController@removeService')->name('cart.removeService');
-    Route::get('updateService/{id}','CartRoomController@update')->name('cart.updateService');
+    Route::get('updateService/{id}/{room_id?}','CartRoomController@update')->name('cart.updateService');
 });
 
 

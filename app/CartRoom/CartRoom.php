@@ -69,13 +69,13 @@ class CartRoom
     }
 
     //service
-    public function addService($room_id,$service, $qty = 1, $from_date, $to_date)
+    public function addService($room_id, $service, $qty = 1, $from_date, $to_date)
     {
         if (isset($this->items[$room_id])) {
             $services = $this->items[$room_id]['services'];
             if (isset($services[$service->id])) {
                 $services[$service->id]['quantity'] += 1;
-            }else{
+            } else {
                 $service_item = [
                     'id' => $service->id,
                     'name' => $service->name,
@@ -85,20 +85,21 @@ class CartRoom
                     'from_date' => $from_date,
                     'to_date' => $to_date
                 ];
-
                 $services[$service->id] = $service_item;
             }
-
             $this->items[$room_id]['services'] = $services;
             session(['cart' => $this->items]);
+            // dd($this->items);
         }
     }
 
     public function get_total_price_service()
     {
         $g = 0;
-        foreach ($this->services as $service) {
-            $g += $service['price'] * $service['quantity'];
+        foreach ($this->items as $service) {
+            foreach ($service['services'] as $ser) {
+                $g += $ser['price'] * $ser['quantity'];
+            }
         }
         return $g;
     }
@@ -112,18 +113,17 @@ class CartRoom
         return $t;
     }
 
-    public function removeService($room_id,$service_id)
+    public function removeService($service_id, $room_id)
     {
-
+        // dd($service_id);
         if (isset($this->items[$room_id]['services'][$service_id])) {
             unset($this->items[$room_id]['services'][$service_id]);
             session(['cart' => $this->items]);
         }
-
     }
 
 
-    public function update($room_id,$service_id, $qty)
+    public function update($service_id, $room_id, $qty)
     {
         if (isset($this->items[$room_id]['services'][$service_id])) {
             $this->items[$room_id]['services'][$service_id]['quantity'] = $qty;

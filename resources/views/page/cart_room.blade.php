@@ -38,6 +38,9 @@
                                 <div class="loaiphong">
                                     <p>{{$item['category_room_id']}}</p>
                                 </div>
+                                <div class="gia">
+                                    <p>${{$item['price']}}</p>
+                                </div>
 
                                 <div class="tenphong">
                                     <a href="">{{$item['name']}}</a>
@@ -50,27 +53,37 @@
                                     <li>{{$item['arriveDate']}} - {{$item['departDate']}}</li>
                                     <br>
                                     <li>Số ngày: {{$item['songay']}}</li>
+                                    <br>
+                                    <li class="cuoi">
+                                        <div class="returnAddService">
+                                            <a href="{{route('service',['room_id'=>$item['id'],'from_date'=>$item['arriveDate'],'to_date'=>$item['departDate']])}}">Về chọn service</a>
+                                        </div>
+                                        <div class="ViewService">
+                                            <a data-toggle="modal" href='#modal-{{$item['id']}}'>View Service</a>
+                                        </div>
+                                    </li>
                                 </ul>
-                                <div class="gia">
-                                    <p>${{$item['price']}}</p>
-                                </div>
 
                                 <div class="xoaphong">
                                     <a href="{{route('cart.remove',['id'=>$item['id']])}}"><i class="fas fa-backspace"></i></a>
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
 
-                    <a class="btn btn-primary" data-toggle="modal" href='#modal-{{$item['id']}}'>Trigger modal</a>
-                    <div class="modal fade" id="modal-{{$item['id']}}">
-                        <div class="modal-dialog">
+
+                    <div class="modal fade " id="modal-{{$item['id']}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+                        <div class="modal-dialog modal-lg" style="max-width:1100px">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title">Modal title</h4>
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Chi tiết dịch vụ</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <div class="modal-body">
+                                <div class="modal-body" id="body-modal">
                                     <div>
                                         <h3>Danh sách các dịch vụ của bạn</h3>
 
@@ -92,13 +105,13 @@
                                                         <td>{{$itemSer['name']}}</td>
                                                         <td><img src="public/uploads/images/servicess/{{$itemSer['imageService']}}" alt="" style="width:100px;height:100px"></td>
                                                         <td>
-                                                            <form id="soluongser" class="soluongser-{{$itemSer['id']}} soluong-{{$itemSer['id']}}" action="{{route('cart.updateService',['id'=>$key])}}" method="GET">
+                                                            <form id="soluongser" class="soluongser-{{$itemSer['id']}} soluong-{{$itemSer['id']}}" action="{{route('cart.updateService',['id'=>$itemSer['id'],'room_id'=>$item['id']])}}" method="GET">
 
                                                                 <input type="number" min="1" max="20" id="soluong-{{$itemSer['id']}}" class="nutsoluong " data-nutsoluong="{{$itemSer['id']}}" name="qty" value="{{$itemSer['quantity']}}">
                                                                 <button type="submit" class="btn btn-primary NutUpdateQty" id="{{$itemSer['id']}}">Cập nhật</button>
                                                             </form>
                                                         </td>
-                                                        <td>{{$itemSer['id']}}</td>
+                                                        <td>{{$item['id']}}</td>
                                                         <td>
                                                             <input type="hidden" id="layprice-{{$itemSer['id']}}" value="{{number_format($itemSer['price'])}}">
                                                             <div id="priceService-{{$itemSer['id']}}" class="cc321">
@@ -110,8 +123,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="xoaphong">
-
-                                                                <a href="{{route('cart.removeService',['id'=>$key])}}"><i class="fas fa-backspace"></i></a>
+                                                                <a href="{{route('cart.removeService',['id'=>$itemSer['id'],'room_id'=>$item['id']])}}"><i class="fas fa-backspace"></i></a>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -124,12 +136,12 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
 
                     @endforeach
                 </div>

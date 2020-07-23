@@ -139,10 +139,11 @@ class webPageController extends Controller
 
 
 
-    public function getService()
+    public function getService($room_id,$from_date,$to_date)
     {
+        $room = Room::find($room_id);
         $CategoryService = CategoryService::all();
-        return view('page.service', ['CategoryService' => $CategoryService]);
+        return view('page.service', ['CategoryService' => $CategoryService,'room'=>$room,'from_date'=>$from_date,'to_date'=>$to_date]);
     }
     public function getViewService()
     {
