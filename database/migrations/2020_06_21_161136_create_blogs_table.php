@@ -16,8 +16,8 @@ class CreateBlogsTable extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('content');
-            $table->string('title');
+            $table->string('content',5000);
+            $table->string('title',5000);
             $table->tinyInteger('status');
             $table->integer('category_blog_id')->unsigned();
             $table->foreign('category_blog_id')->references('id')->on('category_blogs')->onDelete('cascade');

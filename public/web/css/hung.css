@@ -971,12 +971,11 @@ img {
     width: 100%;
     padding: 5px 10px;
     border-bottom: 1px solid gray;
-    
 }
-.header .main-menu ul li .menunho li:hover{
+.header .main-menu ul li .menunho li:hover {
     background-color: #0f172b;
 }
-.header .main-menu ul li .menunho li:hover a{
+.header .main-menu ul li .menunho li:hover a {
     color: white;
 }
 .btn {
@@ -2239,7 +2238,7 @@ button:not(:disabled) {
     top: -20px;
 }
 .single-room .room-desc {
-    padding: 50px 22px 50px 40px;
+    padding: 50px 22px 50px 20px;
     position: relative;
     margin-bottom: 30px;
 }
@@ -2450,6 +2449,10 @@ p {
     background-color: #0f172b;
     color: #fff;
 }
+/* Phần cuối chi tiết phòng */
+.latest-room-d .room-thumb{
+    height:230px;
+} 
 
 /* =========================================Trang blogs Details==================================== */
 .tinchitiet .post-thumb img {
@@ -3208,6 +3211,13 @@ img {
     transition: all 400ms ease-out 0s;
     height: 100%;
     /* width:100% */
+}
+.rooms-warp img {
+    max-width: 100%;
+    -webkit-transition: all 400ms ease-out 0s;
+    transition: all 400ms ease-out 0s;
+    height: 100%;
+    width: 100%;
 }
 .food-section img {
     max-width: 100%;
@@ -4726,10 +4736,10 @@ textarea:focus {
     background-color: #fff;
     visibility: visible;
 }
-.chouser .menuuser li:hover{
+.chouser .menuuser li:hover {
     background-color: #0f172b;
 }
-.chouser .menuuser li:hover a{
+.chouser .menuuser li:hover a {
     color: white;
 }
 .chouser .menuuser {
@@ -4741,60 +4751,60 @@ textarea:focus {
     visibility: hidden;
 }
 /* lịch sử booking */
-.content .row{
+.content .row {
     margin: 0px;
 }
-#preview{
+#preview {
     overflow: hidden;
 }
-#preview img{
+#preview img {
     margin-bottom: 20px;
     width: 100%;
 }
-#viewUser .col-md-6{
+#viewUser .col-md-6 {
     overflow: hidden;
 }
-#viewUser img{
+#viewUser img {
     width: 100%;
     margin-bottom: 20px;
     height: auto;
 }
-#viewUser .khunganh{
-    border-right: 1px solid gray; 
+#viewUser .khunganh {
+    border-right: 1px solid gray;
 }
-#viewUser .bordertop{
+#viewUser .bordertop {
     border-top: 1px solid gray;
-    padding-top: 20px; 
+    padding-top: 20px;
 }
 
 /* .col-12{
     padding: 0px !important;
 } */
-.row{
+.row {
     margin: 0px !important;
 }
 
-.addroom .left{
+.addroom .left {
     padding-left: 0px;
 }
 
-.addroom .right{
+.addroom .right {
     padding-right: 0px;
 }
-.motdong{
+.motdong {
     border-bottom: 1px solid gray;
     padding: 20px 0px;
 }
-.chitietdon{
+.chitietdon {
     border-right: 1px dashed gray;
 }
-.dongdichvu p{
+.dongdichvu p {
     margin: 5px 0px;
 }
-.wrapper #nutmo{
+.wrapper #nutmo {
     cursor: pointer;
 }
-.wrapper #nutmo:hover{
+.wrapper #nutmo:hover {
     color: #007bff;
     transition: all 0.4s ease-out 0s;
 }
@@ -4802,27 +4812,26 @@ textarea:focus {
 .wrapper .resetPass {
     margin: 0px 20px;
 }
-.wrapper .xoay{
+.wrapper .xoay {
     transform: rotate(180deg);
     transition: all 0.4s ease-out 0s;
 }
-.wrapper .mb-2{
+.wrapper .mb-2 {
     padding: 20px 20px;
 }
-.wrapper #post_up_cus{
+.wrapper #post_up_cus {
     padding: 20px 10px;
 }
 .content {
     margin: 30px 0px;
 }
-.content .btn{
+.content .btn {
     padding: 10px 10px;
     border-radius: 5px;
 }
-.content .btn i{
+.content .btn i {
     margin: 0px;
 }
-
 
 /* load */
 .loader {
@@ -4892,4 +4901,14 @@ textarea:focus {
         -webkit-transform: translate3d(0, -1rem, 0);
         transform: translate3d(0, -1rem, 0);
     }
+}
+
+/* ifame */
+#map-container-google-2 iframe {
+    width: 100% !important;
+    height: 450px !important;
+}
+.carousel-inner.roomD{
+    width:100%;
+    max-height: 450px !important;
 }

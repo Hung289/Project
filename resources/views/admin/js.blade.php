@@ -22,8 +22,19 @@
                         success: function(res) {
                             if (res.success) {
                                 location.reload();
+                                Swal.fire({
+                                    position: '',
+                                    icon: 'success',
+                                    title: 'Xóa thành công',
+                                    showConfirmButton: false,
+                                    timer: 2500
+                                })
                             } else {
-                                alert(res.error);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Lỗi...',
+                                    text: 'Không thể xóa danh mục cha vì có danh mục con!',
+                                })
                             }
                         }
                     });

@@ -135,7 +135,13 @@
                                     <small class="error help-block" style="color:red">{{$message}}</small>
                                     @enderror
                                 </div>
-
+                                <div class="form-group">
+                                    <label for="">link_map</label>
+                                    <input type="text" name="link_map" class="form-control" placeholder="Nhập link map lấy trên google map" value="{{old('location')}}">
+                                    @error('link_map')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
+                                </div>
 
 
 
@@ -307,6 +313,13 @@
                                     @enderror
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="">Nội dung phòng</label>
+                                    <textarea placeholder="Nhập nội " name="content" required id="content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    @error('content')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
+                                </div>
 
 
 

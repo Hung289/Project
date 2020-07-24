@@ -9,7 +9,7 @@ use App\Models\RoomImage;
 class Room extends Model
 {
     protected $fillable = [
-        'name', 'location', 'bed', 'bath', 'area', 'priceNight', 'priceWeekends', 'priceWeekly', 'priceClearFee', 'description', 'status', 'gym', 'Laundry', 'tvCable', 'wifi', 'FreeParking', 'Security', 'category_room_id', 'user_room_id', 'brand_id', 'guest', 'adult'
+        'name', 'location', 'bed', 'bath', 'area', 'priceNight', 'priceWeekends', 'priceWeekly', 'priceClearFee', 'description', 'status', 'gym', 'Laundry', 'tvCable', 'wifi', 'FreeParking', 'Security', 'category_room_id', 'user_room_id', 'brand_id', 'guest', 'adult','content','link_map'
     ];
 
     public function cateRoom()
@@ -74,6 +74,8 @@ class Room extends Model
             'brand_id' => request()->brand_id,
             'guest' => request()->guest,
             'adult' => request()->adult,
+            'content' => request()->content,
+            'link_map' =>request()->link_map
         ]);
         $images = request()->file('files');
         foreach ($images as $img) {

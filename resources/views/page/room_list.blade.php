@@ -47,14 +47,14 @@
                 <div class="list" id="listRoom">
                     <div id="listRoomChild">
                         @foreach($rooms as $room)
-                        <div class="single-room list-style " id="cclistRoom" >
+                        <div class="single-room list-style " id="cclistRoom">
                             <div class="row align-items-center no-gutters">
                                 <div class="col-lg-6">
                                     <div class="room-thumb">
                                         @foreach($roomImages as $rI)
                                         <?php $check = ($rI->room_id == $room->id) ? "$rI->image" : "" ?>
                                         @if(!$check=="")
-                                        <img src="public/uploads/images/rooms/{{$check}}" alt="Room">
+                                        <a href="{{route('roomDetail',['id'=>$room->id])}}"><img style="width:100%;height:270px" src="public/uploads/images/rooms/{{$check}}" alt="Room"></a>
                                         @break
                                         @endif
                                         @endforeach
@@ -65,15 +65,19 @@
                                         <div class="room-cat">
                                             <p>{{$room->cateRoom->name}}</p>
                                         </div>
-                                        <h4><a href="{{route('roomDetail',['id'=>$room->id])}}">{{$room->name}}</a></h4>
+                                        <div class="room-price" style="margin:0px">
+                                            <p>{{number_format($room->priceNight)}} $</p>
+                                        </div>
+                                        <h4 style="text-overflow: ellipsis;overflow:hidden"><a href="{{route('roomDetail',['id'=>$room->id])}}">{{$room->name}}</a></h4>
+                                        <p>
+                                            {!!$room->description!!}
+                                        </p>
                                         <ul class="room-info list-inline">
                                             <li><i class="fas fa-bed"></i>{{$room->bed}} Bed</li>
                                             <li><i class="fas fa-bath"></i>{{$room->bath}} Baths</li>
                                             <li><i class="fas fa-ruler-combined"></i>{{$room->area}} m</li>
                                         </ul>
-                                        <div class="room-price">
-                                            <p>{{number_format($room->priceNight)}} $</p>
-                                        </div>
+
 
                                     </div>
                                 </div>
@@ -90,11 +94,12 @@
                         <!-- Single Room -->
                         <div class="single-room">
 
-                            <div class="room-thumb">
+                            <div class="room-thumb" style="height:250px">
                                 @foreach($roomImages as $rI)
                                 <?php $check = ($rI->room_id == $room->id) ? "$rI->image" : "" ?>
                                 @if(!$check=="")
-                                <img src="public/uploads/images/rooms/{{$check}}" alt="Room">
+                                <a href="{{route('roomDetail',['id'=>$room->id])}}"><img src="public/uploads/images/rooms/{{$check}}" alt="Room"></a>
+                                
                                 @break
                                 @endif
                                 @endforeach
@@ -103,7 +108,7 @@
                                 <div class="room-cat">
                                     <p>{{$room->cateRoom->name}}</p>
                                 </div>
-                                <h4><a href="{{route('roomDetail',['id'=>$room->id])}}">{{$room->name}}</a></h4>
+                                <h4 style="text-overflow: ellipsis;overflow:hidden"><a href="{{route('roomDetail',['id'=>$room->id])}}">{{$room->name}}</a></h4>
                                 <p>
                                     {!!$room->description!!}
                                 </p>
@@ -203,7 +208,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="input-wrap">
                                 <button type="submit" class="btn filled-btn btn-block" id="nuttimkiem">
                                     Filter Results <i class="fas fa-long-arrow-right"></i>

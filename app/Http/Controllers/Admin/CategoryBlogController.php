@@ -100,10 +100,12 @@ class CategoryBlogController extends Controller
             //     return response(['success'=>false]);
             // }
             $categoryBlog->delete() ;
-                return redirect()->route('admin.categoryBlog.index')->with('success','Xóa thành công');
+            return response(['success'=>true]);
+                // return redirect()->route('admin.categoryBlog.index')->with('success','Xóa thành công');
             
         } else {
-            return redirect()->route('admin.categoryBlog.index')->with('error','Xóa thất bại');
+            return response(['success'=>false]);
+            // return redirect()->route('admin.categoryBlog.index')->with('error','Xóa thất bại');
         }
     }
 

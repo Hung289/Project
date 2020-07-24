@@ -50,12 +50,12 @@
                       <i class="far fa-eye"></i>
                     </button>
                     <a href="{{route('admin.categoryBlog.edit',['categoryBlog'=>$CateB->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
-                    <form action="{{route('admin.categoryBlog.destroy',['categoryBlog'=>$CateB->id])}}" method="POST">
+                    <!-- <form action="{{route('admin.categoryBlog.destroy',['categoryBlog'=>$CateB->id])}}" method="POST">
                       @csrf @method('DELETE')
                       <button type="submit" url="" class="btn btn-danger "><i class="fas fa-trash"></i></button>
                       <input type="hidden" name="_token" value="{{csrf_token()}}">
-                    </form>
-
+                    </form> -->
+                    <button type="button" url="{{route('admin.categoryBlog.destroy',['categoryBlog'=>$CateB->id])}}" class="btn btn-danger nutxoa"><i class="fas fa-trash"></i></button>
                   </td>
                 </tr>
                 @endforeach()

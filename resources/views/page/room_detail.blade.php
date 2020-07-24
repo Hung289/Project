@@ -40,15 +40,18 @@
                 <div class="room-details">
                     <div class="entry-header">
                         <div id="carouselExampleInterval" class="carousel slide post-thumb" data-ride="carousel">
-                            <div class="carousel-inner">
+                            <div class="carousel-inner roomD">
+                                <?php $i=0; ?>
                                 @foreach($roomImages as $rI)
                                 <?php $check = ($rI->room_id == $room->id) ? "$rI->image" : "" ?>
                                 @if(!$check=="")
-                                <div class="carousel-item {{ ($loop->index+1 == 1)?'active':'' }}">
+                                <div class="carousel-item <?php if($i==0){echo ' active';}      ?> ">
                                     <img src="public/uploads/images/rooms/{{$check}}" class="d-block w-100" alt="...">
                                 </div>
+                                <?php $i++; ?>
                                 @endif
                                 @endforeach
+
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -98,8 +101,7 @@
                                         <h5 class="tab-title">Room Details </h5>
                                         <div class="entry-content">
                                             <p>
-
-                                                {!!$room->description!!}
+                                                {!!$room->content!!}
                                             </p>
                                             <div class="entry-gallery-img">
                                                 <figure class="entry-media-img">
@@ -186,9 +188,11 @@
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="location">
+
                                         <h5 class="tab-title">Location</h5>
                                         <div id="map-container-google-2" class="z-depth-1-half map-container" style="height: 500px;">
-                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.2028126423584!2d105.7839097225188!3d21.04657966784879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab32dd484c53%3A0x4201b89c8bdfd968!2zMjM4IEhvw6BuZyBRdeG7kWMgVmnhu4d0LCBD4buVIE5odeG6vywgQ-G6p3UgR2nhuqV5LCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1589343014159!5m2!1svi!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                            <!-- <iframe src="{{$room->link_map}}" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> -->
+                                            {!!$room->link_map!!}
                                         </div>
                                         <div class="room-location">
                                             <div class="row">
@@ -460,7 +464,7 @@
         </div>
         <div class="row">
             @foreach($lastRoom as $lR)
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-4 col-md-6 wow fadeInLeft">
                 <!-- Single Room -->
                 <div class="single-room">
                     <div class="room-thumb">

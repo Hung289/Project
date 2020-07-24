@@ -51,7 +51,7 @@
                             <div class="row">
                                 @foreach($blog2 as $b2)
                                 <div class="col-md-6">
-                                    <figure class="entry-media-img"><img src="public/uploads/images/Blog/{{$b2->image}}" alt="Image"></figure>
+                                    <figure class="entry-media-img" style="height: 200px;"><img src="public/uploads/images/Blog/{{$b2->image}}" alt="Image"></figure>
                                 </div>
                                 @endforeach
                             </div>

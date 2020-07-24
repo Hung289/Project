@@ -31,12 +31,12 @@
                                     @endif
                                 @endforeach
                             </div>
-                            <div class="post-desc">
+                            <div class="post-desc" style="height:360px">
                                 <ul class="blog-meta list-inline">
                                     <li><a href="{{route('blogDetail',[$blog->id])}}"><i class="fas fa-calendar-alt"></i>{{$blog->updated_at}}</a></li>
                                 </ul>
                                 <h3><a href="{{route('blogDetail',[$blog->id])}}">{{$blog->name}}</a></h3>
-                                <p>{{$blog->title}}</p>
+                                <p>{!!$blog->title!!}</p>
                                 <a href="{{route('blogDetail',[$blog->id])}}" class="read-more">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
                             </div>
                         </div>
