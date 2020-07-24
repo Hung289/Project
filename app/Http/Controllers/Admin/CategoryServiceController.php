@@ -93,9 +93,11 @@ class CategoryServiceController extends Controller
     public function destroy(CategoryService $categoryService)
     {
         
-        if($categoryService->delete()){
-            return response(['success'=>true]);
-        }else{
+        
+        if ($categoryService && $categoryService->service->count() == 0) {
+            $categoryService->delete() ;
+            return response(['success'=>true]);     
+        } else {
             return response(['success'=>false]);
         }
         

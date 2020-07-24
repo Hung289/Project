@@ -4,7 +4,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        
+
     </section>
     <section class="content">
         <div class="row">
@@ -12,18 +12,6 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Danh Sách thương hiệu</h3>
-
-                        <!-- <form class="form-inline ml-3" style="float:right;margin-right:30px" action="{{route('admin.searchBrand')}}">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="text" placeholder="Tìm Kiếm" aria-label="Search" name="key">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit" style="background-color: black;">
-                                        <i class="fas fa-search" style="background-color: black;color: #FFF;"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form> -->
-
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -42,7 +30,7 @@
                                     <td>{{$brand->id}}</td>
                                     <td>{{$brand->name}}</td>
                                     <td>
-                                        <img src="public/uploads/images/Brand/{{$brand->logo}}" style="width:250px;height:150px" alt="">
+                                        <img src="public/uploads/images/Brand/{{$brand->logo}}" style="width:100px;height:100px" alt="">
                                     </td>
                                     <td>
                                         <a href="{{route('admin.brand.edit',['brand'=>$brand->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
@@ -54,7 +42,7 @@
 
                         </table>
                         <div style="float:right">
-                            
+
                         </div>
 
                     </div>

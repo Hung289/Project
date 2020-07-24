@@ -94,18 +94,10 @@ class CategoryBlogController extends Controller
     public function destroy(CategoryBlog $categoryBlog)
     {
         if ($categoryBlog && $categoryBlog->blog->count() == 0) {
-            // if($categoryBlog->delete()){
-            //     return response(['success'=>true]);
-            // }else{
-            //     return response(['success'=>false]);
-            // }
             $categoryBlog->delete() ;
-            return response(['success'=>true]);
-                // return redirect()->route('admin.categoryBlog.index')->with('success','Xóa thành công');
-            
+            return response(['success'=>true]);     
         } else {
             return response(['success'=>false]);
-            // return redirect()->route('admin.categoryBlog.index')->with('error','Xóa thất bại');
         }
     }
 

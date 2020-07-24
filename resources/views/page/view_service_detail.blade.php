@@ -62,8 +62,8 @@
 </section>
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <iframe width="860" height="515" src="{{$cS->link_video_service}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="modal-content videoService" >
+        {!!$cS->link_video_service!!}
         </div>
     </div>
 </div>

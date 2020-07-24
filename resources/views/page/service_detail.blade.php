@@ -39,10 +39,14 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-latest-food">
                     <div class="food-img">
-                        <img src="public/uploads/images/servicess/{{$n_s->image}}" alt="Food">
+                        <a href="{{route('addService',['id'=>$n_s->id,'room'=>$rooms->id,'from_date'=>$from_date,'to_date'=>$to_date])}}">
+                            <img src="public/uploads/images/servicess/{{$n_s->image}}" alt="Food">
+                        </a>
                     </div>
                     <div class="l-food-desc d-flex justify-content-between align-items-center">
-                        <h4>{{$n_s->name}}</h4>
+                        <a href="{{route('addService',['id'=>$n_s->id,'room'=>$rooms->id,'from_date'=>$from_date,'to_date'=>$to_date])}}">
+                            <h5>{{$n_s->name}}</h5>
+                        </a>
                         <p class="price"><span class="price-currency">$</span> {{$n_s->price}}</p>
                     </div>
                 </div>
@@ -69,8 +73,9 @@
 </section>
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <iframe width="860" height="515" src="{{$cS->link_video_service}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="modal-content videoService">
+            {!!$cS->link_video_service!!}
+
         </div>
     </div>
 </div>

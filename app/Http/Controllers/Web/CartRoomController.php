@@ -79,6 +79,8 @@ class CartRoomController extends Controller
             } else {
                 $songay =  $hieu2ngay;
                 $model = $cart->add($room, $from_date, $to_date, $songay);
+                Session::flash('successService', 'Chọn thành công phòng. Tiếp tục chọn dịch vụ hoặc xem hóa đơn tại cartRoom');
+                // return redirect()->route('service',['room'=>$room,'from_date'=>$from_date,'to_date'=>$to_date])->with('success', 'Chọn thành công phòng. Tiếp tục chọn dịch vụ hoặc xem hóa đơn tại cartRoom');
                 return view('page.service',['room'=>$room,'from_date'=>$from_date,'to_date'=>$to_date])->with('success', 'Chọn thành công phòng. Tiếp tục chọn dịch vụ hoặc xem hóa đơn tại cartRoom');
             }
         } else {

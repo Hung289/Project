@@ -92,9 +92,10 @@ class CategoryRoomController extends Controller
      */
     public function destroy(CategoryRoom $categoryRoom)
     {
-        if($categoryRoom->delete()){
-            return response(['success'=>true]);
-        }else{
+        if ($categoryRoom && $categoryRoom->room->count() == 0) {
+            $categoryRoom->delete() ;
+            return response(['success'=>true]);     
+        } else {
             return response(['success'=>false]);
         }
         

@@ -17,7 +17,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::paginate(5);
+        $brands = Brand::all();
         // dd($brands);
         return view('admin.Brand.list', ['brands' => $brands]);
     }
@@ -95,22 +95,18 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        if($brand->delete()){
-            return response(['success'=>true]);
-        }else{
-            return response(['success'=>false]);
+        if ($brand && $brand->room->count() == 0) {
+            $brand->delete();
+            return response(['success' => true]);
+        } else {
+            return response(['success' => false]);
         }
-        
     }
 
     public function search(Request $request)
     {
-        // $blogs = Blog::where('name', 'like', '%' . $request->key . '%')
-        //     ->orWhere('title', 'like', '%' . $request->key . '%')
-        //     ->paginate(5);
-        // return view('admin.Blog.list', ['blogs' => $blogs]);
-        $brands = Brand::where('name','like', '%' . $request->key . '%')
-                ->paginate(5);
-        return view('admin.Brand.list',['brands'=>$brands]);
+        $brands = Brand::where('name', 'like', '%' . $request->key . '%')
+            ->paginate(5);
+        return view('admin.Brand.list', ['brands' => $brands]);
     }
 }

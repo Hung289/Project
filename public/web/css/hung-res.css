@@ -42,6 +42,14 @@
     footer .tongoai .footer-mid {
         text-align: center;
     }
+    .Bill .tongoaitrai .tongoai {
+        background-color: white;
+        height: auto;
+    }
+    .Bill .viewroombooked {
+        margin-bottom: 20px;
+        
+    }
 }
 @media only screen and (max-width: 1220px) {
     .header .logoandphone .phonenumber {

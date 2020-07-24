@@ -3120,6 +3120,10 @@ a:focus {
     width: 100%;
     height: 100%;
 }
+.single-latest-food:hover .food-img img {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
 .single-latest-food .l-food-desc {
     margin-top: 35px;
 }
@@ -3210,7 +3214,7 @@ img {
     -webkit-transition: all 400ms ease-out 0s;
     transition: all 400ms ease-out 0s;
     height: 100%;
-    /* width:100% */
+    width:100%
 }
 .rooms-warp img {
     max-width: 100%;
@@ -3937,10 +3941,10 @@ textarea:focus {
 }
 
 /* ===================================Trang Bill================================= */
-#soluongser input {
+/* #soluongser input {
     width: 50% !important;
     float: left !important;
-}
+} */
 .Bill table .btn {
     padding: 5px 10px !important;
 }
@@ -3950,7 +3954,7 @@ textarea:focus {
 }
 .Bill .viewroombooked {
     margin-bottom: 20px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .Bill .tongoaitrai {
     padding: 0px;
@@ -3977,13 +3981,15 @@ textarea:focus {
 }
 .Bill .tongoaitrai .tongoai {
     background-color: white;
-    height: 250px;
+    /* height: 250px; */
 }
 .Bill .tongoaitrai .tongoai img {
     width: 100%;
+    height: 100%;
 }
 .Bill .tongoaitrai .tongoai .khungimage {
     overflow: hidden;
+    height: 100%;
 }
 .Bill .tongoaitrai .tongoai img:hover {
     transform: scale(1.1);
@@ -4911,4 +4917,25 @@ textarea:focus {
 .carousel-inner.roomD{
     width:100%;
     max-height: 450px !important;
+}
+
+/* Chỉnh video trang service detail */
+.videoService{
+    top:50px
+}
+.modalchitietser{
+    top:60px
+}
+.modalchitietser input[type=number]{
+    height: 30px;
+    margin:37px 0px;
+}
+.videoService iframe{
+    width:850px;
+    height: 530px;
+
+}
+/* cart room */
+.NutUpdateQty{
+    margin-bottom: 6px;
 }

@@ -74,9 +74,9 @@
                     </div>
 
 
-                    <div class="modal fade " id="modal-{{$item['id']}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+                    <div class="modal fade " id="modal-{{$item['id']}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg" style="max-width:1100px">
-                            <div class="modal-content">
+                            <div class="modal-content modalchitietser">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalCenterTitle">Chi tiết dịch vụ</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -86,53 +86,46 @@
                                 <div class="modal-body" id="body-modal">
                                     <div>
                                         <h3>Danh sách các dịch vụ của bạn</h3>
+                                        <table id="myTable" class="table table-striped table-bordered dt-responsive nowrap" style="text-align: center;line-height: 100px;width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tên dịch vụ</th>
+                                                    <th>Hình ảnh</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Tiền</th>
+                                                    <th>Xóa</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($item['services'] as $key=>$itemSer)
+                                                <tr>
+                                                    <td>{{$itemSer['name']}}</td>
+                                                    <td><img src="public/uploads/images/servicess/{{$itemSer['imageService']}}" alt="" style="width:100px;height:100px"></td>
+                                                    <td>
+                                                        <form id="soluongser" class="soluongser-{{$itemSer['id']}} soluong-{{$itemSer['id']}}" action="{{route('cart.updateService',['id'=>$itemSer['id'],'room_id'=>$item['id']])}}" method="GET">
 
-                                        <div class="table-responsive " style="text-align:center">
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Tên dịch vụ</th>
-                                                        <th>Hình ảnh</th>
-                                                        <th>Số lượng</th>
-                                                        <th>Thuộc về phòng</th>
-                                                        <th>Tiền</th>
-                                                        <th>Xóa</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach($item['services'] as $key=>$itemSer)
-                                                    <tr>
-                                                        <td>{{$itemSer['name']}}</td>
-                                                        <td><img src="public/uploads/images/servicess/{{$itemSer['imageService']}}" alt="" style="width:100px;height:100px"></td>
-                                                        <td>
-                                                            <form id="soluongser" class="soluongser-{{$itemSer['id']}} soluong-{{$itemSer['id']}}" action="{{route('cart.updateService',['id'=>$itemSer['id'],'room_id'=>$item['id']])}}" method="GET">
-
-                                                                <input type="number" min="1" max="20" id="soluong-{{$itemSer['id']}}" class="nutsoluong " data-nutsoluong="{{$itemSer['id']}}" name="qty" value="{{$itemSer['quantity']}}">
-                                                                <button type="submit" class="btn btn-primary NutUpdateQty" id="{{$itemSer['id']}}">Cập nhật</button>
-                                                            </form>
-                                                        </td>
-                                                        <td>{{$item['id']}}</td>
-                                                        <td>
-                                                            <input type="hidden" id="layprice-{{$itemSer['id']}}" value="{{number_format($itemSer['price'])}}">
-                                                            <div id="priceService-{{$itemSer['id']}}" class="cc321">
-                                                                <div id="cc123-{{$itemSer['id']}}">
-                                                                    ${{number_format($itemSer['price']*$itemSer['quantity'])}}
-                                                                </div>
-
+                                                            <input type="number" min="1" max="20" id="soluong-{{$itemSer['id']}}" class="nutsoluong " data-nutsoluong="{{$itemSer['id']}}" name="qty" value="{{$itemSer['quantity']}}">
+                                                            <button type="submit" class="btn btn-primary NutUpdateQty" id="{{$itemSer['id']}}" >Cập nhật</button>
+                                                        </form>
+                                                    </td>
+                                                    <td>
+                                                        <input type="hidden" id="layprice-{{$itemSer['id']}}" value="{{number_format($itemSer['price'])}}">
+                                                        <div id="priceService-{{$itemSer['id']}}" class="cc321">
+                                                            <div id="cc123-{{$itemSer['id']}}">
+                                                                ${{number_format($itemSer['price']*$itemSer['quantity'])}}
                                                             </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="xoaphong">
-                                                                <a href="{{route('cart.removeService',['id'=>$itemSer['id'],'room_id'=>$item['id']])}}"><i class="fas fa-backspace"></i></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
 
-
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="xoaphong">
+                                                            <a href="{{route('cart.removeService',['id'=>$itemSer['id'],'room_id'=>$item['id']])}}"><i class="fas fa-backspace"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
