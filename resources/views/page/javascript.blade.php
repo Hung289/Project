@@ -450,3 +450,16 @@
     //     })
     // })
 </script>
+<script>
+    $(function(){
+        $('.nutuser').click(function(event){
+            event.preventDefault();
+            $('.thongTinUser').toggleClass('divao');
+            $(this).toggleClass('divao');
+        });
+        $('.thoat').click(function(event){
+            event.preventDefault();
+            $('.thongTinUser').toggleClass('divao');
+        });    
+    });
+</script>

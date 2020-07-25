@@ -1328,14 +1328,14 @@ h1 {
     display: none;
 }
 
-.mayophong .product-img{
+.mayophong .product-img {
     height: 425px;
 }
-.mayophong .product-img img{
+.mayophong .product-img img {
     height: 100%;
 }
-.mayophong .product-content .price{
-    color:#fea116;
+.mayophong .product-content .price {
+    color: #fea116;
     font-size: 35px;
 }
 /* ==================================Trang About Us ============================== */
@@ -2461,9 +2461,9 @@ p {
     color: #fff;
 }
 /* Phần cuối chi tiết phòng */
-.latest-room-d .room-thumb{
-    height:230px;
-} 
+.latest-room-d .room-thumb {
+    height: 230px;
+}
 
 /* =========================================Trang blogs Details==================================== */
 .tinchitiet .post-thumb img {
@@ -4404,7 +4404,7 @@ textarea:focus {
 .single-blog-wrap h3 a {
     color: #0f172b;
 }
-.single-blog-wrap h3 a:hover{
+.single-blog-wrap h3 a:hover {
     color: #fea116;
     transition: all 0.3s ease-in-out;
 }
@@ -4930,28 +4930,80 @@ textarea:focus {
     width: 100% !important;
     height: 450px !important;
 }
-.carousel-inner.roomD{
-    width:100%;
+.carousel-inner.roomD {
+    width: 100%;
     max-height: 450px !important;
 }
 
 /* Chỉnh video trang service detail */
-.videoService{
-    top:50px
+.videoService {
+    top: 50px;
 }
-.modalchitietser{
-    top:60px
+.modalchitietser {
+    top: 60px;
 }
-.modalchitietser input[type=number]{
+.modalchitietser input[type="number"] {
     height: 30px;
-    margin:37px 0px;
+    margin: 37px 0px;
 }
-.videoService iframe{
-    width:850px;
+.videoService iframe {
+    width: 850px;
     height: 530px;
-
 }
 /* cart room */
-.NutUpdateQty{
+.NutUpdateQty {
     margin-bottom: 6px;
+}
+
+/* Chế cái thông tin user cho mobile */
+.header .mobilemenu .thongTinUser {
+    width: 300px;
+    height: 100%;
+    background: #fea116;
+    opacity: 0.9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: 0.4s;
+    transform: translateX(-400px);
+    z-index: 999;
+}
+.header .mobilemenu .thongTinUser.divao {
+    transform: translateX(0px);
+}
+.header .mobilemenu .noidunghienthi {
+    padding: 20px;
+    position: relative;
+}
+.header .mobilemenu .noidunghienthi .thoat {
+    float: right;
+    clear: both;
+}
+.header .mobilemenu .noidunghienthi .divanh {
+    /* z-index: 1;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    clear: both; */
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 30px;
+}
+.header .mobilemenu .noidunghienthi .divanh img{
+    width: 100%;
+    height: 100%;
+}
+.header .mobilemenu .noidunghienthi ul li{
+    text-align: center;
+}
+.header .mobilemenu .noidunghienthi ul li a{
+    text-decoration: none;
+    color: black;
+    font-weight: 700px;
+    font-size: 20px;
+}
+.header .mobilemenu .noidunghienthi ul li a:hover{
+    color: white;
 }

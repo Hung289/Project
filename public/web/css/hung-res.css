@@ -172,6 +172,21 @@
         font-family: Montserrat-Bold;
         font-size: 16px;
     }
+
+    .header .mobilemenu .nutuser{
+        position: absolute;
+        top: 39px;
+        right: 100px;
+        z-index: 1;
+    }
+    .header .mobilemenu .nutuser i:hover{
+        color: #fea116;
+        transition: all 0.4s ease;
+    }
+    .header .mobilemenu .nutuser i{
+        font-size: 25px;
+        color: black;
+    }
 }
 @media only screen and (min-width: 1024px) {
     .header .mobilemenu {

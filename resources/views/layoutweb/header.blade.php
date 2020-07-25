@@ -68,10 +68,10 @@
         <a href="" class="nutmobile"><i class="fas fa-bars"></i></a>
         <nav class="meannav">
           <ul>
-            <li >
+            <li>
               <a href="{{route('indexWeb')}}" class="active">Home </a>
             </li>
-            <li >
+            <li>
               <a href="{{route('roomList')}}">Room </a>
               <ul class="menunho room">
                 @foreach($CategoryRoom as $CateRoom)
@@ -80,24 +80,24 @@
               </ul>
               <i class="fas fa-plus" data-class="room"></i>
             </li>
-            <li >
+            <li>
               <a href="{{route('viewService')}}">Service </a>
-              <ul class="menunho service" >
+              <ul class="menunho service">
                 @foreach($CategoryService as $CateService)
                 <li><a href="{{route('serviceMasterNotIdRoom',['id'=>$CateService->id])}}">{{$CateService->name}}</a></li>
                 @endforeach
               </ul>
               <i class="fas fa-plus" data-class="service"></i>
             </li>
-            <li ><a href="{{route('blogGrid')}}">Blog </a>
+            <li><a href="{{route('blogGrid')}}">Blog </a>
               <ul class="menunho blog">
                 @foreach($CategoryBlog as $CateBlog)
                 <li><a href="">{{$CateBlog->name}}</a></li>
                 @endforeach
               </ul>
-              <i class="fas fa-plus"data-class="blog"></i>
+              <i class="fas fa-plus" data-class="blog"></i>
             </li>
-            <li >
+            <li>
               <a href="">Pages </a>
               <ul class="menunho page">
                 <li><a href="">Home</a></li>
@@ -119,6 +119,33 @@
             <li><a href="{{route('cart.view')}}">CartRoom</a></li>
           </ul>
         </nav>
+        <a class="nutuser"><i class="fas fa-user"></i></a>
+        <div class="thongTinUser">
+          <div class="noidunghienthi">
+            <div class="thoat"><i class="fas fa-times"></i></div>
+            <hr>
+            <nav>
+              @if(!Auth::check())
+              <ul>
+                <li><a href="">Login</a></li>
+                <li><a href="">Register</a></li>
+              </ul>
+              @else
+              <ul>
+                <div class="divanh">
+                  <img id="avatar_auth" src="public/uploads/images/user/{{Auth::user()->avatar}}" class="img-circle elevation-2" alt="User Image" style="border-radius: 50%">
+                </div>
+                <li class="khac chouser">
+                  <a href="{{route('CustomerInfor',['id'=>Auth::User()->id])}}">{{Auth::User()->email}}</a>
+                </li>
+                <li><a href="{{route('CustomerInfor',['id'=>Auth::User()->id])}}">Thông tin tài khoản</a> </li>
+                <li><a href="{{route('historyBooking')}}">Lịch sử đơn hàng</a></li>
+                <li><a href="{{route('getLogoutWeb')}}">Logout</a></li>
+              </ul>
+              @endif
+            </nav>
+          </div>
+        </div>
       </div>
     </div>
   </div>
