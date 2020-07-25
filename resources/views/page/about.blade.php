@@ -20,12 +20,12 @@
 
         <div class="row">
             <div class="col-md-6">
-                <div class="section-title text-right">
-                    <span class="title-top with-border">About Us</span>
+                <div class="section-title text-right wow bounceInDown">
+                    <span class="title-top with-border ">About Us</span>
                     <h1>Welcome To Avson <br> Modern Hotel Room <br> Sells Services</h1>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 wow bounceInRight">
                 <p class="mb-30">
                     But I must explain you how all this mistaken idea denounci pleasure and praising pain was
                     born and I will give you a comount of the system, and expound the actual teachin

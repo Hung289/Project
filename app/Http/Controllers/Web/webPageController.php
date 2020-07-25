@@ -133,7 +133,7 @@ class webPageController extends Controller
     public function getRoomList(Request $request)
     {
         $roombt = Room::all();
-        $rooms = Room::orderByParam()->paginate();
+        $rooms = Room::where('status',0)->orderByParam()->paginate();
         // dd($rooms);
         return view('page.room_list', ['rooms' => $rooms]);
     }
@@ -244,7 +244,7 @@ class webPageController extends Controller
         return redirect()->route('indexWeb')->with('success','Đăng xuất thành công');
     }
 
-    public function getRoomListMaster($id)
+    public function getRoomListMaster(Request $request,$id)
     {
         $rooms = Room::where('category_room_id', $id)->get();
         return view('page.room_list_master', ['rooms' => $rooms]);
@@ -255,8 +255,6 @@ class webPageController extends Controller
         $params = array();
 
         if (!empty($request->searchFromDate) && !empty($request->searchToDate)) {
-            // cái params date này ko cần cho vào room đâu, gọi vào thằng order detail là được
-            // nên là ko cần cho vào params
             $from_date = $request->searchFromDate;
             $to_date = $request->searchToDate;
             $listRoomUsed  = $orderDetail->checkRoomForDate($from_date, $to_date);

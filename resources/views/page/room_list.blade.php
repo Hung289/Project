@@ -140,14 +140,14 @@
                                 <i class="fas fa-search"></i>
                             </div>
                             <div class="input-wrap">
-                                <input type="date" placeholder="Arrive Date" min="" name="searchFromDate">
+                                <input type="date" placeholder="Arrive Date" min="<?php echo date("Y-m-d")?>" name="searchFromDate">
                                 @error('searchFromDate')
                                 <small class="error help-block" style="color:red">{{$message}}</small>
                                 @enderror
                             </div>
                             <div class="input-wrap">
                                 <!--  echo date("Y-m-d", strtotime (date('Y-m-d')."+1 days")); -->
-                                <input type="date" placeholder="Depart Date" min="" name="searchToDate">
+                                <input type="date" placeholder="Depart Date" min="<?php echo date("Y-m-d", strtotime (date('Y-m-d')."+1 days"));?>" name="searchToDate">
                                 @error('searchToDate')
                                 <small class="error help-block" style="color:red">{{$message}}</small>
                                 @enderror

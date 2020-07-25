@@ -25,7 +25,9 @@
                             @foreach($blogImages as $bI)
                             <?php $check = ($bI->blog_id == $blog->id) ? $bI->image : "" ?>
                             @if($check != "")
-                            <img src="public/uploads/images/Blog/{{$check}}" style="height:490px" alt="Image">
+                            <a href="{{route('blogDetail',[$blog->id])}}">
+                                <img src="public/uploads/images/Blog/{{$check}}" style="height:490px" alt="Image">
+                            </a>
                             @break
                             @endif
                             @endforeach
@@ -36,15 +38,15 @@
                                 </li>
                                 <li><a href="single-blog.html"><i class="fas fa-calendar-alt"></i>{{$blog->created_at}}</a></li>
                             </ul>
-                            <p>{{$blog->name}}</p>
-                            <h3><a href="{{route('blogDetail',[$blog->id])}}">{{$blog->title}}</a></h3>
+                            <h3><a href="{{route('blogDetail',[$blog->id])}}">{{$blog->name}}</a></h3>
+                            <p>{{$blog->title}}</p>
                             <a href="{{route('blogDetail',[$blog->id])}}" class="btn filled-btn">View post <i class="fas fa-long-arrow-right"></i></a>
                         </div>
                     </div>
                     @endforeach
                 </div>
                 <!-- Pagination Wrap -->
-                <div class="pagination-wrap">
+                <!-- <div class="pagination-wrap">
                     <ul class="list-inline">
                         <li><a href=""><i class="fas fa-angle-left"></i></a></li>
                         <li class="active"><a href="">01</a></li>
@@ -52,7 +54,7 @@
                         <li><a href="">03</a></li>
                         <li><a href=""><i class="fas fa-angle-right"></i></a></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
             <div class="col-lg-4">
                 <!-- Sidebars Area -->

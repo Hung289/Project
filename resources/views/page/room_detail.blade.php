@@ -421,10 +421,10 @@
                         </div>
                         <form action="{{route('cart.add',['id'=>$room->id])}}" method="GET">
                             <div class="input-wrap">
-                                <input type="date" placeholder="Arrive Date" name="ArriveDate">
+                                <input type="date" placeholder="Arrive Date" min="<?php echo date("Y-m-d")?>" name="ArriveDate">
                             </div>
                             <div class="input-wrap">
-                                <input type="date" placeholder="Depart Date" name="DepartDate">
+                                <input type="date" placeholder="Depart Date" min="<?php echo date("Y-m-d", strtotime (date('Y-m-d')."+1 days"));?>" name="DepartDate">
                                 <i class=""></i>
                             </div>
                             <div class="input-wrap">
@@ -480,7 +480,7 @@
                         <div class="room-cat">
                             <p>{{$lR->cateRoom->name}}</p>
                         </div>
-                        <h4><a href="{{route('roomDetail',['id'=>$lR->id])}}">{{$lR->name}}</a></h4>
+                        <h4 style="overflow: hidden;white-space: nowrap;text-anchor: ;text-overflow: ellipsis;"><a href="{{route('roomDetail',['id'=>$lR->id])}}">{{$lR->name}}</a></h4>
                         <p class="p">
                             {!!$lR->description!!}
                         </p>

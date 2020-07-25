@@ -158,8 +158,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Trạng Thái</label>
                                     <select name="status" class="form-control" id="">
-                                        <option value="0" @if($room->status == 0) selected @endif>Đang trống</option>
-                                        <option value="1" @if($room->status == 1) selected @endif>Đã bị thuê</option>
+                                        <option value="0" @if($room->status == 0) selected @endif>Hiện</option>
+                                        <option value="1" @if($room->status == 1) selected @endif>Ẩn</option>
                                     </select>
                                 </div>
                                 <div class="row">

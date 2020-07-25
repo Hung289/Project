@@ -163,8 +163,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Trạng Thái</label>
                                     <select name="status" class="form-control" id="">
-                                        <option value="0">Đang trống</option>
-                                        <option value="1">Đã bị thuê</option>
+                                        <option value="0">Hiện</option>
+                                        <option value="1">Ẩn</option>
                                     </select>
                                 </div>
                                 <div class="row">

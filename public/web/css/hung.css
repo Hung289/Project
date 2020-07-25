@@ -1327,6 +1327,17 @@ h1 {
 #mot .owl-dots {
     display: none;
 }
+
+.mayophong .product-img{
+    height: 425px;
+}
+.mayophong .product-img img{
+    height: 100%;
+}
+.mayophong .product-content .price{
+    color:#fea116;
+    font-size: 35px;
+}
 /* ==================================Trang About Us ============================== */
 #headernhochung {
     z-index: 1;
@@ -3209,13 +3220,13 @@ h1.big-text {
     border: 2px dashed #dcdcdc;
     margin-bottom: 30px;
 }
-img {
+/* img {
     max-width: 100%;
     -webkit-transition: all 400ms ease-out 0s;
     transition: all 400ms ease-out 0s;
     height: 100%;
     width:100%
-}
+} */
 .rooms-warp img {
     max-width: 100%;
     -webkit-transition: all 400ms ease-out 0s;
@@ -4348,6 +4359,7 @@ textarea:focus {
 }
 .single-blog-wrap .post-thumbnail img {
     width: 100%;
+    height: 100%;
 }
 .single-blog-wrap .post-thumbnail:hover img {
     -webkit-transform: scale(1.1);
@@ -4391,6 +4403,10 @@ textarea:focus {
 }
 .single-blog-wrap h3 a {
     color: #0f172b;
+}
+.single-blog-wrap h3 a:hover{
+    color: #fea116;
+    transition: all 0.3s ease-in-out;
 }
 /* =======================================Blog Stand============================== */
 .blog-wrapper .single-blog-wrap .post-desc .btn {

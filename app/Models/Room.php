@@ -171,23 +171,7 @@ class Room extends Model
 
     public function filteRoom($params)
     {
-        // biết hàm này ko//biết thế éo nào đc vc
-        // cái này nó phân tích cai mảng params ra 
-        // ví dụ// $params = [
-        //     'location' =>$request->location,
-        //     'from_date' => $request->searchFromDate,
-        //     'to_date' => $request->searchToDate,
-        // ];
-        // thằng params nó là như thế nó se phân tích ra cho biển $loccation $from_datte $to_date
-        // cho nên có dữ liệu gì chỉ cần để trong thằng params =))
         extract($params);
-
-        // $query = $this->join('room_images', function ($join) {
-        //                 $join->on('rooms.id', '=', 'room_images.room_id');
-        //                 // lỗi ở đây =)), để suy nghĩ
-        //             })
-        //             ->join('category_rooms', 'rooms.category_room_id', '=', 'category_rooms.id')
-        //             ->select('rooms.*', 'room_images.image', 'category_rooms.name as cat_name');
         $query = $this;
 
         if (!empty($search)) {
