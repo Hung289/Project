@@ -127,7 +127,7 @@
         position: relative;
         overflow: hidden;
     }
-    .header .mobilemenu ul li i{
+    .header .mobilemenu .meannav ul li i{
         position: absolute;
         top: 0px;
         right:0px;
@@ -186,6 +186,13 @@
     .header .mobilemenu .nutuser i{
         font-size: 25px;
         color: black;
+    }
+    .header .mobilemenu .noidunghienthi ul li i{
+        background: none !important;
+    }
+    .carousel-inner.home {
+        width: 100%;
+        height: 460px !important;
     }
 }
 @media only screen and (min-width: 1024px) {
@@ -537,6 +544,16 @@
     }
     .about-site .counter .counter-box {
         text-align: center;
+    }
+    .carousel-inner.home {
+        width: 100%;
+        height: 360px !important;
+    }
+}
+@media (max-width: 568px) {
+    .carousel-inner.home {
+        width: 100%;
+        height: 260px !important;
     }
 }
 @media (max-width: 992px) {

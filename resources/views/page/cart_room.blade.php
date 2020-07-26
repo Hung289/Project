@@ -24,7 +24,7 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 tongoaitrai p-0">
                 <div>
-                    <h3>Danh sách phòng đã đặt</h3>
+                    <h3>List Room Booking</h3>
                     @foreach($cart->items as $item)
 
                     <div class="viewroombooked">
@@ -78,14 +78,14 @@
                         <div class="modal-dialog modal-lg" style="max-width:1100px">
                             <div class="modal-content modalchitietser">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">Chi tiết dịch vụ</h5>
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Service Detail</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body" id="body-modal">
                                     <div>
-                                        <h3>Danh sách các dịch vụ của bạn</h3>
+                                        <h3>List Service </h3>
                                         <table id="myTable" class="table table-striped table-bordered dt-responsive nowrap" style="text-align: center;line-height: 100px;width:100%">
                                             <thead>
                                                 <tr>

@@ -390,6 +390,7 @@ footer .footerUnderRight nav ul li:hover {
 }
 #ourstore .col-md-3 .tomotkhoi .khoianh img {
     width: 100%;
+    height: 100%;
 }
 #ourstore .col-md-3 .tomotkhoi:hover .khoianh img {
     -webkit-transform: scale(1.1);
@@ -4934,7 +4935,16 @@ textarea:focus {
     width: 100%;
     max-height: 450px !important;
 }
-
+.carousel-inner.home {
+    width: 100%;
+    height: 660px !important;
+}
+.carousel-inner.home .carousel-item {
+    height: 100%;
+}
+.carousel-inner.home .carousel-item img{
+    height: 100%;
+}
 /* Chỉnh video trang service detail */
 .videoService {
     top: 50px;
@@ -4973,37 +4983,54 @@ textarea:focus {
 }
 .header .mobilemenu .noidunghienthi {
     padding: 20px;
-    position: relative;
+    margin-top: 50px;
 }
-.header .mobilemenu .noidunghienthi .thoat {
+.header .mobilemenu .thoat {
     float: right;
-    clear: both;
+    padding: 15px 25px;
+    cursor: pointer;
 }
 .header .mobilemenu .noidunghienthi .divanh {
-    /* z-index: 1;
-    position: absolute;
-    left: 50%;
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-    clear: both; */
     margin: 0 auto;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     margin-bottom: 30px;
 }
-.header .mobilemenu .noidunghienthi .divanh img{
+.header .mobilemenu .noidunghienthi .divanh img {
     width: 100%;
     height: 100%;
+    border: 2px solid white;
+    margin: 0 auto;
+    padding: 2px;
 }
-.header .mobilemenu .noidunghienthi ul li{
+.header .mobilemenu .noidunghienthi ul li {
     text-align: center;
+    margin: 10px 0px;
 }
-.header .mobilemenu .noidunghienthi ul li a{
+.header .mobilemenu .noidunghienthi ul li a {
     text-decoration: none;
-    color: black;
+    color: #fff;
     font-weight: 700px;
-    font-size: 20px;
+    font-size: 16px;
+    font-family: Montserrat-Medium;
 }
-.header .mobilemenu .noidunghienthi ul li a:hover{
-    color: white;
+.header .mobilemenu .noidunghienthi ul li a:hover {
+    color: #0f172b;
+    transition: all 0.4s ease-out 0s;
+}
+
+
+/* css paginate */
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #fea116;
+    border-color: #fea116;
+}
+.page-item a{
+    color: #fea116;
+}
+.paginateChung{
+    width: 100%;
+    padding: 0px 20px;
 }

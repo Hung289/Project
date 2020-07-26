@@ -119,16 +119,16 @@
             <li><a href="{{route('cart.view')}}">CartRoom</a></li>
           </ul>
         </nav>
-        <a class="nutuser"><i class="fas fa-user"></i></a>
+        <a href="" class="nutuser"><i class="fas fa-user"></i></a>
         <div class="thongTinUser">
+          <div class="thoat"><i class="fas fa-times"></i></div>
+          
           <div class="noidunghienthi">
-            <div class="thoat"><i class="fas fa-times"></i></div>
-            <hr>
             <nav>
               @if(!Auth::check())
               <ul>
-                <li><a href="">Login</a></li>
-                <li><a href="">Register</a></li>
+                <li><a href="{{route('getloginWeb')}}">Login</a></li>
+                <li><a href="{{route('getRegisterWeb')}}">Register</a></li>
               </ul>
               @else
               <ul>
@@ -138,9 +138,9 @@
                 <li class="khac chouser">
                   <a href="{{route('CustomerInfor',['id'=>Auth::User()->id])}}">{{Auth::User()->email}}</a>
                 </li>
-                <li><a href="{{route('CustomerInfor',['id'=>Auth::User()->id])}}">Thông tin tài khoản</a> </li>
-                <li><a href="{{route('historyBooking')}}">Lịch sử đơn hàng</a></li>
-                <li><a href="{{route('getLogoutWeb')}}">Logout</a></li>
+                <li><a href="{{route('CustomerInfor',['id'=>Auth::User()->id])}}">Thông tin tài khoản <i class="fas fa-user"></i></a> </li>
+                <li><a href="{{route('historyBooking')}}">Lịch sử đơn hàng <i class="fas fa-history"></i></a></li>
+                <li><a href="{{route('getLogoutWeb')}}">Logout <i class="fas fa-sign-out-alt"></i></a></li>
               </ul>
               @endif
             </nav>

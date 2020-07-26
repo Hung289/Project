@@ -23,11 +23,11 @@
                 <div class="filter-view">
                     <ul>
                         <li class="active-f-view">Default Sorting</li>
-                        <li>Low To High</li>
-                        <li>High To Low</li>
-                        <li>View A to Z</li>
-                        <li>View Z to A</li>
-                        <li>Popular</li>
+                        <li> <a href="{{route('roomList',['orderby'=>'priceNight','ord'=>'ASC'])}}">Low To High</a></li>
+                        <li> <a href="{{route('roomList',['orderby'=>'priceNight','ord'=>'DESC'])}}">High To Low</a></li>
+                        <li> <a href="{{route('roomList',['orderby'=>'name','ord'=>'ASC'])}}">View A to Z</a> </li>
+                        <li> <a href="{{route('roomList',['orderby'=>'name','ord'=>'DESC'])}}">View Z to A</a> </li>
+                        <li> <a href="{{route('roomList')}}">All</a></li>
                     </ul>
                 </div>
             </div>
@@ -44,40 +44,48 @@
 
             <div class="col-lg-8">
 
-                <div class="list">
-                    @foreach($rooms as $room)
-                    <div class="single-room list-style">
-                        <div class="row align-items-center no-gutters">
-                            <div class="col-lg-6">
-                                <div class="room-thumb">
-                                    @foreach($roomImages as $rI)
-                                    <?php $check = ($rI->room_id == $room->id) ? "$rI->image" : "" ?>
-                                    @if(!$check=="")
-                                    <img src="public/uploads/images/rooms/{{$check}}" alt="Room">
-                                    @break
-                                    @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="room-desc">
-                                    <div class="room-cat">
-                                        <p>{{$room->cateRoom->name}}</p>
+                <div class="list" id="listRoom">
+                    <div id="listRoomChild">
+                        @foreach($rooms as $room)
+                        <div class="single-room list-style " id="cclistRoom">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col-lg-6">
+                                    <div class="room-thumb">
+                                        @foreach($roomImages as $rI)
+                                        <?php $check = ($rI->room_id == $room->id) ? "$rI->image" : "" ?>
+                                        @if(!$check=="")
+                                        <a href="{{route('roomDetail',['id'=>$room->id])}}"><img style="width:100%;height:270px" src="public/uploads/images/rooms/{{$check}}" alt="Room"></a>
+                                        @break
+                                        @endif
+                                        @endforeach
                                     </div>
-                                    <h4><a href="{{route('roomDetail',['id'=>$room->id])}}">{{$room->name}}</a></h4>
-                                    <ul class="room-info list-inline">
-                                        <li><i class="fas fa-bed"></i>{{$room->bed}} Bed</li>
-                                        <li><i class="fas fa-bath"></i>{{$room->bath}} Baths</li>
-                                        <li><i class="fas fa-ruler-combined"></i>{{$room->area}} m</li>
-                                    </ul>
-                                    <div class="room-price">
-                                        <p>{{number_format($room->priceNight)}} $</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="room-desc">
+                                        <div class="room-cat">
+                                            <p>{{$room->cateRoom->name}}</p>
+                                        </div>
+                                        <div class="room-price" style="margin:0px">
+                                            <p>{{number_format($room->priceNight)}} $</p>
+                                        </div>
+                                        <h4 style="text-overflow: ellipsis;overflow:hidden"><a href="{{route('roomDetail',['id'=>$room->id])}}">{{$room->name}}</a></h4>
+                                        <p>
+                                            {!!$room->description!!}
+                                        </p>
+                                        <ul class="room-info list-inline">
+                                            <li><i class="fas fa-bed"></i>{{$room->bed}} Bed</li>
+                                            <li><i class="fas fa-bath"></i>{{$room->bath}} Baths</li>
+                                            <li><i class="fas fa-ruler-combined"></i>{{$room->area}} m</li>
+                                        </ul>
+
+
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+                        {{$rooms->links()}}
                     </div>
-                    @endforeach
                 </div>
 
 
@@ -87,11 +95,12 @@
                         <!-- Single Room -->
                         <div class="single-room">
 
-                            <div class="room-thumb">
+                            <div class="room-thumb" style="height:250px">
                                 @foreach($roomImages as $rI)
                                 <?php $check = ($rI->room_id == $room->id) ? "$rI->image" : "" ?>
                                 @if(!$check=="")
-                                <img src="public/uploads/images/rooms/{{$check}}" alt="Room">
+                                <a href="{{route('roomDetail',['id'=>$room->id])}}"><img src="public/uploads/images/rooms/{{$check}}" alt="Room"></a>
+
                                 @break
                                 @endif
                                 @endforeach
@@ -100,9 +109,9 @@
                                 <div class="room-cat">
                                     <p>{{$room->cateRoom->name}}</p>
                                 </div>
-                                <h4><a href="{{route('roomDetail',['id'=>$room->id])}}">{{$room->name}}</a></h4>
+                                <h4 style="text-overflow: ellipsis;overflow:hidden"><a href="{{route('roomDetail',['id'=>$room->id])}}">{{$room->name}}</a></h4>
                                 <p>
-                                {!!$room->description!!}
+                                    {!!$room->description!!}
                                 </p>
                                 <ul class="room-info list-inline">
                                     <li><i class="fas fa-bed"></i>{{$room->bed}} Bed</li>
@@ -116,6 +125,12 @@
                         </div>
                     </div>
                     @endforeach
+                    <div class="paginateChung">
+                        {{$rooms->links()}}
+                    </div>
+                </div>
+
+                <div style="float:right">
                 </div>
             </div>
             <div class="col-lg-4">
@@ -129,14 +144,14 @@
                                 <i class="fas fa-search"></i>
                             </div>
                             <div class="input-wrap">
-                                <input type="date" placeholder="Arrive Date" min="<?php echo date("Y-m-d")?>" name="searchFromDate">
+                                <input type="date" placeholder="Arrive Date" min="<?php echo date("Y-m-d") ?>" name="searchFromDate">
                                 @error('searchFromDate')
                                 <small class="error help-block" style="color:red">{{$message}}</small>
                                 @enderror
                             </div>
                             <div class="input-wrap">
                                 <!--  echo date("Y-m-d", strtotime (date('Y-m-d')."+1 days")); -->
-                                <input type="date" placeholder="Depart Date" min="<?php echo date("Y-m-d", strtotime (date('Y-m-d')."+1 days")); ?>" min="" name="searchToDate">
+                                <input type="date" placeholder="Depart Date" min="<?php echo date("Y-m-d", strtotime(date('Y-m-d') . "+1 days")); ?>" min="" name="searchToDate">
                                 @error('searchToDate')
                                 <small class="error help-block" style="color:red">{{$message}}</small>
                                 @enderror
@@ -197,7 +212,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="input-wrap">
                                 <button type="submit" class="btn filled-btn btn-block" id="nuttimkiem">
                                     Filter Results <i class="fas fa-long-arrow-right"></i>
@@ -208,19 +223,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="pagination-wrap">
-                    <ul class="list-inline">
-                        <li><a href=""><i class="fas fa-angle-left"></i></a></li>
-                        <li class="active"><a href="">01</a></li>
-                        <li><a href="">02</a></li>
-                        <li><a href="">03</a></li>
-                        <li><a href=""><i class="fas fa-angle-right"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+
     </div>
 </section>
 

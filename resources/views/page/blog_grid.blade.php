@@ -44,6 +44,10 @@
                     </div>
                 </div>
                 @endforeach
+                <div class="paginateChung">
+                    {{$blogs->links()}}
+                </div>
+
             </div>
         </div>
         <!-- Pagination Wrap -->

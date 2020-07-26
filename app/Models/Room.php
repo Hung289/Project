@@ -205,6 +205,6 @@ class Room extends Model
             $query = $query->where('adult', $adults);
         }
 
-        return $query->get();
+        return $query->paginate(40);
     }
 }

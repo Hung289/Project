@@ -1,8 +1,8 @@
 @extends('layoutweb.index')
 @section('content')
-@if(Session::has('errors'))
+@if(Session::has('error'))
 <div class="alert alert-danger">
-  {{Session::get('errors')}}
+  {{Session::get('error')}}
 </div>
 @endif
 @if(Session::has('success'))
@@ -17,35 +17,7 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner">
-      <!-- <div class="carousel-item active" data-interval="10000">
-        <img src="public/web/images/img/bg/hero-bg-1.jpg" class="d-block w-100" alt="..." />
-        <div class="carousel-caption d-none d-md-block">
-          <h1 class="chutoslide wow fadeInDown">
-            Luxury Hotel <br />& Room Service <br />
-            Agency
-          </h1>
-          <p class="chunhoslide wow fadeInLeft">
-            Desires to obtain pain of itself, because it is pain, but
-            because occacu stances occur in which toil and pain can procure
-            him some here ways.
-          </p>
-        </div>
-      </div>
-      <div class="carousel-item" data-interval="2000">
-        <img src="public/web/images/img/bg/hero-bg-2.jpg" class="d-block w-100" alt="..." />
-        <div class="carousel-caption d-none d-md-block">
-          <h1>
-            Luxury Hotel <br />& Room Service <br />
-            Agency
-          </h1>
-          <p>
-            Desires to obtain pain of itself, because it is pain, but
-            because occacu stances occur in which toil and pain can procure
-            him some here ways.
-          </p>
-        </div>
-      </div> -->
+    <div class="carousel-inner home">
       @foreach($banners as $banner)
       <div class="carousel-item {{ ($loop->index+1 == 1)?'active':'' }}">
         <img src="public/uploads/images/Banner/{{$banner->banner}}" class="d-block w-100" alt="..." />
@@ -59,7 +31,6 @@
         </div>
       </div>
       @endforeach
-
     </div>
     <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -79,10 +50,13 @@
         <form action="{{route('getFilterRoom')}}" method="POST">
           <input type="hidden" name="_token" value="{{csrf_token()}}">
           <div class="oto">
-            <input type="date" name="searchFromDate" placeholder="Arrive Date" />
+            <input type="date" name="searchFromDate" min="<?php echo date("Y-m-d") ?>" placeholder="Arrive Date" value="{{old('searchFromDate')}}"/>
           </div>
           <div class="oto">
-            <input type="date" name="searchToDate" placeholder="Depart Date" />
+            <input type="date" name="searchToDate" min="<?php echo date("Y-m-d", strtotime(date('Y-m-d') . "+1 days")); ?>" placeholder="Depart Date" value="{{old('searchToDate')}}"/>
+            @error('searchToDate')
+            <small class="error help-block" style="color:white">{{$message}}</small>
+            @enderror
           </div>
           <div class="oto">
             <select name="guest" id="">
@@ -102,7 +76,7 @@
             </select>
           </div>
           <div class="oto nut">
-            <button type="submit">Check Now</button>
+            <button type="submit">Search Now</button>
           </div>
         </form>
       </div>

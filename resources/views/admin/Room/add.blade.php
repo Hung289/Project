@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Diện tích phòng</label>
-                                    <input type="number" name="area" min="30" max="100" class="form-control" placeholder="Nhập diện tích phòng" value="{{old('area')}}">
+                                    <input type="number" name="area" min="30" max="150" class="form-control" placeholder="Nhập diện tích phòng" value="{{old('area')}}">
                                     @error('area')
                                     <small class="error help-block" style="color:red">{{$message}}</small>
                                     @enderror

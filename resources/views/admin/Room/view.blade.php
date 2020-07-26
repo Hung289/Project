@@ -58,6 +58,10 @@
             <label for="">Chú thích : </label>
             <p> {!!$room->description!!}</p>
         </div>
+        <div class="form-group row">
+            <label for="">Thông tin chi tiết phòng : </label>
+            <p> {!!$room->content!!}</p>
+        </div>
     </div>
     <div class="col-md-6 bordertop khunganh">
         <h3>Các dịch vụ có sẵn</h3>

@@ -84,7 +84,8 @@ class webPageController extends Controller
 
     public function getBlogGrid()
     {
-        return view('page.blog_grid');
+        $blogs = Blog::paginate(9);
+        return view('page.blog_grid',compact('blogs'));
     }
 
     public function getBlogStand($id)
@@ -133,7 +134,7 @@ class webPageController extends Controller
     public function getRoomList(Request $request)
     {
         $roombt = Room::all();
-        $rooms = Room::where('status',0)->orderByParam()->paginate();
+        $rooms = Room::where('status',0)->orderByParam()->paginate(4);
         // dd($rooms);
         return view('page.room_list', ['rooms' => $rooms]);
     }
@@ -176,6 +177,7 @@ class webPageController extends Controller
 
     public function getRoomGrid()
     {
+        
         return view('page.room_grid');
     }
 
@@ -246,7 +248,7 @@ class webPageController extends Controller
 
     public function getRoomListMaster(Request $request,$id)
     {
-        $rooms = Room::where('category_room_id', $id)->get();
+        $rooms = Room::where('category_room_id', $id)->paginate(4);
         return view('page.room_list_master', ['rooms' => $rooms]);
     }
 

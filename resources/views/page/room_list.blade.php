@@ -84,6 +84,7 @@
                             </div>
                         </div>
                         @endforeach
+                        {{$rooms->links()}}
                     </div>
                 </div>
 
@@ -99,7 +100,7 @@
                                 <?php $check = ($rI->room_id == $room->id) ? "$rI->image" : "" ?>
                                 @if(!$check=="")
                                 <a href="{{route('roomDetail',['id'=>$room->id])}}"><img src="public/uploads/images/rooms/{{$check}}" alt="Room"></a>
-                                
+
                                 @break
                                 @endif
                                 @endforeach
@@ -124,6 +125,9 @@
                         </div>
                     </div>
                     @endforeach
+                    <div class="paginateChung">
+                        {{$rooms->links()}}
+                    </div>
                 </div>
 
                 <div style="float:right">
@@ -140,14 +144,14 @@
                                 <i class="fas fa-search"></i>
                             </div>
                             <div class="input-wrap">
-                                <input type="date" placeholder="Arrive Date" min="<?php echo date("Y-m-d")?>" name="searchFromDate">
+                                <input type="date" placeholder="Arrive Date" min="<?php echo date("Y-m-d") ?>" name="searchFromDate">
                                 @error('searchFromDate')
                                 <small class="error help-block" style="color:red">{{$message}}</small>
                                 @enderror
                             </div>
                             <div class="input-wrap">
                                 <!--  echo date("Y-m-d", strtotime (date('Y-m-d')."+1 days")); -->
-                                <input type="date" placeholder="Depart Date" min="<?php echo date("Y-m-d", strtotime (date('Y-m-d')."+1 days"));?>" name="searchToDate">
+                                <input type="date" placeholder="Depart Date" min="<?php echo date("Y-m-d", strtotime(date('Y-m-d') . "+1 days")); ?>" name="searchToDate">
                                 @error('searchToDate')
                                 <small class="error help-block" style="color:red">{{$message}}</small>
                                 @enderror
