@@ -155,6 +155,26 @@
       })
     })
   </script>
+  <script>
+    $(function(){
+      $(document).on('change', '.nutstatusRoom', function() {
+        var isChecked = $(this).is(":checked") ? 0 : 1;
+        var _token = $('meta[name="csrf-token"]').attr('content');
+        var url = $(this).attr('url');
+        $.ajax({
+          url: url,
+          type: "POST",
+          data: {
+            'status': isChecked,
+            '_token': _token,
+          },
+          success: function(response) {
+
+          },
+        })
+      });
+    });
+  </script>
 
   @include('admin.js')
   @include('page.ms')

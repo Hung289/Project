@@ -41,7 +41,31 @@
         @endforeach
         @endforeach
     </div>
+    <div class="col-md-12 chitietnguoi">
+        <label for="">Thông tin người đặt phòng</label>
+        <br>
+        <div class="form-group row">
+            <label for="">Tên người đặt phòng : </label>
+            <p> {{$order->customer->name}}</p>
+        </div>
+        <div class="form-group row">
+            <label for="">email : </label>
+            <p> {{$order->customer->email}}</p>
+        </div>
+        <div class="form-group row">
+            <label for="">Số điện thoại : </label>
+            <p> {{$order->customer->phone}}</p>
+        </div>
+        <div class="form-group row">
+            <label for="">Địa chỉ : </label>
+            <p> {{$order->customer->address}}</p>
+        </div>
+        <div class="form-group row">
+            <label for="">Giới tính : </label>
+            <p> {{($order->customer->gender == 0)? "Nam" : "Nữ"}}</p>
+        </div>
+    </div>
 </div>
 @endif
 @endforeach
-<p>Tổng tiền cho phòng này: ${{number_format($order->total_price)}}</p>
+<p>Tổng tiền cho phòng này: <span style="color:red;font-size:25px"> ${{number_format($order->total_price)}}</span></p>

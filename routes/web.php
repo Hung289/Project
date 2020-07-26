@@ -188,6 +188,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => 'auth'
         'reviewRoom'=>'ReviewRoomController'
     ]);
     
+    Route::post('post-update-status-room/{id}','RoomController@updateStatusRoom')->name('room.updateStatusRoom');
     Route::post('post-update-status/{id}','ReviewRoom2Controller@update')->name('reviewRoom2.update');
     
 

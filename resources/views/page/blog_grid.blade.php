@@ -33,7 +33,7 @@
                             @endif
                             @endforeach
                         </div>
-                        <div class="post-desc" style="height:360px">
+                        <div class="post-desc" style="height:360px;overflow:hidden">
                             <ul class="blog-meta list-inline">
                                 <li><a href="{{route('blogDetail',[$blog->id])}}"><i class="fas fa-calendar-alt"></i>{{$blog->updated_at}}</a></li>
                             </ul>

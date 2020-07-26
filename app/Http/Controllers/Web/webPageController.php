@@ -131,11 +131,10 @@ class webPageController extends Controller
         return view('page.gallery', ['rooms' => $rooms, 'RoomImages' => $RoomImages]);
     }
 
-    public function getRoomList(Request $request)
+    public function getRoomList(Request $request,RoomStar $roomStar)
     {
         $roombt = Room::all();
         $rooms = Room::where('status',0)->orderByParam()->paginate(4);
-        // dd($rooms);
         return view('page.room_list', ['rooms' => $rooms]);
     }
 
@@ -192,13 +191,17 @@ class webPageController extends Controller
         $room = Room::where('id', $id)->first();
         $rImage = RoomImage::where('room_id', $id)->first();
         $roomStars = $roomStar->calAvg($id);
+        
+        
+        $numberStar = intval(round($roomStars['bien5'], 0));
+        // dd($numberStar);
         $lastRoom = Room::orderBy('created_at', 'DESC')->paginate(3);
         $listCateRoom = CategoryRoom::all();
         return view('page.room_detail', [
             'room' => $room, 'rImage' => $rImage,
             'avgStarAcao' => $roomStars['bien1'], 'avgStarDes' => $roomStars['bien2'], 'avgStarTran' => $roomStars['bien3'], 'avgStarOver' => $roomStars['bien4'],
             'tb' => $roomStars['bien5'], 'lastRoom' => $lastRoom, 'listCateRoom' => $listCateRoom,
-            'listDateFormTo' => $listDateFormTo
+            'listDateFormTo' => $listDateFormTo,'numberStar'=>$numberStar
         ]);
     }
 

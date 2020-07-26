@@ -97,7 +97,7 @@
                                     </div>
                                     @endif
                                     @endforeach
-                                    <p>Tổng tiền cho phòng này: ${{number_format($order->total_price)}}</p>
+                                    <p>Tổng tiền cho phòng này: <span style="color:red;font-size:25px">${{number_format($order->total_price)}}</span></p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

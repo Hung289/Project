@@ -68,7 +68,7 @@
                                         <div class="room-price" style="margin:0px">
                                             <p>{{number_format($room->priceNight)}} $</p>
                                         </div>
-                                        <h4 style="text-overflow: ellipsis;overflow:hidden"><a href="{{route('roomDetail',['id'=>$room->id])}}">{{$room->name}}</a></h4>
+                                        <h4 style="text-overflow: ellipsis;overflow:hidden"><a href="{{route('roomDetail',['id'=>$room->id])}}">{{$room->name}}</a></h4>            
                                         <p>
                                             {!!$room->description!!}
                                         </p>

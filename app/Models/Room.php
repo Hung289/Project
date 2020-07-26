@@ -207,4 +207,12 @@ class Room extends Model
 
         return $query->paginate(40);
     }
+
+    public function updateStatusRooms()
+    {
+        $model = $this->update([
+            'status'=>request()->status
+        ]);
+        return $model;
+    }
 }

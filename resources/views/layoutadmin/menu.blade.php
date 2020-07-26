@@ -124,13 +124,13 @@
             <li class="nav-item">
               <a href="{{route('admin.categoryRoom.index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Danh Sách danh mục phòng</p>
+                <p>Danh Sách DM phòng</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{route('admin.categoryRoom.create')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Thêm mới danh mục phòng</p>
+                <p>Thêm mới DM phòng</p>
               </a>
             </li>
           </ul>
@@ -149,13 +149,13 @@
             <li class="nav-item">
               <a href="{{route('admin.categoryService.index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Danh Sách danh mục dịch vụ</p>
+                <p>Danh Sách DM dịch vụ</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{route('admin.categoryService.create')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Thêm mới danh mục dịch vụ</p>
+                <p>Thêm mới DM dịch vụ</p>
               </a>
             </li>
           </ul>
@@ -174,13 +174,13 @@
             <li class="nav-item">
               <a href="{{route('admin.categoryBlog.index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Danh Sách danh mục blog</p>
+                <p>Danh Sách DM blog</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{route('admin.categoryBlog.create')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Thêm mới danh mục blog</p>
+                <p>Thêm mới DM blog</p>
               </a>
             </li>
           </ul>

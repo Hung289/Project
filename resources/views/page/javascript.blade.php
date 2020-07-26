@@ -103,6 +103,7 @@
                 },
                 success: function(response) {
                     $("#c1").load(window.location.href + " #cc");
+                    // $("#khoisao").load(window.location.href + "#ll");
                 },
             });
         }

@@ -41,11 +41,13 @@
                     <div class="entry-header">
                         <div id="carouselExampleInterval" class="carousel slide post-thumb" data-ride="carousel">
                             <div class="carousel-inner roomD">
-                                <?php $i=0; ?>
+                                <?php $i = 0; ?>
                                 @foreach($roomImages as $rI)
                                 <?php $check = ($rI->room_id == $room->id) ? "$rI->image" : "" ?>
                                 @if(!$check=="")
-                                <div class="carousel-item <?php if($i==0){echo ' active';}      ?> ">
+                                <div class="carousel-item <?php if ($i == 0) {
+                                                                echo ' active';
+                                                            }      ?> ">
                                     <img src="public/uploads/images/rooms/{{$check}}" class="d-block w-100" alt="...">
                                 </div>
                                 <?php $i++; ?>
@@ -74,6 +76,15 @@
                             <a href="">{{$room->cateRoom->name}}</a>
                         </div>
                         <h2 class="entry-title">{{$room->name}}</h2>
+                        <div id="khoisao">
+                            <div id="ll">
+                                @for($i=1;$i<=5;$i++) @if($i<=$numberStar) <i class="fas fa-star"></i>
+                                    @else
+                                    <i class="far fa-star"></i>
+                                    @endif
+                                    @endfor
+                            </div>
+                        </div>
                         <ul class="entry-meta list-inline">
                             <li><i class="fas fa-bed"></i>{{$room->bed}} Bed</li>
                             <li><i class="fas fa-bath"></i>{{$room->bath}} Baths</li>
@@ -421,10 +432,10 @@
                         </div>
                         <form action="{{route('cart.add',['id'=>$room->id])}}" method="GET">
                             <div class="input-wrap">
-                                <input type="date" placeholder="Arrive Date" min="<?php echo date("Y-m-d")?>" name="ArriveDate">
+                                <input type="date" placeholder="Arrive Date" min="<?php echo date("Y-m-d") ?>" name="ArriveDate">
                             </div>
                             <div class="input-wrap">
-                                <input type="date" placeholder="Depart Date" min="<?php echo date("Y-m-d", strtotime (date('Y-m-d')."+1 days"));?>" name="DepartDate">
+                                <input type="date" placeholder="Depart Date" min="<?php echo date("Y-m-d", strtotime(date('Y-m-d') . "+1 days")); ?>" name="DepartDate">
                                 <i class=""></i>
                             </div>
                             <div class="input-wrap">

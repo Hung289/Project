@@ -3,10 +3,12 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+<meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Content Header (Page header) -->
     <section class="content-header">
 
     </section>
+
     <!-- Main content -->
     <!-- @if(count($errors) > 0)
     <div class="alert alert-danger">
@@ -39,6 +41,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+                        
                         <table id="myTable" class="table table-striped table-bordered dt-responsive nowrap" style="text-align: center;line-height: 100px;width:100%">
                             <thead>
                                 <tr>
@@ -64,11 +67,7 @@
                                         @endif
                                         @endforeach
                                     </td>
-                                    @if($room->status == 0)
-                                    <td>Đang trống</td>
-                                    @else
-                                    <td>Đã bị thuê</td>
-                                    @endif
+                                    <td><input type="checkbox" data-toggle="toggle" data-onstyle="primary" url="{{route('admin.room.updateStatusRoom',['id'=>$room->id])}}" class="nutstatusRoom" data-nutstatusRoom="{{$room->id}}" @if($room->status == 0) checked @endif></td>
                                     <!-- <td>{{$room->user->name}}</td> -->
                                     <td>
                                         <button type="button" url="{{route('admin.room.show',['room'=>$room->id])}}" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-success xemchitiet">
@@ -95,7 +94,7 @@
         <!-- /.row -->
     </section>
     <!-- /.content -->
-    
+
     @include('admin.modal')
 </div>
 

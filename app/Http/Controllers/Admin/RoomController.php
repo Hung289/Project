@@ -145,4 +145,11 @@ class RoomController extends Controller
                     $roomImage = RoomImage::all();
         return view('admin.Room.list',['rooms'=>$rooms,'roomImage'=>$roomImage]);
     }
+
+    public function updateStatusRoom($id)
+    {
+        $room = Room::find($id);
+        $model = $room->updateStatusRooms();
+        return redirect()->back()->with('success','Cập nhật thành công danh mục');
+    }
 }

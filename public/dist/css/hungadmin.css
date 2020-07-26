@@ -41,6 +41,10 @@
 .chitietdon{
     border-right: 1px dashed gray;
 }
+.chitietnguoi{
+    border-top: 1px dashed gray;
+    padding-top: 20px;
+}
 .dongdichvu p{
     margin: 5px 0px;
 }

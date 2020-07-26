@@ -73,7 +73,7 @@
                             <small class="error help-block" style="color:red">{{$message}}</small>
                             @enderror
                         </div>
-                        <button class="btn btn-primary">Place order</button>
+                        <button class="btn btn-primary" style="padding:20px 20px;border-radius:50px">Place order</button>
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                     </form>
                 </div>
@@ -134,7 +134,7 @@
                                 </li>
                             </ul>
                         </nav>
-                        <button type="submit">Place order</button>
+                        
                     </div>
                 </div>
             </div>

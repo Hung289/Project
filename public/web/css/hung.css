@@ -1874,6 +1874,18 @@ a.read-more {
 }
 
 /* ===================================Trang RoomDetail ================================= */
+.chitietphong .comment-area .comment-list li .comment-autor img{
+    height: 100%;
+}
+.chitietphong #khoisao{
+    margin-bottom: 20px;
+}
+.chitietphong #khoisao .fas{
+    color: #fea116;
+}
+.chitietphong #khoisao .far{
+    color: #fea116;
+}
 .chitietphong .khoitime {
     padding-bottom: 20px;
 }
@@ -1898,7 +1910,7 @@ a.read-more {
     margin-bottom: 50px;
 }
 .chitietphong .comment-area .comment-list li ul.children li {
-    margin-bottom: 0;
+    margin-bottom: 15px;
     margin-top: 50px;
 }
 .chitietphong .comment-area i {
@@ -2467,6 +2479,9 @@ p {
 }
 
 /* =========================================Trang blogs Details==================================== */
+.tinchitiet .comment-area .comment-list li .comment-autor img{
+    height: 100%;
+}
 .tinchitiet .post-thumb img {
     width: 100%;
 }
@@ -2487,7 +2502,7 @@ p {
     margin-bottom: 50px;
 }
 .tinchitiet .comment-area .comment-list li ul.children li {
-    margin-bottom: 0;
+    margin-bottom: 15px;
     margin-top: 50px;
 }
 .tinchitiet .comment-area i {
