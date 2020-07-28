@@ -205,6 +205,26 @@ footer {
 .footerlogo img {
     float: left;
 }
+.header .khoianh{
+    float: left;
+    width: 50px;
+    margin-right: 5px;
+}
+.header .chulogo{
+    float: left;
+    color: black; 
+}
+.header .chulogo .to {
+    font-family: OpenSans-Bold;
+    font-size: 20px;
+}
+.header .chulogo .nho {
+    font-family: OpenSans-Bold;
+    font-size: 11px;
+}
+.header .chulogo p {
+    margin: 0px;
+}
 .footerlogo .chulogo {
     float: left;
     color: white;

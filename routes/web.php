@@ -185,9 +185,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => 'auth'
         'banner'=>'BannerController',
         'role'=>'RoleController',
         'order'=>'OrderController',
-        'reviewRoom'=>'ReviewRoomController'
+        'reviewRoom'=>'ReviewRoomController',
+        'system'=>'SystemController'
     ]);
-    
+    Route::post('post-system-3','SystemController@store3')->name('system.store3');
+    Route::post('post-system-2','SystemController@store2')->name('system.store2');
+    Route::put('update-2/{system}','SystemController@update2')->name('system.update2');
+    Route::put('update-3/{system}','SystemController@update3')->name('system.update3');
     Route::post('post-update-status-room/{id}','RoomController@updateStatusRoom')->name('room.updateStatusRoom');
     Route::post('post-update-status/{id}','ReviewRoom2Controller@update')->name('reviewRoom2.update');
     

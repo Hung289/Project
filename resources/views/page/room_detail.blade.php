@@ -240,32 +240,32 @@
                                                         <div class="single-bar">
                                                             <p class="bar-title">Acaommodation
                                                                 <span>{{number_format($avgStarAcao,2)}}</span></p>
-                                                            <div class="bar" data-width="80%">
-                                                                <div class="bar-inner" style="width: 80%;"></div>
+                                                            <div class="bar" data-width="{{$avgStarAcao}}%">
+                                                                <div class="bar-inner" style="width:{{($avgStarAcao/5*100)}}%;"></div>
                                                             </div>
                                                         </div>
                                                         <!-- Single bar -->
                                                         <div class="single-bar">
                                                             <p class="bar-title">Destination
                                                                 <span>{{number_format($avgStarDes,2)}}</span></p>
-                                                            <div class="bar" data-width="60%">
-                                                                <div class="bar-inner" style="width: 60%;"></div>
+                                                            <div class="bar" data-width="{{$avgStarDes}}%">
+                                                                <div class="bar-inner" style="width: {{$avgStarDes/5*100}}%;"></div>
                                                             </div>
                                                         </div>
                                                         <!-- Single bar -->
                                                         <div class="single-bar">
                                                             <p class="bar-title">Transport
                                                                 <span>{{number_format($avgStarTran,2)}}</span></p>
-                                                            <div class="bar" data-width="70%">
-                                                                <div class="bar-inner" style="width: 70%;"></div>
+                                                            <div class="bar" data-width="{{$avgStarTran}}%">
+                                                                <div class="bar-inner" style="width: {{$avgStarTran/5*100}}%;"></div>
                                                             </div>
                                                         </div>
                                                         <!-- Single bar -->
                                                         <div class="single-bar">
                                                             <p class="bar-title">Overall
                                                                 <span>{{number_format($avgStarOver,2)}}</span></p>
-                                                            <div class="bar" data-width="90%">
-                                                                <div class="bar-inner" style="width: 90%;"></div>
+                                                            <div class="bar" data-width="{{$avgStarOver}}%">
+                                                                <div class="bar-inner" style="width: {{$avgStarOver/5*100}}%;"></div>
                                                             </div>
                                                         </div>
                                                     </div>

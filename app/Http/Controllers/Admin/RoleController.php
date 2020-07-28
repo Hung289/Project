@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Route;
+use App\Http\Requests\Role\RoleAddRequest;
+use App\Http\Requests\Role\RoleEditRequest;
 
 class RoleController extends Controller
 {
@@ -17,6 +19,7 @@ class RoleController extends Controller
     public function index()
     {
         $data = Role::paginate(15);
+        
         return view('admin.Role.list', compact('data'));
     }
 
@@ -47,16 +50,10 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required'
-        ], [
-            'name.required' => 'Tên Nhóm quyền không được bỏ trống'
-        ]);
-        
+    public function store(RoleAddRequest $request)
+    {   
         // dd($request->route);
-        $routes = json_encode($request->route); //db không lưu được bảng . Câu lệnh này chuyển mảng thành chuỗi json để lưu vao db
+        $routes = json_encode($request->route); //db không lưu được mảng . Câu lệnh này chuyển mảng thành chuỗi json để lưu vao db
         // dd($routes);
         Role::create([
             'name' => $request->name,
@@ -109,14 +106,8 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(RoleEditRequest $request, Role $role)
     {
-        $request->validate([
-            'name' => 'required'
-        ], [
-            'name.required' => 'Tên Nhóm quyền không được bỏ trống'
-        ]);
-        
         $routes = json_encode($request->route); //db không lưu được bảng . Câu lệnh này chuyển mảng thành chuỗi json để lưu vao db
         // dd($routes);
         $role->update([

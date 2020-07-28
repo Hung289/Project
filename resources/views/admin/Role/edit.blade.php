@@ -22,11 +22,11 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Thêm mới dịch vụ</h3>
+                            <h3 class="card-title">Chỉnh sửa quyền</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -62,29 +62,7 @@
                     <!-- /.card -->
 
                 </div>
-                <div class="col-md-4">
-                    <!-- general form elements disabled -->
-                    <div class="card card-warning">
-                        <div class="card-header">
-                            <h3 class="card-title">Xem Trước hình ảnh</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form role="form">
-
-                                <div class="form-group">
-                                    <div>
-                                        <div id="preview"></div>
-                                    </div>
-                                </div>
-
-                            </form>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-
-                </div>
+                
                 <!--/.col (right) -->
             </div>
             <!-- /.row -->

@@ -5,7 +5,9 @@
         <div class="col-xl-6 col-lg-7 col-md-6">
           <ul class="top-contact-info list-inline">
             <li>
-              <i class="fas fa-map-marker-alt"></i>205 Main Rood, New York
+              <i class="fas fa-map-marker-alt"></i>@foreach($address as $a)
+              {{$a->data}}
+              @endforeach
             </li>
           </ul>
         </div>

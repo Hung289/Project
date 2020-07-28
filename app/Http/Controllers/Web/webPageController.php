@@ -22,6 +22,7 @@ use App\Models\CommentBlog;
 use App\Models\RoomStar;
 use App\Models\Brand;
 use App\Models\OrderDetailService;
+use App\Models\System;
 use Session;
 use App\Http\Requests\Date\DateRequest;
 use Illuminate\Support\Facades\DB;
@@ -29,6 +30,8 @@ use App\Http\Requests\User\CustomerRequest;
 use App\Http\Requests\LoginWeb\LoginWebAddRequest;
 use App\Http\Requests\RegisterWeb\RegisterWebAddRequest;
 use Illuminate\Support\Facades\Mail;
+
+use function GuzzleHttp\json_decode;
 
 class webPageController extends Controller
 {
@@ -62,14 +65,26 @@ class webPageController extends Controller
 
     public function indexWeb()
     {
+        $systems = System::all();
+        // dd($systems);
+        $email = System::where('key','email')->get();
+        $hostline = System::where('key','hostline')->get();
+        $iconSocial = System::where('key','iconSocial')->get();
+        foreach($iconSocial as $iS){
+            $mangIcon = json_decode($iS->data);
+        }
+        $address = System::where('key','address')->get();
+
+
         $Services = CategoryService::paginate(3);
+        
         $rooms = Room::paginate(6);
         $banners = Banner::all();
         $commentBlogs = CommentBlog::all();
         $blogNew = Blog::where('new', 0)->first();
         $blogs = Blog::limit(3)->get();
         $room_all = Room::all();   
-        return view('page.home', ['room_all'=>$room_all,'Services' => $Services, 'rooms' => $rooms, 'banners' => $banners, 'commentBlogs' => $commentBlogs, 'blogNew' => $blogNew, 'blogs' => $blogs]);
+        return view('page.home', ['address'=>$address,'mangIcon'=>$mangIcon,'hostline'=>$hostline,'email'=>$email,'room_all'=>$room_all,'Services' => $Services, 'rooms' => $rooms, 'banners' => $banners, 'commentBlogs' => $commentBlogs, 'blogNew' => $blogNew, 'blogs' => $blogs]);
     }
 
     public function getAbout()

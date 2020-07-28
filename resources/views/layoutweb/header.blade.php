@@ -4,13 +4,23 @@
       <div class="col-lg-4 col-md-3 col-7">
         <div class="logoandphone justify-content-between align-items-center">
           <div class="logo">
-            <a href="{{route('indexWeb')}}">
-              <img src="public/web/images/img/logo-transparent.png" alt="Avson" />
-            </a>
+            <div class="khoianh">
+              <a href="{{route('indexWeb')}}">
+                @foreach($logo as $l)
+                <img src="public/uploads/images/System/{{$l->data}}" alt="" />
+                @endforeach
+              </a>
+            </div>
+            <div class="chulogo">
+              <p class="to">Avson</p>
+              <p class="nho">Hotel & room Services</p>
+            </div>
           </div>
           <div class="phonenumber">
             <i class="fas fa-phone"></i>
-            +89 (456) 789 999
+            @foreach($hostline as $e)
+            {{$e->data}}
+            @endforeach
           </div>
         </div>
       </div>
@@ -122,7 +132,7 @@
         <a href="" class="nutuser"><i class="fas fa-user"></i></a>
         <div class="thongTinUser">
           <div class="thoat"><i class="fas fa-times"></i></div>
-          
+
           <div class="noidunghienthi">
             <nav>
               @if(!Auth::check())

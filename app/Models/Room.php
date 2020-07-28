@@ -96,7 +96,7 @@ class Room extends Model
             $images = request()->file('files');
             foreach ($images as $img) {
                 $img_name = $img->getClientOriginalName();
-                $img->move(base_path('Public/uploads/images/rooms'), $img_name);
+                $img->move(base_path('public/uploads/images/rooms'), $img_name);
                 RoomImage::create([
                     'image' => $img_name,
                     'room_id' => $this->id
