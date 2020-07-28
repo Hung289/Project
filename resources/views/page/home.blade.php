@@ -50,10 +50,10 @@
         <form action="{{route('getFilterRoom')}}" method="POST">
           <input type="hidden" name="_token" value="{{csrf_token()}}">
           <div class="oto">
-            <input type="date" name="searchFromDate" min="<?php echo date("Y-m-d") ?>" placeholder="Arrive Date" value="{{old('searchFromDate')}}"/>
+            <input type="date" name="searchFromDate" min="<?php echo date("Y-m-d") ?>" placeholder="Arrive Date" value="{{old('searchFromDate')}}" />
           </div>
           <div class="oto">
-            <input type="date" name="searchToDate" min="<?php echo date("Y-m-d", strtotime(date('Y-m-d') . "+1 days")); ?>" placeholder="Depart Date" value="{{old('searchToDate')}}"/>
+            <input type="date" name="searchToDate" min="<?php echo date("Y-m-d", strtotime(date('Y-m-d') . "+1 days")); ?>" placeholder="Depart Date" value="{{old('searchToDate')}}" />
             @error('searchToDate')
             <small class="error help-block" style="color:white">{{$message}}</small>
             @enderror
@@ -371,7 +371,9 @@
             @foreach($blogImages as $bI)
             <?php $check = ($bI->blog_id == $blog->id) ? "$bI->image" : "" ?>
             @if($check!="")
-            <img src="public/uploads/images/Blog/{{$check}}" alt="" />
+            <a href="{{route('blogDetail',['id'=>$blog->id])}}">
+              <img src="public/uploads/images/Blog/{{$check}}" alt="" />
+            </a>
             @break
             @endif
             @endforeach
@@ -382,7 +384,8 @@
               {{$blog->created_at}}
             </div>
             <div class="row2">
-              {{$blog->name}}
+              <a href="{{route('blogDetail',['id'=>$blog->id])}}">{{$blog->name}}</a>
+
             </div>
             <div class="row3">
               <a href="{{route('blogDetail',['id'=>$blog->id])}}">READ MORE <i class="fas fa-arrow-right"></i></a>

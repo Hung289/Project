@@ -459,8 +459,15 @@ footer .footerUnderRight nav ul li:hover {
 }
 #ourstore .khoiduoianh {
     padding: 40px 30px;
+    overflow: hidden;
 }
-
+#ourstore .khoiduoianh a{
+    color: black;
+    transition: all 0.4s ease-out 0s;
+}
+#ourstore .khoiduoianh a:hover{
+    color: #fea116;
+}
 /* Phần client feedback */
 #Clients {
     height: auto;

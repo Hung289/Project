@@ -14,7 +14,8 @@ class AddAttributeBrandIdIntoRoomsTable extends Migration
     public function up()
     {
         Schema::table('rooms', function (Blueprint $table) {
-            $table->integer('brand_id');
+            $table->integer('brand_id')->unsigned();
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');         
         });
     }
 
