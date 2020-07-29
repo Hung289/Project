@@ -26,7 +26,7 @@
                 <div class="thongtinuser">
                   <ul class="menuuser">
                     <li><a href="{{route('CustomerInfor',['id'=>Auth::User()->id])}}">Thông tin tài khoản</a> </li>
-                    <li><a href="{{route('historyBooking')}}">Lịch sử đơn hàng</a></li>
+                    <li><a href="{{route('historyBooking')}}">Lịch sử đặt phòng</a></li>
                   </ul>
                 </div>
               </li>

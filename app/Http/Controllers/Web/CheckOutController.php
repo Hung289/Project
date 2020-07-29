@@ -77,7 +77,7 @@ class CheckOutController extends Controller
         Mail::send('email.booking', [
             'order' => $order,
             'room' => $cart->items,
-            'service' => $cart->services,
+            // 'service' => $cart->services,
             'c_name' => $c_name
         ], function ($mail) use ($c_email, $c_name) {
             $mail->to($c_email, $c_name);

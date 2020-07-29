@@ -149,7 +149,7 @@
                   <a href="{{route('CustomerInfor',['id'=>Auth::User()->id])}}">{{Auth::User()->email}}</a>
                 </li>
                 <li><a href="{{route('CustomerInfor',['id'=>Auth::User()->id])}}">Thông tin tài khoản <i class="fas fa-user"></i></a> </li>
-                <li><a href="{{route('historyBooking')}}">Lịch sử đơn hàng <i class="fas fa-history"></i></a></li>
+                <li><a href="{{route('historyBooking')}}">Lịch sử đặt phòng <i class="fas fa-history"></i></a></li>
                 <li><a href="{{route('getLogoutWeb')}}">Logout <i class="fas fa-sign-out-alt"></i></a></li>
               </ul>
               @endif
