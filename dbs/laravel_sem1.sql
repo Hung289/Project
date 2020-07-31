@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 23, 2020 lúc 03:23 AM
+-- Thời gian đã tạo: Th7 31, 2020 lúc 05:12 AM
 -- Phiên bản máy phục vụ: 10.4.8-MariaDB
 -- Phiên bản PHP: 7.3.11
 
@@ -44,9 +44,9 @@ CREATE TABLE `banners` (
 --
 
 INSERT INTO `banners` (`id`, `name`, `content`, `banner`, `ordering`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Luxury Hotel', 'dưd', 'hero-bg-2.jpg', 0, 0, '2020-06-30 15:00:34', '2020-06-30 15:00:34'),
-(4, 'Hotel View', 'dêd', 'cat-03.jpg', 0, 0, '2020-07-02 01:24:47', '2020-07-02 01:24:47'),
-(5, 'Luxyry Hotel & Room Service Agency', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, consectetur iure dolore eveniet adipisci, totam repellendus quia, esse cumque dolorem, eum impedit quam! Blanditiis quasi, debitis eaque dolorem aspernatur ducimus.', 'cat-02.jpg', 0, 0, '2020-07-02 01:54:23', '2020-07-02 01:54:23');
+(2, 'Couple & Room Service Agency', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, consectetur iure dolore eveniet adipisci, totam repellendus quia, esse cumque dolorem, eum impedit quam! Blanditiis quasi, debitis eaque dolorem aspernatur ducimus.', 'Room3_4.jpg', 0, 0, '2020-06-30 15:00:34', '2020-07-26 03:52:07'),
+(4, 'Hotel View & Room Service Agency', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, consectetur iure dolore eveniet adipisci, totam repellendus quia, esse cumque dolorem, eum impedit quam! Blanditiis quasi, debitis eaque dolorem aspernatur ducimus.', 'Room5_2.jpg', 0, 0, '2020-07-02 01:24:47', '2020-07-26 03:49:44'),
+(5, 'Luxyry Hotel & Room Service Agency', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, consectetur iure dolore eveniet adipisci, totam repellendus quia, esse cumque dolorem, eum impedit quam! Blanditiis quasi, debitis eaque dolorem aspernatur ducimus.', 'Blogthu3_2.jpg', 0, 0, '2020-07-02 01:54:23', '2020-07-26 03:48:19');
 
 -- --------------------------------------------------------
 
@@ -72,10 +72,10 @@ CREATE TABLE `blogs` (
 --
 
 INSERT INTO `blogs` (`id`, `name`, `content`, `title`, `status`, `category_blog_id`, `user_id`, `created_at`, `updated_at`, `new`) VALUES
-(17, 'Blog1', 'dddddddddddddddddddddddddttttttttttttttttttttttttttttttttttt<br>hyyyyyyyyyyyyyyyyyy<br>nnnnnnnnnnnnnnnnnnnn<br>ggggggggggggggggg', 'ưdwdưdwdwddddddddddddddddddd', 0, 7, 44, '2020-07-20 04:52:31', '2020-07-20 04:52:31', 0),
-(18, 'Blog thứ 2', 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee<br>dddddddddddddddddddddddddddddddd<br>fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff<br>ggggggggggggggggggggggggggggggggggggg<br>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh<br>jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj<br>kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk', 'Tiêu đề blog thứ 2', 0, 7, 50, '2020-07-22 06:47:03', '2020-07-22 06:47:03', 0),
-(19, 'Blog thứ 3', 'ooooooooooooooooooooooooooooooooooooooo<br>llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll<br>kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk<br>jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj<br>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh<br>gggggggggggggggggggggggggggggggggggggggg', 'Đây là blog thứ 3', 0, 8, 50, '2020-07-22 07:13:26', '2020-07-22 07:13:26', 0),
-(20, 'Blog thứ 4', 'ccccccccccccccccccccccccccccccccccccccccccccc<br>vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv<br>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb<br>nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn<br>mmmmmmmmmmmmmmmmmmmmmmmmmmmm<br>yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy<br>ttttttttttttttttttttttttttttttttttttttttttttt', 'Đây là blog thứ 4', 0, 8, 50, '2020-07-22 07:15:52', '2020-07-22 07:17:37', 1);
+(23, 'Hawaii Luxury Suites - Yalarent', '<div id=\"summary\" class=\"\" data-et-mouseenter=\"customGoal:BUeeZaTaTaBEKMPXLae:1\r\ncustomGoal:BUeeHNSPMWdMOdUBMHT:1\r\ncustomGoal:BUeeHNSPdQEeWFWZTDWFC:1\r\ncustomGoal:BUeeHNSPMWdMOdUEXXO:1\r\ncustomGoal:BUeeHNSPdQEeXXaNSPRXXe:1\r\ncustomGoal:BUeePHOOSINEGO:1\r\ncustomGoal:BUeeHNSPVadIaCKe:1\r\ncustomGoal:BUeeHNSPCaASBaRDSGEXO:1 customGoal:BUeeZdbaBMRbBYWKOBLHXT:1\" data-et-click=\"customGoal:BUeeZaTaTaBEKMPXLae:2\r\ncustomGoal:BUeeHNSPMWdMOdUBMHT:2\r\ncustomGoal:BUeeHNSPdQEeWFWZTDWFC:2\r\ncustomGoal:BUeeHNSPMWdMOdUEXXO:2\r\ncustomGoal:BUeeHNSPdQEeXXaNSPRXXe:2\r\ncustomGoal:BUeePHOOSINEGO:2\r\ncustomGoal:BUeeHNSPVadIaCKe:2\r\ncustomGoal:BUeeHNSPCaASBaRDSGEXO:2 customGoal:BUeeZdbaBMRbBYWKOBLHXT:2\">\r\n<div id=\"property_description_content\">\r\n<p>Nằm tại thành phố Eilat thuộc Vùng phía Nam của Israel, cách Bãi biển Kisuski 1 km, Hawaii Luxury Suites có WiFi miễn phí, sân chơi cho trẻ em, vườn và chỗ đỗ xe riêng miễn phí.</p>\r\n<p>Mỗi căn hộ tại đây đều được bố trí bếp với lò vi sóng và tủ lạnh, TV màn hình phẳng với truyền hình vệ tinh, tiện nghi ủi, bàn và khu vực ghế ngồi với ghế sofa. Ngoài ra, phòng còn có phòng tắm riêng đầy đủ tiện nghi với vòi sen và máy sấy tóc.</p>\r\n<p>Căn hộ cũng có sân hiên.</p>\r\n<p>Hawaii Luxury Suites cách Bãi biển Moriah 1,3 km và Bãi biển Dekel 1,5 km. Sân bay gần nhất là sân bay Eilat Ramon, cách chỗ nghỉ 21 km. Chỗ nghỉ cung cấp dịch vụ đưa đón sân bay với một khoản phụ phí.</p>\r\n</div>\r\n</div>\r\n<p class=\"hp-desc-review-highlight hp-desc-traveller-type--ph-v0\">Các cặp đôi đặc biệt thích địa điểm này — họ cho điểm <strong>9,1</strong> cho kỳ nghỉ dành cho 2 người.</p>', 'Nằm tại thành phố Eilat thuộc Vùng phía Nam của Israel, cách Bãi biển Kisuski 1 km, Hawaii Luxury Suites có WiFi miễn phí, sân chơi cho trẻ em, vườn và chỗ đỗ xe riêng miễn phí.', 0, 18, 44, '2020-07-24 01:57:44', '2020-07-24 01:57:44', 0),
+(24, 'Club Hotel Eilat - 5 Stars Superior', '<div id=\"summary\" class=\"\" data-et-mouseenter=\"customGoal:BUeeZaTaTaBEKMPXLae:1\r\ncustomGoal:BUeeHNSPMWdMOdUBMHT:1\r\ncustomGoal:BUeeHNSPdQEeWFWZTDWFC:1\r\ncustomGoal:BUeeHNSPMWdMOdUEXXO:1\r\ncustomGoal:BUeeHNSPdQEeXXaNSPRXXe:1\r\ncustomGoal:BUeePHOOSINEGO:1\r\ncustomGoal:BUeeHNSPVadIaCKe:1\r\ncustomGoal:BUeeHNSPCaASBaRDSGEXO:1 customGoal:BUeeZdbaBMRbBYWKOBLHXT:1\" data-et-click=\"customGoal:BUeeZaTaTaBEKMPXLae:2\r\ncustomGoal:BUeeHNSPMWdMOdUBMHT:2\r\ncustomGoal:BUeeHNSPdQEeWFWZTDWFC:2\r\ncustomGoal:BUeeHNSPMWdMOdUEXXO:2\r\ncustomGoal:BUeeHNSPdQEeXXaNSPRXXe:2\r\ncustomGoal:BUeePHOOSINEGO:2\r\ncustomGoal:BUeeHNSPVadIaCKe:2\r\ncustomGoal:BUeeHNSPCaASBaRDSGEXO:2 customGoal:BUeeZdbaBMRbBYWKOBLHXT:2\">\r\n<div id=\"property_description_content\">\r\n<p>Nằm trong bán kính chỉ 5 phút đi bộ từ biển tại thành phố Eilat, Club Hotel Eilat có khuôn viên rộng trên 4 ha bao gồm công viên nước và các khu vườn với thác nước. Nơi nghỉ còn có spa và nhà hàng.</p>\r\n<p>Các suite và studio máy lạnh tại Club Hotel có bếp nhỏ đầy đủ vật dụng và khu vực tiếp khách. Hầu hết chỗ nghỉ đều cung cấp tầm nhìn toàn cảnh ra biển, hồ bơi và khu vườn.</p>\r\n<p>Quý khách có thể thư giãn tại spa với phòng xông hơi khô, bể sục và phòng tập thể dục. Quý khách còn có thể đặt dịch vụ mát-xa tại đây. Phòng trò chơi và bóng bàn cũng được cung cấp.</p>\r\n<p>Bãi biển của thành phố Eilat cách khách sạn chỉ 70 m trong khi đầm phá và cảng đều cách đó 15 phút đi bộ.</p>\r\n</div>\r\n</div>\r\n<p class=\"geo_information\">Đây là khu vực ở Eilat mà khách yêu thích, theo các đánh giá độc lập.</p>\r\n<p class=\"hp-desc-review-highlight hp-desc-traveller-type--ph-v0\">Các cặp đôi đặc biệt thích địa điểm này — họ cho điểm <strong>9,1</strong> cho kỳ nghỉ dành cho 2 người.</p>', '<h3 class=\"top_pick_heading\"><em>Tận hưởng dịch vụ đỉnh cao, đẳng cấp thế giới tại Club Hotel Eilat - 5 Stars Superior</em></h3>', 0, 18, 44, '2020-07-24 02:20:32', '2020-07-24 02:22:11', 0),
+(25, 'Set near the marina at the northern coast of Eilat', '<p>Set near the marina at the northern coast of Eilat, the hotel Pegasus offers 2 outdoor pools, a restaurant and free parking. It is a 10-minute walk from the beach on the Red Sea, and Eilat\'s city centre.</p>\r\n<p>Pegasus hotel is designed in an elegant oriental style, each room is air conditioned and includes an LCD cable TV, fridge and tea-and-coffee maker. All rooms have a private bathroom with a shower. Some rooms overlook the pool area, and some even have a private terrace.</p>\r\n<p>The restaurant serves healthy and nutritious meals and a buffet breakfast including breads, cheese and hummus. For dinner guests can choose from the extensive menu featuring local and international cuisine and a children\'s menu.</p>\r\n<p>Adult and children\'s pools are located in the hotel’s inner courtyard and are surrounded by palm trees and sun beds.</p>', 'Set near the marina at the northern coast of Eilat, the hotel Pegasus offers 2 outdoor pools, a restaurant and free parking. It is a 10-minute walk from the beach on the Red Sea, and Eilat\'s city centre.', 0, 16, 44, '2020-07-24 02:48:25', '2020-07-24 02:48:25', 0),
+(26, 'Restart Accommodations Rome', '<div id=\"summary\" class=\"\" data-et-mouseenter=\"customGoal:BUeeZaTaTaBEKMPXLae:1\r\ncustomGoal:BUeeHNSPMWdMOdUBMHT:1\r\ncustomGoal:BUeeHNSPdQEeWFWZTDWFC:1\r\ncustomGoal:BUeeHNSPMWdMOdUEXXO:1\r\ncustomGoal:BUeeHNSPdQEeXXaNSPRXXe:1\r\ncustomGoal:BUeePHOOSINEGO:1\r\ncustomGoal:BUeeHNSPVadIaCKe:1\r\ncustomGoal:BUeeHNSPCaASBaRDSGEXO:1 customGoal:BUeeZdbaBMRbBYWKOBLHXT:1\" data-et-click=\"customGoal:BUeeZaTaTaBEKMPXLae:2\r\ncustomGoal:BUeeHNSPMWdMOdUBMHT:2\r\ncustomGoal:BUeeHNSPdQEeWFWZTDWFC:2\r\ncustomGoal:BUeeHNSPMWdMOdUEXXO:2\r\ncustomGoal:BUeeHNSPdQEeXXaNSPRXXe:2\r\ncustomGoal:BUeePHOOSINEGO:2\r\ncustomGoal:BUeeHNSPVadIaCKe:2\r\ncustomGoal:BUeeHNSPCaASBaRDSGEXO:2 customGoal:BUeeZdbaBMRbBYWKOBLHXT:2\">\r\n<div id=\"property_description_content\">\r\n<p>Restart Accomodations Rome cung cấp các căn hộ tự phục vụ với sân hiên/ban công rộng rãi ở trung tâm thành phố Rome. Mỗi chỗ ở đều nằm ở vị trí lý tưởng, trong khoảng cách đi bộ từ Đấu trường La Mã hoặc Bậc thang Tây Ban Nha.</p>\r\n<p>Với phong cách trang trí hiện đại hoặc nội thất phong cách cổ điển, các căn hộ tại Restart đều rộng rãi và được trang trí đầy đủ tiện nghi. Tất cả các căn hộ đều có nhà bếp/bếp nhỏ, khu vực tiếp khách và 1 phòng ngủ trở lên.</p>\r\n<p>Những căn hộ ở trung tâm này hưởng kết nối giao thông tuyệt vời, vì ga tàu điện ngầm cách đó chưa đến 10 phút đi bộ. Khu vực sinh động xung quanh chật kín các nhà hàng, cửa hiệu và quán cà phê.</p>\r\n</div>\r\n</div>\r\n<p class=\"geo_information\">Đây là khu vực ở Roma mà khách yêu thích, theo các đánh giá độc lập.</p>\r\n<p class=\"hp-desc-review-highlight hp-desc-traveller-type--ph-v0\">Các cặp đôi đặc biệt thích địa điểm này — họ cho điểm <strong>9,5</strong> cho kỳ nghỉ dành cho 2 người.</p>', 'Restart Accomodations Rome cung cấp các căn hộ tự phục vụ với sân hiên/ban công rộng rãi ở trung tâm thành phố Rome.', 0, 16, 44, '2020-07-24 03:02:04', '2020-07-24 03:02:04', 0);
 
 -- --------------------------------------------------------
 
@@ -96,10 +96,28 @@ CREATE TABLE `blog_images` (
 --
 
 INSERT INTO `blog_images` (`id`, `image`, `blog_id`, `created_at`, `updated_at`) VALUES
-(23, 'unnamed.jpg', 17, '2020-07-20 04:52:31', '2020-07-20 04:52:31'),
-(24, 'gird-01.jpg', 18, '2020-07-22 06:47:03', '2020-07-22 06:47:03'),
-(25, 'gird-06.jpg', 19, '2020-07-22 07:13:26', '2020-07-22 07:13:26'),
-(26, 'gird-09.jpg', 20, '2020-07-22 07:15:52', '2020-07-22 07:15:52');
+(31, 'Blog1.jpg', 23, '2020-07-24 01:57:44', '2020-07-24 01:57:44'),
+(32, 'Blog2.jpg', 23, '2020-07-24 01:57:44', '2020-07-24 01:57:44'),
+(33, 'Blog3.jpg', 23, '2020-07-24 01:57:44', '2020-07-24 01:57:44'),
+(34, 'Blog4.jpg', 23, '2020-07-24 01:57:44', '2020-07-24 01:57:44'),
+(35, 'Blog5.jpg', 23, '2020-07-24 01:57:44', '2020-07-24 01:57:44'),
+(36, 'Blog1.jpg', 24, '2020-07-24 02:20:32', '2020-07-24 02:20:32'),
+(37, 'Blog2.jpg', 24, '2020-07-24 02:20:32', '2020-07-24 02:20:32'),
+(38, 'Blog3.jpg', 24, '2020-07-24 02:20:32', '2020-07-24 02:20:32'),
+(39, 'Blog4.jpg', 24, '2020-07-24 02:20:32', '2020-07-24 02:20:32'),
+(40, 'Blog5.jpg', 24, '2020-07-24 02:20:32', '2020-07-24 02:20:32'),
+(41, 'Blogthu2.jpg', 24, '2020-07-24 02:20:32', '2020-07-24 02:20:32'),
+(42, 'Blogthu3.jpg', 24, '2020-07-24 02:20:32', '2020-07-24 02:20:32'),
+(43, 'Blogthu4.jpg', 24, '2020-07-24 02:20:32', '2020-07-24 02:20:32'),
+(44, 'Blogthu3_1.jpg', 25, '2020-07-24 02:48:25', '2020-07-24 02:48:25'),
+(45, 'Blogthu3_2.jpg', 25, '2020-07-24 02:48:25', '2020-07-24 02:48:25'),
+(46, 'Blogthu3_3.jpg', 25, '2020-07-24 02:48:25', '2020-07-24 02:48:25'),
+(47, 'Blogthu4.jpg', 25, '2020-07-24 02:48:25', '2020-07-24 02:48:25'),
+(48, 'Blogthu4_1.jpg', 26, '2020-07-24 03:02:04', '2020-07-24 03:02:04'),
+(49, 'Blogthu4_2.jpg', 26, '2020-07-24 03:02:04', '2020-07-24 03:02:04'),
+(50, 'Blogthu4_3.jpg', 26, '2020-07-24 03:02:04', '2020-07-24 03:02:04'),
+(51, 'Blogthu4_4.jpg', 26, '2020-07-24 03:02:04', '2020-07-24 03:02:04'),
+(52, 'Blogthu4_5.jpg', 26, '2020-07-24 03:02:04', '2020-07-24 03:02:04');
 
 -- --------------------------------------------------------
 
@@ -120,13 +138,9 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`id`, `name`, `logo`, `created_at`, `updated_at`) VALUES
-(1, 'Khách sạn bình yên112', '01.png', '2020-06-30 03:30:09', '2020-06-30 04:53:25'),
 (2, 'Nhà nghỉ 1', '02.png', '2020-06-30 04:54:44', '2020-06-30 04:54:44'),
 (4, 'Nhà nghỉ Sóng gió', '03.png', '2020-06-30 07:18:14', '2020-06-30 07:18:14'),
-(5, 'nhà nghỉ bão bùng', '04.png', '2020-06-30 07:19:27', '2020-06-30 07:19:27'),
-(6, 'nhà nghỉ số 5', '05.png', '2020-06-30 07:36:16', '2020-06-30 07:36:16'),
-(7, 'Nhà nghỉ số 6', '06.png', '2020-06-30 07:36:30', '2020-06-30 07:36:30'),
-(8, 'thương hiệu', '14.jpg', '2020-06-30 14:12:56', '2020-06-30 14:12:56');
+(5, 'nhà nghỉ bão bùng', '04.png', '2020-06-30 07:19:27', '2020-06-30 07:19:27');
 
 -- --------------------------------------------------------
 
@@ -151,9 +165,9 @@ CREATE TABLE `category_blogs` (
 --
 
 INSERT INTO `category_blogs` (`id`, `name`, `slug`, `image`, `description`, `ordering`, `status`, `created_at`, `updated_at`) VALUES
-(7, 'Luxury Room', 'luxury-room', 'cat-01.jpg', '<p>Đ&acirc;y l&agrave; danh mục blog&nbsp;Luxury Room</p>', 0, 1, '2020-06-22 07:16:41', '2020-06-22 07:16:41'),
-(8, 'Couple Room', 'couple-room', 'cat-02.jpg', '<p>Đ&acirc;y l&agrave; danh mục dịch vụ&nbsp;Couple Room</p>', 0, 1, '2020-06-22 07:17:10', '2020-06-22 07:17:10'),
-(9, 'Hotel Views', 'hotel-views', 'cat-03.jpg', '<p>Đ&acirc;y l&agrave; danh mục&nbsp;Hotel Views</p>', 0, 1, '2020-06-22 07:17:50', '2020-06-22 07:17:50');
+(16, 'Luxury Hotel', 'luxury-hotel', 'gird-05.jpg', 'Đây là danh mục blog', 0, 1, '2020-07-24 01:42:59', '2020-07-24 01:42:59'),
+(17, 'Couple Room', 'couple-room', 'gird-06.jpg', 'Đây là danh mục Couple Room', 0, 1, '2020-07-24 01:43:42', '2020-07-24 01:43:42'),
+(18, 'Hotel View', 'hotel-view', 'gird-03.jpg', 'Đây là hotel view', 0, 1, '2020-07-24 01:53:24', '2020-07-24 01:53:24');
 
 -- --------------------------------------------------------
 
@@ -208,14 +222,11 @@ CREATE TABLE `category_services` (
 --
 
 INSERT INTO `category_services` (`id`, `name`, `slug`, `image`, `image_hover`, `description`, `ordering`, `status`, `created_at`, `updated_at`, `banner_service`, `link_video_service`) VALUES
-(6, 'Rooms & Appartment', 'rooms-appartment', '01.png', '01-hover.png', '<p>Đ&acirc;y l&agrave; damh mục&nbsp;Rooms &amp; Appartment</p>', 0, 1, '2020-06-22 07:00:20', '2020-06-22 07:00:20', 'Three-Bedroom-Balcony-Apartment-resize~three-bedroom-balcony-apartment.jpg', 'https://www.youtube.com/embed/HUyPZXS2w8Y'),
-(7, 'Food & Restaurant', 'food-restaurant', '02.png', '02-hover.png', '<p>Đ&acirc;y l&agrave;&nbsp; danh mục&nbsp;Food &amp; Restaurant</p>', 0, 1, '2020-06-22 07:02:17', '2020-06-22 07:02:17', 'food-cta.jpg', 'https://www.youtube.com/embed/767xPIjTm2A'),
-(8, 'Spa & Fitness', 'spa-fitness', '03.png', '03-hover.png', '<p>Đ&acirc;y l&agrave; danh mục&nbsp;Spa &amp; Fitness</p>', 0, 1, '2020-06-22 07:02:51', '2020-06-22 07:02:51', 'Spa_fitnes_1.jpg', 'https://www.youtube.com/embed/N3e8UXMdqOM'),
-(9, 'Sports & Gaming', 'sports-gaming', '04.png', '04-hover.png', '<p>Đ&acirc;y l&agrave; danh mục&nbsp;Sports &amp; Gaming</p>', 0, 1, '2020-06-22 07:03:20', '2020-06-22 07:03:20', 'gaming_1.jpeg', 'https://www.youtube.com/embed/bioiaThZRJA'),
-(10, 'Event & Party', 'event-party', '05.png', '05-hover.png', '<p>Đ&acirc;y l&agrave; danh mục&nbsp;Event &amp; Party</p>', 0, 1, '2020-06-22 07:03:42', '2020-06-22 07:03:42', 'party_event.jpg', 'https://www.youtube.com/embed/JXRN_LkCa_o'),
-(11, 'GYM & Yoga', 'gym-yoga', '06.png', '06-hover.png', '<p>Đ&acirc;y l&agrave; danh mục&nbsp;GYM &amp; Yoga</p>', 0, 1, '2020-06-22 07:04:04', '2020-06-22 07:04:04', 'bmw_headlights_lights_137326_3840x2400.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/qGRU3sRbaYw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
-(12, 'danh mục dịch vụ số 1', 'danh-muc-dich-vu-so-1', '2.jpg', 'screenshot_1592882837.png', 'csscscsc', 0, 1, '2020-06-27 02:16:02', '2020-07-21 01:58:32', 'camera_photographer_smoke_126548_3840x2160.jpg', 'https://www.youtube.com/embed/-vtBgNxMyZI'),
-(15, 'test', 'test', '1.jpg', '2.jpg', 'đwdwdddddddddđ', 0, 1, '2020-07-20 09:43:39', '2020-07-20 16:31:06', '2.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/qGRU3sRbaYw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>');
+(6, 'Rooms & Appartment', 'rooms-appartment', '01.png', '01-hover.png', '<p>Đây là damh mục Rooms &amp; Appartment</p>', 0, 1, '2020-06-22 07:00:20', '2020-07-24 15:00:49', 'Three-Bedroom-Balcony-Apartment-resize~three-bedroom-balcony-apartment.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/0y4rXoWrJlw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(7, 'Food & Restaurant', 'food-restaurant', '02.png', '02-hover.png', '<p>Đây là  danh mục Food &amp; Restaurant</p>', 0, 1, '2020-06-22 07:02:17', '2020-07-24 14:57:47', 'food-cta.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/767xPIjTm2A\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(8, 'Spa & Fitness', 'spa-fitness', '03.png', '03-hover.png', '<p>Đây là danh mục Spa &amp; Fitness</p>', 0, 1, '2020-06-22 07:02:51', '2020-07-24 14:36:57', 'Spa_fitnes_1.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/N3e8UXMdqOM\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(9, 'Sports & Gaming', 'sports-gaming', '04.png', '04-hover.png', '<p>Đây là danh mục Sports &amp; Gaming</p>', 0, 1, '2020-06-22 07:03:20', '2020-07-24 14:55:02', 'gaming_1.jpeg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/LkhzjNEMRzE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(10, 'Event & Party', 'event-party', '05.png', '05-hover.png', '<p>Đây là danh mục Event &amp; Party</p>', 0, 1, '2020-06-22 07:03:42', '2020-07-24 14:52:19', 'party_event.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/uFAWIKVThjA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>');
 
 -- --------------------------------------------------------
 
@@ -238,10 +249,10 @@ CREATE TABLE `comment_blogs` (
 --
 
 INSERT INTO `comment_blogs` (`id`, `user_id`, `blog_id`, `comment`, `parent`, `created_at`, `updated_at`) VALUES
-(8, 44, 17, 'ggtgt', 0, '2020-07-20 04:53:00', '2020-07-20 04:53:00'),
-(9, 44, 17, 'gtgt', 8, '2020-07-20 04:53:09', '2020-07-20 04:53:09'),
-(10, 50, 18, 'ffe', 0, '2020-07-22 07:38:58', '2020-07-22 07:38:58'),
-(11, 50, 18, 'vdvdv', 10, '2020-07-22 07:39:14', '2020-07-22 07:39:14');
+(12, 44, 26, 'đwdw', 0, '2020-07-24 03:02:32', '2020-07-24 03:02:32'),
+(13, 44, 26, 'grgrgrg', 12, '2020-07-24 03:02:41', '2020-07-24 03:02:41'),
+(14, 39, 23, 'cscs', 0, '2020-07-26 09:19:01', '2020-07-26 09:19:01'),
+(15, 39, 23, 'dwd', 14, '2020-07-26 09:20:29', '2020-07-26 09:20:29');
 
 -- --------------------------------------------------------
 
@@ -323,7 +334,22 @@ INSERT INTO `customer` (`id`, `name`, `gender`, `email`, `address`, `phone`, `no
 (146, 'hung pro 01', '0', 'nthung2896@gmail.com', 'ffrf', '0912121222', 'frfrfrfr', '2020-07-20 15:04:07', '2020-07-20 15:04:07'),
 (147, 'hung pro 01', '0', 'nthung2896@gmail.com', 'đw', '0912121222', 'đwd', '2020-07-21 08:49:15', '2020-07-21 08:49:15'),
 (148, 'hung pro 01', '0', 'nthung2896@gmail.com', 'đe', '0912121222', 'đê', '2020-07-21 14:34:07', '2020-07-21 14:34:07'),
-(149, 'hung pro 01', '0', 'nthung2896@gmail.com', 'đe', '0912121222', 'đê', '2020-07-21 14:36:55', '2020-07-21 14:36:55');
+(149, 'hung pro 01', '0', 'nthung2896@gmail.com', 'đe', '0912121222', 'đê', '2020-07-21 14:36:55', '2020-07-21 14:36:55'),
+(150, 'hung pro 01', '0', 'nthung2896@gmail.com', 'hh', '0912121222', 'hthth', '2020-07-23 04:11:55', '2020-07-23 04:11:55'),
+(151, 'hung pro 01', '0', 'nthung2896@gmail.com', 'hh', '0912121222', 'hththgggrg', '2020-07-23 04:12:19', '2020-07-23 04:12:19'),
+(152, 'hung pro 01', '0', 'nthung2896@gmail.com', 'hthth', '0912121222', 'hthththt', '2020-07-23 04:22:46', '2020-07-23 04:22:46'),
+(153, 'hùheufheuf', '0', 'Hoangminh1894@gmail.com', 'hthththt', '686868656', 'hthththth', '2020-07-23 15:37:46', '2020-07-23 15:37:46'),
+(154, 'hùheufheuf', '0', 'Hoangminh1894@gmail.com', '454545', '45354345', '5454545', '2020-07-23 15:41:50', '2020-07-23 15:41:50'),
+(155, 'hùheufheuf', '0', 'Hoangminh1894@gmail.com', '234234', '2342342', '2342424242', '2020-07-23 15:48:35', '2020-07-23 15:48:35'),
+(156, 'hung pro 01', '0', 'nthung2896@gmail.com', 'hthth', '0912121222', 'hthththt', '2020-07-24 16:32:35', '2020-07-24 16:32:35'),
+(157, 'hung pro 01', '0', 'nthung2896@gmail.com', 'Thanh xuân , Hà nội', '0912121222', 'wfwf', '2020-07-25 09:34:25', '2020-07-25 09:34:25'),
+(158, 'pro 02', '0', 'kaka123@gmail.com', 'sqsqsqs', '012345123', 'sqsqsqs', '2020-07-26 09:32:53', '2020-07-26 09:32:53'),
+(159, 'hung pro 01', '0', 'nthung2896@gmail.com', 'grgrgrg', '0912121222', 'grgrgrg', '2020-07-29 15:44:25', '2020-07-29 15:44:25'),
+(160, 'hung pro 01', '0', 'nthung2896@gmail.com', 'dưd', '0912121222', 'đwdwdw', '2020-07-29 15:51:50', '2020-07-29 15:51:50'),
+(161, 'hung pro 01', '0', 'nthung2896@gmail.com', 'dưd', '0912121222', 'đwdwdw', '2020-07-29 15:52:47', '2020-07-29 15:52:47'),
+(162, 'hung pro 01', '0', 'nthung2896@gmail.com', 'dưd', '0912121222', 'đwdwdw', '2020-07-29 15:54:57', '2020-07-29 15:54:57'),
+(163, 'hung pro 01', '0', 'nthung2896@gmail.com', 'dưd', '0912121222', 'đwdwdw', '2020-07-29 15:55:42', '2020-07-29 15:55:42'),
+(164, 'hung pro 01', '0', 'nthung2896@gmail.com', 'jijij', '0912121222', 'iijiji', '2020-07-31 01:35:47', '2020-07-31 01:35:47');
 
 -- --------------------------------------------------------
 
@@ -384,7 +410,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (49, '2020_07_11_103656_add_attribute_guest_into_rooms_table', 21),
 (50, '2020_07_20_155520_add_attribute_link_into_category_services_table', 22),
 (52, '2020_07_21_105055_add_attribute_status_into_review_rooms_table', 23),
-(55, '2020_07_21_203737_create_reset_passwords_table', 24);
+(55, '2020_07_21_203737_create_reset_passwords_table', 24),
+(56, '2020_07_24_105301_add_attribute_content_into_rooms_table', 25),
+(57, '2020_07_24_143745_add_attribute_content_into_rooms_table', 26),
+(58, '2020_07_24_152208_add_attribute_status_into_rooms_table', 27),
+(62, '2020_07_26_224753_create_systems_table', 28),
+(64, '2020_07_27_111040_create_systems_table', 29),
+(65, '2020_07_28_105521_add_attribute_brand_id_into_rooms_table', 30);
 
 -- --------------------------------------------------------
 
@@ -408,21 +440,14 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `total_price`, `payment`, `note`, `user_id`, `customer_id`, `created_at`, `updated_at`) VALUES
-(52, 369, '1', 'đê', 44, 135, '2020-07-14 03:24:09', '2020-07-14 03:24:09'),
-(53, 369, '1', 'đê', 44, 136, '2020-07-14 03:24:48', '2020-07-14 03:24:48'),
-(54, 861, '0', 'đwdw', 44, 137, '2020-07-14 04:30:15', '2020-07-14 04:30:15'),
-(55, 123, '1', 'feefef', 44, 138, '2020-07-14 04:37:29', '2020-07-14 04:37:29'),
-(56, 944, '1', 'ưqewqeqw', 44, 139, '2020-07-15 15:45:44', '2020-07-15 15:45:44'),
-(57, 305, '0', 'đwdwdw', 44, 140, '2020-07-17 04:40:56', '2020-07-17 04:40:56'),
-(58, 182, '0', 'jujuju', 44, 141, '2020-07-17 14:36:36', '2020-07-17 14:36:36'),
-(59, 1637, '0', 'fefefeef', 44, 142, '2020-07-18 03:51:34', '2020-07-18 03:51:34'),
-(60, 624, '1', 'jyjy', 44, 143, '2020-07-18 03:56:20', '2020-07-18 03:56:20'),
-(61, 123, '0', 'ffrfr', 44, 144, '2020-07-18 04:02:08', '2020-07-18 04:02:08'),
-(62, 123, '0', 'ffrfr', 44, 145, '2020-07-18 04:02:46', '2020-07-18 04:02:46'),
-(63, 207, '1', 'frfrfrfr', 44, 146, '2020-07-20 15:04:07', '2020-07-20 15:04:07'),
-(64, 1804, '0', 'đwd', 44, 147, '2020-07-21 08:49:15', '2020-07-21 08:49:15'),
-(65, 123, '0', 'đê', 44, 148, '2020-07-21 14:34:07', '2020-07-21 14:34:07'),
-(66, 123, '0', 'đê', 44, 149, '2020-07-21 14:36:55', '2020-07-21 14:36:55');
+(74, 1641, '0', 'wfwf', 44, 157, '2020-07-25 09:34:25', '2020-07-25 09:34:25'),
+(75, 825, '1', 'sqsqsqs', 50, 158, '2020-07-26 09:32:53', '2020-07-26 09:32:53'),
+(76, 1068, '0', 'grgrgrg', 44, 159, '2020-07-29 15:44:25', '2020-07-29 15:44:25'),
+(77, 456, '0', 'đwdwdw', 44, 160, '2020-07-29 15:51:50', '2020-07-29 15:51:50'),
+(78, 456, '0', 'đwdwdw', 44, 161, '2020-07-29 15:52:47', '2020-07-29 15:52:47'),
+(79, 456, '0', 'đwdwdw', 44, 162, '2020-07-29 15:54:57', '2020-07-29 15:54:57'),
+(80, 456, '0', 'đwdwdw', 44, 163, '2020-07-29 15:55:42', '2020-07-29 15:55:42'),
+(81, 123, '0', 'iijiji', 44, 164, '2020-07-31 01:35:47', '2020-07-31 01:35:47');
 
 -- --------------------------------------------------------
 
@@ -445,27 +470,12 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`id`, `order_id`, `room_id`, `from_date`, `to_date`, `created_at`, `updated_at`) VALUES
-(72, 52, 32, '2020-07-28', '2020-07-31', '2020-07-14 03:24:09', '2020-07-14 03:24:09'),
-(74, 54, 33, '2020-07-15', '2020-07-22', '2020-07-14 04:30:15', '2020-07-14 04:30:15'),
-(75, 55, 33, '2020-07-30', '2020-07-31', '2020-07-14 04:37:29', '2020-07-14 04:37:29'),
-(76, 56, 34, '2020-07-01', '2020-07-03', '2020-07-15 15:45:44', '2020-07-15 15:45:44'),
-(77, 56, 32, '2020-07-01', '2020-07-03', '2020-07-15 15:45:44', '2020-07-15 15:45:44'),
-(78, 56, 33, '2020-07-01', '2020-07-03', '2020-07-15 15:45:44', '2020-07-15 15:45:44'),
-(79, 57, 32, '2020-07-04', '2020-07-05', '2020-07-17 04:40:56', '2020-07-17 04:40:56'),
-(80, 57, 33, '2020-07-04', '2020-07-05', '2020-07-17 04:40:56', '2020-07-17 04:40:56'),
-(81, 58, 32, '2020-07-06', '2020-07-07', '2020-07-17 14:36:36', '2020-07-17 14:36:36'),
-(82, 59, 32, '2020-07-08', '2020-07-09', '2020-07-18 03:51:34', '2020-07-18 03:51:34'),
-(83, 59, 34, '2020-07-22', '2020-07-24', '2020-07-18 03:51:34', '2020-07-18 03:51:34'),
-(84, 60, 32, '2020-07-10', '2020-07-11', '2020-07-18 03:56:20', '2020-07-18 03:56:20'),
-(85, 60, 33, '2020-07-06', '2020-07-07', '2020-07-18 03:56:20', '2020-07-18 03:56:20'),
-(86, 60, 34, '2020-07-04', '2020-07-05', '2020-07-18 03:56:20', '2020-07-18 03:56:20'),
-(87, 61, 32, '2020-07-12', '2020-07-13', '2020-07-18 04:02:08', '2020-07-18 04:02:08'),
-(88, 62, 32, '2020-07-12', '2020-07-13', '2020-07-18 04:02:46', '2020-07-18 04:02:46'),
-(89, 63, 32, '2020-07-14', '2020-07-15', '2020-07-20 15:04:07', '2020-07-20 15:04:07'),
-(90, 64, 32, '2020-07-16', '2020-07-17', '2020-07-21 08:49:15', '2020-07-21 08:49:15'),
-(91, 64, 34, '2020-07-06', '2020-07-07', '2020-07-21 08:49:15', '2020-07-21 08:49:15'),
-(92, 65, 33, '2020-07-08', '2020-07-09', '2020-07-21 14:34:07', '2020-07-21 14:34:07'),
-(93, 66, 33, '2020-07-08', '2020-07-09', '2020-07-21 14:36:55', '2020-07-21 14:36:55');
+(103, 76, 51, '2020-07-30', '2020-08-06', '2020-07-29 15:44:25', '2020-07-29 15:44:25'),
+(104, 77, 52, '2020-07-30', '2020-07-31', '2020-07-29 15:51:50', '2020-07-29 15:51:50'),
+(105, 78, 52, '2020-07-30', '2020-07-31', '2020-07-29 15:52:47', '2020-07-29 15:52:47'),
+(106, 79, 52, '2020-07-30', '2020-07-31', '2020-07-29 15:54:57', '2020-07-29 15:54:57'),
+(107, 80, 52, '2020-07-30', '2020-07-31', '2020-07-29 15:55:42', '2020-07-29 15:55:42'),
+(108, 81, 51, '2020-08-07', '2020-08-08', '2020-07-31 01:35:47', '2020-07-31 01:35:47');
 
 -- --------------------------------------------------------
 
@@ -487,21 +497,11 @@ CREATE TABLE `order_detail_services` (
 --
 
 INSERT INTO `order_detail_services` (`id`, `order_detail_id`, `service_id`, `quantity_service`, `created_at`, `updated_at`) VALUES
-(43, 76, 3, 1, '2020-07-15 15:45:44', '2020-07-15 15:45:44'),
-(44, 77, 3, 1, '2020-07-15 15:45:44', '2020-07-15 15:45:44'),
-(45, 78, 4, 1, '2020-07-15 15:45:44', '2020-07-15 15:45:44'),
-(46, 78, 3, 1, '2020-07-15 15:45:44', '2020-07-15 15:45:44'),
-(47, 79, 3, 1, '2020-07-17 04:40:56', '2020-07-17 04:40:56'),
-(48, 81, 3, 1, '2020-07-17 14:36:36', '2020-07-17 14:36:36'),
-(49, 82, 8, 1, '2020-07-18 03:51:34', '2020-07-18 03:51:34'),
-(50, 83, 9, 13, '2020-07-18 03:51:34', '2020-07-18 03:51:34'),
-(51, 83, 12, 5, '2020-07-18 03:51:34', '2020-07-18 03:51:34'),
-(52, 84, 3, 1, '2020-07-18 03:56:20', '2020-07-18 03:56:20'),
-(53, 85, 3, 2, '2020-07-18 03:56:20', '2020-07-18 03:56:20'),
-(54, 86, 11, 1, '2020-07-18 03:56:20', '2020-07-18 03:56:20'),
-(55, 89, 28, 4, '2020-07-20 15:04:07', '2020-07-20 15:04:07'),
-(56, 90, 5, 16, '2020-07-21 08:49:15', '2020-07-21 08:49:15'),
-(57, 91, 19, 1, '2020-07-21 08:49:15', '2020-07-21 08:49:15');
+(67, 103, 5, 3, '2020-07-29 15:44:25', '2020-07-29 15:44:25'),
+(68, 104, 14, 1, '2020-07-29 15:51:50', '2020-07-29 15:51:50'),
+(69, 105, 14, 1, '2020-07-29 15:52:47', '2020-07-29 15:52:47'),
+(70, 106, 14, 1, '2020-07-29 15:54:57', '2020-07-29 15:54:57'),
+(71, 107, 14, 1, '2020-07-29 15:55:42', '2020-07-29 15:55:42');
 
 -- --------------------------------------------------------
 
@@ -556,23 +556,7 @@ CREATE TABLE `review_rooms` (
 --
 
 INSERT INTO `review_rooms` (`id`, `user_id`, `room_id`, `parent`, `content`, `created_at`, `updated_at`, `status`) VALUES
-(406, 44, 33, 0, 'oko', '2020-07-14 04:29:10', '2020-07-21 14:02:17', 0),
-(407, 44, 32, 0, '123123', '2020-07-18 03:37:29', '2020-07-21 14:02:16', 0),
-(408, 44, 32, 0, 'ẻwerw', '2020-07-18 03:37:40', '2020-07-21 14:02:16', 0),
-(409, 44, 32, 408, 'êf', '2020-07-20 02:59:48', '2020-07-21 14:02:15', 0),
-(410, 44, 32, 407, 'đw', '2020-07-20 02:59:52', '2020-07-21 07:25:06', 0),
-(411, 44, 32, 408, 'fwfwf', '2020-07-20 03:00:01', '2020-07-21 14:02:18', 0),
-(412, 44, 32, 407, 'đwd', '2020-07-20 03:00:04', '2020-07-21 14:02:13', 0),
-(413, 44, 32, 407, 'đw', '2020-07-20 03:00:08', '2020-07-21 14:02:12', 0),
-(414, 44, 32, 407, '1212', '2020-07-20 03:00:12', '2020-07-21 07:33:52', 0),
-(415, 44, 32, 0, 'cscscscs', '2020-07-20 03:00:19', '2020-07-21 14:02:11', 0),
-(416, 44, 32, 415, 'cscc', '2020-07-20 03:00:23', '2020-07-21 14:02:10', 0),
-(417, 44, 34, 0, 'fefe', '2020-07-21 04:01:35', '2020-07-21 14:02:09', 0),
-(418, 44, 33, 0, 'blo123', '2020-07-21 07:01:24', '2020-07-21 07:01:24', 0),
-(419, 44, 33, 0, 'blo123', '2020-07-21 07:01:24', '2020-07-21 07:01:24', 0),
-(420, 44, 32, 0, 'Bình luận này có status = 0 nên là được hiện lên', '2020-07-21 07:47:27', '2020-07-21 14:02:22', 0),
-(421, 44, 32, 0, 'Bình luận này có status = 1 nên là không được hiện lên', '2020-07-21 07:47:49', '2020-07-21 14:02:23', 0),
-(422, 50, 32, 421, 'êf', '2020-07-22 07:41:23', '2020-07-22 07:41:23', 0);
+(433, 44, 51, 0, 'nhnh', '2020-07-30 01:57:23', '2020-07-30 01:57:23', 0);
 
 -- --------------------------------------------------------
 
@@ -593,7 +577,7 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `permissions`, `created_at`, `updated_at`) VALUES
-(11, 'Quyền Tối Cao', '[\"admin.index\",\"admin.file\",\"admin.user.index\",\"admin.user.create\",\"admin.user.store\",\"admin.user.show\",\"admin.user.edit\",\"admin.user.update\",\"admin.user.destroy\",\"admin.categoryRoom.index\",\"admin.categoryRoom.create\",\"admin.categoryRoom.store\",\"admin.categoryRoom.show\",\"admin.categoryRoom.edit\",\"admin.categoryRoom.update\",\"admin.categoryRoom.destroy\",\"admin.categoryService.index\",\"admin.categoryService.create\",\"admin.categoryService.store\",\"admin.categoryService.show\",\"admin.categoryService.edit\",\"admin.categoryService.update\",\"admin.categoryService.destroy\",\"admin.categoryBlog.index\",\"admin.categoryBlog.create\",\"admin.categoryBlog.store\",\"admin.categoryBlog.show\",\"admin.categoryBlog.edit\",\"admin.categoryBlog.update\",\"admin.categoryBlog.destroy\",\"admin.room.index\",\"admin.room.create\",\"admin.room.store\",\"admin.room.show\",\"admin.room.edit\",\"admin.room.update\",\"admin.room.destroy\",\"admin.service.index\",\"admin.service.create\",\"admin.service.store\",\"admin.service.show\",\"admin.service.edit\",\"admin.service.update\",\"admin.service.destroy\",\"admin.blog.index\",\"admin.blog.create\",\"admin.blog.store\",\"admin.blog.show\",\"admin.blog.edit\",\"admin.blog.update\",\"admin.blog.destroy\",\"admin.brand.index\",\"admin.brand.create\",\"admin.brand.store\",\"admin.brand.show\",\"admin.brand.edit\",\"admin.brand.update\",\"admin.brand.destroy\",\"admin.banner.index\",\"admin.banner.create\",\"admin.banner.store\",\"admin.banner.show\",\"admin.banner.edit\",\"admin.banner.update\",\"admin.banner.destroy\",\"admin.role.index\",\"admin.role.create\",\"admin.role.store\",\"admin.role.show\",\"admin.role.edit\",\"admin.role.update\",\"admin.role.destroy\",\"admin.order.index\",\"admin.order.create\",\"admin.order.store\",\"admin.order.show\",\"admin.order.edit\",\"admin.order.update\",\"admin.order.destroy\",\"admin.reviewRoom.index\",\"admin.reviewRoom.create\",\"admin.reviewRoom.store\",\"admin.reviewRoom.show\",\"admin.reviewRoom.edit\",\"admin.reviewRoom.update\",\"admin.reviewRoom.destroy\",\"admin.reviewRoom2.update\",\"admin.searchBlog\",\"admin.searchCateBlog\",\"admin.searchRoom\",\"admin.searchCateRoom\",\"admin.searchUser\",\"admin.searchCateService\",\"admin.searchService\",\"admin.searchBrand\",\"admin.searchBanner\"]', NULL, NULL),
+(11, 'Quyền Tối Cao', '[\"admin.index\",\"admin.file\",\"admin.user.index\",\"admin.user.create\",\"admin.user.store\",\"admin.user.show\",\"admin.user.edit\",\"admin.user.update\",\"admin.user.destroy\",\"admin.categoryRoom.index\",\"admin.categoryRoom.create\",\"admin.categoryRoom.store\",\"admin.categoryRoom.show\",\"admin.categoryRoom.edit\",\"admin.categoryRoom.update\",\"admin.categoryRoom.destroy\",\"admin.categoryService.index\",\"admin.categoryService.create\",\"admin.categoryService.store\",\"admin.categoryService.show\",\"admin.categoryService.edit\",\"admin.categoryService.update\",\"admin.categoryService.destroy\",\"admin.categoryBlog.index\",\"admin.categoryBlog.create\",\"admin.categoryBlog.store\",\"admin.categoryBlog.show\",\"admin.categoryBlog.edit\",\"admin.categoryBlog.update\",\"admin.categoryBlog.destroy\",\"admin.room.index\",\"admin.room.create\",\"admin.room.store\",\"admin.room.show\",\"admin.room.edit\",\"admin.room.update\",\"admin.room.destroy\",\"admin.service.index\",\"admin.service.create\",\"admin.service.store\",\"admin.service.show\",\"admin.service.edit\",\"admin.service.update\",\"admin.service.destroy\",\"admin.blog.index\",\"admin.blog.create\",\"admin.blog.store\",\"admin.blog.show\",\"admin.blog.edit\",\"admin.blog.update\",\"admin.blog.destroy\",\"admin.brand.index\",\"admin.brand.create\",\"admin.brand.store\",\"admin.brand.show\",\"admin.brand.edit\",\"admin.brand.update\",\"admin.brand.destroy\",\"admin.banner.index\",\"admin.banner.create\",\"admin.banner.store\",\"admin.banner.show\",\"admin.banner.edit\",\"admin.banner.update\",\"admin.banner.destroy\",\"admin.role.index\",\"admin.role.create\",\"admin.role.store\",\"admin.role.show\",\"admin.role.edit\",\"admin.role.update\",\"admin.role.destroy\",\"admin.order.index\",\"admin.order.create\",\"admin.order.store\",\"admin.order.show\",\"admin.order.edit\",\"admin.order.update\",\"admin.order.destroy\",\"admin.reviewRoom.index\",\"admin.reviewRoom.create\",\"admin.reviewRoom.store\",\"admin.reviewRoom.show\",\"admin.reviewRoom.edit\",\"admin.reviewRoom.update\",\"admin.reviewRoom.destroy\",\"admin.system.index\",\"admin.system.create\",\"admin.system.store\",\"admin.system.show\",\"admin.system.edit\",\"admin.system.update\",\"admin.system.destroy\",\"admin.system.store3\",\"admin.system.store2\",\"admin.system.update2\",\"admin.system.update3\",\"admin.room.updateStatusRoom\",\"admin.reviewRoom2.update\",\"admin.searchBlog\",\"admin.searchCateBlog\",\"admin.searchRoom\",\"admin.searchCateRoom\",\"admin.searchUser\",\"admin.searchCateService\",\"admin.searchService\",\"admin.searchBrand\",\"admin.searchBanner\"]', NULL, NULL),
 (12, 'Quyền admin đối tác', '[\"admin.index\",\"admin.room.create\",\"admin.room.store\",\"admin.room.show\",\"admin.room.edit\",\"admin.room.update\",\"admin.room.destroy\",\"admin.room.indexAdmin\",\"admin.getEditAdminPartner\",\"admin.postEditAdminPartner\"]', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -625,19 +609,23 @@ CREATE TABLE `rooms` (
   `user_room_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `brand_id` int(11) NOT NULL,
   `guest` int(11) NOT NULL,
-  `adult` int(11) NOT NULL
+  `adult` int(11) NOT NULL,
+  `content` varchar(5000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link_map` varchar(5000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `brand_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `rooms`
 --
 
-INSERT INTO `rooms` (`id`, `name`, `location`, `bed`, `bath`, `area`, `priceNight`, `priceWeekends`, `priceWeekly`, `priceClearFee`, `status`, `description`, `gym`, `Laundry`, `tvCable`, `wifi`, `FreeParking`, `Security`, `category_room_id`, `user_room_id`, `created_at`, `updated_at`, `brand_id`, `guest`, `adult`) VALUES
-(32, 'phòng Số 1', 'Quảng Ninh', 2, 2, 56, 123.00, 123.00, 123.00, 123.00, 0, 'đwdwdwđwdwdđw', 1, 1, 1, 1, 1, 1, 11, 44, '2020-07-13 08:34:12', '2020-07-13 08:34:12', 2, 2, 2),
-(33, 'admin 2 thêm mới', 'Đà nẵng', 2, 2, 56, 123.00, 123.00, 123.00, 123.00, 0, 'đwdwd', 1, 1, 1, 1, 1, 1, 12, 45, '2020-07-13 15:06:47', '2020-07-13 15:06:47', 5, 2, 2),
-(34, 'Phòng Kaka thêm mới', 'Vũng Tàu', 2, 2, 56, 123.00, 123.00, 123.00, 123.00, 0, 'wdwdw', 1, 0, 1, 1, 1, 0, 12, 7, '2020-07-14 13:55:10', '2020-07-14 13:55:10', 4, 1, 2);
+INSERT INTO `rooms` (`id`, `name`, `location`, `bed`, `bath`, `area`, `priceNight`, `priceWeekends`, `priceWeekly`, `priceClearFee`, `status`, `description`, `gym`, `Laundry`, `tvCable`, `wifi`, `FreeParking`, `Security`, `category_room_id`, `user_room_id`, `created_at`, `updated_at`, `guest`, `adult`, `content`, `link_map`, `brand_id`) VALUES
+(51, 'T homestay nha trang', 'Nha trang', 2, 2, 139, 123.00, 123.00, 24.00, 12.00, 0, 'Tọa lạc tại thành phố Nha Trang, cách Bãi biển Nha Trang 1 km,', 1, 1, 1, 1, 1, 1, 18, 44, '2020-07-28 04:09:43', '2020-07-28 04:09:43', 1, 3, '<div id=\"summary\" class=\"\" data-et-mouseenter=\"customGoal:BUeeZaTaTaBEKMPXLae:1\r\ncustomGoal:BUeeHNSPMWdMOdUBMHT:1\r\ncustomGoal:BUeeHNSPdQEeWFWZTDWFC:1\r\ncustomGoal:BUeeHNSPMWdMOdUEXXO:1\r\ncustomGoal:BUeeHNSPdQEeXXaNSPRXXe:1\r\ncustomGoal:BUeePHOOSINEGO:1\r\ncustomGoal:BUeeHNSPVadIaCKe:1\r\ncustomGoal:BUeeHNSPCaASBaRDSGEXO:1 customGoal:BUeeZdbaBMRbBYWKOBLHXT:1\" data-et-click=\"customGoal:BUeeZaTaTaBEKMPXLae:2\r\ncustomGoal:BUeeHNSPMWdMOdUBMHT:2\r\ncustomGoal:BUeeHNSPdQEeWFWZTDWFC:2\r\ncustomGoal:BUeeHNSPMWdMOdUEXXO:2\r\ncustomGoal:BUeeHNSPdQEeXXaNSPRXXe:2\r\ncustomGoal:BUeePHOOSINEGO:2\r\ncustomGoal:BUeeHNSPVadIaCKe:2\r\ncustomGoal:BUeeHNSPCaASBaRDSGEXO:2 customGoal:BUeeZdbaBMRbBYWKOBLHXT:2\">\r\n<div id=\"property_description_content\">\r\n<p><span class=\"hp-description--property-name-best-seller yellowfy_bestseller dtri\"><i class=\"bicon-acstar\" aria-hidden=\"true\"></i> Một trong những chỗ nghỉ bán chạy nhất ở Nha Trang của chúng tôi! </span>Tọa lạc tại thành phố Nha Trang, cách Bãi biển Nha Trang 1 km, T homestay nha trang cung cấp chỗ nghỉ gắn máy điều hòa với WiFi miễn phí cũng như sân hiên.</p>\r\n<p>Các điểm tham quan nổi tiếng gần homestay này gồm có Viện Hải dương học, Dinh Bảo Đại và công viên giải trí Vinpearl Land Nha Trang. Sân bay gần nhất là sân bay quốc tế Cam Ranh, nằm trong bán kính 34 km từ T homestay nha trang.</p>\r\n</div>\r\n</div>\r\n<p class=\"hp-desc-we-speak\">Chúng tôi sử dụng ngôn ngữ của bạn!</p>', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60603.73659420441!2d109.1765962105172!3d12.267054743127789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3170677811cc886f%3A0x5c4bbc0aa81edcb9!2zVHAuIE5oYSBUcmFuZywgS2jDoW5oIEjDsmEsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1595909316834!5m2!1svi!2s\" width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0;\" allowfullscreen=\"\" aria-hidden=\"false\" tabindex=\"0\"></iframe>', 2),
+(52, 'Vinpearl Resort & Spa Nha Trang Bay', 'Nha trang', 2, 3, 134, 234.00, 232.00, 12.00, 523.00, 0, 'Vinpearl Nha Trang Bay Resort là resort 5 sao cung cấp các phòng máy lạnh rộng rãi với Wi-Fi miễn phí.', 1, 1, 1, 1, 1, 1, 11, 44, '2020-07-28 04:11:48', '2020-07-28 04:11:48', 2, 1, '<div id=\"summary\" class=\"\" data-et-mouseenter=\"customGoal:BUeeZaTaTaBEKMPXLae:1\r\ncustomGoal:BUeeHNSPMWdMOdUBMHT:1\r\ncustomGoal:BUeeHNSPdQEeWFWZTDWFC:1\r\ncustomGoal:BUeeHNSPMWdMOdUEXXO:1\r\ncustomGoal:BUeeHNSPdQEeXXaNSPRXXe:1\r\ncustomGoal:BUeePHOOSINEGO:1\r\ncustomGoal:BUeeHNSPVadIaCKe:1\r\ncustomGoal:BUeeHNSPCaASBaRDSGEXO:1 customGoal:BUeeZdbaBMRbBYWKOBLHXT:1\" data-et-click=\"customGoal:BUeeZaTaTaBEKMPXLae:2\r\ncustomGoal:BUeeHNSPMWdMOdUBMHT:2\r\ncustomGoal:BUeeHNSPdQEeWFWZTDWFC:2\r\ncustomGoal:BUeeHNSPMWdMOdUEXXO:2\r\ncustomGoal:BUeeHNSPdQEeXXaNSPRXXe:2\r\ncustomGoal:BUeePHOOSINEGO:2\r\ncustomGoal:BUeeHNSPVadIaCKe:2\r\ncustomGoal:BUeeHNSPCaASBaRDSGEXO:2 customGoal:BUeeZdbaBMRbBYWKOBLHXT:2\">\r\n<div id=\"property_description_content\">\r\n<p>Vinpearl Nha Trang Bay Resort là resort 5 sao cung cấp các phòng máy lạnh rộng rãi với Wi-Fi miễn phí. Resort tọa lạc trong khu vườn riêng tươi tốt và có hồ bơi vô cực nhìn ra bãi biển, 5 nhà hàng để khách lựa chọn ăn uống cũng như spa.</p>\r\n<p>Vinpearl Nha Trang Bay Resort nằm trong bán kính 3 km từ Dinh Bảo Đại và 3,2 km từ Viện Hải dương học. CLB chơi gôn Vinpearl Nha Trang cách đó 3 km. Cách resort 24 km là sân bay gần nhất, sân bay Nha Trang.</p>\r\n<p>Mỗi phòng nghỉ tại đây đều có TV truyền hình cáp màn hình phẳng, két an toàn, minibar, khu vực tiếp khách và phòng tắm riêng đi kèm bồn tắm, vòi sen, máy sấy tóc cùng đồ vệ sinh cá nhân miễn phí. Các biệt thự có khu vực ăn uống và tiếp khách riêng biệt, nhà bếp cũng như hồ bơi riêng.</p>\r\n<p>Du khách có thể đến quầy lễ tân 24 giờ để được cung cấp dịch vụ thu đổi ngoại tệ, đặt vé và thu xếp tour du lịch cũng như trợ giúp đặc biệt. Phòng trò chơi cũng nằm trong số các tiện nghi tại đây và du khách có thể sắp xếp các liệu pháp spa thư giãn tại Vincham Spa.</p>\r\n<p>Câu lạc bộ của resort phục vụ bữa sáng tự chọn hàng ngày và ăn uống cả ngày cũng như món canapé cùng đồ uống trước bữa tối.</p>\r\n</div>\r\n</div>\r\n<p class=\"hp-desc-review-highlight hp-desc-traveller-type--ph-v0\">Các cặp đôi đặc biệt thích địa điểm này — họ cho điểm <strong>8,3</strong> cho kỳ nghỉ dành cho 2 người.</p>\r\n<p class=\"hp-desc-we-speak\">Chúng tôi sử dụng ngôn ngữ của bạn!</p>', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60603.73659420441!2d109.1765962105172!3d12.267054743127789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3170677811cc886f%3A0x5c4bbc0aa81edcb9!2zVHAuIE5oYSBUcmFuZywgS2jDoW5oIEjDsmEsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1595909316834!5m2!1svi!2s\" width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0;\" allowfullscreen=\"\" aria-hidden=\"false\" tabindex=\"0\"></iframe>', 4),
+(53, 'Chalet Rosalie', 'Pháp', 3, 3, 145, 463.00, 456.00, 343.00, 221.00, 0, 'Featuring mountain views, Chalet Rosalie offers accommodation with a bar and a balcony,', 1, 1, 1, 1, 1, 1, 12, 44, '2020-07-28 04:14:33', '2020-07-28 04:14:33', 3, 3, '<div id=\"property_description_content\">\r\n<p>Featuring mountain views, Chalet Rosalie offers accommodation with a bar and a balcony, around 2.3 km from Morzine Ski School. This chalet provides free private parking, a shared kitchen and free WiFi.</p>\r\n<p>The chalet with a patio and garden views features 4 bedrooms, a living room, a flat-screen TV, an equipped kitchen with a dishwasher and a microwave, and 2 bathrooms with a shower.</p>\r\n<p>The chalet offers a barbecue. After a day of hiking, skiing or fishing, guests can relax in the garden or in the shared lounge area.</p>\r\n<p>The nearest airport is Meythet, 83 km from Chalet Rosalie, and the property offers a paid airport shuttle service.</p>\r\n</div>', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d992720.3820286526!2d2.565112062842469!3d46.58667369336759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd54a02933785731%3A0x6bfd3f96c747d9f7!2zUGjDoXA!5e0!3m2!1svi!2s!4v1595909603699!5m2!1svi!2s\" width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0;\" allowfullscreen=\"\" aria-hidden=\"false\" tabindex=\"0\"></iframe>', 5),
+(54, 'Restart Accommodations Rome', 'Roma', 2, 2, 140, 456.00, 234.00, 121.00, 32.00, 0, 'Restart Accomodations Rome cung cấp các căn hộ tự phục vụ với sân hiên/ban công rộng rãi ở trung tâm thành phố Rome.', 1, 1, 1, 1, 1, 1, 18, 44, '2020-07-28 04:18:16', '2020-07-28 04:18:16', 1, 1, '<div id=\"summary\" class=\"\" data-et-mouseenter=\"customGoal:BUeeZaTaTaBEKMPXLae:1\r\ncustomGoal:BUeeHNSPMWdMOdUBMHT:1\r\ncustomGoal:BUeeHNSPdQEeWFWZTDWFC:1\r\ncustomGoal:BUeeHNSPMWdMOdUEXXO:1\r\ncustomGoal:BUeeHNSPdQEeXXaNSPRXXe:1\r\ncustomGoal:BUeePHOOSINEGO:1\r\ncustomGoal:BUeeHNSPVadIaCKe:1\r\ncustomGoal:BUeeHNSPCaASBaRDSGEXO:1 customGoal:BUeeZdbaBMRbBYWKOBLHXT:1\" data-et-click=\"customGoal:BUeeZaTaTaBEKMPXLae:2\r\ncustomGoal:BUeeHNSPMWdMOdUBMHT:2\r\ncustomGoal:BUeeHNSPdQEeWFWZTDWFC:2\r\ncustomGoal:BUeeHNSPMWdMOdUEXXO:2\r\ncustomGoal:BUeeHNSPdQEeXXaNSPRXXe:2\r\ncustomGoal:BUeePHOOSINEGO:2\r\ncustomGoal:BUeeHNSPVadIaCKe:2\r\ncustomGoal:BUeeHNSPCaASBaRDSGEXO:2 customGoal:BUeeZdbaBMRbBYWKOBLHXT:2\">\r\n<div id=\"property_description_content\">\r\n<p>Restart Accomodations Rome cung cấp các căn hộ tự phục vụ với sân hiên/ban công rộng rãi ở trung tâm thành phố Rome. Mỗi chỗ ở đều nằm ở vị trí lý tưởng, trong khoảng cách đi bộ từ Đấu trường La Mã hoặc Bậc thang Tây Ban Nha.</p>\r\n<p>Với phong cách trang trí hiện đại hoặc nội thất phong cách cổ điển, các căn hộ tại Restart đều rộng rãi và được trang trí đầy đủ tiện nghi. Tất cả các căn hộ đều có nhà bếp/bếp nhỏ, khu vực tiếp khách và 1 phòng ngủ trở lên.</p>\r\n<p>Những căn hộ ở trung tâm này hưởng kết nối giao thông tuyệt vời, vì ga tàu điện ngầm cách đó chưa đến 10 phút đi bộ. Khu vực sinh động xung quanh chật kín các nhà hàng, cửa hiệu và quán cà phê.</p>\r\n</div>\r\n</div>\r\n<p class=\"geo_information\">Đây là khu vực ở Roma mà khách yêu thích, theo các đánh giá độc lập.</p>\r\n<p class=\"hp-desc-review-highlight hp-desc-traveller-type--ph-v0\">Các cặp đôi đặc biệt thích địa điểm này — họ cho điểm <strong>9,5</strong> cho kỳ nghỉ dành cho 2 người.</p>', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7483.247212398516!2d12.491261827239573!3d41.898694758117436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f6196f9928ebb%3A0xb90f770693656e38!2zUm9tYSwgw50!5e0!3m2!1svi!2s!4v1595909836156!5m2!1svi!2s\" width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0;\" allowfullscreen=\"\" aria-hidden=\"false\" tabindex=\"0\"></iframe>', 2),
+(55, 'phòng test', '31231rgrg', 3, 2, 67, 123.00, 432.00, 123.00, 212.00, 1, 'feffe', 1, 0, 1, 1, 1, 1, 11, 44, '2020-07-30 07:38:02', '2020-07-30 07:39:04', 1, 2, 'fefefe', 'ffrf', 2);
 
 -- --------------------------------------------------------
 
@@ -658,26 +646,33 @@ CREATE TABLE `room_images` (
 --
 
 INSERT INTO `room_images` (`id`, `image`, `room_id`, `created_at`, `updated_at`) VALUES
-(117, '06.jpg', 32, '2020-07-13 08:34:12', '2020-07-13 08:34:12'),
-(118, '10 - Copy.jpg', 32, '2020-07-13 08:34:12', '2020-07-13 08:34:12'),
-(119, '10.jpg', 32, '2020-07-13 08:34:12', '2020-07-13 08:34:12'),
-(120, '11.jpg', 32, '2020-07-13 08:34:12', '2020-07-13 08:34:12'),
-(121, '12.jpg', 32, '2020-07-13 08:34:12', '2020-07-13 08:34:12'),
-(122, '13.jpg', 32, '2020-07-13 08:34:12', '2020-07-13 08:34:12'),
-(123, '14.jpg', 32, '2020-07-13 08:34:12', '2020-07-13 08:34:12'),
-(124, '01.jpg', 33, '2020-07-13 15:06:47', '2020-07-13 15:06:47'),
-(125, '02.jpg', 33, '2020-07-13 15:06:47', '2020-07-13 15:06:47'),
-(126, '03.jpg', 33, '2020-07-13 15:06:47', '2020-07-13 15:06:47'),
-(127, '04.jpg', 33, '2020-07-13 15:06:47', '2020-07-13 15:06:47'),
-(128, '05.jpg', 33, '2020-07-13 15:06:47', '2020-07-13 15:06:47'),
-(129, '06.jpg', 33, '2020-07-13 15:06:47', '2020-07-13 15:06:47'),
-(130, '06.jpg', 34, '2020-07-14 13:55:10', '2020-07-14 13:55:10'),
-(131, '10 - Copy.jpg', 34, '2020-07-14 13:55:10', '2020-07-14 13:55:10'),
-(132, '10.jpg', 34, '2020-07-14 13:55:10', '2020-07-14 13:55:10'),
-(133, '11.jpg', 34, '2020-07-14 13:55:10', '2020-07-14 13:55:10'),
-(134, '12.jpg', 34, '2020-07-14 13:55:10', '2020-07-14 13:55:10'),
-(135, '13.jpg', 34, '2020-07-14 13:55:10', '2020-07-14 13:55:10'),
-(136, '14.jpg', 34, '2020-07-14 13:55:10', '2020-07-14 13:55:10');
+(213, 'Room6_1.jpg', 51, '2020-07-28 04:09:43', '2020-07-28 04:09:43'),
+(214, 'Room6_2.jpg', 51, '2020-07-28 04:09:43', '2020-07-28 04:09:43'),
+(215, 'Room6_3.jpg', 51, '2020-07-28 04:09:43', '2020-07-28 04:09:43'),
+(216, 'Room6_4.jpg', 51, '2020-07-28 04:09:43', '2020-07-28 04:09:43'),
+(217, 'Room6_5.jpg', 51, '2020-07-28 04:09:43', '2020-07-28 04:09:43'),
+(218, 'Room5_1.jpg', 52, '2020-07-28 04:11:48', '2020-07-28 04:11:48'),
+(219, 'Room5_2.jpg', 52, '2020-07-28 04:11:48', '2020-07-28 04:11:48'),
+(220, 'Room5_3.jpg', 52, '2020-07-28 04:11:48', '2020-07-28 04:11:48'),
+(221, 'Room5_4.jpg', 52, '2020-07-28 04:11:48', '2020-07-28 04:11:48'),
+(222, 'Room5_5.jpg', 52, '2020-07-28 04:11:48', '2020-07-28 04:11:48'),
+(223, 'Room5_6.jpg', 52, '2020-07-28 04:11:48', '2020-07-28 04:11:48'),
+(224, 'Room3_1.jpg', 53, '2020-07-28 04:14:33', '2020-07-28 04:14:33'),
+(225, 'Room3_2.jpg', 53, '2020-07-28 04:14:33', '2020-07-28 04:14:33'),
+(226, 'Room3_3.jpg', 53, '2020-07-28 04:14:33', '2020-07-28 04:14:33'),
+(227, 'Room3_4.jpg', 53, '2020-07-28 04:14:33', '2020-07-28 04:14:33'),
+(228, 'Room3_5.jpg', 53, '2020-07-28 04:14:33', '2020-07-28 04:14:33'),
+(229, 'Blogthu4_1.jpg', 54, '2020-07-28 04:18:16', '2020-07-28 04:18:16'),
+(230, 'Blogthu4_2.jpg', 54, '2020-07-28 04:18:16', '2020-07-28 04:18:16'),
+(231, 'Blogthu4_3.jpg', 54, '2020-07-28 04:18:16', '2020-07-28 04:18:16'),
+(232, 'Blogthu4_4.jpg', 54, '2020-07-28 04:18:16', '2020-07-28 04:18:16'),
+(233, 'Blogthu4_5.jpg', 54, '2020-07-28 04:18:16', '2020-07-28 04:18:16'),
+(234, 'Blog1.jpg', 55, '2020-07-30 07:38:02', '2020-07-30 07:38:02'),
+(235, 'Blog2.jpg', 55, '2020-07-30 07:38:02', '2020-07-30 07:38:02'),
+(236, 'Blog3.jpg', 55, '2020-07-30 07:38:02', '2020-07-30 07:38:02'),
+(237, 'Blog4.jpg', 55, '2020-07-30 07:38:02', '2020-07-30 07:38:02'),
+(238, 'Blog5.jpg', 55, '2020-07-30 07:38:02', '2020-07-30 07:38:02'),
+(239, 'Blogthu2.jpg', 55, '2020-07-30 07:38:02', '2020-07-30 07:38:02');
 
 -- --------------------------------------------------------
 
@@ -702,27 +697,9 @@ CREATE TABLE `room_stars` (
 --
 
 INSERT INTO `room_stars` (`id`, `user_id`, `room_id`, `starAcao`, `starDes`, `starTran`, `starOver`, `created_at`, `updated_at`) VALUES
-(198, 44, 33, NULL, 4, NULL, NULL, '2020-07-14 04:29:06', '2020-07-14 04:29:06'),
-(199, 55, 32, 5, NULL, NULL, NULL, '2020-07-14 09:05:23', '2020-07-14 09:05:23'),
-(200, 55, 32, NULL, 4, NULL, NULL, '2020-07-14 09:05:31', '2020-07-14 09:05:31'),
-(201, 55, 32, NULL, NULL, 5, NULL, '2020-07-14 09:41:10', '2020-07-14 09:41:10'),
-(202, 55, 32, NULL, 5, NULL, NULL, '2020-07-14 09:41:10', '2020-07-14 09:41:10'),
-(203, 55, 32, NULL, NULL, NULL, 5, '2020-07-14 09:41:10', '2020-07-14 09:41:10'),
-(204, 55, 32, NULL, NULL, 4, NULL, '2020-07-14 09:41:24', '2020-07-14 09:41:24'),
-(205, 55, 32, NULL, NULL, NULL, 5, '2020-07-14 09:41:28', '2020-07-14 09:41:28'),
-(206, 55, 32, NULL, 5, NULL, NULL, '2020-07-14 09:42:29', '2020-07-14 09:42:29'),
-(207, 55, 32, 5, NULL, NULL, NULL, '2020-07-14 09:42:32', '2020-07-14 09:42:32'),
-(208, 55, 32, 4, NULL, NULL, NULL, '2020-07-14 09:42:36', '2020-07-14 09:42:36'),
-(209, 44, 32, NULL, NULL, NULL, 5, '2020-07-20 02:59:26', '2020-07-20 02:59:26'),
-(210, 44, 32, NULL, NULL, 5, NULL, '2020-07-20 02:59:29', '2020-07-20 02:59:29'),
-(211, 44, 32, NULL, 5, NULL, NULL, '2020-07-20 02:59:33', '2020-07-20 02:59:33'),
-(212, 44, 32, 5, NULL, NULL, NULL, '2020-07-20 02:59:36', '2020-07-20 02:59:36'),
-(213, 44, 32, NULL, 1, NULL, NULL, '2020-07-21 07:57:56', '2020-07-21 07:57:56'),
-(214, 44, 32, 5, NULL, NULL, NULL, '2020-07-21 07:57:59', '2020-07-21 07:57:59'),
-(215, 44, 32, NULL, NULL, 5, NULL, '2020-07-21 07:58:03', '2020-07-21 07:58:03'),
-(216, 44, 32, NULL, NULL, NULL, 5, '2020-07-21 07:58:06', '2020-07-21 07:58:06'),
-(217, 44, 32, NULL, 5, NULL, NULL, '2020-07-21 08:01:02', '2020-07-21 08:01:02'),
-(218, 44, 32, NULL, NULL, 5, NULL, '2020-07-21 08:01:16', '2020-07-21 08:01:16');
+(331, 44, 55, 5, NULL, NULL, NULL, '2020-07-30 07:38:35', '2020-07-30 07:38:35'),
+(332, 44, 55, NULL, NULL, 1, NULL, '2020-07-30 07:38:40', '2020-07-30 07:38:40'),
+(333, 44, 55, NULL, NULL, NULL, 3, '2020-07-30 07:38:50', '2020-07-30 07:38:50');
 
 -- --------------------------------------------------------
 
@@ -754,7 +731,6 @@ INSERT INTO `services` (`id`, `name`, `price`, `description`, `status`, `image`,
 (6, 'Vegetables Burgers', 38.00, '<p>đwwwdwđ</p>', 0, '06.jpg', 7, '2020-06-22 07:32:17', '2020-06-22 07:32:17', 1),
 (8, 'Đồ ăn 2', 61.00, '<p>Đ&acirc;y l&agrave; đồ ăn 2</p>', 0, '09.jpg', 7, '2020-06-22 07:33:15', '2020-06-22 07:33:15', 1),
 (9, 'Đồ ăn 4', 39.00, '<p>Đ&acirc;y l&agrave; đồ ăn 4</p>', 0, '11.jpg', 7, '2020-06-22 07:34:51', '2020-06-22 07:34:51', 0),
-(10, 'Đồ ăn 5', 27.00, '<p>Đ&acirc;y l&agrave; đồ ăn 5</p>', 0, '10.jpg', 7, '2020-06-22 07:35:19', '2020-06-22 07:35:19', 0),
 (11, 'cái dịch vụ của spa', 78.00, '<p>cscscscscsc</p>', 0, '10.jpg', 8, '2020-06-22 10:00:44', '2020-06-22 10:00:44', 0),
 (12, 'Đây là dịch vụ spa 2', 140.00, '<p>Đ&acirc;y l&agrave; dịch vụ spa 2</p>', 0, '11.jpg', 8, '2020-06-22 13:01:43', '2020-06-22 13:01:43', 0),
 (13, 'sport1', 110.00, '<p>Đ&acirc;y l&agrave; soprt 1</p>', 0, '02.jpg', 9, '2020-06-22 13:02:51', '2020-06-22 13:02:51', 0),
@@ -785,6 +761,32 @@ INSERT INTO `services` (`id`, `name`, `price`, `description`, `status`, `image`,
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `systems`
+--
+
+CREATE TABLE `systems` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `data` varchar(5000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `label` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `systems`
+--
+
+INSERT INTO `systems` (`id`, `key`, `data`, `label`, `created_at`, `updated_at`) VALUES
+(1, 'hostline', '0931695258', 'đây là hostline', '2020-07-27 04:50:41', '2020-07-27 04:50:41'),
+(3, 'iconSocial', '[\"iconsocial_03.png\",\"iconsocial_05.png\",\"iconsocial_07.png\",\"iconsocial_09.png\"]', 'iconSocial', '2020-07-27 07:24:43', '2020-07-28 01:34:51'),
+(4, 'email', 'nthung2896@gmail.com', 'email', '2020-07-27 07:25:51', '2020-07-27 07:25:51'),
+(5, 'address', '238 Hoàng Quốc Việt,Hà Nội', 'wd', '2020-07-27 07:26:44', '2020-07-27 17:05:16'),
+(10, 'logo', '02_Home_02_03.png', 'Asvon', '2020-07-27 16:29:36', '2020-07-28 02:12:45');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `users`
 --
 
@@ -807,16 +809,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `level`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(5, 'Nguyễn Thành Hưng11121', 'hhh@gmail.com', NULL, NULL, '$2y$10$IToNL9dyBcOuOkQVfk5TkOGqqHpHul9vZxkqIy/6MPz30/PLJu1JS', 2, 'blog-breadcrumb.jpg', NULL, '2020-06-22 04:17:15', '2020-07-07 07:58:02'),
 (7, 'hung123123', 'kaka@gmail.com', '12341321312', NULL, '$2y$10$ZWD.TxYNo7.db0C2WzLtaOW/1WoU9Yrr/zoVdsD5AFEdfeiWirGju', 1, '12.jpg', NULL, '2020-06-26 13:29:39', '2020-07-14 14:44:30'),
-(39, 'hùheufheuf', 'Hoangminh1894@gmail.com', NULL, NULL, '$2y$10$Fo5ufWzZZalz7bZj3dCXWOUbOv55g8MLaKvWiIB4.j8xh11s8YgHG', 2, 'WIN_20191209_23_51_43_Pro.jpg', NULL, '2020-07-11 15:15:09', '2020-07-12 01:57:26'),
+(39, 'hùheufheuf', 'Hoangminh1894@gmail.com', NULL, NULL, '$2y$10$kDU45aFTW/wT0UdJzBtfjOH.Btd2tuSI0Gh/HNk7slMyE0oyIgX1m', 2, 'WIN_20191209_23_51_43_Pro.jpg', NULL, '2020-07-11 15:15:09', '2020-07-26 02:12:08'),
 (44, 'hung pro 01', 'nthung2896@gmail.com', '0912121222', NULL, '$2y$10$.cWHvmdroPcJjEnI7FiRS.wJKCdWTnjMM03nabaHIRqrWBjwvmBq6', 0, 'WIN_20191212_16_39_15_Pro.jpg', NULL, '2020-07-12 02:09:46', '2020-07-21 15:54:55'),
 (45, 'hung12312323', 'zzz@gmail.com', '74845673354', NULL, '$2y$10$aBJTaibNqtVUzWV0sCx7Xefq5UdT4HNU3UGr8vPuyWSl8zLxR4j4C', 1, '12.jpg', NULL, '2020-07-13 15:00:49', '2020-07-14 07:39:31'),
 (50, 'pro 02', 'kaka123@gmail.com', '012345123', NULL, '$2y$10$7hREaidsUuLfqq5l14YoHOK3jpP73BL10rO6NoZCeFg/Q09EdByva', 0, '12.jpg', NULL, '2020-07-14 07:05:59', '2020-07-14 07:05:59'),
 (51, '123123', '123123231@gmail.com', '1231231312', NULL, '$2y$10$BxASj.33u5Dv17bCeYVkbOXrLIKLFj4WJ6r9CKulzVY6y0JGclhlS', 0, '11.jpg', NULL, '2020-07-14 07:15:26', '2020-07-14 07:39:04'),
 (52, 'sqsqsq', 'dd@gmail.com', '3232311', NULL, '$2y$10$aOFcrzjkLJKALo62poK7..maAzKSwkWek9Ug10BoLCZl3ho3DA7ze', 1, '12.jpg', NULL, '2020-07-14 07:21:30', '2020-07-14 07:21:30'),
 (53, 'fff', 'ttt@gmail.com', '2312311111', NULL, '$2y$10$JcviSS6J/IKK6A4LdYqMwuSJ3GTP2uwDAX4HgA5MeaZgaF2OPMSUW', 0, '10 - Copy.jpg', NULL, '2020-07-14 07:22:02', '2020-07-14 07:22:02'),
-(54, 'áda', 'hh@gmail.com', '123123111', NULL, '$2y$10$CXxbLpuR3qZhvRL/DKDOqOO.KvbZrarxpce5I/2EanI.NK3B/LRH.', 0, '12.jpg', NULL, '2020-07-14 07:22:53', '2020-07-14 08:35:51'),
 (55, 'lol123', 'hh2@gmail.com', '1231231112123', NULL, '$2y$10$X5Vogr56D16IM0Jbf9KteOQFXzMcV34ChxeUKlk6R7ssJlO5Fj4ia', 0, '13.jpg', NULL, '2020-07-14 07:23:27', '2020-07-14 13:43:43');
 
 -- --------------------------------------------------------
@@ -840,10 +840,8 @@ INSERT INTO `user_roles` (`user_id`, `role_id`) VALUES
 (45, 11),
 (45, 12),
 (50, 11),
-(50, 12),
 (51, 11),
 (52, 12),
-(54, 11),
 (55, 11);
 
 --
@@ -982,7 +980,8 @@ ALTER TABLE `rooms`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `rooms_name_unique` (`name`),
   ADD KEY `rooms_category_room_id_foreign` (`category_room_id`),
-  ADD KEY `rooms_user_room_id_foreign` (`user_room_id`);
+  ADD KEY `rooms_user_room_id_foreign` (`user_room_id`),
+  ADD KEY `rooms_brand_id_foreign` (`brand_id`);
 
 --
 -- Chỉ mục cho bảng `room_images`
@@ -1006,6 +1005,13 @@ ALTER TABLE `services`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `services_name_unique` (`name`),
   ADD KEY `services_category_service_id_foreign` (`category_service_id`);
+
+--
+-- Chỉ mục cho bảng `systems`
+--
+ALTER TABLE `systems`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `key` (`key`);
 
 --
 -- Chỉ mục cho bảng `users`
@@ -1036,25 +1042,25 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT cho bảng `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT cho bảng `blog_images`
 --
 ALTER TABLE `blog_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT cho bảng `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `category_blogs`
 --
 ALTER TABLE `category_blogs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `category_rooms`
@@ -1072,13 +1078,13 @@ ALTER TABLE `category_services`
 -- AUTO_INCREMENT cho bảng `comment_blogs`
 --
 ALTER TABLE `comment_blogs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -1090,31 +1096,31 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT cho bảng `order_detail_services`
 --
 ALTER TABLE `order_detail_services`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT cho bảng `review_rooms`
 --
 ALTER TABLE `review_rooms`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=423;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=434;
 
 --
 -- AUTO_INCREMENT cho bảng `roles`
@@ -1126,25 +1132,31 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT cho bảng `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT cho bảng `room_images`
 --
 ALTER TABLE `room_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=240;
 
 --
 -- AUTO_INCREMENT cho bảng `room_stars`
 --
 ALTER TABLE `room_stars`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=219;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=334;
 
 --
 -- AUTO_INCREMENT cho bảng `services`
 --
 ALTER TABLE `services`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT cho bảng `systems`
+--
+ALTER TABLE `systems`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
@@ -1208,6 +1220,7 @@ ALTER TABLE `review_rooms`
 -- Các ràng buộc cho bảng `rooms`
 --
 ALTER TABLE `rooms`
+  ADD CONSTRAINT `rooms_brand_id_foreign` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `rooms_category_room_id_foreign` FOREIGN KEY (`category_room_id`) REFERENCES `category_rooms` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `rooms_user_room_id_foreign` FOREIGN KEY (`user_room_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 

@@ -9,7 +9,7 @@ use App\Models\RoomImage;
 class Room extends Model
 {
     protected $fillable = [
-        'name', 'location', 'bed', 'bath', 'area', 'priceNight', 'priceWeekends', 'priceWeekly', 'priceClearFee', 'description', 'status', 'gym', 'Laundry', 'tvCable', 'wifi', 'FreeParking', 'Security', 'category_room_id', 'user_room_id', 'brand_id', 'guest', 'adult','content','link_map'
+        'name', 'location', 'bed', 'bath', 'area', 'priceNight', 'priceWeekends', 'priceWeekly', 'priceClearFee', 'description', 'status', 'gym', 'Laundry', 'tvCable', 'wifi', 'FreeParking', 'Security', 'category_room_id', 'user_room_id', 'brand_id', 'guest', 'adult', 'content', 'link_map'
     ];
 
     public function cateRoom()
@@ -44,7 +44,7 @@ class Room extends Model
 
     public function orderDetail()
     {
-        return $this->hasMany('App\Models\OrderDetail','room_id','id');
+        return $this->hasMany('App\Models\OrderDetail', 'room_id', 'id');
     }
 
 
@@ -75,7 +75,7 @@ class Room extends Model
             'guest' => request()->guest,
             'adult' => request()->adult,
             'content' => request()->content,
-            'link_map' =>request()->link_map
+            'link_map' => request()->link_map
         ]);
         $images = request()->file('files');
         foreach ($images as $img) {
@@ -124,6 +124,8 @@ class Room extends Model
                 'user_room_id' => request()->user_room_id,
                 'guest' => request()->guest,
                 'adult' => request()->adult,
+                'content' => request()->content,
+                'link_map' => request()->link_map
             ]);
             return $model;
         } else {
@@ -149,6 +151,8 @@ class Room extends Model
                 'user_room_id' => request()->user_room_id,
                 'guest' => request()->guest,
                 'adult' => request()->adult,
+                'content' => request()->content,
+                'link_map' => request()->link_map
             ]);
             return $model;
         }
@@ -211,7 +215,7 @@ class Room extends Model
     public function updateStatusRooms()
     {
         $model = $this->update([
-            'status'=>request()->status
+            'status' => request()->status
         ]);
         return $model;
     }

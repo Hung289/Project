@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Diện tích phòng</label>
-                                    <input type="number" name="area" min="30" max="100" class="form-control" placeholder="Nhập diện tích phòng" value="{{$room->area}}">
+                                    <input type="number" name="area" min="30" max="150" class="form-control" placeholder="Nhập diện tích phòng" value="{{$room->area}}">
                                     @error('area')
                                     <small class="error help-block" style="color:red">{{$message}}</small>
                                     @enderror
@@ -136,7 +136,13 @@
                                     <small class="error help-block" style="color:red">{{$message}}</small>
                                     @enderror
                                 </div>
-
+                                <div class="form-group">
+                                    <label for="">link_map</label>
+                                    <input type="text" name="link_map" class="form-control"  placeholder="Nhập link map lấy trên google map" value="{{$room->link_map}}">
+                                    @error('link_map')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
+                                </div>
 
 
 
@@ -313,8 +319,15 @@
 
                                 <div class="form-group">
                                     <label for="">Miêu tả</label>
-                                    <textarea placeholder="Nhập miêu ta tại đây" name="description" required id="content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$room->description}}</textarea>
+                                    <textarea placeholder="Nhập miêu ta tại đây" name="description" id="content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$room->description}}</textarea>
                                     @error('description')
+                                    <small class="error help-block" style="color:red">{{$message}}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Nội dung phòng</label>
+                                    <textarea placeholder="Nhập nội " name="content" id="content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$room->content}}</textarea>
+                                    @error('content')
                                     <small class="error help-block" style="color:red">{{$message}}</small>
                                     @enderror
                                 </div>

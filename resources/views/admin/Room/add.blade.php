@@ -142,9 +142,6 @@
                                     <small class="error help-block" style="color:red">{{$message}}</small>
                                     @enderror
                                 </div>
-
-
-
                                 <div class="form-group">
                                     <label for="exampleInputFile">Hình Ảnh</label>
                                     <div class="input-group">
@@ -156,10 +153,7 @@
                                     @if($errors->has('files'))
                                     <span class="help-block text-danger">{{ $errors->first('files') }}</span>
                                     @endif
-
-
                                 </div>
-
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Trạng Thái</label>
                                     <select name="status" class="form-control" id="">
@@ -197,17 +191,13 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div class="form-group">
                                     <label for="">Chọn admin đăng phòng</label>
                                     <select name="user_room_id" class="form-control" id="">
                                         <option value="{{Auth::User()->id}}">{{Auth::User()->name}}</option>
-
                                     </select>
                                     <!-- <input type="text" class="form-control" value="{{Auth::User()->id}}" name="user_room_id" placeholder="{{Auth::User()->name}}"> -->
                                 </div>
-
                                 <div class="row">
                                     <div class="col-md-6 left">
                                         <div class="form-group">
@@ -304,27 +294,20 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="">Miêu tả</label>
-                                    <textarea placeholder="Nhập miêu ta tại đây" name="description" required id="content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    <textarea placeholder="Nhập miêu ta tại đây" name="description" id="content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                     @error('description')
                                     <small class="error help-block" style="color:red">{{$message}}</small>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <label for="">Nội dung phòng</label>
-                                    <textarea placeholder="Nhập nội " name="content" required id="content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    <textarea placeholder="Nhập nội " name="content" id="content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                     @error('content')
                                     <small class="error help-block" style="color:red">{{$message}}</small>
                                     @enderror
                                 </div>
-
-
-
-
-
                             </div>
                             <!-- /.card-body -->
 
