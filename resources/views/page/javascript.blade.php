@@ -464,3 +464,17 @@
         });    
     });
 </script>
+<script>
+    $(function() {
+        $('.xemchitiet').click(function() {
+            var url = $(this).attr('url');
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function(result) {
+                    $("#body-modal").html(result);
+                }
+            })
+        })
+    })
+</script>
