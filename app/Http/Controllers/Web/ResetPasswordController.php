@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ResetPassword;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\System;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,26 @@ use Illuminate\Support\Facades\Redirect;
 
 class ResetPasswordController extends Controller
 {
+
+    public function __construct()
+    {
+        $email = System::where('key','email')->get();
+        $hostline = System::where('key','hostline')->get();
+        $iconSocial = System::where('key','iconSocial')->get();
+        foreach($iconSocial as $iS){
+            $mangIcon = json_decode($iS->data);
+        }
+        $address = System::where('key','address')->get();
+        $logo = System::where('key','logo')->get();
+        view()->share([
+            'email'=>$email,
+            'hostline'=>$hostline,
+            'iconSocial'=>$iconSocial,
+            'mangIcon'=>$mangIcon,
+            'address'=>$address,
+            'logo'=>$logo
+        ]);
+    }
     public function getForgotPassword(Request $request)
     {
         // dd($request->email);

@@ -20,11 +20,30 @@ use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Carbon\Carbon;
+use App\Models\System;
 
 class CartRoomController extends Controller
 {
     public function __construct()
     {
+
+        $email = System::where('key','email')->get();
+        $hostline = System::where('key','hostline')->get();
+        $iconSocial = System::where('key','iconSocial')->get();
+        foreach($iconSocial as $iS){
+            $mangIcon = json_decode($iS->data);
+        }
+        $address = System::where('key','address')->get();
+        $logo = System::where('key','logo')->get();
+        view()->share([
+            'email'=>$email,
+            'hostline'=>$hostline,
+            'iconSocial'=>$iconSocial,
+            'mangIcon'=>$mangIcon,
+            'address'=>$address,
+            'logo'=>$logo
+        ]);
+
         $CategoryRoom = CategoryRoom::all();
         view()->share('CategoryRoom', $CategoryRoom);
 
