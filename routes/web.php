@@ -58,6 +58,8 @@ Route::get('contact','Web\webPageController@getContact')->name('contact');
 Route::post('contactPost','Web\webPageController@postContact')->name('postContact');
 //Trang gallery
 Route::get('gallery','Web\webPageController@getGallery')->name('gallery');
+//Trang Our Staff
+Route::get('our-staff','Web\webPageController@getOurStaff')->name('getOurStaff');
 
 //Trang RoomGrid
 Route::get('room-grid','Web\webPageController@getRoomGrid')->name('roomGrid');

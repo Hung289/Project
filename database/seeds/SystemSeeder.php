@@ -16,7 +16,7 @@ class SystemSeeder extends Seeder
             array('key'=>'iconSocial', 'data'=>'["iconsocial_03.png","iconsocial_05.png","iconsocial_07.png","iconsocial_09.png"]', 'label'=>'iconSocial'),
             array('key'=>'email', 'data'=>'nthung2896@gmail.com', 'label'=>'email'),
             array('key'=>'address', 'data'=>'238 Hoàng Quốc Việt,Hà Nội', 'label'=>'đây là hostline'),
-            array('key'=>'logo', 'data'=>'02_Home_02_03.png', 'Asvon'=>'đây là hostline'),
+            array('key'=>'logo', 'data'=>'02_Home_02_03.png', 'label'=>'đây là hostline'),
         ]);
     }
 }

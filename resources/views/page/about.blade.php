@@ -132,43 +132,12 @@
             <h1>Our Satisfaction People Say <br> About Our Services </h1>
         </div>
         <div class="owl-carousel owl-theme">
+            @foreach($commentBlogsss as $cB)
             <div class="item">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, facilis obcaecati rerum qui velit voluptate a dolore vero id at.</p>
-                <h5 class="feedback">James M.Varney</h5>
+                <p>{{$cB->comment}}</p>
+                <h5 class="feedback">{{$cB->user->name}}</h5>
             </div>
-            <div class="item">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis libero nulla veritatis. Magni laboriosam reprehenderit qui ea eligendi adipisci iusto libero commodi tempora ratione eum hic consequuntur reiciendis illum, illo repellat a! Voluptatum exercitationem et veniam impedit recusandae corporis eos maiores laborum eveniet quam? Totam dolore voluptas quaerat fugit accusamus?</p>
-            </div>
-            <div class="item">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque, sequi soluta in consequuntur expedita molestias officiis ipsum laudantium laboriosam perspiciatis iusto debitis ad voluptas quas cumque tempora? Error cum fugiat quae doloribus officia fugit ipsum aspernatur consequatur explicabo? Reprehenderit doloribus repudiandae ipsam, ad quas impedit exercitationem odit ullam vero laboriosam?</p>
-            </div>
-            <div class="item">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque, sequi soluta in consequuntur expedita molestias officiis ipsum laudantium laboriosam perspiciatis iusto debitis ad voluptas quas cumque tempora? Error cum fugiat quae doloribus officia fugit ipsum aspernatur consequatur explicabo? Reprehenderit doloribus repudiandae ipsam, ad quas impedit exercitationem odit ullam vero laboriosam?</p>
-            </div>
-            <div class="item">
-                <h4>5</h4>
-            </div>
-            <div class="item">
-                <h4>6</h4>
-            </div>
-            <div class="item">
-                <h4>7</h4>
-            </div>
-            <div class="item">
-                <h4>8</h4>
-            </div>
-            <div class="item">
-                <h4>9</h4>
-            </div>
-            <div class="item">
-                <h4>10</h4>
-            </div>
-            <div class="item">
-                <h4>11</h4>
-            </div>
-            <div class="item">
-                <h4>12</h4>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

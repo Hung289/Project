@@ -33,7 +33,12 @@ class ResetPasswordController extends Controller
             'address'=>$address,
             'logo'=>$logo
         ]);
+
+        $blog_footer = Blog::orderBy('id','DESC')->limit(2)->get();
+        view()->share('blog_footer',$blog_footer);
     }
+
+    
     public function getForgotPassword(Request $request)
     {
         // dd($request->email);

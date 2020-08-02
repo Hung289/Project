@@ -44,6 +44,9 @@ class CartRoomController extends Controller
             'logo'=>$logo
         ]);
 
+        $blog_footer = Blog::orderBy('id','DESC')->limit(2)->get();
+        view()->share('blog_footer',$blog_footer);
+
         $CategoryRoom = CategoryRoom::all();
         view()->share('CategoryRoom', $CategoryRoom);
 

@@ -38,23 +38,18 @@
             <div class="col-md-6">
               <nav>
                 <ul>
-                  <li><a href="" class="active">Latest Services</a></li>
-                  <li><a href="">Need A Career</a></li>
-                  <li><a href="">Meet The Team</a></li>
-                  <li><a href="">Setting & Privacy</a></li>
-                  <li><a href="">Case Study</a></li>
-                  <li><a href="">Company Fact</a></li>
+                  @foreach($CategoryRoom as $CR)
+                  <li><a href="{{route('RoomListMaster',['id'=>$CR->id])}}" class="{{($loop->index == 0) ? "active" :""}}">{{$CR->name}}</a></li>
+                  @endforeach
                 </ul>
               </nav>
             </div>
             <div class="col-md-6">
               <nav>
                 <ul>
-                  <li><a href="">Our History</a></li>
-                  <li><a href="">My Account</a></li>
-                  <li><a href="">Web Security</a></li>
-                  <li><a href="">Domain & hosting</a></li>
-                  <li><a href="">Server System</a></li>
+                  @foreach($CategoryService as $CS)
+                  <li><a href="{{route('serviceMasterNotIdRoom',['id'=>$CS->id])}}">{{$CS->name}}</a></li>
+                  @endforeach
                 </ul>
               </nav>
             </div>
@@ -65,24 +60,24 @@
         <div class="chuto">
           Recent New
         </div>
+        @foreach($blog_footer as $b_f)
         <div class="row2">
           <div class="khunganh">
-            <img src="public/web/images/img/recent-post/01.jpg" alt="" />
+            @foreach($blogImages as $bI)
+            <?php $check = ($bI->blog_id == $b_f->id) ? $bI->image : ""?>
+            @if($check != "")
+            <a href="{{route('blogDetail',[$b_f->id])}}"></a>
+            <img src="public/uploads/images/Blog/{{$check}}" alt="" style="width:100%;height:100%" />
+            @break
+            @endif
+            @endforeach
           </div>
           <div class="text active">
-            <p class="tren">Using Low Vision As My Me Teach WordPress</p>
-            <p>05 Jan 20</p>
+            <p class="tren" style="height:50px; overflow:hidden"><a href="{{route('blogDetail',[$b_f->id])}}">{{$b_f->title}}</a></p>
+            <p>{{$b_f->created_at}}</p>
           </div>
         </div>
-        <div class="row2">
-          <div class="khunganh">
-            <img src="public/web/images/img/recent-post/02.jpg" alt="" />
-          </div>
-          <div class="text">
-            <p>Using Low Vision As My Me Teach WordPress</p>
-            <p>05 Jan 20</p>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
     <div class="row tongoatduoi">

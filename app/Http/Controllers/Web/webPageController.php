@@ -45,6 +45,8 @@ class webPageController extends Controller
         }
         $address = System::where('key','address')->get();
         $logo = System::where('key','logo')->get();
+
+        
         view()->share([
             'email'=>$email,
             'hostline'=>$hostline,
@@ -54,7 +56,8 @@ class webPageController extends Controller
             'logo'=>$logo
         ]);
 
-
+        $blog_footer = Blog::orderBy('id','DESC')->limit(2)->get();
+        view()->share('blog_footer',$blog_footer);
 
         $CategoryRoom = CategoryRoom::all();
         view()->share('CategoryRoom', $CategoryRoom);
@@ -93,7 +96,6 @@ class webPageController extends Controller
         }
         $address = System::where('key','address')->get();
 
-
         $Services = CategoryService::paginate(3);
         
         $rooms = Room::paginate(6);
@@ -104,10 +106,11 @@ class webPageController extends Controller
         $room_all = Room::all();   
         return view('page.home', ['address'=>$address,'mangIcon'=>$mangIcon,'hostline'=>$hostline,'email'=>$email,'room_all'=>$room_all,'Services' => $Services, 'rooms' => $rooms, 'banners' => $banners, 'commentBlogs' => $commentBlogs, 'blogNew' => $blogNew, 'blogs' => $blogs]);
     }
-
+   
     public function getAbout()
     {
-        return view('page.about');
+        $commentBlogsss = CommentBlog::all();
+        return view('page.about',compact('commentBlogsss'));
     }
 
     public function getCartRoom()
@@ -208,8 +211,7 @@ class webPageController extends Controller
     }
 
     public function getRoomGrid()
-    {
-        
+    {  
         return view('page.room_grid');
     }
 
@@ -217,6 +219,14 @@ class webPageController extends Controller
     {
         return view('page.reservation');
     }
+
+    public function getOurStaff()
+    {
+        $admins = User::paginate(9);
+        return view('page.our_staff',compact('admins'));
+    }
+
+    
 
     public function getRoomDetail(Request $request, $id, RoomStar $roomStar, Room $room, CategoryRoom $categoryRoom, OrderDetail $orderDetail)
     {
@@ -228,7 +238,7 @@ class webPageController extends Controller
         
         $numberStar = intval(round($roomStars['bien5'], 0));
         // dd($numberStar);
-        $lastRoom = Room::orderBy('created_at', 'DESC')->paginate(3);
+        $lastRoom = Room::orderBy('created_at', 'DESC')->limit(3)->get();
         $listCateRoom = CategoryRoom::all();
         return view('page.room_detail', [
             'room' => $room, 'rImage' => $rImage,
@@ -242,11 +252,11 @@ class webPageController extends Controller
     {
         $blog = Blog::where('id', $id)->first();
         $bImage = BlogImage::where('blog_id', $id)->first();
-        $blog2 = BlogImage::where('blog_id', $id)->paginate(2);
+        $blog2 = BlogImage::where('blog_id', $id)->orderBy('id','DESC')->limit(2)->get();
         $cateBlog = CategoryBlog::all();
         $blogNew = Blog::where('new',0)->limit(3)->get();
         $listCateRoom = CategoryRoom::all();
-        $commentBlog = CommentBlog::where('parent', 0)->orderBy('id', 'DESC')->paginate(2);
+        $commentBlog = CommentBlog::where('parent', 0)->orderBy('id', 'DESC')->limit(2)->get();
         $commentBlogChild = CommentBlog::all();
         return view('page.blog_detail', ['listCateRoom'=>$listCateRoom,'blogNew'=>$blogNew,'blog' => $blog, 'bImage' => $bImage, 'blog2' => $blog2, 'cateBlog' => $cateBlog, 'commentBlog' => $commentBlog, 'commentBlogChild' => $commentBlogChild]);
     }

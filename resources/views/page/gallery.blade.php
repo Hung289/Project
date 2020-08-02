@@ -44,15 +44,6 @@
             </div>
         </div>
         
-        <div class="pagination-wrap">
-            <ul class="list-inline">
-                <li><a href=""><i class="fas fa-angle-left"></i></a></li>
-                <li class="active"><a href="">01</a></li>
-                <li><a href="">02</a></li>
-                <li><a href="">03</a></li>
-                <li><a href=""><i class="fas fa-angle-right"></i></a></li>
-            </ul>
-        </div>
     </div>
 </section>
 

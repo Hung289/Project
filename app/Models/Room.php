@@ -93,6 +93,7 @@ class Room extends Model
     public function updateEdit()
     {
         if (request()->has('files')) {
+            RoomImage::where('room_id',$this->id)->delete();
             $images = request()->file('files');
             foreach ($images as $img) {
                 $img_name = $img->getClientOriginalName();

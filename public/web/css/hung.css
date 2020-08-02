@@ -5076,3 +5076,35 @@ textarea:focus {
     width: 100%;
     padding: 0px 20px;
 }
+
+
+
+
+/* Trang our Staff */
+.staff-fact {
+    margin-bottom: 30px;
+    height: 550px;
+    border: 1px solid gray;
+}
+.staf-img{
+    width: 100%;
+    height: 400px;
+}
+.staff-fact h4 {
+    font-size: 22px;
+    margin-top: 25px;
+    line-height: 38px;
+}
+.staff-fact .staff-post {
+    font-weight: 600;
+    color: #fea116;
+}
+
+
+/* about us */
+.clientfeedback .owl-theme .owl-nav {
+    margin-top: 10px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    display: none;
+}

@@ -54,6 +54,7 @@ class Blog extends Model
 
     public function updateEdit(){
         if(request()->has('files')){
+            BlogImage::where('blog_id', $this->id)->delete();
             $image = request()->file('files');
             foreach($image as $img){
                 $img_name= $img->getClientOriginalName();

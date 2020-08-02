@@ -57,10 +57,9 @@
                 <a href="">Pages <i class="fas fa-chevron-down"></i></a>
                 <ul class="menunho">
                   <li><a href="{{route('about')}}">About Us</a></li>
-                  <li><a href="">Our Staff</a></li>
+                  <li><a href="{{route('getOurStaff')}}">Our Staff</a></li>
                   <li><a href="{{route('restaurant')}}">Resturent</a></li>
                   <li><a href="{{route('gallery')}}">Gallery</a></li>
-                  <li><a href="{{route('checkout')}}">Checkout</a></li>
                   <li><a href="{{route('reservation')}}">Reservation</a></li>
                 </ul>
               </li>
@@ -120,7 +119,6 @@
                 <li><a href="">Our Staff</a></li>
                 <li><a href="{{route('restaurant')}}">Resturent</a></li>
                 <li><a href="{{route('gallery')}}">Gallery</a></li>
-                <li><a href="{{route('checkout')}}">Checkout</a></li>
                 <li><a href="{{route('reservation')}}">Reservation</a></li>
               </ul>
               <i class="fas fa-plus" data-class="page"></i>
