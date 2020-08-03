@@ -99,7 +99,7 @@ class webPageController extends Controller
         $Services = CategoryService::paginate(3);
         
         $rooms = Room::paginate(6);
-        $banners = Banner::all();
+        $banners = Banner::limit(4)->get();
         $commentBlogs = CommentBlog::all();
         $blogNew = Blog::where('new', 0)->first();
         $blogs = Blog::limit(3)->get();
