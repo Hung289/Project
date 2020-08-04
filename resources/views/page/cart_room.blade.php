@@ -66,7 +66,6 @@
 
                                 <div class="xoaphong">
                                     <a href="{{route('cart.remove',['id'=>$item['id']])}}"><i class="fas fa-backspace"></i></a>
-
                                 </div>
 
                             </div>
